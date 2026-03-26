@@ -1,11 +1,20 @@
 aid: neuvector
 name: NeuVector
 description: >-
-  NeuVector is a full lifecycle container security platform providing vulnerability scanning, runtime protection, and compliance.
+  NeuVector is an open source, full lifecycle container security platform
+  maintained by SUSE. It provides vulnerability scanning, runtime protection,
+  compliance monitoring, and a Layer 7 container firewall for Kubernetes
+  environments.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - Containers
+  - Security
+  - Runtime Protection
+  - Vulnerability Scanning
+  - Compliance
+  - Kubernetes
+  - Open Source
 url: >-
   https://raw.githubusercontent.com/api-evangelist/neuvector/refs/heads/main/apis.yml
 created: '2026-03-26'
@@ -15,14 +24,34 @@ apis:
   - aid: neuvector:neuvector
     name: NeuVector
     description: >-
-      NeuVector is a full lifecycle container security platform providing vulnerability scanning, runtime protection, and compliance.
-    humanURL: https://github.com/api-evangelist/neuvector
+      NeuVector is an open source, full lifecycle container security platform
+      providing vulnerability scanning, runtime protection, compliance
+      monitoring, and a true Layer 7 container firewall for Kubernetes
+      environments.
+    humanURL: https://neuvector.com/
     tags:
       - Containers
-    properties: []
+      - Security
+      - Runtime Protection
+      - Vulnerability Scanning
+      - Compliance
+      - Kubernetes
+    properties:
+      - type: Documentation
+        url: https://open-docs.neuvector.com/
+      - type: Getting Started
+        url: https://open-docs.neuvector.com/deploying
 common:
   - type: Website
-    url: https://github.com/api-evangelist/neuvector
+    url: https://neuvector.com/
+  - type: Documentation
+    url: https://open-docs.neuvector.com/
+  - type: SUSE Documentation
+    url: https://documentation.suse.com/en-us/cloudnative/security/
+  - type: GitHub Organization
+    url: https://github.com/neuvector
+  - type: SUSE Product Page
+    url: https://www.suse.com/products/neuvector/
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
