@@ -8,13 +8,13 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Containers
-  - Security
-  - Runtime Protection
-  - Vulnerability Scanning
   - Compliance
+  - Containers
   - Kubernetes
   - Open Source
+  - Runtime Protection
+  - Security
+  - Vulnerability Scanning
 url: >-
   https://raw.githubusercontent.com/api-evangelist/neuvector/refs/heads/main/apis.yml
 created: '2026-03-26'
@@ -30,12 +30,12 @@ apis:
       environments.
     humanURL: https://neuvector.com/
     tags:
-      - Containers
-      - Security
-      - Runtime Protection
-      - Vulnerability Scanning
       - Compliance
+      - Containers
       - Kubernetes
+      - Runtime Protection
+      - Security
+      - Vulnerability Scanning
     properties:
       - type: Documentation
         url: https://open-docs.neuvector.com/
