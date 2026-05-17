@@ -45,9 +45,9 @@ apis:
     properties:
       - type: Documentation
         url: https://open-docs.neuvector.com/
-      - type: Getting Started
+      - type: GettingStarted
         url: https://open-docs.neuvector.com/deploying
-      - type: API Reference
+      - type: APIReference
         url: https://open-docs.neuvector.com/automation/automation
       - type: OpenAPI
         url: https://raw.githubusercontent.com/api-evangelist/neuvector/refs/heads/main/openapi/neuvector-openapi-original.yaml
@@ -65,7 +65,7 @@ common:
     url: https://open-docs.neuvector.com/
   - type: SUSE Documentation
     url: https://documentation.suse.com/en-us/cloudnative/security/
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/neuvector
   - type: SUSE Product Page
     url: https://www.suse.com/products/neuvector/
