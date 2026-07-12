@@ -59,6 +59,8 @@ apis:
       - FN: NeuVector Support
         email: support@neuvector.com
 common:
+  - type: DomainSecurity
+    url: security/neuvector-domain-security.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/neuvector
   - type: Website
