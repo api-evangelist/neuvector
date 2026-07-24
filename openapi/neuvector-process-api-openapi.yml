@@ -1,0 +1,274 @@
+swagger: '2.0'
+info:
+  description: Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.
+  version: 5.6.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  title: NeuVector Process API
+  contact:
+    email: support@neuvector.com
+schemes:
+- https
+tags:
+- name: Process
+  description: Operations about Process Profile
+paths:
+  /v1/process_profile:
+    get:
+      tags:
+      - Process
+      summary: Get a list of process profiles
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: scope
+        type: string
+        required: false
+        enum:
+        - fed
+        - local
+        description: When set to fed, returned fed process profiles. When set to local, returned local process profiles. If there is no query string 'scope', all process profiles will be returned.
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTProcessProfilesData'
+  /v1/process_profile/{name}:
+    get:
+      tags:
+      - Process
+      summary: Get a process profile
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: name
+        description: Process profile name
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTProcessProfileData'
+    patch:
+      tags:
+      - Process
+      summary: Update a process profile
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: path
+        name: name
+        description: Process profile name
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Process profile configure data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTProcessProfileConfigData'
+      responses:
+        '200':
+          description: Success
+  /v1/process_rules/{uuid}:
+    get:
+      tags:
+      - Process
+      summary: Get a process rule
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: uuid
+        description: Process rule uuid
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTProcessRulesResp'
+definitions:
+  RESTProcessProfilesData:
+    type: object
+    required:
+    - process_profiles
+    properties:
+      process_profiles:
+        type: array
+        items:
+          $ref: '#/definitions/RESTProcessProfile'
+  RESTProcessProfileConfigData:
+    type: object
+    required:
+    - process_profile_config
+    properties:
+      process_profile_config:
+        $ref: '#/definitions/RESTProcessProfileConfig'
+  RESTProcessUuidEntry:
+    type: object
+    properties:
+      active:
+        type: integer
+        example: 1
+      group:
+        type: string
+        example: nodes
+      rule:
+        $ref: '#/definitions/RESTProcessProfileEntry'
+  RESTProcessProfile:
+    type: object
+    required:
+    - group
+    - mode
+    - process_list
+    properties:
+      group:
+        type: string
+        example: admin
+      alert_disabled:
+        type: boolean
+        example: false
+      hash_enabled:
+        type: boolean
+        example: true
+      mode:
+        type: string
+        example: ''
+      process_list:
+        type: array
+        items:
+          $ref: '#/definitions/RESTProcessProfileEntry'
+  RESTProcessRulesResp:
+    type: object
+    properties:
+      process_rules:
+        type: array
+        items:
+          $ref: '#/definitions/RESTProcessUuidEntry'
+  RESTProcessProfileEntry:
+    type: object
+    required:
+    - name
+    - action
+    - cfg_type
+    - uuid
+    - created_timestamp
+    - last_modified_timestamp
+    properties:
+      name:
+        type: string
+        example: name
+      path:
+        type: string
+        example: path
+      user:
+        type: string
+        example: user
+      uid:
+        type: integer
+        format: int32
+        example: 1273
+      action:
+        type: string
+        example: allow
+      cfg_type:
+        type: string
+        enum:
+        - learned
+        - user_created
+        - ground
+        - federal
+        - system_defined
+      uuid:
+        type: string
+        format: uuid
+        example: 5654bfac-0011-4678-8e67-9eda136f18b1
+      group:
+        type: string
+        example: nodes
+      created_timestamp:
+        type: integer
+        format: int64
+        example: 1516561258
+      last_modified_timestamp:
+        type: integer
+        format: int64
+        example: 1516561268
+  RESTProcessProfileEntryConfig:
+    type: object
+    required:
+    - name
+    - path
+    - action
+    - group
+    properties:
+      name:
+        type: string
+        example: myEntryConfig
+      path:
+        type: string
+        example: ''
+      action:
+        type: string
+        example: monitor
+      group:
+        type: string
+        example: myGroup
+  RESTProcessProfileData:
+    type: object
+    required:
+    - process_profile
+    properties:
+      process_profile:
+        $ref: '#/definitions/RESTProcessProfile'
+  RESTProcessProfileConfig:
+    type: object
+    required:
+    - group
+    properties:
+      group:
+        type: string
+        example: myGroup
+      alert_disabled:
+        type: boolean
+        example: false
+      hash_enabled:
+        type: boolean
+        example: true
+      process_change_list:
+        type: array
+        items:
+          $ref: '#/definitions/RESTProcessProfileEntryConfig'
+      process_delete_list:
+        type: array
+        items:
+          $ref: '#/definitions/RESTProcessProfileEntryConfig'
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Apikey
+  TokenAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Token
+externalDocs:
+  description: Find out more about NeuVector
+  url: https://www.suse.com/products/neuvector/

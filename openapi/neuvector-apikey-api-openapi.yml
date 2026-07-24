@@ -1,0 +1,239 @@
+swagger: '2.0'
+info:
+  description: Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.
+  version: 5.6.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  title: NeuVector Apikey API
+  contact:
+    email: support@neuvector.com
+schemes:
+- https
+tags:
+- name: Apikey
+paths:
+  /v1/api_key:
+    get:
+      tags:
+      - Apikey
+      summary: Gets a list of apikeys
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTApikeysData'
+    post:
+      tags:
+      - Apikey
+      summary: Creates an apikey
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Apikey information
+        required: true
+        schema:
+          $ref: '#/definitions/RESTApikeyCreationData'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTApikeyGeneratedData'
+  /v1/api_key/{accesskey}:
+    get:
+      tags:
+      - Apikey
+      summary: Gets an apikey
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: accesskey
+        description: Apikey access key
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTApikeyData'
+    delete:
+      tags:
+      - Apikey
+      summary: Delete apikey
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      parameters:
+      - in: path
+        name: accesskey
+        description: Apikey access key
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+definitions:
+  RESTApikeyData:
+    type: object
+    required:
+    - apikey
+    properties:
+      apikey:
+        $ref: '#/definitions/RESTApikey'
+  RESTApikey:
+    type: object
+    required:
+    - expiration_type
+    - apikey_name
+    - role
+    properties:
+      expiration_type:
+        type: string
+        example: never
+      expiration_hours:
+        type: integer
+        format: uint32
+        example: 1
+      apikey_name:
+        type: string
+        example: token-cicd-scan
+      apikey_secret:
+        type: string
+        example: 0u+tVOWNPRfpCK7p9qz
+      description:
+        type: string
+        example: cicd image scanning
+      role:
+        type: string
+        example: admin
+      role_domains:
+        type: object
+        description: Object key is role and value is array of domains
+        additionalProperties:
+          type: array
+          items:
+            type: string
+          example:
+          - domain1
+          - domain2
+      expiration_timestamp:
+        type: integer
+        format: int64
+        example: 11515020888
+      created_timestamp:
+        type: integer
+        format: int64
+        example: 11515020888
+      created_by_entity:
+        type: string
+        example: admin
+  RESTApikeysData:
+    type: object
+    required:
+    - apikeys
+    - global_roles
+    - domain_roles
+    properties:
+      apikeys:
+        type: array
+        items:
+          $ref: '#/definitions/RESTApikey'
+      global_roles:
+        type: array
+        items:
+          type: string
+        example:
+        - admin
+        - reader
+      domain_roles:
+        type: array
+        items:
+          type: string
+        example:
+        - role1
+        - role2
+  RESTApikeyCreationData:
+    type: object
+    required:
+    - apikey
+    properties:
+      apikey:
+        $ref: '#/definitions/RESTApikeyCreation'
+  RESTApikeyGeneratedData:
+    type: object
+    required:
+    - apikey
+    properties:
+      apikey:
+        $ref: '#/definitions/RESTApikeyGenerated'
+  RESTApikeyCreation:
+    type: object
+    required:
+    - expiration_type
+    - apikey_name
+    - role
+    properties:
+      expiration_type:
+        type: string
+        example: never
+      expiration_hours:
+        type: integer
+        format: uint32
+        example: 1
+      apikey_name:
+        type: string
+        example: token-cicd-scan
+      description:
+        type: string
+        example: cicd image scanning
+      role:
+        type: string
+        example: admin
+      role_domains:
+        type: object
+        description: Object key is role and value is array of domains
+        additionalProperties:
+          type: array
+          items:
+            type: string
+          example:
+          - domain1
+          - domain2
+  RESTApikeyGenerated:
+    type: object
+    required:
+    - apikey_name
+    - apikey_secret
+    properties:
+      apikey_name:
+        type: string
+        example: token-cicd-scan
+      apikey_secret:
+        type: string
+        example: 0u+tVOWNPRfpCK7p9qz
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Apikey
+  TokenAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Token
+externalDocs:
+  description: Find out more about NeuVector
+  url: https://www.suse.com/products/neuvector/

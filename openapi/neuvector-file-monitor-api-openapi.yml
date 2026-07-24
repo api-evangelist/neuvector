@@ -1,0 +1,183 @@
+swagger: '2.0'
+info:
+  description: Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.
+  version: 5.6.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  title: NeuVector File Monitor API
+  contact:
+    email: support@neuvector.com
+schemes:
+- https
+tags:
+- name: File Monitor
+  description: Operations about File Monitor
+paths:
+  /v1/file_monitor:
+    get:
+      tags:
+      - File Monitor
+      summary: Get a list of file monitors
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: scope
+        type: string
+        required: false
+        enum:
+        - fed
+        - local
+        description: When set to fed, returned fed file monitor list. When set to local, returned local file monitor list. If there is no query string 'scope', all file monitor list will be returned.
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTFileMonitorFileData'
+  /v1/file_monitor/{name}:
+    get:
+      tags:
+      - File Monitor
+      summary: Show file monitor
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: name
+        description: File monitor name
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTFileMonitorFile'
+    patch:
+      tags:
+      - File Monitor
+      summary: Update file monitor
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: path
+        name: name
+        description: File monitor name
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: File monitor update data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTFileMonitorConfigData'
+      responses:
+        '200':
+          description: Success
+definitions:
+  RESTFileMonitorFileData:
+    type: object
+    required:
+    - files
+    properties:
+      files:
+        type: array
+        items:
+          $ref: '#/definitions/RESTFileMonitorFile'
+  RESTFileMonitorFile:
+    type: object
+    required:
+    - path
+    - mask
+    - is_dir
+    - protect
+    - files
+    properties:
+      path:
+        type: string
+        example: ''
+      mask:
+        type: integer
+        format: uint64
+        example: 0
+      is_dir:
+        type: boolean
+        example: false
+      protect:
+        type: boolean
+        example: false
+      files:
+        type: array
+        items:
+          type: string
+        example:
+        - ''
+  RESTFileMonitorConfigData:
+    type: object
+    required:
+    - config
+    properties:
+      config:
+        $ref: '#/definitions/RESTFileMonitorConfig'
+  RESTFileMonitorConfig:
+    type: object
+    properties:
+      add_filters:
+        type: array
+        items:
+          $ref: '#/definitions/RESTFileMonitorFilterConfig'
+      delete_filters:
+        type: array
+        items:
+          $ref: '#/definitions/RESTFileMonitorFilterConfig'
+      update_filters:
+        type: array
+        items:
+          $ref: '#/definitions/RESTFileMonitorFilterConfig'
+  RESTFileMonitorFilterConfig:
+    type: object
+    required:
+    - filter
+    - recursive
+    - behavior
+    - applications
+    - group
+    properties:
+      filter:
+        type: string
+        example: ''
+      recursive:
+        type: boolean
+        example: false
+      behavior:
+        type: string
+        example: ''
+      applications:
+        type: array
+        items:
+          type: string
+          example: ''
+      group:
+        type: string
+        example: ''
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Apikey
+  TokenAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Token
+externalDocs:
+  description: Find out more about NeuVector
+  url: https://www.suse.com/products/neuvector/

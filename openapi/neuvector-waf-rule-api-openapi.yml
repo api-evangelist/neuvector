@@ -1,0 +1,569 @@
+swagger: '2.0'
+info:
+  description: Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.
+  version: 5.6.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  title: NeuVector WAF Rule API
+  contact:
+    email: support@neuvector.com
+schemes:
+- https
+tags:
+- name: WAF Rule
+  description: Operations about waf Rule
+paths:
+  /v1/waf/sensor:
+    get:
+      tags:
+      - WAF Rule
+      summary: Get waf rule list
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: scope
+        type: string
+        required: false
+        enum:
+        - local
+        description: The default value is local which returns local waf rule list.
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTWafSensorsData'
+    post:
+      tags:
+      - WAF Rule
+      summary: Create waf sensor
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Sensor data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTDlpSensorConfigData'
+      responses:
+        '200':
+          description: Success
+  /v1/waf/sensor/{name}:
+    get:
+      tags:
+      - WAF Rule
+      summary: Get waf sensor detail
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: name
+        description: waf sensor name
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTWafSensorData'
+    patch:
+      tags:
+      - WAF Rule
+      summary: Update a waf sensor
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: path
+        name: name
+        description: waf sensor name
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: waf sensor data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTWafSensorConfigData'
+      responses:
+        '200':
+          description: Success
+    delete:
+      tags:
+      - WAF Rule
+      summary: Delete a waf sensor
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      parameters:
+      - in: path
+        name: name
+        description: waf sensor name
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+  /v1/waf/group:
+    get:
+      tags:
+      - WAF Rule
+      summary: Get waf group list
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: scope
+        type: string
+        required: false
+        enum:
+        - local
+        description: The default value is local. It returns local waf group list.
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTWafGroupsData'
+  /v1/waf/group/{name}:
+    get:
+      tags:
+      - WAF Rule
+      summary: Get waf group detail
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: name
+        description: waf group name
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTWafGroupData'
+    patch:
+      tags:
+      - WAF Rule
+      summary: Update a waf group
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: path
+        name: name
+        description: waf group name
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: waf group data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTWafGroupConfigData'
+      responses:
+        '200':
+          description: Success
+  /v1/waf/rule:
+    get:
+      tags:
+      - WAF Rule
+      summary: Get waf rule list
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTWafRulesData'
+  /v1/waf/rule/{name}:
+    get:
+      tags:
+      - WAF Rule
+      summary: Get waf rule detail
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: name
+        description: waf rule name
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTWafRuleData'
+definitions:
+  RESTWafSensorData:
+    type: object
+    required:
+    - sensor
+    properties:
+      sensor:
+        $ref: '#/definitions/RESTWafSensor'
+  RESTWafGroup:
+    type: object
+    required:
+    - name
+    - status
+    - sensors
+    - cfg_type
+    properties:
+      name:
+        type: string
+        example: nv.kube-proxy.kube-system
+      status:
+        type: boolean
+        example: true
+      sensors:
+        type: array
+        items:
+          $ref: '#/definitions/RESTWafSetting'
+      cfg_type:
+        type: string
+        enum:
+        - user_created
+        - ground
+  RESTWafSensorConfigData:
+    type: object
+    required:
+    - config
+    properties:
+      config:
+        $ref: '#/definitions/RESTWafSensorConfig'
+  RESTDlpRule:
+    type: object
+    required:
+    - name
+    - id
+    - patterns
+    - cfg_type
+    properties:
+      name:
+        type: string
+        example: testrule413251424153561246153614615462515134635
+      id:
+        type: integer
+        format: uint32
+        example: 4001
+      patterns:
+        type: array
+        items:
+          $ref: '#/definitions/RESTCriteriaEntry'
+      cfg_type:
+        type: string
+        enum:
+        - user_created
+        - ground
+  RESTCriteriaEntry:
+    type: object
+    required:
+    - key
+    - value
+    - op
+    properties:
+      key:
+        type: string
+        example: pattern
+      value:
+        type: string
+        example: '[0-9]'
+      op:
+        type: string
+        example: regex
+  RESTWafGroupConfig:
+    type: object
+    required:
+    - name
+    properties:
+      name:
+        type: string
+        example: ''
+      status:
+        type: boolean
+        example: false
+      delete:
+        type: array
+        items:
+          type: string
+          example: ''
+      sensors:
+        type: array
+        items:
+          $ref: '#/definitions/RESTWafConfig'
+      replace:
+        type: array
+        items:
+          $ref: '#/definitions/RESTWafConfig'
+  RESTWafGroupData:
+    type: object
+    required:
+    - waf_group
+    properties:
+      waf_group:
+        $ref: '#/definitions/RESTWafGroup'
+  RESTWafRuleDetail:
+    type: object
+    required:
+    - sensors
+    - rules
+    properties:
+      sensors:
+        type: array
+        items:
+          type: string
+          example: test
+      rules:
+        type: array
+        items:
+          $ref: '#/definitions/RESTWafRule'
+  RESTWafSensorsData:
+    type: object
+    required:
+    - sensors
+    properties:
+      sensors:
+        type: array
+        items:
+          $ref: '#/definitions/RESTWafSensor'
+  RESTWafRule:
+    type: object
+    required:
+    - name
+    - id
+    - patterns
+    - cfg_type
+    properties:
+      name:
+        type: string
+        example: test
+      id:
+        type: integer
+        format: uint32
+        example: 40003
+      patterns:
+        type: array
+        items:
+          $ref: '#/definitions/RESTWafCriteriaEntry'
+      cfg_type:
+        type: string
+        enum:
+        - user_created
+        - ground
+  RESTDlpSensorConfig:
+    type: object
+    required:
+    - name
+    properties:
+      name:
+        type: string
+        example: sensor.creditcard
+      change:
+        type: array
+        items:
+          $ref: '#/definitions/RESTDlpRule'
+      delete:
+        type: array
+        items:
+          $ref: '#/definitions/RESTDlpRule'
+      rules:
+        type: array
+        items:
+          $ref: '#/definitions/RESTDlpRule'
+      comment:
+        type: string
+        example: Sensor for Credit Card detection
+  RESTDlpSensorConfigData:
+    type: object
+    required:
+    - config
+    properties:
+      config:
+        $ref: '#/definitions/RESTDlpSensorConfig'
+  RESTWafSensor:
+    type: object
+    required:
+    - name
+    - groups
+    - rules
+    - comment
+    - predefine
+    - cfg_type
+    properties:
+      name:
+        type: string
+        example: test4321546242574254672462572452615362453
+      groups:
+        type: array
+        items:
+          type: string
+          example: nv.kube-proxy.kube-system
+      rules:
+        type: array
+        items:
+          $ref: '#/definitions/RESTWafRule'
+      comment:
+        type: string
+        example: ''
+      predefine:
+        type: boolean
+        example: false
+      cfg_type:
+        type: string
+        enum:
+        - user_created
+        - ground
+  RESTWafSetting:
+    type: object
+    required:
+    - name
+    - action
+    - exist
+    - cfg_type
+    properties:
+      name:
+        type: string
+        example: test
+      action:
+        type: string
+        example: deny
+      exist:
+        type: boolean
+        example: true
+      comment:
+        type: string
+        example: ''
+      cfg_type:
+        type: string
+        enum:
+        - user_created
+        - ground
+  RESTWafRulesData:
+    type: object
+    required:
+    - rules
+    properties:
+      rules:
+        type: array
+        items:
+          $ref: '#/definitions/RESTWafRule'
+  RESTWafCriteriaEntry:
+    type: object
+    required:
+    - key
+    - value
+    - op
+    properties:
+      key:
+        type: string
+        example: pattern
+      value:
+        type: string
+        example: '[0-9]'
+      op:
+        type: string
+        example: regex
+      context:
+        type: string
+        example: packet
+  RESTWafConfig:
+    type: object
+    required:
+    - name
+    - action
+    properties:
+      name:
+        type: string
+        example: ''
+      action:
+        type: string
+        example: ''
+      comment:
+        type: string
+        example: ''
+  RESTWafGroupConfigData:
+    type: object
+    required:
+    - config
+    properties:
+      config:
+        $ref: '#/definitions/RESTWafGroupConfig'
+  RESTWafRuleData:
+    type: object
+    required:
+    - rule
+    properties:
+      rule:
+        $ref: '#/definitions/RESTWafRuleDetail'
+  RESTWafSensorConfig:
+    type: object
+    required:
+    - name
+    properties:
+      name:
+        type: string
+        example: ''
+      change:
+        type: array
+        items:
+          $ref: '#/definitions/RESTWafRule'
+      delete:
+        type: array
+        items:
+          $ref: '#/definitions/RESTWafRule'
+      rules:
+        type: array
+        items:
+          $ref: '#/definitions/RESTWafRule'
+      comment:
+        type: string
+        example: ''
+  RESTWafGroupsData:
+    type: object
+    required:
+    - waf_groups
+    properties:
+      waf_groups:
+        type: array
+        items:
+          $ref: '#/definitions/RESTWafGroup'
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Apikey
+  TokenAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Token
+externalDocs:
+  description: Find out more about NeuVector
+  url: https://www.suse.com/products/neuvector/

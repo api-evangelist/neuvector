@@ -1,0 +1,348 @@
+swagger: '2.0'
+info:
+  description: Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.
+  version: 5.6.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  title: NeuVector Enforcer API
+  contact:
+    email: support@neuvector.com
+schemes:
+- https
+tags:
+- name: Enforcer
+  description: Operations about Enforcer
+paths:
+  /v1/enforcer:
+    get:
+      tags:
+      - Enforcer
+      summary: Get a list of enforcers
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTAgentsData'
+  /v1/enforcer/{id}:
+    get:
+      tags:
+      - Enforcer
+      summary: Show enforcer
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Enforcer ID
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTAgentData'
+    patch:
+      tags:
+      - Enforcer
+      summary: Update enforcer
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Enforcer ID
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Enforcer update data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTAgentConfigData'
+      responses:
+        '200':
+          description: Success
+  /v1/enforcer/{id}/stats:
+    get:
+      tags:
+      - Enforcer
+      summary: Get enforcer statistics
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Enforcer ID
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTAgentStatsData'
+  /v1/enforcer/{id}/config:
+    get:
+      tags:
+      - Enforcer
+      summary: Enforcer get configure
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Enforcer ID
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTAgentConfigData'
+definitions:
+  RESTAgent:
+    type: object
+    required:
+    - id
+    - name
+    - display_name
+    - host_name
+    - host_id
+    - version
+    - labels
+    - domain
+    - pid_mode
+    - network_mode
+    - created_at
+    - started_at
+    - joined_at
+    - memory_limit
+    - cpus
+    - cluster_ip
+    - connection_state
+    - disconnected_at
+    properties:
+      id:
+        type: string
+        example: 924ccbbfcac6842e7370305bc51f4594764314f6
+      name:
+        type: string
+        example: allinone
+      display_name:
+        type: string
+        example: allinone
+      host_name:
+        type: string
+        example: ubuntu64
+      host_id:
+        type: string
+        example: 2AU7:TIEN:O5KX:QK56:LFQP:IJSV:FXBN:QJV7
+      version:
+        type: string
+        example: 0.1.0
+      labels:
+        type: object
+        description: map key is string type
+        additionalProperties:
+          type: string
+        example:
+          com.docker.compose.service: allinone
+      domain:
+        type: string
+        example: ''
+      pid_mode:
+        type: string
+        example: ''
+      network_mode:
+        type: string
+        example: host
+      created_at:
+        type: string
+        format: date-time
+        example: 2018-01-23 21:14:31+00:00
+      started_at:
+        type: string
+        format: date-time
+        example: 2018-01-23 21:14:31+00:00
+      joined_at:
+        type: string
+        format: date-time
+        example: 2018-01-23 21:14:55+00:00
+      memory_limit:
+        type: integer
+        format: int64
+        example: 0
+      cpus:
+        type: string
+        example: ''
+      cluster_ip:
+        type: string
+        example: 10.1.5.1
+      connection_state:
+        type: string
+        example: connected
+      disconnected_at:
+        type: string
+        example: ''
+  RESTAgentStatsData:
+    type: object
+    required:
+    - id
+    - read_at
+    - stats
+    properties:
+      id:
+        type: string
+        example: 541386aa8e36fe113593cc0dc6678b7d2a
+      read_at:
+        type: string
+        format: date-time
+        example: 2018-01-18 07:20:15+00:00
+      stats:
+        $ref: '#/definitions/RESTStats'
+  RESTMetry:
+    type: object
+    required:
+    - cpu
+    - memory
+    - session_in
+    - session_out
+    - packet_in
+    - packet_out
+    - byte_in
+    - byte_out
+    properties:
+      cpu:
+        type: number
+        format: float64
+        example: 1
+      memory:
+        type: integer
+        format: uint64
+        example: 2089816064
+      session_in:
+        type: integer
+        format: uint32
+        example: 0
+      session_out:
+        type: integer
+        format: uint32
+        example: 0
+      cur_session_in:
+        type: integer
+        format: uint32
+        example: 1
+      cur_session_out:
+        type: integer
+        format: uint32
+        example: 1
+      packet_in:
+        type: integer
+        format: uint64
+        example: 0
+      packet_out:
+        type: integer
+        format: uint64
+        example: 0
+      byte_in:
+        type: integer
+        format: uint64
+        example: 0
+      byte_out:
+        type: integer
+        format: uint64
+        example: 0
+  RESTAgentConfig:
+    type: object
+    properties:
+      debug:
+        type: array
+        items:
+          type: string
+        example:
+        - packet
+        - log
+        - parser
+        - tcp
+        - session
+        - timer
+        - error
+      disable_nvprotect:
+        type: boolean
+        example: false
+      disable_kvcctl:
+        type: boolean
+        example: false
+  RESTStats:
+    type: object
+    required:
+    - interval
+    - total
+    - span_1
+    - span_12
+    - span_60
+    properties:
+      interval:
+        type: integer
+        format: uint32
+        example: 5
+      total:
+        $ref: '#/definitions/RESTMetry'
+      span_1:
+        $ref: '#/definitions/RESTMetry'
+      span_12:
+        $ref: '#/definitions/RESTMetry'
+      span_60:
+        $ref: '#/definitions/RESTMetry'
+  RESTAgentConfigData:
+    type: object
+    required:
+    - config
+    properties:
+      config:
+        $ref: '#/definitions/RESTAgentConfig'
+  RESTAgentData:
+    type: object
+    required:
+    - enforcer
+    properties:
+      enforcer:
+        $ref: '#/definitions/RESTAgent'
+  RESTAgentsData:
+    type: object
+    required:
+    - enforcers
+    properties:
+      enforcers:
+        type: array
+        items:
+          $ref: '#/definitions/RESTAgent'
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Apikey
+  TokenAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Token
+externalDocs:
+  description: Find out more about NeuVector
+  url: https://www.suse.com/products/neuvector/

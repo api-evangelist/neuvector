@@ -1,0 +1,2455 @@
+swagger: '2.0'
+info:
+  description: Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.
+  version: 5.6.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  title: NeuVector Scan API
+  contact:
+    email: support@neuvector.com
+schemes:
+- https
+tags:
+- name: Scan
+  description: Operations about Scan
+paths:
+  /v1/scan/scanner:
+    get:
+      tags:
+      - Scan
+      summary: Get scanner list
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTScannerData'
+  /v1/scan/config:
+    get:
+      tags:
+      - Scan
+      summary: Retrieve scan configuration, including global auto-scan settings and fine-grained controls for workloads and hosts.
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTScanConfigResp'
+    patch:
+      tags:
+      - Scan
+      summary: Auto-scan can be configured either globally or with fine-grained control for workloads and hosts. If any of the detailed control fields (enable_auto_scan_workload, enable_auto_scan_host) is explicitly provided, its value takes precedence and overrides the auto-scan setting.
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Scan configure data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTScanConfigData'
+      responses:
+        '200':
+          description: Success
+  /v1/scan/hosts/scan_report:
+    post:
+      tags:
+      - Scan
+      summary: Get hosts scan report
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Filter data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTAssetsScanReportQuery'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTAssetScanReportData'
+  /v1/scan/host/{id}:
+    get:
+      tags:
+      - Scan
+      summary: Get host scan report
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Host ID
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTScanReportData'
+    post:
+      tags:
+      - Scan
+      summary: Start host scan
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Host ID
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+  /v1/scan/image:
+    get:
+      tags:
+      - Scan
+      summary: Get runtime scan summary by workload's images
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTScanImageSummaryData'
+  /v1/scan/image/{id}:
+    get:
+      tags:
+      - Scan
+      summary: Get runtime scan report by workload's image ID
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Image id
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTScanReportData'
+  /v1/scan/platform:
+    get:
+      tags:
+      - Scan
+      summary: Show scan platform summary
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTScanPlatformSummaryData'
+  /v1/scan/platform/platform:
+    get:
+      tags:
+      - Scan
+      summary: Show scan platform report
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTScanReportData'
+    post:
+      tags:
+      - Scan
+      summary: Request scan platform
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      responses:
+        '200':
+          description: Success
+  /v1/scan/registry:
+    get:
+      tags:
+      - Scan
+      summary: Get a list of registries
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: scope
+        type: string
+        required: false
+        enum:
+        - fed
+        - local
+        description: When set to fed, returned fed registries. When set to local, returned local-defined registries. If there is no query string 'scope', all registries will be returned.
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTRegistrySummaryListData'
+    post:
+      tags:
+      - Scan
+      summary: Create a registry
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Registry data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTRegistryConfigData'
+      responses:
+        '200':
+          description: Success
+  /v2/scan/registry:
+    post:
+      tags:
+      - Scan
+      summary: Create a registry
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Registry data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTRegistryConfigDataV2'
+      responses:
+        '200':
+          description: Success
+  /v1/scan/registry/{name}:
+    get:
+      tags:
+      - Scan
+      summary: Show registry
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: name
+        description: Name of the registry
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTRegistrySummaryData'
+    patch:
+      tags:
+      - Scan
+      summary: Update registry
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: path
+        name: name
+        description: Name of the registry
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Registry data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTRegistryConfigData'
+      responses:
+        '200':
+          description: Success
+    delete:
+      tags:
+      - Scan
+      summary: Delete registry
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      parameters:
+      - in: path
+        name: name
+        description: Name of the registry
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+  /v2/scan/registry/{name}:
+    patch:
+      tags:
+      - Scan
+      summary: Update registry
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: path
+        name: name
+        description: Name of the registry
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Registry data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTRegistryConfigDataV2'
+      responses:
+        '200':
+          description: Success
+  /v1/scan/registry/{name}/images:
+    get:
+      tags:
+      - Scan
+      summary: Show registry image summary
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: name
+        description: Name of the registry
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTRegistryImageSummaryData'
+  /v1/scan/registry/{name}/image/{id}:
+    get:
+      tags:
+      - Scan
+      summary: Get registry image scan report
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: name
+        description: Name of the registry
+        required: true
+        type: string
+      - in: path
+        name: id
+        description: Image ID
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTScanReportData'
+  /v1/scan/registry/{name}/layers/{id}:
+    get:
+      tags:
+      - Scan
+      summary: Show registry layers report
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: name
+        description: Name of the registry
+        required: true
+        type: string
+      - in: path
+        name: id
+        description: Layer ID
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTScanLayersReportData'
+  /v1/scan/registry/{name}/scan:
+    post:
+      tags:
+      - Scan
+      summary: Start a registry scan
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      parameters:
+      - in: path
+        name: name
+        description: Name of the registry
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+    delete:
+      tags:
+      - Scan
+      summary: Stop registry scan
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      parameters:
+      - in: path
+        name: name
+        description: Name of the registry
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+  /v1/scan/repository:
+    post:
+      tags:
+      - Scan
+      summary: Scan repository
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Repository data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTScanRepoReqData'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTScanRepoReportData'
+  /v1/scan/status:
+    get:
+      tags:
+      - Scan
+      summary: Scan status
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTScanStatusData'
+  /v1/scan/cache_stat/{id}:
+    get:
+      tags:
+      - Scan
+      summary: Get scanner cache statistic data
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Scanner ID
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTScanCacheStat'
+  /v1/scan/cache_data/{id}:
+    get:
+      tags:
+      - Scan
+      summary: Get scanner cache index data
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Scanner ID
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTScanCacheData'
+  /v1/scan/workload/{id}:
+    get:
+      tags:
+      - Scan
+      summary: Get container scan report
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Workload ID
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTScanReportData'
+    post:
+      tags:
+      - Scan
+      summary: Start container scan
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Workload ID
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+  /v1/scan/workloads/scan_report:
+    post:
+      tags:
+      - Scan
+      summary: Get containers scan report
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Filter data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTAssetsScanReportQuery'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTAssetScanReportData'
+  /v1/scan/sigstore/root_of_trust:
+    get:
+      tags:
+      - Scan
+      summary: Get all sigstore roots of trust
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/REST_SigstoreRootOfTrustCollection'
+    post:
+      tags:
+      - Scan
+      summary: Create new sigstore root of trust
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Root of Trust Data
+        required: true
+        schema:
+          $ref: '#/definitions/REST_SigstoreRootOfTrust_POST'
+      responses:
+        '200':
+          description: Success
+  /v1/scan/sigstore/root_of_trust/{root_name}:
+    get:
+      tags:
+      - Scan
+      summary: Get single sigstore root of trust by name
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: root_name
+        description: Root Of Trust Name
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/REST_SigstoreRootOfTrust_GET'
+    patch:
+      tags:
+      - Scan
+      summary: Update single sigstore root of trust by name
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: path
+        name: root_name
+        description: Root Of Trust Name
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Root of Trust Data
+        required: true
+        schema:
+          $ref: '#/definitions/REST_SigstoreRootOfTrust_PATCH'
+      responses:
+        '200':
+          description: Success
+    delete:
+      tags:
+      - Scan
+      summary: Delete single sigstore root of trust by name
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      parameters:
+      - in: path
+        name: root_name
+        description: Root Of Trust Name
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+  /v1/scan/sigstore/root_of_trust/{root_name}/verifier:
+    get:
+      tags:
+      - Scan
+      summary: Get all sigstore verifiers for given sigstore root of trust
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: root_name
+        description: Root Of Trust Name
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/REST_SigstoreVerifierCollection'
+    post:
+      tags:
+      - Scan
+      summary: Create new sigstore verifier for given sigstore root of trust
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: path
+        name: root_name
+        description: Root Of Trust Name
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Root of Trust Data
+        required: true
+        schema:
+          $ref: '#/definitions/REST_SigstoreVerifier'
+      responses:
+        '200':
+          description: Success
+  /v1/scan/sigstore/root_of_trust/{root_name}/verifier/{verifier_name}:
+    get:
+      tags:
+      - Scan
+      summary: Get sigstore verifier by name under given sigstore root of trust
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: root_name
+        description: Root Of Trust Name
+        required: true
+        type: string
+      - in: path
+        name: verifier_name
+        description: Verifier Name
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/REST_SigstoreVerifier'
+    patch:
+      tags:
+      - Scan
+      summary: Update sigstore verifier by name under given sigstore root of trust
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: path
+        name: root_name
+        description: Root Of Trust Name
+        required: true
+        type: string
+      - in: path
+        name: verifier_name
+        description: Verifier Name
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Verifier patch data
+        required: true
+        schema:
+          $ref: '#/definitions/REST_SigstoreVerifier_PATCH'
+      responses:
+        '200':
+          description: Success
+    delete:
+      tags:
+      - Scan
+      summary: Delete sigstore verifier by name under given sigstore root of trust
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      parameters:
+      - in: path
+        name: root_name
+        description: Root Of Trust Name
+        required: true
+        type: string
+      - in: path
+        name: verifier_name
+        description: Verifier Name
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+definitions:
+  RESTScanLayersReport:
+    type: object
+    required:
+    - layers
+    properties:
+      layers:
+        type: array
+        items:
+          $ref: '#/definitions/RESTScanLayer'
+  REST_SigstoreRootOfTrust_GET:
+    type: object
+    properties:
+      name:
+        type: string
+        example: example_name
+      is_private:
+        type: boolean
+        example: true
+      rootless_keypairs_only:
+        type: boolean
+        description: it overrides is_private attribute
+        example: true
+      rekor_public_key:
+        type: string
+        example: '-----BEGIN PUBLIC KEY-----XXXXXXXXXX-----END PUBLIC KEY-----'
+      root_cert:
+        type: string
+        example: '-----BEGIN CERTIFICATE-----XXXXXXXXXX-----END CERTIFICATE-----'
+      sct_public_key:
+        type: string
+        example: '-----BEGIN PUBLIC KEY-----XXXXXXXXXX-----END PUBLIC KEY-----'
+      verifiers:
+        type: array
+        items:
+          $ref: '#/definitions/REST_SigstoreVerifier'
+      cfg_type:
+        type: string
+        enum:
+        - user_created
+        - ground
+        - federal
+      comment:
+        type: string
+        example: example comment
+  RESTRegistryImageSummary:
+    type: object
+    required:
+    - domain
+    - repository
+    - tag
+    - image_id
+    - digest
+    - size
+    - author
+    - run_as_root
+    - envs
+    - labels
+    - layers
+    - status
+    - high
+    - medium
+    - result
+    - scanned_timestamp
+    - scanned_at
+    - created_at
+    - base_os
+    - scanner_version
+    properties:
+      domain:
+        type: string
+        example: ''
+      repository:
+        type: string
+        example: alpine
+      tag:
+        type: string
+        example: latest
+      image_id:
+        type: string
+        example: d572b7ee3511b21a2b78b8915bc03c5786ad01949704c1418624224c4cae2c5f
+      digest:
+        type: string
+        example: bd8ffa77cf1c910b7a90935ca4828472e1c3e303e7cd5260f13d1e09995f173a
+      size:
+        type: integer
+        format: int64
+        example: 1
+      author:
+        type: string
+        example: ''
+      run_as_root:
+        type: boolean
+        example: true
+      envs:
+        type: array
+        items:
+          type: string
+        example:
+        - PATH=/usr/local/sbin
+        - GOSU_VERSION=1.12
+        - REDIS_VERSION=6.0.2
+      labels:
+        type: object
+        description: map key is string type
+        additionalProperties:
+          type: string
+        example:
+          label1: value1
+          label2: value2
+      layers:
+        type: array
+        items:
+          type: string
+        example:
+        - layer_1
+        - layer_2
+      status:
+        type: string
+        example: scheduled
+      high:
+        type: integer
+        example: 0
+      medium:
+        type: integer
+        example: 0
+      result:
+        type: string
+        example: success
+      scanned_timestamp:
+        type: integer
+        format: int64
+        example: 1516561253
+      scanned_at:
+        type: string
+        format: date-time
+        example: 2018-01-21 19:00:53+00:00
+      created_at:
+        type: string
+        format: date-time
+        example: 2018-01-21 19:00:53+00:00
+      base_os:
+        type: string
+        example: ubuntu:16.04
+      scanner_version:
+        type: string
+        example: '1.011'
+      cvedb_create_time:
+        type: string
+        format: date-time
+        example: 2018-06-20 19:00:53+00:00
+  RESTScanCacheData:
+    type: object
+    required:
+    - cache_records
+    - record_total_size
+    - cache_misses
+    - cache_hits
+    properties:
+      cache_records:
+        type: array
+        items:
+          $ref: '#/definitions/RESTScanCacheRecord'
+      record_total_size:
+        type: integer
+        format: uint64
+        example: 0
+      cache_misses:
+        type: integer
+        format: uint64
+        example: 0
+      cache_hits:
+        type: integer
+        format: uint64
+        example: 0
+  RESTScanConfigData:
+    type: object
+    required:
+    - config
+    properties:
+      config:
+        $ref: '#/definitions/RESTScanConfigConfig'
+  REST_SigstoreVerifier:
+    type: object
+    required:
+    - name
+    - verifier_type
+    properties:
+      name:
+        type: string
+        example: example name
+      verifier_type:
+        type: string
+        enum:
+        - keypair
+        - keyless
+      public_key:
+        type: string
+        example: '-----BEGIN PUBLIC KEY-----XXXXXXXXXX-----END PUBLIC KEY-----'
+      cert_issuer:
+        type: string
+        example: https://github.com/login/oauth
+      cert_subject:
+        type: string
+        example: cert.subject@example.com
+      comment:
+        type: string
+        example: example comment
+  RESTJfrogXrayConfig:
+    type: object
+    properties:
+      url:
+        type: string
+        example: https://docker-virtual.com
+      enable:
+        type: boolean
+        example: true
+      username:
+        type: string
+        example: myUser
+      password:
+        type: string
+        format: password
+        example: password
+  RESTScanConfig:
+    type: object
+    required:
+    - auto_scan
+    properties:
+      auto_scan:
+        description: Global auto-scan setting. When true, auto-scan is adopted unless one of the detailed control flags (enable_auto_scan_workload or enable_auto_scan_host) is explicitly provided (non-nil).
+        type: boolean
+        example: false
+      enable_auto_scan_workload:
+        description: Optional detailed control for workload auto-scan. If provided (non-nil), its value is adopted.
+        type: boolean
+        example: false
+      enable_auto_scan_host:
+        description: Optional detailed control for host auto-scan. If provided (non-nil), its value is adopted.
+        type: boolean
+        example: false
+  RESTScanMeta:
+    type: object
+    required:
+    - source
+    - user
+    - job
+    - workspace
+    - function
+    - region
+    properties:
+      source:
+        type: string
+        example: github
+      user:
+        type: string
+        example: user
+      job:
+        type: string
+        example: scan
+      workspace:
+        type: string
+        example: /local
+      function:
+        type: string
+        example: monitor
+      region:
+        type: string
+        example: West
+  RESTAssetScanReportData:
+    type: object
+    properties:
+      cursor:
+        $ref: '#/definitions/RESTScanReportCursor'
+      scan_data:
+        type: array
+        items:
+          $ref: '#/definitions/RESTAssetScanData'
+  RESTScanCacheRecord:
+    type: object
+    required:
+    - layer_id
+    - size
+    - reference_count
+    - last_referred
+    properties:
+      layer_id:
+        type: string
+        example: ''
+      size:
+        type: integer
+        format: uint64
+        example: 0
+      reference_count:
+        type: integer
+        format: uint32
+        example: 0
+      last_referred:
+        type: string
+        format: date-time
+        example: '2022-03-17T17:31:55.832768041Z'
+  RESTScanStatus:
+    type: object
+    required:
+    - scanned
+    - scheduled
+    - scanning
+    - failed
+    - cvedb_version
+    - cvedb_create_time
+    properties:
+      scanned:
+        type: integer
+        example: 12
+      scheduled:
+        type: integer
+        example: 0
+      scanning:
+        type: integer
+        example: 0
+      failed:
+        type: integer
+        example: 1
+      cvedb_version:
+        type: string
+        example: '1.011'
+      cvedb_create_time:
+        type: string
+        format: date-time
+        example: 2018-06-20 19:00:53+00:00
+  RESTAssetsScanReportQuery:
+    type: object
+    properties:
+      show_accepted:
+        type: boolean
+      max_cve_records:
+        type: integer
+      cursor:
+        $ref: '#/definitions/RESTScanReportCursor'
+      view_pod:
+        type: string
+      vul_score_filter:
+        $ref: '#/definitions/RESTVulScoreFilter'
+      filters:
+        type: array
+        items:
+          $ref: '#/definitions/RESTAssetsScanReportFilter'
+  RESTScanRepoReqData:
+    type: object
+    required:
+    - request
+    properties:
+      request:
+        $ref: '#/definitions/RESTScanRepoReq'
+  RESTScanConfigResp:
+    type: object
+    required:
+    - config
+    properties:
+      config:
+        $ref: '#/definitions/RESTScanConfig'
+  RESTModuleCve:
+    type: object
+    required:
+    - name
+    - status
+    properties:
+      name:
+        type: string
+        example: ''
+      status:
+        type: string
+        example: ''
+  RESTScanConfigConfig:
+    type: object
+    minProperties: 1
+    properties:
+      auto_scan:
+        description: Global auto-scan setting. When true, auto-scan is adopted unless one of the detailed control flags (enable_auto_scan_workload or enable_auto_scan_host) is explicitly provided (non-nil).
+        type: boolean
+        example: false
+      enable_auto_scan_workload:
+        description: Optional detailed control for workload auto-scan. If provided (non-nil), its value is adopted.
+        type: boolean
+        example: false
+      enable_auto_scan_host:
+        description: Optional detailed control for host auto-scan. If provided (non-nil), its value is adopted.
+        type: boolean
+        example: false
+  RESTRegistrySummary:
+    type: object
+    required:
+    - name
+    - registry_type
+    - registry
+    - username
+    - auth_with_token
+    - filters
+    - rescan_after_db_update
+    - scan_layers
+    - repo_limit
+    - tag_limit
+    - schedule
+    - jfrog_mode
+    - gitlab_external_url
+    - ibm_cloud_token_url
+    - ibm_cloud_account
+    - status
+    - error_message
+    - error_detail
+    - started_at
+    - scanned
+    - scheduled
+    - scanning
+    - failed
+    - cvedb_version
+    - cvedb_create_time
+    properties:
+      name:
+        type: string
+        example: myregistry
+      registry_type:
+        type: string
+        example: Docker Registry
+      registry:
+        type: string
+        example: https://registry.hub.docker.com/
+      username:
+        type: string
+        example: myusername
+      password:
+        type: string
+        format: password
+        example: mypassword
+      auth_token:
+        type: string
+        example: ''
+      auth_with_token:
+        type: boolean
+        example: true
+      filters:
+        type: array
+        items:
+          type: string
+          example: neuvector/*:*
+      rescan_after_db_update:
+        type: boolean
+        example: false
+      scan_layers:
+        type: boolean
+        example: false
+      repo_limit:
+        type: integer
+        example: 1
+      tag_limit:
+        type: integer
+        example: 1
+      schedule:
+        $ref: '#/definitions/RESTScanSchedule'
+      aws_key:
+        $ref: '#/definitions/RESTAWSAccountKey'
+      jfrog_xray:
+        $ref: '#/definitions/RESTJfrogXray'
+      gcr_key:
+        $ref: '#/definitions/RESTGCRKey'
+      jfrog_mode:
+        type: string
+        example: ''
+      gitlab_external_url:
+        type: string
+        example: ''
+      gitlab_private_token:
+        type: string
+        example: ''
+      ibm_cloud_token_url:
+        type: string
+        example: ''
+      ibm_cloud_account:
+        type: string
+        example: ''
+      status:
+        type: string
+        example: finished
+      error_message:
+        type: string
+        example: ''
+      error_detail:
+        type: string
+        example: ''
+      started_at:
+        type: string
+        format: date-time
+        example: 2018-01-18 00:44:02+00:00
+      scanned:
+        type: integer
+        format: uint32
+        example: 12
+      scheduled:
+        type: integer
+        format: uint32
+        example: 0
+      scanning:
+        type: integer
+        format: uint32
+        example: 0
+      failed:
+        type: integer
+        format: uint32
+        example: 1
+      cvedb_version:
+        type: string
+        example: '1.011'
+      cvedb_create_time:
+        type: string
+        format: date-time
+        example: 2018-06-20 19:00:53+00:00
+      ignore_proxy:
+        type: boolean
+        example: false
+  RESTRegistryConfigIntegrations:
+    type: object
+    properties:
+      jfrog_mode:
+        type: string
+        example: ''
+      jfrog_aql:
+        type: boolean
+        example: false
+      gitlab_external_url:
+        type: string
+        example: ''
+      gitlab_private_token:
+        type: string
+        example: ''
+      ibm_cloud_token_url:
+        type: string
+        example: ''
+      ibm_cloud_account:
+        type: string
+        example: ''
+  RESTScanSecret:
+    type: object
+    required:
+    - type
+    - evidence
+    - path
+    - suggestion
+    properties:
+      type:
+        type: string
+        example: ''
+      evidence:
+        type: string
+        example: ''
+      path:
+        type: string
+        example: ''
+      suggestion:
+        type: string
+        example: ''
+  RESTAWSAccountKeyConfig:
+    type: object
+    properties:
+      id:
+        type: string
+        example: '831010404316'
+      access_key_id:
+        type: string
+        example: <access key id from AWS>
+      secret_access_key:
+        type: string
+        example: <secret access key from AWS>
+      region:
+        type: string
+        example: us-west-2
+  RESTScanModule:
+    type: object
+    required:
+    - name
+    - version
+    - source
+    properties:
+      name:
+        type: string
+        example: openssl
+      file:
+        type: string
+        example: example.jar
+      version:
+        type: string
+        example: '1.011'
+      source:
+        type: string
+        example: github
+      cves:
+        type: array
+        items:
+          $ref: '#/definitions/RESTModuleCve'
+      cpes:
+        type: array
+        items:
+          type: string
+          example: ''
+  RESTVulScoreFilter:
+    type: object
+    required:
+    - score_version
+    - score_bottom
+    - score_top
+    properties:
+      score_version:
+        type: string
+      score_bottom:
+        type: number
+      score_top:
+        type: number
+  RESTScanReport:
+    type: object
+    required:
+    - vulnerabilities
+    properties:
+      vulnerabilities:
+        type: array
+        items:
+          $ref: '#/definitions/RESTVulnerability'
+      modules:
+        type: array
+        items:
+          $ref: '#/definitions/RESTScanModule'
+      checks:
+        type: array
+        items:
+          $ref: '#/definitions/RESTBenchItem'
+      secrets:
+        type: array
+        items:
+          $ref: '#/definitions/RESTScanSecret'
+      setid_perms:
+        type: array
+        items:
+          $ref: '#/definitions/RESTScanSetIdPerm'
+      envs:
+        type: array
+        items:
+          type: string
+        example:
+        - PATH=/usr/local/sbin
+        - GOSU_VERSION=1.12
+        - REDIS_VERSION=6.0.2
+      labels:
+        type: object
+        description: map key is string type
+        additionalProperties:
+          type: string
+        example:
+          label1: value1
+          label2: value2
+      cmds:
+        type: array
+        items:
+          type: string
+          example: ''
+  RESTScanReportCursor:
+    type: object
+    properties:
+      name:
+        type: string
+      host_name:
+        type: string
+      domain:
+        type: string
+      cve_name:
+        type: string
+      cve_package:
+        type: string
+  RESTScanImageSummary:
+    type: object
+    required:
+    - image
+    - image_id
+    - author
+    - status
+    - high
+    - medium
+    - result
+    - scanned_timestamp
+    - scanned_at
+    - created_at
+    - base_os
+    - scanner_version
+    - cvedb_create_time
+    properties:
+      image:
+        type: string
+        example: calico/node:v3.8.2
+      image_id:
+        type: string
+        example: 11cd78b9e13d420f93d5d5b2611e803bda012ae5cd8b476d4cc328dc133773ce
+      author:
+        type: string
+        example: ''
+      status:
+        type: string
+        example: finished
+      high:
+        type: integer
+        example: 26
+      medium:
+        type: integer
+        example: 33
+      result:
+        type: string
+        example: succeeded
+      scanned_timestamp:
+        type: integer
+        format: int64
+        example: 1593130227
+      scanned_at:
+        type: string
+        example: 2020-06-26 00:10:27+00:00
+      created_at:
+        type: string
+        example: 2020-06-26 00:10:27+00:00
+      base_os:
+        type: string
+        example: debian:10
+      scanner_version:
+        type: string
+        example: '1.938'
+      cvedb_create_time:
+        type: string
+        example: 2020-06-25 10:32:40+00:00
+  RESTScanImageSummaryData:
+    type: object
+    required:
+    - images
+    properties:
+      images:
+        type: array
+        items:
+          $ref: '#/definitions/RESTScanImageSummary'
+  REST_SigstoreRootOfTrustCollection:
+    type: array
+    items:
+      $ref: '#/definitions/REST_SigstoreRootOfTrust_GET'
+  RESTAssetScanData:
+    type: object
+    required:
+    - workload_name
+    - workload_domain
+    - workload_image
+    - workload_image_id
+    - host_name
+    - name
+    - score
+    - severity
+    - vectors
+    - description
+    - file_name
+    - package_name
+    - package_version
+    - fixed_version
+    - link
+    - score_v3
+    - vectors_v3
+    - published_timestamp
+    - last_modified_timestamp
+    - feed_rating
+    - in_base_image
+    properties:
+      workload_name:
+        type: string
+      workload_domain:
+        type: string
+      workload_host_name:
+        type: string
+      workload_image:
+        type: string
+      workload_image_id:
+        type: string
+      workload_image_digest:
+        type: array
+        items:
+          type: string
+      host_name:
+        type: string
+      name:
+        type: string
+        example: CVE-2015-8356
+      score:
+        type: number
+        format: float32
+        example: 7.2
+      severity:
+        type: string
+        example: High
+      vectors:
+        type: string
+        example: ''
+      description:
+        type: string
+        example: The setup_env function in group.c in sshd in OpenSSH allows local users to gain privileges.
+      file_name:
+        type: string
+        example: usr/lib/python3.9
+      package_name:
+        type: string
+        example: openssh
+      package_version:
+        type: string
+        example: 7.2_p2-r0
+      fixed_version:
+        type: string
+        example: 1:7.2p2-3
+      link:
+        type: string
+        example: https://security-tracker.debian.org/tracker/CVE-2015-8356
+      score_v3:
+        type: number
+        format: float32
+        example: 7.3
+      vectors_v3:
+        type: string
+        example: ''
+      published_timestamp:
+        type: integer
+        format: int64
+        example: 1516561260
+      last_modified_timestamp:
+        type: integer
+        format: int64
+        example: 1516561253
+      cpes:
+        type: array
+        items:
+          type: string
+          example: ''
+      cves:
+        type: array
+        items:
+          type: string
+          example: ''
+      feed_rating:
+        type: string
+        example: ''
+      in_base_image:
+        type: boolean
+        example: true
+      tags:
+        type: array
+        items:
+          type: string
+          example: ''
+  REST_SigstoreRootOfTrust_PATCH:
+    type: object
+    properties:
+      rekor_public_key:
+        type: string
+        example: '-----BEGIN PUBLIC KEY-----XXXXXXXXXX-----END PUBLIC KEY-----'
+      root_cert:
+        type: string
+        example: '-----BEGIN CERTIFICATE-----XXXXXXXXXX-----END CERTIFICATE-----'
+      sct_public_key:
+        type: string
+        example: '-----BEGIN PUBLIC KEY-----XXXXXXXXXX-----END PUBLIC KEY-----'
+      comment:
+        type: string
+        example: example comment
+  RESTScanLayer:
+    type: object
+    required:
+    - digest
+    - cmds
+    - vulnerabilities
+    - size
+    properties:
+      digest:
+        type: string
+        example: ''
+      cmds:
+        type: string
+        example: ''
+      vulnerabilities:
+        type: array
+        items:
+          $ref: '#/definitions/RESTVulnerability'
+      size:
+        type: integer
+        format: int64
+        example: 1
+  RESTScanSchedule:
+    type: object
+    required:
+    - schedule
+    - interval
+    properties:
+      schedule:
+        type: string
+        example: manual
+      interval:
+        type: integer
+        example: 5
+  REST_SigstoreRootOfTrust_POST:
+    type: object
+    required:
+    - name
+    properties:
+      name:
+        type: string
+        example: example_name
+      is_private:
+        type: boolean
+        example: true
+      rootless_keypairs_only:
+        type: boolean
+        description: it overrides is_private attribute
+        example: true
+      rekor_public_key:
+        type: string
+        example: '-----BEGIN PUBLIC KEY-----XXXXXXXXXX-----END PUBLIC KEY-----'
+      root_cert:
+        type: string
+        example: '-----BEGIN CERTIFICATE-----XXXXXXXXXX-----END CERTIFICATE-----'
+      sct_public_key:
+        type: string
+        example: '-----BEGIN PUBLIC KEY-----XXXXXXXXXX-----END PUBLIC KEY-----'
+      comment:
+        type: string
+        example: example comment
+  RESTBenchItem:
+    type: object
+    required:
+    - catalog
+    - type
+    - level
+    - test_number
+    - profile
+    - scored
+    - automated
+    - description
+    - message
+    - remediation
+    - group
+    properties:
+      catalog:
+        type: string
+        example: docker
+      type:
+        type: string
+        example: ''
+      level:
+        type: string
+        example: INFO
+      test_number:
+        type: string
+        example: '1'
+      profile:
+        type: string
+        example: Level 1
+      scored:
+        type: boolean
+        example: true
+      automated:
+        type: boolean
+        example: true
+      description:
+        type: string
+        example: General Configuration
+      message:
+        type: array
+        items:
+          type: string
+          example: Host Configuration
+      remediation:
+        type: string
+        example: ''
+      group:
+        type: string
+        example: nv.calico
+  RESTAWSAccountKey:
+    type: object
+    required:
+    - id
+    - region
+    properties:
+      id:
+        type: string
+        example: '349695068245'
+      access_key_id:
+        type: string
+        example: NSKN3KM0OSN854MZ2LOV90S7DFVCL6
+      secret_access_key:
+        type: string
+        example: E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF
+      region:
+        type: string
+        example: us-east-1
+  RESTRegistryConfigV2:
+    type: object
+    required:
+    - name
+    - registry_type
+    properties:
+      name:
+        type: string
+        example: myregistry
+      registry_type:
+        type: string
+        example: Docker Registry
+      registry:
+        type: string
+        example: https://registry.hub.docker.com/
+      domains:
+        type: array
+        items:
+          type: string
+          example: ''
+      filters:
+        type: array
+        items:
+          type: string
+          example: neuvector/*:*
+      auth:
+        $ref: '#/definitions/RESTRegistryConfigAuth'
+      scan:
+        $ref: '#/definitions/RESTRegistryConfigScan'
+      integrations:
+        $ref: '#/definitions/RESTRegistryConfigIntegrations'
+  RESTScanRepoReportData:
+    type: object
+    required:
+    - report
+    properties:
+      report:
+        $ref: '#/definitions/RESTScanRepoReport'
+  RESTRegistryConfig:
+    type: object
+    required:
+    - name
+    - registry_type
+    properties:
+      name:
+        type: string
+        example: myregistry
+      registry_type:
+        type: string
+        example: Docker Registry
+      registry:
+        type: string
+        example: https://registry.hub.docker.com/
+      filters:
+        type: array
+        items:
+          type: string
+          example: neuvector/*:*
+      username:
+        type: string
+        example: myusername
+      password:
+        type: string
+        format: password
+        example: mypassword
+      auth_token:
+        type: string
+        example: ''
+      auth_with_token:
+        type: boolean
+        example: true
+      rescan_after_db_update:
+        type: boolean
+        example: false
+      scan_layers:
+        type: boolean
+        example: false
+      repo_limit:
+        type: integer
+        example: 1
+      tag_limit:
+        type: integer
+        example: 1
+      schedule:
+        $ref: '#/definitions/RESTScanSchedule'
+      aws_key:
+        $ref: '#/definitions/RESTAWSAccountKeyConfig'
+      jfrog_xray:
+        $ref: '#/definitions/RESTJfrogXrayConfig'
+      gcr_key:
+        $ref: '#/definitions/RESTGCRKeyConfig'
+      jfrog_mode:
+        type: string
+        example: ''
+      jfrog_aql:
+        type: boolean
+        example: false
+      gitlab_external_url:
+        type: string
+        example: ''
+      gitlab_private_token:
+        type: string
+        example: ''
+      ibm_cloud_token_url:
+        type: string
+        example: ''
+      ibm_cloud_account:
+        type: string
+        example: ''
+      ignore_proxy:
+        type: boolean
+        example: false
+  RESTRegistryConfigAuth:
+    type: object
+    properties:
+      username:
+        type: string
+        example: myusername
+      password:
+        type: string
+        format: password
+        example: mypassword
+      auth_token:
+        type: string
+        example: ''
+      auth_with_token:
+        type: boolean
+        example: true
+      aws_key:
+        $ref: '#/definitions/RESTAWSAccountKeyConfig'
+      gcr_key:
+        $ref: '#/definitions/RESTGCRKeyConfig'
+  RESTRegistryConfigScan:
+    type: object
+    properties:
+      rescan_after_db_update:
+        type: boolean
+        example: false
+      scan_layers:
+        type: boolean
+        example: false
+      repo_limit:
+        type: integer
+        example: 1
+      tag_limit:
+        type: integer
+        example: 1
+      schedule:
+        $ref: '#/definitions/RESTScanSchedule'
+      ignore_proxy:
+        type: boolean
+        example: false
+  RESTScannerData:
+    type: object
+    required:
+    - scanners
+    properties:
+      scanners:
+        type: array
+        items:
+          $ref: '#/definitions/RESTScanner'
+  RESTRegistryConfigDataV2:
+    type: object
+    required:
+    - config
+    properties:
+      config:
+        $ref: '#/definitions/RESTRegistryConfigV2'
+  RESTRegistrySummaryListData:
+    type: object
+    required:
+    - summarys
+    properties:
+      summarys:
+        type: array
+        items:
+          $ref: '#/definitions/RESTRegistrySummary'
+  REST_SigstoreVerifier_PATCH:
+    type: object
+    properties:
+      verifier_type:
+        type: string
+        enum:
+        - keypair
+        - keyless
+      public_key:
+        type: string
+        example: '-----BEGIN PUBLIC KEY-----XXXXXXXXXX-----END PUBLIC KEY-----'
+      cert_issuer:
+        type: string
+        example: https://github.com/login/oauth
+      cert_subject:
+        type: string
+        example: cert.subject@example.com
+      comment:
+        type: string
+        example: example comment
+  RESTJfrogXray:
+    type: object
+    required:
+    - url
+    - enable
+    - username
+    properties:
+      url:
+        type: string
+        example: ''
+      enable:
+        type: boolean
+        example: true
+      username:
+        type: string
+        example: ''
+      password:
+        type: string
+        format: password
+        example: ''
+  RESTRegistryImageSummaryData:
+    type: object
+    required:
+    - images
+    properties:
+      images:
+        type: array
+        items:
+          $ref: '#/definitions/RESTRegistryImageSummary'
+  RESTGCRKey:
+    type: object
+    properties:
+      json_key:
+        type: string
+        example: ''
+  RESTScanRepoReq:
+    type: object
+    required:
+    - metadata
+    - registry
+    - repository
+    - tag
+    - scan_layers
+    - base_image
+    properties:
+      metadata:
+        $ref: '#/definitions/RESTScanMeta'
+      registry:
+        type: string
+        example: https://registry.hub.docker.com/
+      username:
+        type: string
+        example: myusername
+      password:
+        type: string
+        format: password
+        example: mypassword
+      repository:
+        type: string
+        example: alpine
+      tag:
+        type: string
+        example: latest
+      scan_layers:
+        type: boolean
+        example: false
+      base_image:
+        type: string
+        example: alpine
+      ignore_proxy:
+        type: boolean
+        example: true
+  RESTScanCacheStat:
+    type: object
+    required:
+    - record_count
+    - record_total_size
+    - cache_misses
+    - cache_hits
+    properties:
+      record_count:
+        type: integer
+        format: uint64
+        example: 0
+      record_total_size:
+        type: integer
+        format: uint64
+        example: 0
+      cache_misses:
+        type: integer
+        format: uint64
+        example: 0
+      cache_hits:
+        type: integer
+        format: uint64
+        example: 0
+  RESTScanner:
+    type: object
+    required:
+    - id
+    - cvedb_version
+    - cvedb_create_time
+    - server
+    - port
+    properties:
+      id:
+        type: string
+        example: github
+      cvedb_version:
+        type: string
+        example: '1.011'
+      cvedb_create_time:
+        type: string
+        format: date-time
+        example: 2018-06-20 19:00:53+00:00
+      server:
+        type: string
+        example: 10.1.5.1
+      port:
+        type: integer
+        format: uint16
+        example: 51764
+  RESTScanPlatformSummaryData:
+    type: object
+    required:
+    - platforms
+    properties:
+      platforms:
+        type: array
+        items:
+          $ref: '#/definitions/RESTScanPlatformSummary'
+  RESTScanStatusData:
+    type: object
+    required:
+    - status
+    properties:
+      status:
+        $ref: '#/definitions/RESTScanStatus'
+  RESTScanRepoReport:
+    type: object
+    required:
+    - image_id
+    - registry
+    - repository
+    - tag
+    - digest
+    - size
+    - author
+    - base_os
+    - created_at
+    - cvedb_version
+    - cvedb_create_time
+    - layers
+    - vulnerabilities
+    - modules
+    - envs
+    - labels
+    properties:
+      verdict:
+        type: string
+        example: ''
+      image_id:
+        type: string
+        example: d572b7ee3511b21a2b78b8915bc03c5786ad01949704c1418624224c4cae2c5f
+      registry:
+        type: string
+        example: https://registry.hub.docker.com/
+      repository:
+        type: string
+        example: alpine
+      tag:
+        type: string
+        example: latest
+      digest:
+        type: string
+        example: bd8ffa77cf1c910b7a90935ca4828472e1c3e303e7cd5260f13d1e09995f173a
+      size:
+        type: integer
+        format: int64
+        example: 1
+      author:
+        type: string
+        example: ''
+      base_os:
+        type: string
+        example: ubuntu:16.04
+      created_at:
+        type: string
+        format: date-time
+        example: 2018-01-21 19:00:53+00:00
+      cvedb_version:
+        type: string
+        example: '1.00'
+      cvedb_create_time:
+        type: string
+        format: date-time
+        example: 2018-06-20 19:00:53+00:00
+      layers:
+        type: array
+        items:
+          $ref: '#/definitions/RESTScanLayer'
+      vulnerabilities:
+        type: array
+        items:
+          $ref: '#/definitions/RESTVulnerability'
+      modules:
+        type: array
+        items:
+          $ref: '#/definitions/RESTScanModule'
+      envs:
+        type: array
+        items:
+          type: string
+        example:
+        - PATH=/usr/local/sbin
+        - GOSU_VERSION=1.12
+        - REDIS_VERSION=6.0.2
+      labels:
+        type: object
+        description: map key is string type
+        additionalProperties:
+          type: string
+        example:
+          label1: value1
+          label2: value2
+  REST_SigstoreVerifierCollection:
+    type: array
+    items:
+      $ref: '#/definitions/REST_SigstoreVerifier'
+  RESTScanPlatformSummary:
+    type: object
+    required:
+    - platform
+    - kube_version
+    - openshift_version
+    - status
+    - high
+    - medium
+    - result
+    - scanned_timestamp
+    - scanned_at
+    - base_os
+    - scanner_version
+    - cvedb_create_time
+    properties:
+      platform:
+        type: string
+        example: Kubernetes
+      kube_version:
+        type: string
+        example: 1.19.2
+      openshift_version:
+        type: string
+        example: ''
+      status:
+        type: string
+        example: finished
+      high:
+        type: integer
+        example: 3
+      medium:
+        type: integer
+        example: 1
+      result:
+        type: string
+        example: succeeded
+      scanned_timestamp:
+        type: integer
+        format: int64
+        example: 1593217223
+      scanned_at:
+        type: string
+        example: '2020-06-27T00:20:23Z'
+      base_os:
+        type: string
+        example: ''
+      scanner_version:
+        type: string
+        example: '1.932'
+      cvedb_create_time:
+        type: string
+        example: '2020-06-19T10:32:18Z'
+  RESTRegistrySummaryData:
+    type: object
+    required:
+    - summary
+    properties:
+      summary:
+        $ref: '#/definitions/RESTRegistrySummary'
+  RESTScanLayersReportData:
+    type: object
+    required:
+    - report
+    properties:
+      report:
+        $ref: '#/definitions/RESTScanLayersReport'
+  RESTGCRKeyConfig:
+    type: object
+    properties:
+      json_key:
+        type: string
+        example: ''
+  RESTRegistryConfigData:
+    type: object
+    required:
+    - config
+    properties:
+      config:
+        $ref: '#/definitions/RESTRegistryConfig'
+  RESTScanReportData:
+    type: object
+    required:
+    - report
+    properties:
+      report:
+        $ref: '#/definitions/RESTScanReport'
+  RESTVulnerability:
+    type: object
+    required:
+    - name
+    - score
+    - severity
+    - vectors
+    - description
+    - file_name
+    - package_name
+    - package_version
+    - fixed_version
+    - link
+    - score_v3
+    - vectors_v3
+    - published_timestamp
+    - last_modified_timestamp
+    - feed_rating
+    - in_base_image
+    properties:
+      name:
+        type: string
+        example: CVE-2015-8356
+      score:
+        type: number
+        format: float32
+        example: 7.2
+      severity:
+        type: string
+        example: High
+      vectors:
+        type: string
+        example: ''
+      description:
+        type: string
+        example: The setup_env function in group.c in sshd in OpenSSH allows local users to gain privileges.
+      file_name:
+        type: string
+        example: usr/lib/python3.9
+      package_name:
+        type: string
+        example: openssh
+      package_version:
+        type: string
+        example: 7.2_p2-r0
+      fixed_version:
+        type: string
+        example: 1:7.2p2-3
+      link:
+        type: string
+        example: https://security-tracker.debian.org/tracker/CVE-2015-8356
+      score_v3:
+        type: number
+        format: float32
+        example: 7.3
+      vectors_v3:
+        type: string
+        example: ''
+      published_timestamp:
+        type: integer
+        format: int64
+        example: 1516561260
+      last_modified_timestamp:
+        type: integer
+        format: int64
+        example: 1516561253
+      cpes:
+        type: array
+        items:
+          type: string
+          example: ''
+      cves:
+        type: array
+        items:
+          type: string
+          example: ''
+      feed_rating:
+        type: string
+        example: ''
+      in_base_image:
+        type: boolean
+        example: true
+      tags:
+        type: array
+        items:
+          type: string
+          example: ''
+  RESTScanSetIdPerm:
+    type: object
+    required:
+    - type
+    - evidence
+    - path
+    properties:
+      type:
+        type: string
+        example: ''
+      evidence:
+        type: string
+        example: ''
+      path:
+        type: string
+        example: ''
+  RESTAssetsScanReportFilter:
+    type: object
+    required:
+    - name
+    - op
+    - value
+    properties:
+      name:
+        type: string
+      op:
+        type: string
+      value:
+        type: array
+        items:
+          type: string
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Apikey
+  TokenAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Token
+externalDocs:
+  description: Find out more about NeuVector
+  url: https://www.suse.com/products/neuvector/

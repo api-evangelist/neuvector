@@ -1,0 +1,174 @@
+swagger: '2.0'
+info:
+  description: Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.
+  version: 5.6.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  title: NeuVector Namespace API
+  contact:
+    email: support@neuvector.com
+schemes:
+- https
+tags:
+- name: Namespace
+  description: Operations about Namespace
+paths:
+  /v1/domain:
+    get:
+      tags:
+      - Namespace
+      summary: Get Namespace list
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTDomainsData'
+    patch:
+      tags:
+      - Namespace
+      summary: Configure Namespace setting
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Namespace update data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTDomainConfigData'
+      responses:
+        '200':
+          description: Success
+  /v1/domain/{name}:
+    patch:
+      tags:
+      - Namespace
+      summary: Update namespace
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: path
+        name: name
+        description: namespace name
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Namespace update data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTDomainEntryConfigData'
+      responses:
+        '200':
+          description: Success
+definitions:
+  RESTDomainConfig:
+    type: object
+    properties:
+      tag_per_domain:
+        type: boolean
+        example: true
+  RESTDomainsData:
+    type: object
+    required:
+    - domains
+    - tag_per_domain
+    properties:
+      domains:
+        type: array
+        items:
+          $ref: '#/definitions/RESTDomain'
+      tag_per_domain:
+        type: boolean
+        example: false
+  RESTDomainEntryConfigData:
+    type: object
+    required:
+    - config
+    properties:
+      config:
+        $ref: '#/definitions/RESTDomainEntryConfig'
+  RESTDomainConfigData:
+    type: object
+    required:
+    - config
+    properties:
+      config:
+        $ref: '#/definitions/RESTDomainConfig'
+  RESTDomain:
+    type: object
+    required:
+    - name
+    - workloads
+    - running_workloads
+    - running_pods
+    - services
+    - tags
+    - labels
+    properties:
+      name:
+        type: string
+        example: iperfspace
+      workloads:
+        type: integer
+        example: 14
+      running_workloads:
+        type: integer
+        example: 14
+      running_pods:
+        type: integer
+        example: 7
+      services:
+        type: integer
+        example: 3
+      tags:
+        type: array
+        items:
+          type: string
+        example:
+        - ''
+      labels:
+        type: object
+        description: map key is string type
+        additionalProperties:
+          type: string
+        example:
+          ns.env-1: production
+  RESTDomainEntryConfig:
+    type: object
+    required:
+    - name
+    properties:
+      name:
+        type: string
+        example: iperfspace
+      tags:
+        type: array
+        items:
+          type: string
+        example:
+        - ''
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Apikey
+  TokenAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Token
+externalDocs:
+  description: Find out more about NeuVector
+  url: https://www.suse.com/products/neuvector/

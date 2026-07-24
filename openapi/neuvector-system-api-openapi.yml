@@ -1,0 +1,1566 @@
+swagger: '2.0'
+info:
+  description: Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.
+  version: 5.6.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  title: NeuVector System API
+  contact:
+    email: support@neuvector.com
+schemes:
+- https
+tags:
+- name: System
+  description: Operations about System
+paths:
+  /v1/system/summary:
+    get:
+      tags:
+      - System
+      summary: System summary
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTSystemSummaryData'
+  /v1/system/config:
+    get:
+      tags:
+      - System
+      summary: System get configure
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: scope
+        type: string
+        required: false
+        enum:
+        - fed
+        - local
+        description: When set the scope to be fed, it will return the fed system configures. When set the scope to be local, it will return the local system configures. If there is no query string 'scope', it will return all system configures.
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTSystemConfigData'
+    patch:
+      tags:
+      - System
+      summary: System configure
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: System configure data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTSystemConfigConfigData'
+      responses:
+        '200':
+          description: Success
+  /v2/system/config:
+    get:
+      tags:
+      - System
+      summary: Get system configuration (starting from 5.0, rest client should call this api.)
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: scope
+        type: string
+        required: false
+        enum:
+        - fed
+        - local
+        description: When set the scope to be fed, it will return the fed system configures. When set the scope to be local, it will return the local system configures. If there is no query string 'scope', it will return all system configures.
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTSystemConfigDataV2'
+    patch:
+      tags:
+      - System
+      summary: System configure (starting from 5.0, rest client should call this api.)
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: System configure data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTSystemConfigConfigDataV2'
+      responses:
+        '200':
+          description: Success
+  /v1/system/alerts:
+    get:
+      tags:
+      - System
+      summary: System alerts
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTNvAlerts'
+  /v1/system/config/webhook:
+    post:
+      tags:
+      - System
+      summary: Create system webhook
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: System configure data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTSystemWebhookConfigData'
+      responses:
+        '200':
+          description: Success
+  /v1/system/config/webhook/{name}:
+    patch:
+      tags:
+      - System
+      summary: Configure system webhook
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: path
+        name: name
+        description: System webhook name
+        required: true
+        type: string
+      - in: query
+        name: scope
+        type: string
+        required: false
+        enum:
+        - fed
+        - local
+        description: When set the scope to be fed, it will update the fed level webhook. When set the scope to be local, it will update the local webhook. If there is no query string 'scope', it will use 'local' as the default value.
+      - in: body
+        name: body
+        description: System configure data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTSystemWebhookConfigData'
+      responses:
+        '200':
+          description: Success
+    delete:
+      tags:
+      - System
+      summary: Delete system webhook
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      parameters:
+      - in: path
+        name: name
+        description: System webhook name
+        required: true
+        type: string
+      - in: query
+        name: scope
+        type: string
+        required: false
+        enum:
+        - fed
+        - local
+        description: When set the scope to be fed, it will delete the fed level webhook. When set the scope to be local, it will delete the local webhook. If there is no query string 'scope', it will use 'local' as the default value.
+      responses:
+        '200':
+          description: Success
+  /v1/system/request:
+    post:
+      tags:
+      - System
+      summary: System request
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: System request data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTSystemRequestData'
+      responses:
+        '200':
+          description: Success
+  /v1/system/score/metrics:
+    get:
+      tags:
+      - System
+      summary: Get system score metrics data
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTScoreMetricsData'
+definitions:
+  RESTSystemConfigConfig:
+    type: object
+    properties:
+      new_service_policy_mode:
+        type: string
+        example: Discover
+      new_service_profile_baseline:
+        type: string
+        example: zero-drift
+      unused_group_aging:
+        type: integer
+        format: uint8
+        example: 123
+      syslog_ip:
+        type: string
+        example: ''
+      syslog_ip_proto:
+        type: integer
+        format: uint8
+        example: 6
+      syslog_port:
+        type: integer
+        format: uint16
+        example: 514
+      syslog_level:
+        type: string
+        example: INFO
+      syslog_status:
+        type: boolean
+        example: false
+      syslog_categories:
+        type: array
+        items:
+          type: string
+        example:
+        - event
+        - violation
+        - threat
+        - incident
+      syslog_in_json:
+        type: boolean
+        example: true
+      syslog_server_cert:
+        type: string
+        example: E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF
+      single_cve_per_syslog:
+        type: boolean
+        example: true
+      syslog_cve_in_layers:
+        type: boolean
+        example: true
+      output_event_to_logs:
+        type: boolean
+        example: true
+      auth_order:
+        type: array
+        items:
+          type: string
+          example: ''
+      auth_by_platform:
+        type: boolean
+        example: true
+      rancher_ep:
+        type: string
+        example: ''
+      webhooks:
+        type: array
+        items:
+          $ref: '#/definitions/RESTWebhook'
+      cluster_name:
+        type: string
+        example: cluster1
+      controller_debug:
+        type: array
+        items:
+          type: string
+          enum:
+          - cpath
+          - conn
+          - mutex
+          - scan
+          - cluster
+          - k8s_monitor
+        example:
+        - cpath
+        - scan
+        - k8s_monitor
+      monitor_service_mesh:
+        type: boolean
+        example: true
+      registry_http_proxy_status:
+        type: boolean
+        example: true
+      registry_https_proxy_status:
+        type: boolean
+        example: false
+      registry_http_proxy:
+        $ref: '#/definitions/RESTProxy'
+      registry_https_proxy:
+        $ref: '#/definitions/RESTProxy'
+      ibmsa_ep_enabled:
+        type: boolean
+        example: false
+      ibmsa_ep_dashboard_url:
+        type: string
+        example: ''
+      xff_enabled:
+        type: boolean
+        example: false
+      scanner_autoscale:
+        $ref: '#/definitions/RESTSystemConfigAutoscale'
+      no_telemetry_report:
+        type: boolean
+        example: false
+      remote_repositories:
+        type: array
+        items:
+          $ref: '#/definitions/RESTRemoteRepository'
+  RESTSystemConfigAutoscale:
+    type: object
+    required:
+    - strategy
+    - min_pods
+    - max_pods
+    properties:
+      strategy:
+        type: string
+        enum:
+        - ''
+        - immediate
+        - delayed
+      min_pods:
+        type: integer
+        format: uint32
+        example: 1
+      max_pods:
+        type: integer
+        format: uint32
+        example: 3
+  RESTSysNetConfigConfig:
+    type: object
+    properties:
+      net_service_status:
+        type: boolean
+        example: true
+      net_service_policy_mode:
+        type: string
+        example: ''
+      disable_net_policy:
+        type: boolean
+        example: false
+      detect_unmanaged_wl:
+        type: boolean
+        example: true
+      strict_group_mode:
+        type: boolean
+        example: true
+  RESTSysAtmoConfigConfig:
+    type: object
+    properties:
+      mode_auto_d2m:
+        type: boolean
+        example: false
+      mode_auto_d2m_duration:
+        type: integer
+        format: int64
+        example: 1505755716
+      mode_auto_m2p:
+        type: boolean
+        example: false
+      mode_auto_m2p_duration:
+        type: integer
+        format: int64
+        example: 1505755716
+  RESTExposedEndpoint:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      display_name:
+        type: string
+      pod_name:
+        type: string
+      service:
+        type: string
+      severity:
+        type: string
+      critical:
+        type: integer
+      high:
+        type: integer
+      medium:
+        type: integer
+      policy_mode:
+        type: string
+      policy_action:
+        type: string
+      protocols:
+        type: array
+        items:
+          type: string
+      applications:
+        type: array
+        items:
+          type: string
+      ports:
+        type: array
+        items:
+          type: string
+      entries:
+        type: array
+        items:
+          $ref: '#/definitions/RESTConversationReportEntry'
+  RESTConversationReportEntry:
+    type: object
+    properties:
+      bytes:
+        type: integer
+        format: uint64
+      sessions:
+        type: integer
+        format: uint32
+      port:
+        type: string
+      application:
+        type: string
+      policy_action:
+        type: string
+      client_ip:
+        type: string
+      server_ip:
+        type: string
+      fqdn:
+        type: string
+      last_seen_at:
+        type: integer
+        format: int64
+  RESTSystemConfigTls:
+    type: object
+    properties:
+      enable_tls_verification:
+        type: boolean
+        example: false
+      cacerts:
+        type: array
+        items:
+          type: string
+        example:
+        - '-----BEGIN CERTIFICATE-----...'
+        - '-----BEGIN CERTIFICATE-----...'
+  RESTSystemConfigProxyV2:
+    type: object
+    required:
+    - registry_http_proxy_status
+    - registry_https_proxy_status
+    - registry_http_proxy
+    - registry_https_proxy
+    properties:
+      registry_http_proxy_status:
+        type: boolean
+        example: true
+      registry_https_proxy_status:
+        type: boolean
+        example: false
+      registry_http_proxy:
+        $ref: '#/definitions/RESTProxy'
+      registry_https_proxy:
+        $ref: '#/definitions/RESTProxy'
+      registry_http_proxy_cfg:
+        $ref: '#/definitions/RESTProxyConfig'
+      registry_https_proxy_cfg:
+        $ref: '#/definitions/RESTProxyConfig'
+  RESTSystemConfigSyslogCfgV2:
+    type: object
+    properties:
+      syslog_ip:
+        type: string
+        example: ''
+      syslog_ip_proto:
+        type: integer
+        format: uint8
+        example: 6
+      syslog_port:
+        type: integer
+        format: uint16
+        example: 514
+      syslog_level:
+        type: string
+        example: INFO
+      syslog_status:
+        type: boolean
+        example: true
+      syslog_categories:
+        type: array
+        items:
+          type: string
+        example:
+        - event
+        - violation
+        - threat
+        - incident
+      syslog_in_json:
+        type: boolean
+        example: true
+      single_cve_per_syslog:
+        type: boolean
+        example: true
+      syslog_cve_in_layers:
+        type: boolean
+        example: true
+      syslog_server_cert:
+        type: string
+        example: E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF
+      output_event_to_logs:
+        type: boolean
+        example: true
+  RESTSystemConfigConfigDataV2:
+    type: object
+    description: it leverages RESTSystemConfigConfigData in apis.go
+    properties:
+      config_v2:
+        $ref: '#/definitions/RESTSystemConfigConfigV2'
+      fed_config:
+        $ref: '#/definitions/RESTFedSystemConfigConfig'
+      net_config:
+        $ref: '#/definitions/RESTSysNetConfigConfig'
+      atmo_config:
+        $ref: '#/definitions/RESTSysAtmoConfigConfig'
+  RESTSystemConfigMiscCfgV2:
+    type: object
+    properties:
+      unused_group_aging:
+        type: integer
+        format: uint8
+        example: 30
+      cluster_name:
+        type: string
+        example: cluster1
+      controller_debug:
+        type: array
+        items:
+          type: string
+          enum:
+          - cpath
+          - conn
+          - mutex
+          - scan
+          - cluster
+          - k8s_monitor
+        example:
+        - scan
+        - k8s_monitor
+      monitor_service_mesh:
+        type: boolean
+        example: true
+      xff_enabled:
+        type: boolean
+        example: false
+      no_telemetry_report:
+        type: boolean
+        example: false
+  RESTSystemConfigAuthCfgV2:
+    type: object
+    properties:
+      auth_order:
+        type: array
+        items:
+          type: string
+        example:
+        - local
+        - ldap
+      auth_by_platform:
+        type: boolean
+        example: true
+      rancher_ep:
+        type: string
+        example: https://my-rancher.test:30000
+  RESTSystemConfigIBMSAV2:
+    type: object
+    required:
+    - ibmsa_ep_enabled
+    - ibmsa_ep_start
+    - ibmsa_ep_dashboard_url
+    - ibmsa_ep_connected_at
+    properties:
+      ibmsa_ep_enabled:
+        type: boolean
+        example: false
+      ibmsa_ep_start:
+        type: integer
+        format: uint32
+        example: 1
+      ibmsa_ep_dashboard_url:
+        type: string
+        example: ''
+      ibmsa_ep_connected_at:
+        type: string
+        example: ''
+  RESTSystemConfig:
+    type: object
+    required:
+    - new_service_policy_mode
+    - new_service_profile_baseline
+    - unused_group_aging
+    - syslog_ip
+    - syslog_ip_proto
+    - syslog_port
+    - syslog_level
+    - syslog_status
+    - syslog_categories
+    - syslog_in_json
+    - single_cve_per_syslog
+    - syslog_cve_in_layers
+    - output_event_to_logs
+    - auth_order
+    - auth_by_platform
+    - rancher_ep
+    - webhooks
+    - cluster_name
+    - controller_debug
+    - monitor_service_mesh
+    - registry_http_proxy_status
+    - registry_https_proxy_status
+    - registry_http_proxy
+    - registry_https_proxy
+    - ibmsa_ep_enabled
+    - ibmsa_ep_start
+    - ibmsa_ep_dashboard_url
+    - ibmsa_ep_connected_at
+    - xff_enabled
+    - net_service_status
+    - net_service_policy_mode
+    - mode_auto_d2m
+    - mode_auto_d2m_duration
+    - mode_auto_m2p
+    - mode_auto_m2p_duration
+    - scanner_autoscale
+    - no_telemetry_report
+    properties:
+      new_service_policy_mode:
+        type: string
+        example: Discover
+      new_service_profile_baseline:
+        type: string
+        example: zero-drift
+      unused_group_aging:
+        type: integer
+        format: uint8
+        example: 123
+      syslog_ip:
+        type: string
+        example: 10.1.0.14
+      syslog_ip_proto:
+        type: integer
+        format: uint8
+        example: 6
+      syslog_port:
+        type: integer
+        format: uint16
+        example: 514
+      syslog_level:
+        type: string
+        example: INFO
+      syslog_status:
+        type: boolean
+        example: false
+      syslog_categories:
+        type: array
+        items:
+          type: string
+        example:
+        - event
+        - violation
+        - threat
+        - incident
+      syslog_in_json:
+        type: boolean
+        example: true
+      single_cve_per_syslog:
+        type: boolean
+        example: false
+      syslog_cve_in_layers:
+        type: boolean
+        example: false
+      syslog_server_cert:
+        type: string
+        example: E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF
+      output_event_to_logs:
+        type: boolean
+        example: true
+      auth_order:
+        type: array
+        items:
+          type: string
+        example:
+        - local
+        - ldap
+      auth_by_platform:
+        type: boolean
+        example: true
+      rancher_ep:
+        type: string
+        example: ''
+      configured_internal_subnets:
+        type: array
+        items:
+          type: string
+        example:
+        - 69.89.0.0/16
+        - 172.217.5.0/23
+      webhooks:
+        type: array
+        items:
+          $ref: '#/definitions/RESTWebhook'
+      cluster_name:
+        type: string
+        example: cluster1
+      controller_debug:
+        type: array
+        items:
+          type: string
+          enum:
+          - cpath
+          - conn
+          - mutex
+          - scan
+          - cluster
+          - k8s_monitor
+        example:
+        - cpath
+        - scan
+        - k8s_monitor
+      csp_type:
+        type: string
+        example: aws
+      monitor_service_mesh:
+        type: boolean
+        example: true
+      registry_http_proxy_status:
+        type: boolean
+        example: true
+      registry_https_proxy_status:
+        type: boolean
+        example: false
+      registry_http_proxy:
+        $ref: '#/definitions/RESTProxy'
+      registry_https_proxy:
+        $ref: '#/definitions/RESTProxy'
+      ibmsa_ep_enabled:
+        type: boolean
+        example: false
+      ibmsa_ep_start:
+        type: integer
+        format: uint32
+        example: 1
+      ibmsa_ep_dashboard_url:
+        type: string
+        example: ''
+      ibmsa_ep_connected_at:
+        type: string
+        example: ''
+      xff_enabled:
+        type: boolean
+        example: false
+      net_service_status:
+        type: boolean
+        example: false
+      net_service_policy_mode:
+        type: string
+        example: Monitor
+      mode_auto_d2m:
+        type: boolean
+        example: false
+      mode_auto_d2m_duration:
+        type: integer
+        format: int64
+        example: 1505755716
+      mode_auto_m2p:
+        type: boolean
+        example: false
+      mode_auto_m2p_duration:
+        type: integer
+        format: int64
+        example: 1505755716
+      scanner_autoscale:
+        $ref: '#/definitions/RESTSystemConfigAutoscale'
+      no_telemetry_report:
+        type: boolean
+        example: false
+  RESTSystemConfigNetSvcV2:
+    type: object
+    required:
+    - net_service_status
+    - new_service_profile_baseline
+    - disable_net_policy
+    - detect_unmanaged_wl
+    - strict_group_mode
+    properties:
+      net_service_status:
+        type: boolean
+        example: true
+      new_service_profile_baseline:
+        type: string
+        example: zero-drift
+      disable_net_policy:
+        type: boolean
+        example: false
+      detect_unmanaged_wl:
+        type: boolean
+        example: true
+      strict_group_mode:
+        type: boolean
+        example: true
+  RESTSecurityScores:
+    type: object
+    properties:
+      new_service_mode_score:
+        type: integer
+      service_mode_score:
+        type: integer
+      service_mode_score_by_100:
+        type: integer
+      exposure_score:
+        type: integer
+      exposure_score_by_100:
+        type: integer
+      privileged_container_score:
+        type: integer
+      run_as_root_score:
+        type: integer
+      admission_rule_score:
+        type: integer
+      vulnerability_score:
+        type: integer
+      vulnerability_score_by_100:
+        type: integer
+      security_risk_score:
+        type: integer
+  RESTSystemRequestData:
+    type: object
+    required:
+    - request
+    properties:
+      request:
+        $ref: '#/definitions/RESTSystemRequest'
+  RESTSystemConfigAutoscaleConfig:
+    type: object
+    properties:
+      strategy:
+        type: string
+        enum:
+        - ''
+        - immediate
+        - delayed
+      min_pods:
+        type: integer
+        format: uint32
+        example: 1
+      max_pods:
+        type: integer
+        format: uint32
+        example: 3
+  RESTSystemConfigConfigData:
+    type: object
+    description: it leverages RESTSystemConfigConfigData in apis.go
+    properties:
+      config:
+        $ref: '#/definitions/RESTSystemConfigConfig'
+      fed_config:
+        $ref: '#/definitions/RESTFedSystemConfigConfig'
+      net_config:
+        $ref: '#/definitions/RESTSysNetConfigConfig'
+      atmo_config:
+        $ref: '#/definitions/RESTSysAtmoConfigConfig'
+  RESTSystemWebhookConfigData:
+    type: object
+    required:
+    - config
+    properties:
+      config:
+        $ref: '#/definitions/RESTWebhook'
+  RESTUnquarReq:
+    type: object
+    properties:
+      response_rule:
+        type: integer
+        format: uint32
+        example: 1007
+      group:
+        type: string
+        example: ''
+  RESTSystemConfigSvcCfgV2:
+    type: object
+    properties:
+      new_service_policy_mode:
+        type: string
+        example: Discover
+      new_service_profile_baseline:
+        type: string
+        example: zero-drift
+  RESTSystemConfigProxyCfgV2:
+    type: object
+    properties:
+      registry_http_proxy_status:
+        type: boolean
+        example: true
+      registry_https_proxy_status:
+        type: boolean
+        example: false
+      registry_http_proxy:
+        $ref: '#/definitions/RESTProxy'
+      registry_https_proxy:
+        $ref: '#/definitions/RESTProxy'
+      registry_http_proxy_cfg:
+        $ref: '#/definitions/RESTProxyConfig'
+      registry_https_proxy_cfg:
+        $ref: '#/definitions/RESTProxyConfig'
+  RESTNvAlert:
+    type: object
+    properties:
+      id:
+        type: string
+        example: d08afddc9f4516b68a82d7ff4da20fb3
+      message:
+        type: string
+        example: Managed cluster cluster.local-42 is disconnected from primary cluster
+  RESTNvAlertGroup:
+    type: object
+    properties:
+      type:
+        type: string
+        example: RBAC
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/RESTNvAlert'
+  RESTSystemConfigNewSvcV2:
+    type: object
+    required:
+    - new_service_policy_mode
+    - new_service_profile_baseline
+    properties:
+      new_service_policy_mode:
+        type: string
+        example: Discover
+      new_service_profile_baseline:
+        type: string
+        example: zero-drift
+  RESTSystemConfigMiscV2:
+    type: object
+    required:
+    - unused_group_aging
+    - cluster_name
+    - controller_debug
+    - monitor_service_mesh
+    - xff_enabled
+    - no_telemetry_report
+    - cfg_type
+    properties:
+      configured_internal_subnets:
+        type: array
+        items:
+          type: string
+        example:
+        - 69.89.0.0/16
+        - 172.217.5.0/23
+      unused_group_aging:
+        type: integer
+        format: uint8
+        example: 123
+      cluster_name:
+        type: string
+        example: cluster1
+      controller_debug:
+        type: array
+        items:
+          type: string
+          enum:
+          - cpath
+          - conn
+          - mutex
+          - scan
+          - cluster
+          - k8s_monitor
+        example:
+        - scan
+        - k8s_monitor
+      csp_type:
+        type: string
+        example: aws
+      monitor_service_mesh:
+        type: boolean
+        example: true
+      xff_enabled:
+        type: boolean
+        example: false
+      no_telemetry_report:
+        type: boolean
+        example: false
+      cfg_type:
+        type: string
+        enum:
+        - user_created
+        - ground
+        - federal
+  RESTFedSystemConfigConfig:
+    type: object
+    properties:
+      webhooks:
+        type: array
+        items:
+          $ref: '#/definitions/RESTWebhook'
+  RESTComplianceProfileEntry:
+    type: object
+    required:
+    - test_number
+    - tags
+    properties:
+      test_number:
+        type: string
+        example: ''
+      tags:
+        type: array
+        items:
+          type: string
+          example: ''
+  RESTSystemConfigAuthV2:
+    type: object
+    required:
+    - auth_order
+    - auth_by_platform
+    - rancher_ep
+    properties:
+      auth_order:
+        type: array
+        items:
+          type: string
+        example:
+        - local
+        - ldap
+      auth_by_platform:
+        type: boolean
+        example: true
+      rancher_ep:
+        type: string
+        example: ''
+  RESTSystemConfigDataV2:
+    type: object
+    properties:
+      config:
+        $ref: '#/definitions/RESTSystemConfigV2'
+      fed_config:
+        $ref: '#/definitions/RESTFedSystemConfig'
+  RESTUpgradeInfo:
+    type: object
+    properties:
+      version:
+        type: string
+        example: v5.3.0
+      release_date:
+        type: string
+        example: '2023-10-12T00:41:38.00Z'
+      tag:
+        type: string
+        example: v5.3.0
+  RESTNvAlerts:
+    type: object
+    properties:
+      neuvector_upgrade_info:
+        $ref: '#/definitions/RESTCheckUpgradeInfo'
+      acceptable_alerts:
+        $ref: '#/definitions/RESTNvAcceptableAlerts'
+      accepted_alerts:
+        type: array
+        items:
+          type: string
+        example:
+        - Managed cluster cluster.local-42 is disconnected from primary cluster
+        - Internal CA certificate will be expired in 180 days
+  RESTScoreMetricsData:
+    type: object
+    properties:
+      metrics:
+        type: array
+        items:
+          $ref: '#/definitions/RESTComplianceProfileConfig'
+      ingress:
+        type: array
+        items:
+          $ref: '#/definitions/RESTExposedEndpoint'
+      egress:
+        type: array
+        items:
+          $ref: '#/definitions/RESTExposedEndpoint'
+      security_scores:
+        $ref: '#/definitions/RESTSecurityScores'
+  RESTSystemConfigModeAutoV2:
+    type: object
+    required:
+    - mode_auto_d2m
+    - mode_auto_d2m_duration
+    - mode_auto_m2p
+    - mode_auto_m2p_duration
+    properties:
+      mode_auto_d2m:
+        type: boolean
+        example: false
+      mode_auto_d2m_duration:
+        type: integer
+        format: int64
+        example: 1505755716
+      mode_auto_m2p:
+        type: boolean
+        example: false
+      mode_auto_m2p_duration:
+        type: integer
+        format: int64
+        example: 1505755716
+  RESTWebhook:
+    type: object
+    required:
+    - name
+    - url
+    - enable
+    - use_proxy
+    - type
+    - cfg_type
+    properties:
+      name:
+        type: string
+        example: slack-webhook
+      url:
+        type: string
+        example: https://neuvector.slack.com/archives/C8AU75GKE
+      enable:
+        type: boolean
+        example: true
+      use_proxy:
+        type: boolean
+        example: false
+      type:
+        type: string
+        enum:
+        - ''
+        - Slack
+        - JSON
+        - Teams
+      cfg_type:
+        type: string
+        enum:
+        - user_created
+        - ground
+        - federal
+  RESTFedSystemConfig:
+    type: object
+    required:
+    - webhooks
+    properties:
+      webhooks:
+        $ref: '#/definitions/RESTWebhook'
+  RESTProxy:
+    type: object
+    required:
+    - url
+    - username
+    properties:
+      url:
+        type: string
+        example: ''
+      username:
+        type: string
+        example: username
+      password:
+        type: string
+        format: password
+        example: password
+    description: Define proxy settings.
+  RESTSystemRequest:
+    type: object
+    properties:
+      baseline_profile:
+        type: string
+        example: Zero-Drift
+      policy_mode:
+        type: string
+        example: Discover
+      unquarantine:
+        $ref: '#/definitions/RESTUnquarReq'
+  RESTProxyConfig:
+    type: object
+    required:
+    - url
+    - username
+    properties:
+      url:
+        type: string
+        example: ''
+      username:
+        type: string
+        example: username
+      password:
+        type: string
+        format: password
+        example: password
+    description: Define proxy settings, similar to RESTProxy, but allow users to perform partial update on RESTProxy. When both exist, this config will take precedence over RESTProxy.
+  RESTSystemConfigV2:
+    type: object
+    required:
+    - new_svc
+    - syslog
+    - auth
+    - misc
+    - webhooks
+    - proxy
+    - ibmsa
+    - net_svc
+    - mode_auto
+    - scanner_autoscale
+    properties:
+      new_svc:
+        $ref: '#/definitions/RESTSystemConfigNewSvcV2'
+      syslog:
+        $ref: '#/definitions/RESTSystemConfigSyslogV2'
+      auth:
+        $ref: '#/definitions/RESTSystemConfigAuthV2'
+      misc:
+        $ref: '#/definitions/RESTSystemConfigMiscV2'
+      webhooks:
+        type: array
+        items:
+          $ref: '#/definitions/RESTWebhook'
+      proxy:
+        $ref: '#/definitions/RESTSystemConfigProxyV2'
+      ibmsa:
+        $ref: '#/definitions/RESTSystemConfigIBMSAV2'
+      net_svc:
+        $ref: '#/definitions/RESTSystemConfigNetSvcV2'
+      mode_auto:
+        $ref: '#/definitions/RESTSystemConfigModeAutoV2'
+      scanner_autoscale:
+        $ref: '#/definitions/RESTSystemConfigAutoscale'
+      tls_cfg:
+        $ref: '#/definitions/RESTSystemConfigTls'
+  RESTSystemConfigData:
+    type: object
+    properties:
+      config:
+        $ref: '#/definitions/RESTSystemConfig'
+      fed_config:
+        $ref: '#/definitions/RESTFedSystemConfig'
+  RESTSystemConfigConfigV2:
+    type: object
+    properties:
+      svc_cfg:
+        $ref: '#/definitions/RESTSystemConfigSvcCfgV2'
+      syslog_cfg:
+        $ref: '#/definitions/RESTSystemConfigSyslogCfgV2'
+      auth_cfg:
+        $ref: '#/definitions/RESTSystemConfigAuthCfgV2'
+      proxy_cfg:
+        $ref: '#/definitions/RESTSystemConfigProxyCfgV2'
+      webhooks:
+        type: array
+        items:
+          $ref: '#/definitions/RESTWebhook'
+      ibmsa_cfg:
+        $ref: '#/definitions/RESTSystemConfigIBMSAVCfg2'
+      scanner_autoscale_cfg:
+        $ref: '#/definitions/RESTSystemConfigAutoscaleConfig'
+      remote_repositories:
+        type: array
+        items:
+          $ref: '#/definitions/RESTRemoteRepository'
+      misc_cfg:
+        $ref: '#/definitions/RESTSystemConfigMiscCfgV2'
+      tls_cfg:
+        $ref: '#/definitions/RESTSystemConfigTls'
+  RESTSystemConfigIBMSAVCfg2:
+    type: object
+    properties:
+      ibmsa_ep_enabled:
+        type: boolean
+        example: false
+      ibmsa_ep_dashboard_url:
+        type: string
+  RESTComplianceProfileConfig:
+    type: object
+    required:
+    - name
+    properties:
+      name:
+        type: string
+        example: default
+      disable_system:
+        type: boolean
+        example: false
+      entries:
+        type: array
+        items:
+          $ref: '#/definitions/RESTComplianceProfileEntry'
+  RESTRemoteRepo_GitHubConfig:
+    type: object
+    required:
+    - repository_owner_username
+    - repository_name
+    - repository_branch_name
+    - personal_access_token
+    - personal_access_token_committer_name
+    - personal_access_token_committer_email
+    properties:
+      repository_owner_username:
+        type: string
+        example: myuser
+      repository_name:
+        type: string
+        example: myrepo
+      repository_branch_name:
+        type: string
+        example: main
+      personal_access_token:
+        type: string
+        example: <access token from GitHub>
+      personal_access_token_committer_name:
+        type: string
+        example: myuser
+      personal_access_token_committer_email:
+        type: string
+        example: myuser@example.com
+  RESTCheckUpgradeInfo:
+    type: object
+    properties:
+      min_upgrade_version:
+        $ref: '#/definitions/RESTUpgradeInfo'
+      max_upgrade_version:
+        $ref: '#/definitions/RESTUpgradeInfo'
+  RESTNvAcceptableAlerts:
+    type: object
+    properties:
+      clusterrole_alerts:
+        $ref: '#/definitions/RESTNvAlertGroup'
+      clusterrolebinding_alerts:
+        $ref: '#/definitions/RESTNvAlertGroup'
+      role_alerts:
+        $ref: '#/definitions/RESTNvAlertGroup'
+      rolebinding_alerts:
+        $ref: '#/definitions/RESTNvAlertGroup'
+      neuvector_crd_alerts:
+        $ref: '#/definitions/RESTNvAlertGroup'
+      certificate_alerts:
+        $ref: '#/definitions/RESTNvAlertGroup'
+      other_alerts:
+        $ref: '#/definitions/RESTNvAlertGroup'
+  RESTSystemSummary:
+    type: object
+    required:
+    - hosts
+    - controllers
+    - enforcers
+    - disconnected_enforcers
+    - workloads
+    - running_workloads
+    - running_pods
+    - services
+    - policy_rules
+    - scanners
+    - platform
+    - kube_version
+    - openshift_version
+    - cvedb_version
+    - cvedb_create_time
+    - component_versions
+    properties:
+      hosts:
+        type: integer
+        example: 1
+      controllers:
+        type: integer
+        example: 1
+      enforcers:
+        type: integer
+        example: 1
+      disconnected_enforcers:
+        type: integer
+        example: 1
+      workloads:
+        type: integer
+        example: 0
+      running_workloads:
+        type: integer
+        example: 100
+      running_pods:
+        type: integer
+        example: 100
+      services:
+        type: integer
+        example: 10
+      policy_rules:
+        type: integer
+        example: 2
+      scanners:
+        type: integer
+        example: 3
+      platform:
+        type: string
+        example: Docker
+      kube_version:
+        type: string
+        example: 1.19.2
+      openshift_version:
+        type: string
+        example: ''
+      cvedb_version:
+        type: string
+        example: '1.011'
+      cvedb_create_time:
+        type: string
+        format: date-time
+        example: 2018-06-20 19:00:53+00:00
+      component_versions:
+        type: array
+        items:
+          type: string
+          example: ''
+  RESTSystemSummaryData:
+    type: object
+    required:
+    - summary
+    properties:
+      summary:
+        $ref: '#/definitions/RESTSystemSummary'
+  RESTSystemConfigSyslogV2:
+    type: object
+    required:
+    - syslog_ip
+    - syslog_ip_proto
+    - syslog_port
+    - syslog_level
+    - syslog_status
+    - syslog_categories
+    - syslog_in_json
+    - single_cve_per_syslog
+    - syslog_cve_in_layers
+    - syslog_server_cert
+    - output_event_to_logs
+    properties:
+      syslog_ip:
+        type: string
+        example: 10.1.0.14
+      syslog_ip_proto:
+        type: integer
+        format: uint8
+        example: 6
+      syslog_port:
+        type: integer
+        format: uint16
+        example: 514
+      syslog_level:
+        type: string
+        example: INFO
+      syslog_status:
+        type: boolean
+        example: false
+      syslog_categories:
+        type: array
+        items:
+          type: string
+        example:
+        - event
+        - violation
+        - threat
+        - incident
+      syslog_in_json:
+        type: boolean
+        example: true
+      single_cve_per_syslog:
+        type: boolean
+        example: false
+      syslog_cve_in_layers:
+        type: boolean
+        example: false
+      syslog_server_cert:
+        type: string
+        example: ''
+      output_event_to_logs:
+        type: boolean
+        example: true
+  RESTRemoteRepository:
+    type: object
+    required:
+    - nickname
+    - provider
+    - github_configuration
+    properties:
+      nickname:
+        type: string
+        example: default
+      provider:
+        type: string
+        description: currently only github is supported
+        example: github
+      comment:
+        type: string
+      enable:
+        type: boolean
+        example: true
+      github_configuration:
+        $ref: '#/definitions/RESTRemoteRepo_GitHubConfig'
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Apikey
+  TokenAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Token
+externalDocs:
+  description: Find out more about NeuVector
+  url: https://www.suse.com/products/neuvector/

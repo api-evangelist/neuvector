@@ -1,0 +1,453 @@
+swagger: '2.0'
+info:
+  description: Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.
+  version: 5.6.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  title: NeuVector DLP API
+  contact:
+    email: support@neuvector.com
+schemes:
+- https
+tags:
+- name: DLP
+  description: Operations about DLP
+paths:
+  /v1/dlp/sensor:
+    get:
+      tags:
+      - DLP
+      summary: Get DLP sensors
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTDlpSensorsData'
+    post:
+      tags:
+      - DLP
+      summary: Create DLP sensor
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Sensor data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTDlpSensorConfigData'
+      responses:
+        '200':
+          description: Success
+  /v1/dlp/sensor/{name}:
+    get:
+      tags:
+      - DLP
+      summary: Get DLP sensor detail
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: name
+        description: Sensor name
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTDlpSensorData'
+    patch:
+      tags:
+      - DLP
+      summary: Configure DLP sensor
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: path
+        name: name
+        description: Sensor name
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Sensor data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTDlpSensorConfigData'
+      responses:
+        '200':
+          description: Success
+    delete:
+      tags:
+      - DLP
+      summary: Delete DLP sensor
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      parameters:
+      - in: path
+        name: name
+        description: Sensor name
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+  /v1/dlp/group:
+    get:
+      tags:
+      - DLP
+      summary: Get DLP group list
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTDlpGroupsData'
+  /v1/dlp/group/{name}:
+    get:
+      tags:
+      - DLP
+      summary: Get DLP group detail
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: name
+        description: DLP group name
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTDlpGroupData'
+    patch:
+      tags:
+      - DLP
+      summary: Configure DLP group
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: path
+        name: name
+        description: DLP group name
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: DLP group data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTDlpGroupConfigData'
+      responses:
+        '200':
+          description: Success
+  /v1/dlp/rule:
+    get:
+      tags:
+      - DLP
+      summary: Get all DLP rules
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTDlpRulesData'
+  /v1/dlp/rule/{name}:
+    get:
+      tags:
+      - DLP
+      summary: Get DLP rule
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: name
+        description: DLP rule name
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTDlpRuleData'
+definitions:
+  RESTDlpGroup:
+    type: object
+    required:
+    - name
+    - status
+    - sensors
+    properties:
+      name:
+        type: string
+        example: nodes
+      status:
+        type: boolean
+        example: true
+      sensors:
+        type: array
+        items:
+          $ref: '#/definitions/RESTDlpSetting'
+  RESTDlpSensor:
+    type: object
+    required:
+    - name
+    - groups
+    - rules
+    - comment
+    - predefine
+    - cfg_type
+    properties:
+      name:
+        type: string
+        example: sensor.ssn
+      groups:
+        type: array
+        items:
+          type: string
+        example:
+        - external
+        - nodes
+      rules:
+        type: array
+        items:
+          $ref: '#/definitions/RESTDlpRule'
+      comment:
+        type: string
+        example: Sensor for SSN detection
+      predefine:
+        type: boolean
+        example: true
+      cfg_type:
+        type: string
+        enum:
+        - user_created
+        - ground
+  RESTDlpSensorData:
+    type: object
+    required:
+    - sensor
+    properties:
+      sensor:
+        $ref: '#/definitions/RESTDlpSensor'
+  RESTDlpSensorsData:
+    type: object
+    required:
+    - sensors
+    properties:
+      sensors:
+        type: array
+        items:
+          $ref: '#/definitions/RESTDlpSensor'
+  RESTDlpGroupData:
+    type: object
+    required:
+    - dlp_group
+    properties:
+      dlp_group:
+        $ref: '#/definitions/RESTDlpGroup'
+  RESTDlpRuleData:
+    type: object
+    required:
+    - rule
+    properties:
+      rule:
+        $ref: '#/definitions/RESTDlpRuleDetail'
+  RESTDlpRulesData:
+    type: object
+    required:
+    - rules
+    properties:
+      rules:
+        type: array
+        items:
+          $ref: '#/definitions/RESTDlpRule'
+  RESTDlpRuleDetail:
+    type: object
+    required:
+    - sensors
+    - rules
+    properties:
+      sensors:
+        type: array
+        items:
+          type: string
+        example:
+        - ssn
+        - credit
+      rules:
+        type: array
+        items:
+          $ref: '#/definitions/RESTDlpRule'
+  RESTDlpSensorConfigData:
+    type: object
+    required:
+    - config
+    properties:
+      config:
+        $ref: '#/definitions/RESTDlpSensorConfig'
+  RESTDlpRule:
+    type: object
+    required:
+    - name
+    - id
+    - patterns
+    - cfg_type
+    properties:
+      name:
+        type: string
+        example: testrule413251424153561246153614615462515134635
+      id:
+        type: integer
+        format: uint32
+        example: 4001
+      patterns:
+        type: array
+        items:
+          $ref: '#/definitions/RESTCriteriaEntry'
+      cfg_type:
+        type: string
+        enum:
+        - user_created
+        - ground
+  RESTCriteriaEntry:
+    type: object
+    required:
+    - key
+    - value
+    - op
+    properties:
+      key:
+        type: string
+        example: pattern
+      value:
+        type: string
+        example: '[0-9]'
+      op:
+        type: string
+        example: regex
+  RESTDlpSensorConfig:
+    type: object
+    required:
+    - name
+    properties:
+      name:
+        type: string
+        example: sensor.creditcard
+      change:
+        type: array
+        items:
+          $ref: '#/definitions/RESTDlpRule'
+      delete:
+        type: array
+        items:
+          $ref: '#/definitions/RESTDlpRule'
+      rules:
+        type: array
+        items:
+          $ref: '#/definitions/RESTDlpRule'
+      comment:
+        type: string
+        example: Sensor for Credit Card detection
+  RESTDlpSetting:
+    type: object
+    required:
+    - name
+    - action
+    properties:
+      name:
+        type: string
+        example: sensor.ssn
+      action:
+        type: string
+        example: log
+      comment:
+        type: string
+        example: logging sensor ssn
+  RESTDlpGroupConfig:
+    type: object
+    required:
+    - name
+    properties:
+      name:
+        type: string
+        example: ssn
+      status:
+        type: boolean
+        example: true
+      delete:
+        type: array
+        items:
+          type: string
+          example: ''
+      sensors:
+        type: array
+        items:
+          $ref: '#/definitions/RESTDlpSetting'
+      replace:
+        type: array
+        items:
+          $ref: '#/definitions/RESTDlpSetting'
+  RESTDlpGroupsData:
+    type: object
+    required:
+    - dlp_groups
+    properties:
+      dlp_groups:
+        type: array
+        items:
+          $ref: '#/definitions/RESTDlpGroup'
+  RESTDlpGroupConfigData:
+    type: object
+    required:
+    - config
+    properties:
+      config:
+        $ref: '#/definitions/RESTDlpGroupConfig'
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Apikey
+  TokenAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Token
+externalDocs:
+  description: Find out more about NeuVector
+  url: https://www.suse.com/products/neuvector/

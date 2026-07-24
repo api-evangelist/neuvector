@@ -1,0 +1,597 @@
+swagger: '2.0'
+info:
+  description: Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.
+  version: 5.6.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  title: NeuVector Service API
+  contact:
+    email: support@neuvector.com
+schemes:
+- https
+tags:
+- name: Service
+  description: Operations about Service
+paths:
+  /v1/service:
+    get:
+      tags:
+      - Service
+      summary: Get a list of services
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTServicesData'
+    post:
+      tags:
+      - Service
+      summary: Create service
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Service data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTServiceConfigData'
+      responses:
+        '200':
+          description: Success
+  /v1/service/{name}:
+    get:
+      tags:
+      - Service
+      summary: Show service
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: name
+        description: Service name
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTServiceData'
+  /v1/service/config:
+    patch:
+      tags:
+      - Service
+      summary: Configure service
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Service configure data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTServiceBatchConfigData'
+      responses:
+        '200':
+          description: Success
+  /v1/service/config/network:
+    patch:
+      tags:
+      - Service
+      summary: Configure services in batch
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Service configure data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTServiceBatchConfigData'
+      responses:
+        '200':
+          description: Success
+  /v1/service/config/profile:
+    patch:
+      tags:
+      - Service
+      summary: Configure services in batch
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Service configure data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTServiceBatchConfigData'
+      responses:
+        '200':
+          description: Success
+definitions:
+  RESTServiceConfig:
+    type: object
+    required:
+    - name
+    - domain
+    - comment
+    properties:
+      name:
+        type: string
+        example: ''
+      domain:
+        type: string
+        example: ''
+      comment:
+        type: string
+        example: ''
+      policy_mode:
+        type: string
+        example: ''
+      baseline_profile:
+        type: string
+        example: ''
+      not_scored:
+        type: boolean
+        example: true
+  RESTServiceBatchConfigData:
+    type: object
+    required:
+    - config
+    properties:
+      config:
+        $ref: '#/definitions/RESTServiceBatchConfig'
+  RESTServicesData:
+    type: object
+    required:
+    - services
+    properties:
+      services:
+        type: array
+        items:
+          $ref: '#/definitions/RESTService'
+  RESTPolicyRule:
+    type: object
+    required:
+    - id
+    - comment
+    - from
+    - to
+    - ports
+    - action
+    - applications
+    - learned
+    - disable
+    - created_timestamp
+    - last_modified_timestamp
+    - cfg_type
+    - priority
+    - match_counter
+    - last_match_timestamp
+    properties:
+      id:
+        type: integer
+        format: uint32
+        example: 10002
+      comment:
+        type: string
+        example: a rule
+      from:
+        type: string
+        description: group name
+        example: nv.iperfc
+      to:
+        type: string
+        description: group name
+        example: Host:10.2.127.3
+      ports:
+        type: string
+        description: free-style port list
+        example: any
+      action:
+        type: string
+        example: allow
+      applications:
+        type: array
+        items:
+          type: string
+          example: DNS
+      learned:
+        type: boolean
+        example: true
+      disable:
+        type: boolean
+        example: false
+      created_timestamp:
+        type: integer
+        format: int64
+        example: 1516563263
+      last_modified_timestamp:
+        type: integer
+        format: int64
+        example: 1516573243
+      cfg_type:
+        type: string
+        enum:
+        - learned
+        - user_created
+        - ground
+        - federal
+      priority:
+        type: integer
+        format: uint32
+        example: 0
+      match_counter:
+        type: integer
+        format: uint64
+        example: 699
+      last_match_timestamp:
+        type: integer
+        format: int64
+        example: 1736811451
+  RESTIPPort:
+    type: object
+    required:
+    - ip
+    - port
+    properties:
+      ip:
+        type: string
+        example: 192.168.209.197
+      port:
+        type: integer
+        format: uint16
+        example: 80
+  RESTScanBrief:
+    type: object
+    required:
+    - status
+    - high
+    - medium
+    - result
+    - scanned_timestamp
+    - scanned_at
+    - base_os
+    - scanner_version
+    - cvedb_create_time
+    properties:
+      status:
+        type: string
+        example: scheduled
+      high:
+        type: integer
+        example: 0
+      medium:
+        type: integer
+        example: 0
+      result:
+        type: string
+        example: success
+      scanned_timestamp:
+        type: integer
+        format: int64
+        example: 1516561253
+      scanned_at:
+        type: string
+        format: date-time
+        example: 2018-01-21 19:00:53+00:00
+      base_os:
+        type: string
+        example: ubuntu:16.04
+      scanner_version:
+        type: string
+        example: '1.011'
+      cvedb_create_time:
+        type: string
+        format: date-time
+        example: 2018-06-20 19:00:53+00:00
+  RESTWorkloadBrief:
+    type: object
+    required:
+    - id
+    - name
+    - display_name
+    - pod_name
+    - image
+    - image_id
+    - image_created_at
+    - platform_role
+    - domain
+    - state
+    - service
+    - author
+    - service_group
+    - cap_sniff
+    - cap_quarantine
+    - cap_change_mode
+    - policy_mode
+    - profile_mode
+    - scan_summary
+    - children
+    - service_mesh
+    - service_mesh_sidecar
+    - privileged
+    - run_as_root
+    - baseline_profile
+    properties:
+      id:
+        type: string
+        example: 7304e72fd093155c4cbcd65d07375329b2db82cc679
+      name:
+        type: string
+        example: k8s_POD.d86c_calico-node-mzhtk_kube-system_0050565a_365c13d
+      display_name:
+        type: string
+        example: calico-node-mzhtk
+      pod_name:
+        type: string
+        example: istio-policy-5cdbc47674-t67p4
+      image:
+        type: string
+        example: calico
+      image_id:
+        type: string
+        example: d572b7ee3511b21a2b78b8915bc03c5786ad01949704c1418624224c4cae2c5f
+      image_digest:
+        type: array
+        items:
+          type: string
+          example: c2ced31c5dda37cb805f481e3fa34b742cc8980f439b20af3111b08e66cff8e1
+      image_created_at:
+        type: string
+        format: date-time
+        example: 2018-01-18 00:44:02+00:00
+      image_reg_scanned:
+        type: boolean
+        example: false
+      platform_role:
+        type: string
+        example: core
+      domain:
+        type: string
+        example: ''
+      state:
+        type: string
+        example: exit
+      service:
+        type: string
+        example: kafkazookeeper
+      author:
+        type: string
+        example: ''
+      service_group:
+        type: string
+        example: nv.calico
+      share_ns_with:
+        type: string
+        example: cc0709d522749203042e89dba28bf6924a4b0d360648
+      cap_sniff:
+        type: boolean
+        example: true
+      cap_quarantine:
+        type: boolean
+        example: true
+      cap_change_mode:
+        type: boolean
+        example: true
+      policy_mode:
+        type: string
+        example: Discover
+      profile_mode:
+        type: string
+        example: Discover
+      scan_summary:
+        $ref: '#/definitions/RESTScanBrief'
+      children:
+        type: array
+        items:
+          $ref: '#/definitions/RESTWorkloadBrief'
+      quarantine_reason:
+        type: string
+        example: violation
+      service_mesh:
+        type: boolean
+        example: true
+      service_mesh_sidecar:
+        type: boolean
+        example: true
+      privileged:
+        type: boolean
+        example: true
+      run_as_root:
+        type: boolean
+        example: true
+      baseline_profile:
+        type: string
+        example: ''
+  RESTServiceData:
+    type: object
+    required:
+    - service
+    properties:
+      service:
+        $ref: '#/definitions/RESTService'
+  RESTResponseRule:
+    type: object
+    required:
+    - id
+    - event
+    - comment
+    - group
+    - conditions
+    - actions
+    - webhooks
+    - disable
+    - cfg_type
+    properties:
+      id:
+        type: integer
+        format: uint32
+        example: 1001
+      event:
+        type: string
+        example: ''
+      comment:
+        type: string
+        example: ''
+      group:
+        type: string
+        example: ''
+      conditions:
+        type: array
+        items:
+          $ref: '#/definitions/RESTCLUSEventCondition'
+      actions:
+        type: array
+        items:
+          type: string
+          example: ''
+      webhooks:
+        type: array
+        items:
+          type: string
+          example: ''
+      disable:
+        type: boolean
+        example: false
+      cfg_type:
+        type: string
+        enum:
+        - user_created
+        - ground
+        - federal
+  RESTCLUSEventCondition:
+    type: object
+    properties:
+      type:
+        type: string
+        example: ''
+      value:
+        type: string
+        example: ''
+  RESTServiceConfigData:
+    type: object
+    required:
+    - config
+    properties:
+      config:
+        $ref: '#/definitions/RESTServiceConfig'
+  RESTService:
+    type: object
+    required:
+    - name
+    - comment
+    - policy_mode
+    - profile_mode
+    - not_scored
+    - domain
+    - platform_role
+    - members
+    - policy_rules
+    - response_rules
+    - ingress_exposure
+    - egress_exposure
+    - baseline_profile
+    properties:
+      name:
+        type: string
+        example: iperfc
+      comment:
+        type: string
+        example: ''
+      policy_mode:
+        type: string
+        example: Learn
+      profile_mode:
+        type: string
+        example: Learn
+      not_scored:
+        type: boolean
+        example: false
+      domain:
+        type: string
+        example: ''
+      platform_role:
+        type: string
+        example: core
+      members:
+        type: array
+        items:
+          $ref: '#/definitions/RESTWorkloadBrief'
+      policy_rules:
+        type: array
+        items:
+          $ref: '#/definitions/RESTPolicyRule'
+      response_rules:
+        type: array
+        items:
+          $ref: '#/definitions/RESTResponseRule'
+      service_addr:
+        $ref: '#/definitions/RESTIPPort'
+      ingress_exposure:
+        type: boolean
+        example: true
+      egress_exposure:
+        type: boolean
+        example: false
+      baseline_profile:
+        type: string
+        example: ''
+      cap_change_mode:
+        type: boolean
+        example: false
+      cap_scorable:
+        type: boolean
+        example: false
+  RESTServiceBatchConfig:
+    type: object
+    properties:
+      services:
+        type: array
+        items:
+          type: string
+        example:
+        - iperfserver
+        - iperfclient
+      policy_mode:
+        type: string
+        example: Monitor
+      baseline_profile:
+        type: string
+        example: ''
+      not_scored:
+        type: boolean
+        example: false
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Apikey
+  TokenAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Token
+externalDocs:
+  description: Find out more about NeuVector
+  url: https://www.suse.com/products/neuvector/

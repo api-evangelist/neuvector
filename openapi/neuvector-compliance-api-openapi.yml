@@ -1,0 +1,495 @@
+swagger: '2.0'
+info:
+  description: Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.
+  version: 5.6.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  title: NeuVector Compliance API
+  contact:
+    email: support@neuvector.com
+schemes:
+- https
+tags:
+- name: Compliance
+  description: Operations about Compliance
+paths:
+  /v1/bench/host/{id}/docker:
+    get:
+      tags:
+      - Compliance
+      summary: Docker bench
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Host ID
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTBenchReport'
+    post:
+      tags:
+      - Compliance
+      summary: Docker bench run
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      parameters:
+      - in: path
+        name: id
+        description: Host ID
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+  /v1/bench/host/{id}/kubernetes:
+    get:
+      tags:
+      - Compliance
+      summary: Kubernetes bench
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Host ID
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTBenchReport'
+    post:
+      tags:
+      - Compliance
+      summary: Kubernetes bench run
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      parameters:
+      - in: path
+        name: id
+        description: Host ID
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+  /v1/compliance/profile:
+    get:
+      tags:
+      - Compliance
+      summary: Get compliance profile list
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTComplianceProfilesData'
+  /v1/compliance/profile/{name}:
+    get:
+      tags:
+      - Compliance
+      summary: Get compliance profile detail
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: name
+        description: Profile name
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTComplianceProfileData'
+    patch:
+      tags:
+      - Compliance
+      summary: Configure compliance profile
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: path
+        name: name
+        description: Compliance profile name
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Compliance profile config data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTComplianceProfileConfigData'
+      responses:
+        '200':
+          description: Success
+  /v1/compliance/profile/{name}/entry/{check}:
+    patch:
+      tags:
+      - Compliance
+      summary: Configure compliance profile entry
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: path
+        name: name
+        description: Compliance profile name
+        required: true
+        type: string
+      - in: path
+        name: check
+        description: Compliance profile entry check name
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Compliance profile entry data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTComplianceProfileEntryConfigData'
+      responses:
+        '200':
+          description: Success
+    delete:
+      tags:
+      - Compliance
+      summary: Delete compliance profile entry
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      parameters:
+      - in: path
+        name: name
+        description: Compliance profile name
+        required: true
+        type: string
+      - in: path
+        name: check
+        description: Compliance profile entry check name
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+  /v1/custom_check:
+    get:
+      tags:
+      - Compliance
+      summary: Get custom check scripts of all groups
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTCustomCheckListData'
+  /v1/custom_check/{group}:
+    get:
+      tags:
+      - Compliance
+      summary: GET custom check scripts of the specified group
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: group
+        description: Script config name
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTCustomCheckData'
+    patch:
+      tags:
+      - Compliance
+      summary: Update custom check scripts of the specified group
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: path
+        name: group
+        description: Script config name
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Script config data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTCustomCheckConfigData'
+      responses:
+        '200':
+          description: Success
+definitions:
+  RESTComplianceProfileEntryConfigData:
+    type: object
+    required:
+    - config
+    properties:
+      config:
+        $ref: '#/definitions/RESTComplianceProfileEntry'
+  RESTCustomCheck:
+    type: object
+    required:
+    - name
+    - script
+    properties:
+      name:
+        type: string
+        example: node
+      script:
+        type: string
+        example: 'uname -r '
+  RESTBenchItem:
+    type: object
+    required:
+    - catalog
+    - type
+    - level
+    - test_number
+    - profile
+    - scored
+    - automated
+    - description
+    - message
+    - remediation
+    - group
+    properties:
+      catalog:
+        type: string
+        example: docker
+      type:
+        type: string
+        example: ''
+      level:
+        type: string
+        example: INFO
+      test_number:
+        type: string
+        example: '1'
+      profile:
+        type: string
+        example: Level 1
+      scored:
+        type: boolean
+        example: true
+      automated:
+        type: boolean
+        example: true
+      description:
+        type: string
+        example: General Configuration
+      message:
+        type: array
+        items:
+          type: string
+          example: Host Configuration
+      remediation:
+        type: string
+        example: ''
+      group:
+        type: string
+        example: nv.calico
+  RESTComplianceProfileConfig:
+    type: object
+    required:
+    - name
+    properties:
+      name:
+        type: string
+        example: default
+      disable_system:
+        type: boolean
+        example: false
+      entries:
+        type: array
+        items:
+          $ref: '#/definitions/RESTComplianceProfileEntry'
+  RESTCustomCheckData:
+    type: object
+    required:
+    - config
+    properties:
+      config:
+        $ref: '#/definitions/RESTCustomChecks'
+  RESTCustomCheckConfig:
+    type: object
+    required:
+    - add
+    - delete
+    - update
+    properties:
+      add:
+        $ref: '#/definitions/RESTCustomChecks'
+      delete:
+        $ref: '#/definitions/RESTCustomChecks'
+      update:
+        $ref: '#/definitions/RESTCustomChecks'
+  RESTCustomCheckListData:
+    type: object
+    required:
+    - configs
+    properties:
+      configs:
+        type: array
+        items:
+          $ref: '#/definitions/RESTCustomChecks'
+  RESTComplianceProfileConfigData:
+    type: object
+    required:
+    - config
+    properties:
+      config:
+        $ref: '#/definitions/RESTComplianceProfileConfig'
+  RESTCustomCheckConfigData:
+    type: object
+    required:
+    - config
+    properties:
+      config:
+        $ref: '#/definitions/RESTCustomCheckConfig'
+  RESTComplianceProfileData:
+    type: object
+    required:
+    - profile
+    properties:
+      profile:
+        $ref: '#/definitions/RESTComplianceProfile'
+  RESTComplianceProfilesData:
+    type: object
+    required:
+    - profiles
+    properties:
+      profiles:
+        type: array
+        items:
+          $ref: '#/definitions/RESTComplianceProfile'
+  RESTCustomChecks:
+    type: object
+    required:
+    - group
+    - scripts
+    properties:
+      group:
+        type: string
+        example: containers
+      enabled:
+        type: boolean
+        example: false
+      writable:
+        type: boolean
+        example: false
+      scripts:
+        type: array
+        items:
+          $ref: '#/definitions/RESTCustomCheck'
+  RESTComplianceProfile:
+    type: object
+    required:
+    - name
+    - disable_system
+    - entries
+    properties:
+      name:
+        type: string
+        example: default
+      disable_system:
+        type: boolean
+        example: false
+      entries:
+        type: array
+        items:
+          $ref: '#/definitions/RESTComplianceProfileEntry'
+      cfg_type:
+        type: string
+        enum:
+        - user_created
+        - ground
+  RESTComplianceProfileEntry:
+    type: object
+    required:
+    - test_number
+    - tags
+    properties:
+      test_number:
+        type: string
+        example: ''
+      tags:
+        type: array
+        items:
+          type: string
+          example: ''
+  RESTBenchReport:
+    type: object
+    required:
+    - run_timestamp
+    - run_at
+    - cis_version
+    - items
+    properties:
+      run_timestamp:
+        type: integer
+        format: int64
+        example: 1516561253
+      run_at:
+        type: string
+        format: date-time
+        example: 2018-06-21 19:00:53+00:00
+      cis_version:
+        type: string
+        example: 1.5.1
+      items:
+        type: array
+        items:
+          $ref: '#/definitions/RESTBenchItem'
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Apikey
+  TokenAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Token
+externalDocs:
+  description: Find out more about NeuVector
+  url: https://www.suse.com/products/neuvector/

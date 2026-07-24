@@ -1,0 +1,56 @@
+swagger: '2.0'
+info:
+  description: Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.
+  version: 5.6.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  title: NeuVector compliance profile. The payload body is the content of the compliance profile yaml file. API
+  contact:
+    email: support@neuvector.com
+schemes:
+- https
+tags:
+- name: compliance profile. The payload body is the content of the compliance profile yaml file.
+paths:
+  /v1/file/compliance/profile/config:
+    post:
+      tags:
+      - compliance profile. The payload body is the content of the compliance profile yaml file.
+      summary: import compliance profile
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      - text/plain; charset=utf-8
+      parameters:
+      - in: header
+        name: X-Auth-Token
+        required: true
+        type: string
+      - in: header
+        name: X-Transaction-ID
+        required: false
+        type: string
+      - in: body
+        name: body
+        description: compliance profile yaml file
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Apikey
+  TokenAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Token
+externalDocs:
+  description: Find out more about NeuVector
+  url: https://www.suse.com/products/neuvector/

@@ -1,0 +1,353 @@
+swagger: '2.0'
+info:
+  description: Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.
+  version: 5.6.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  title: NeuVector Host API
+  contact:
+    email: support@neuvector.com
+schemes:
+- https
+tags:
+- name: Host
+  description: Operations about Host
+paths:
+  /v1/host:
+    get:
+      tags:
+      - Host
+      summary: Get a list of hosts
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTHostsData'
+  /v1/host/{id}:
+    get:
+      tags:
+      - Host
+      summary: Show host
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Host ID
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTHostData'
+  /v1/host/{id}/compliance:
+    get:
+      tags:
+      - Host
+      summary: Show host compliance report
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Host ID
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTComplianceData'
+definitions:
+  RESTHost:
+    type: object
+    required:
+    - name
+    - id
+    - runtime
+    - runtime_version
+    - runtime_api_version
+    - platform
+    - os
+    - kernel
+    - cpus
+    - memory
+    - cgroup_version
+    - containers
+    - interfaces
+    - state
+    - cap_docker_bench
+    - cap_kube_bench
+    - policy_mode
+    - profile_mode
+    - scan_summary
+    - storage_driver
+    - labels
+    - annotations
+    properties:
+      name:
+        type: string
+        example: ubuntu64
+      id:
+        type: string
+        example: 2AU7:TIEN:O5KX:QK56:LFQP:IJSV:FXBN:QJV7:XPAH
+      runtime:
+        type: string
+        example: docker
+      runtime_version:
+        type: string
+        example: 1.10.2
+      runtime_api_version:
+        type: string
+        example: '1.22'
+      platform:
+        type: string
+        example: Docker
+      os:
+        type: string
+        example: Ubuntu 14.04.3 LTS
+      kernel:
+        type: string
+        example: 3.19.0-25-generic
+      cpus:
+        type: integer
+        format: int64
+        example: 1
+      memory:
+        type: integer
+        format: int64
+        example: 2089816064
+      cgroup_version:
+        type: integer
+        example: 1
+      containers:
+        type: integer
+        example: 107
+      interfaces:
+        type: object
+        description: map key is string type like "eth0"
+        additionalProperties:
+          type: array
+          items:
+            $ref: '#/definitions/RESTIPAddr'
+      state:
+        type: string
+        example: ''
+      cap_docker_bench:
+        type: boolean
+        example: true
+      cap_kube_bench:
+        type: boolean
+        example: true
+      docker_bench_status:
+        type: string
+        example: running
+      kube_bench_status:
+        type: string
+        example: scheduled
+      policy_mode:
+        type: string
+        example: Discover
+      profile_mode:
+        type: string
+        example: Discover
+      scan_summary:
+        $ref: '#/definitions/RESTScanBrief'
+      storage_driver:
+        type: string
+        example: aufs
+      labels:
+        type: object
+        description: map key is string type
+        additionalProperties:
+          type: string
+        example:
+          beta.kubernetes.io/os: linux
+      annotations:
+        type: object
+        description: map key is string type
+        additionalProperties:
+          type: string
+        example:
+          kubeadm.alpha.kubernetes.io/cri-socket: /var/run/dockershim.sock
+  RESTHostData:
+    type: object
+    required:
+    - host
+    properties:
+      host:
+        $ref: '#/definitions/RESTHost'
+  RESTBenchItem:
+    type: object
+    required:
+    - catalog
+    - type
+    - level
+    - test_number
+    - profile
+    - scored
+    - automated
+    - description
+    - message
+    - remediation
+    - group
+    properties:
+      catalog:
+        type: string
+        example: docker
+      type:
+        type: string
+        example: ''
+      level:
+        type: string
+        example: INFO
+      test_number:
+        type: string
+        example: '1'
+      profile:
+        type: string
+        example: Level 1
+      scored:
+        type: boolean
+        example: true
+      automated:
+        type: boolean
+        example: true
+      description:
+        type: string
+        example: General Configuration
+      message:
+        type: array
+        items:
+          type: string
+          example: Host Configuration
+      remediation:
+        type: string
+        example: ''
+      group:
+        type: string
+        example: nv.calico
+  RESTIPAddr:
+    type: object
+    required:
+    - ip
+    - ip_prefix
+    - gateway
+    properties:
+      ip:
+        type: string
+        example: 192.168.209.197
+      ip_prefix:
+        type: integer
+        example: 32
+      gateway:
+        type: string
+        example: ''
+  RESTScanBrief:
+    type: object
+    required:
+    - status
+    - high
+    - medium
+    - result
+    - scanned_timestamp
+    - scanned_at
+    - base_os
+    - scanner_version
+    - cvedb_create_time
+    properties:
+      status:
+        type: string
+        example: scheduled
+      high:
+        type: integer
+        example: 0
+      medium:
+        type: integer
+        example: 0
+      result:
+        type: string
+        example: success
+      scanned_timestamp:
+        type: integer
+        format: int64
+        example: 1516561253
+      scanned_at:
+        type: string
+        format: date-time
+        example: 2018-01-21 19:00:53+00:00
+      base_os:
+        type: string
+        example: ubuntu:16.04
+      scanner_version:
+        type: string
+        example: '1.011'
+      cvedb_create_time:
+        type: string
+        format: date-time
+        example: 2018-06-20 19:00:53+00:00
+  RESTHostsData:
+    type: object
+    required:
+    - hosts
+    properties:
+      hosts:
+        type: array
+        items:
+          $ref: '#/definitions/RESTHost'
+  RESTComplianceData:
+    type: object
+    required:
+    - run_timestamp
+    - run_at
+    - kubernetes_cis_category
+    - kubernetes_cis_version
+    - docker_cis_version
+    - items
+    properties:
+      run_timestamp:
+        type: integer
+        format: int64
+        example: 1516561253
+      run_at:
+        type: string
+        format: date-time
+        example: 2018-06-21 19:00:53+00:00
+      kubernetes_cis_category:
+        type: string
+        example: ''
+      kubernetes_cis_version:
+        type: string
+        example: 1.5.1
+      docker_cis_version:
+        type: string
+        example: 1.2.0
+      items:
+        type: array
+        items:
+          $ref: '#/definitions/RESTBenchItem'
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Apikey
+  TokenAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Token
+externalDocs:
+  description: Find out more about NeuVector
+  url: https://www.suse.com/products/neuvector/

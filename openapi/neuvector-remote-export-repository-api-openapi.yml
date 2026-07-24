@@ -1,0 +1,46 @@
+swagger: '2.0'
+info:
+  description: Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.
+  version: 5.6.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  title: NeuVector Remote Export Repository API
+  contact:
+    email: support@neuvector.com
+schemes:
+- https
+tags:
+- name: Remote Export Repository
+paths:
+  /v1/system/config/remote_repository/{alias}:
+    delete:
+      tags:
+      - Remote Export Repository
+      summary: Delete a remote repository.
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: path
+        name: alias
+        description: The alias of the remote repository to update.
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Deleted the remote repository.
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Apikey
+  TokenAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Token
+externalDocs:
+  description: Find out more about NeuVector
+  url: https://www.suse.com/products/neuvector/

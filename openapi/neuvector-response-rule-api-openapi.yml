@@ -1,0 +1,313 @@
+swagger: '2.0'
+info:
+  description: Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.
+  version: 5.6.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  title: NeuVector Response Rule API
+  contact:
+    email: support@neuvector.com
+schemes:
+- https
+tags:
+- name: Response Rule
+  description: Operations about Response Rule
+paths:
+  /v1/response/rule:
+    get:
+      tags:
+      - Response Rule
+      summary: Get a list of response rules
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: scope
+        type: string
+        required: false
+        enum:
+        - fed
+        - local
+        description: When set to fed, returned fed response rules. When set to local, returned local response rules. If there is no query string 'scope', all response rules will be returned.
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTResponseRulesData'
+    patch:
+      tags:
+      - Response Rule
+      summary: Update response rule action
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Response rule action data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTResponseRuleActionData'
+      responses:
+        '200':
+          description: Success
+    delete:
+      tags:
+      - Response Rule
+      summary: Delete all response rules
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      parameters:
+      - in: query
+        name: scope
+        type: string
+        required: false
+        enum:
+        - fed
+        - local
+        description: When set to fed, all fed response rules get removed. When set to local or no query string, local response rules will be removed.
+      responses:
+        '200':
+          description: Success
+  /v1/response/rule/{id}:
+    get:
+      tags:
+      - Response Rule
+      summary: Get a response rule
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Rule ID
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTResponseRuleData'
+    patch:
+      tags:
+      - Response Rule
+      summary: Update a response rule
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Rule ID
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Response rule data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTResponseRuleConfigData'
+      responses:
+        '200':
+          description: Success
+    delete:
+      tags:
+      - Response Rule
+      summary: Delete a response rule
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      parameters:
+      - in: path
+        name: id
+        description: Rule ID
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+  /v1/response/workload_rules/{id}:
+    get:
+      tags:
+      - Response Rule
+      summary: Get response rule workload
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Workload rules ID
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTResponseRulesData'
+definitions:
+  RESTResponseRulesData:
+    type: object
+    required:
+    - rules
+    properties:
+      rules:
+        type: array
+        items:
+          $ref: '#/definitions/RESTResponseRule'
+  RESTResponseRuleData:
+    type: object
+    required:
+    - rule
+    properties:
+      rule:
+        $ref: '#/definitions/RESTResponseRule'
+  RESTCLUSEventCondition:
+    type: object
+    properties:
+      type:
+        type: string
+        example: ''
+      value:
+        type: string
+        example: ''
+  RESTResponseRule:
+    type: object
+    required:
+    - id
+    - event
+    - comment
+    - group
+    - conditions
+    - actions
+    - webhooks
+    - disable
+    - cfg_type
+    properties:
+      id:
+        type: integer
+        format: uint32
+        example: 1001
+      event:
+        type: string
+        example: ''
+      comment:
+        type: string
+        example: ''
+      group:
+        type: string
+        example: ''
+      conditions:
+        type: array
+        items:
+          $ref: '#/definitions/RESTCLUSEventCondition'
+      actions:
+        type: array
+        items:
+          type: string
+          example: ''
+      webhooks:
+        type: array
+        items:
+          type: string
+          example: ''
+      disable:
+        type: boolean
+        example: false
+      cfg_type:
+        type: string
+        enum:
+        - user_created
+        - ground
+        - federal
+  RESTResponseRuleConfigData:
+    type: object
+    required:
+    - config
+    properties:
+      config:
+        $ref: '#/definitions/RESTResponseRuleConfig'
+  RESTResponseRuleConfig:
+    type: object
+    required:
+    - id
+    - cfg_type
+    properties:
+      id:
+        type: integer
+        format: uint32
+        example: 1001
+      comment:
+        type: string
+        example: ''
+      group:
+        type: string
+        example: ''
+      event:
+        type: string
+        example: ''
+      conditions:
+        type: array
+        items:
+          $ref: '#/definitions/RESTCLUSEventCondition'
+      actions:
+        type: array
+        items:
+          type: string
+          example: ''
+      webhooks:
+        type: array
+        items:
+          type: string
+          example: ''
+      disable:
+        type: boolean
+        example: false
+      cfg_type:
+        type: string
+        enum:
+        - user_created
+        - ground
+        - federal
+  RESTResponseRuleInsert:
+    type: object
+    required:
+    - rules
+    properties:
+      after:
+        type: integer
+        example: 0
+      rules:
+        type: array
+        items:
+          $ref: '#/definitions/RESTResponseRule'
+  RESTResponseRuleActionData:
+    type: object
+    properties:
+      insert:
+        $ref: '#/definitions/RESTResponseRuleInsert'
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Apikey
+  TokenAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Token
+externalDocs:
+  description: Find out more about NeuVector
+  url: https://www.suse.com/products/neuvector/

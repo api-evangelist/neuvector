@@ -1,0 +1,492 @@
+swagger: '2.0'
+info:
+  description: Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.
+  version: 5.6.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  title: NeuVector Policy API
+  contact:
+    email: support@neuvector.com
+schemes:
+- https
+tags:
+- name: Policy
+  description: Operations about Policy
+paths:
+  /v1/policy/rule:
+    get:
+      tags:
+      - Policy
+      summary: Get a list of policy rules
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: scope
+        type: string
+        required: false
+        enum:
+        - fed
+        - local
+        description: When set to fed, returned fed policy rules. When set to local, returned local policy rules. If there is no query string 'scope', all policy rules will be returned.
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTPolicyRulesData'
+    patch:
+      tags:
+      - Policy
+      summary: Policy rule action
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Policy rule action data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTPolicyRuleActionData'
+      - in: query
+        name: scope
+        type: string
+        required: false
+        enum:
+        - fed
+        - local
+        description: When set to fed, fed policy rules get created. When set to local or no query string, local policy rules get created.
+      responses:
+        '200':
+          description: Success
+    delete:
+      tags:
+      - Policy
+      summary: Delete all policy rules
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      parameters:
+      - in: query
+        name: scope
+        type: string
+        required: false
+        enum:
+        - fed
+        - local
+        description: When set to fed, fed policy rules get removed. When set to local or no query string, local policy rules get removed.
+      responses:
+        '200':
+          description: Success
+  /v1/policy/rule/{id}:
+    get:
+      tags:
+      - Policy
+      summary: Show policy rule
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Rule ID
+        required: true
+        type: integer
+        format: uint32
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTPolicyRuleData'
+        '400':
+          description: Error
+          schema:
+            $ref: '#/definitions/RESTError'
+        '404':
+          description: Error
+          schema:
+            $ref: '#/definitions/RESTError'
+    patch:
+      tags:
+      - Policy
+      summary: Update policy rule
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Rule ID
+        required: true
+        type: integer
+        format: uint32
+      - in: body
+        name: body
+        description: Policy rule update data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTPolicyRuleConfigData'
+      responses:
+        '200':
+          description: Success
+    delete:
+      tags:
+      - Policy
+      summary: Delete policy rule
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      parameters:
+      - in: path
+        name: id
+        description: Rule ID
+        required: true
+        type: integer
+        format: uint32
+      responses:
+        '200':
+          description: Success
+  /v1/policy/rules/promote:
+    post:
+      tags:
+      - Policy
+      summary: Promote policy
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Policy promote data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTPolicyPromoteRequestData'
+      responses:
+        '200':
+          description: Success
+definitions:
+  RESTPwdProfileBasic:
+    type: object
+    required:
+    - min_len
+    - min_uppercase_count
+    - min_lowercase_count
+    - min_digit_count
+    - min_special_count
+    properties:
+      min_len:
+        type: integer
+        example: 6
+      min_uppercase_count:
+        type: integer
+        example: 0
+      min_lowercase_count:
+        type: integer
+        example: 0
+      min_digit_count:
+        type: integer
+        example: 0
+      min_special_count:
+        type: integer
+        example: 0
+  RESTPolicyRuleConfig:
+    type: object
+    required:
+    - id
+    - cfg_type
+    properties:
+      id:
+        type: integer
+        format: uint32
+        example: 10001
+      comment:
+        type: string
+        example: a deny rule
+      from:
+        type: string
+        example: nv.iperfclient
+      to:
+        type: string
+        example: external
+      ports:
+        type: string
+        example: any
+      action:
+        type: string
+        example: deny
+      applications:
+        type: array
+        items:
+          type: string
+        example:
+        - HTTP
+        - SSH
+      disable:
+        type: boolean
+        example: true
+      cfg_type:
+        type: string
+        enum:
+        - learned
+        - user_created
+        - ground
+        - federal
+      priority:
+        type: integer
+        format: uint32
+        example: 0
+  RESTPolicyRuleInsert:
+    type: object
+    required:
+    - rules
+    properties:
+      after:
+        type: integer
+        example: 0
+      rules:
+        type: array
+        items:
+          $ref: '#/definitions/RESTPolicyRule'
+  RESTPolicyRuleData:
+    type: object
+    required:
+    - rule
+    properties:
+      rule:
+        $ref: '#/definitions/RESTPolicyRule'
+  RESTPolicyRulesData:
+    type: object
+    required:
+    - rules
+    properties:
+      rules:
+        type: array
+        items:
+          $ref: '#/definitions/RESTPolicyRule'
+  RESTError:
+    type: object
+    required:
+    - code
+    - error
+    - message
+    properties:
+      code:
+        type: integer
+        example: 3
+      error:
+        type: string
+        example: Request failed
+      message:
+        type: string
+        example: Invalid format
+      password_profile_basic:
+        $ref: '#/definitions/RESTPwdProfileBasic'
+      import_task_data:
+        $ref: '#/definitions/RESTImportTaskData'
+  RESTPolicyRuleActionData:
+    type: object
+    properties:
+      move:
+        $ref: '#/definitions/RESTPolicyRuleMove'
+      insert:
+        $ref: '#/definitions/RESTPolicyRuleInsert'
+      rules:
+        type: array
+        items:
+          $ref: '#/definitions/RESTPolicyRule'
+      delete:
+        type: array
+        items:
+          type: integer
+          format: uint32
+        example:
+        - 1234
+  RESTPolicyRule:
+    type: object
+    required:
+    - id
+    - comment
+    - from
+    - to
+    - ports
+    - action
+    - applications
+    - learned
+    - disable
+    - created_timestamp
+    - last_modified_timestamp
+    - cfg_type
+    - priority
+    - match_counter
+    - last_match_timestamp
+    properties:
+      id:
+        type: integer
+        format: uint32
+        example: 10002
+      comment:
+        type: string
+        example: a rule
+      from:
+        type: string
+        description: group name
+        example: nv.iperfc
+      to:
+        type: string
+        description: group name
+        example: Host:10.2.127.3
+      ports:
+        type: string
+        description: free-style port list
+        example: any
+      action:
+        type: string
+        example: allow
+      applications:
+        type: array
+        items:
+          type: string
+          example: DNS
+      learned:
+        type: boolean
+        example: true
+      disable:
+        type: boolean
+        example: false
+      created_timestamp:
+        type: integer
+        format: int64
+        example: 1516563263
+      last_modified_timestamp:
+        type: integer
+        format: int64
+        example: 1516573243
+      cfg_type:
+        type: string
+        enum:
+        - learned
+        - user_created
+        - ground
+        - federal
+      priority:
+        type: integer
+        format: uint32
+        example: 0
+      match_counter:
+        type: integer
+        format: uint64
+        example: 699
+      last_match_timestamp:
+        type: integer
+        format: int64
+        example: 1736811451
+  RESTPolicyRuleMove:
+    type: object
+    required:
+    - id
+    properties:
+      after:
+        type: integer
+        example: 0
+      id:
+        type: integer
+        format: uint32
+        example: 10005
+  RESTPolicyPromoteRequestData:
+    type: object
+    required:
+    - request
+    properties:
+      request:
+        $ref: '#/definitions/RESTPolicyPromoteRequest'
+  RESTImportTaskData:
+    type: object
+    required:
+    - data
+    properties:
+      data:
+        $ref: '#/definitions/RESTImportTask'
+  RESTPolicyPromoteRequest:
+    type: object
+    required:
+    - ids
+    properties:
+      ids:
+        type: array
+        items:
+          type: integer
+          format: uint32
+          example: 12
+  RESTImportTask:
+    type: object
+    required:
+    - tid
+    - ctrler_id
+    - percentage
+    properties:
+      tid:
+        type: string
+        example: c5af897b62a258212ece91c0551d3a4a
+      ctrler_id:
+        type: string
+        example: 6e60452b244b90456f3450c9fed0a50f57f4b849dcb74a5fad289e8116f32f36
+      last_update_time:
+        type: string
+        format: date-time
+        example: '2022-03-17T17:31:55.832768041Z'
+      percentage:
+        type: integer
+        example: 100
+      triggered_by:
+        type: string
+        example: admin
+      status:
+        type: string
+        example: done
+      temp_token:
+        type: string
+        example: ''
+      fail_to_decrypt_key_fields:
+        type: object
+        description: Object key is kv key and value is array of cloaked fields that cannot be decrypted
+        additionalProperties:
+          type: array
+          items:
+            type: string
+          example:
+          - x509_cert
+          - signing_cert
+  RESTPolicyRuleConfigData:
+    type: object
+    required:
+    - config
+    properties:
+      config:
+        $ref: '#/definitions/RESTPolicyRuleConfig'
+      replicate:
+        type: boolean
+        example: true
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Apikey
+  TokenAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Token
+externalDocs:
+  description: Find out more about NeuVector
+  url: https://www.suse.com/products/neuvector/

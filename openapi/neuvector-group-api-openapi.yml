@@ -1,0 +1,742 @@
+swagger: '2.0'
+info:
+  description: Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.
+  version: 5.6.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  title: NeuVector Group API
+  contact:
+    email: support@neuvector.com
+schemes:
+- https
+tags:
+- name: Group
+  description: Operations about Group
+paths:
+  /v1/group:
+    get:
+      tags:
+      - Group
+      summary: Get a list of groups
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: scope
+        type: string
+        required: false
+        enum:
+        - fed
+        - local
+        description: When set to fed, returned fed groups. When set to local, returned local groups. If there is no query string 'scope', all groups will be returned.
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTGroupsData'
+    post:
+      tags:
+      - Group
+      summary: Create group
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Group data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTGroupConfigData'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Error
+          schema:
+            $ref: '#/definitions/RESTError'
+  /v1/group/{name}:
+    get:
+      tags:
+      - Group
+      summary: Show group
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: name
+        description: Group name
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTGroupData'
+    patch:
+      tags:
+      - Group
+      summary: Update group
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: path
+        name: name
+        description: Group name
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Group update data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTGroupConfigData'
+      responses:
+        '200':
+          description: Success
+    delete:
+      tags:
+      - Group
+      summary: Delete group
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      parameters:
+      - in: path
+        name: name
+        description: Group name
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+definitions:
+  RESTPwdProfileBasic:
+    type: object
+    required:
+    - min_len
+    - min_uppercase_count
+    - min_lowercase_count
+    - min_digit_count
+    - min_special_count
+    properties:
+      min_len:
+        type: integer
+        example: 6
+      min_uppercase_count:
+        type: integer
+        example: 0
+      min_lowercase_count:
+        type: integer
+        example: 0
+      min_digit_count:
+        type: integer
+        example: 0
+      min_special_count:
+        type: integer
+        example: 0
+  RESTGroup:
+    type: object
+    required:
+    - name
+    - learned
+    - reserved
+    - domain
+    - creater_domains
+    - kind
+    - platform_role
+    - cap_change_mode
+    - criteria
+    - members
+    - policy_rules
+    - response_rules
+    properties:
+      name:
+        type: string
+        example: kafkadocker_kafka
+      learned:
+        type: boolean
+        example: true
+      reserved:
+        type: boolean
+        example: false
+      policy_mode:
+        type: string
+        example: Discover
+      domain:
+        type: string
+        example: ''
+      creater_domains:
+        type: array
+        items:
+          type: string
+        example:
+        - domain1
+        - domain2
+      kind:
+        type: string
+        example: ''
+      platform_role:
+        type: string
+        example: core
+      cap_change_mode:
+        type: boolean
+        example: true
+      criteria:
+        type: array
+        items:
+          $ref: '#/definitions/RESTCriteriaEntry'
+      members:
+        type: array
+        items:
+          $ref: '#/definitions/RESTWorkloadBrief'
+      policy_rules:
+        type: array
+        items:
+          type: integer
+          format: uint32
+          example: 10005
+      response_rules:
+        type: array
+        items:
+          type: integer
+          format: uint32
+          example: 1247
+  RESTGroupData:
+    type: object
+    required:
+    - group
+    properties:
+      group:
+        $ref: '#/definitions/RESTGroupDetail'
+  RESTError:
+    type: object
+    required:
+    - code
+    - error
+    - message
+    properties:
+      code:
+        type: integer
+        example: 3
+      error:
+        type: string
+        example: Request failed
+      message:
+        type: string
+        example: Invalid format
+      password_profile_basic:
+        $ref: '#/definitions/RESTPwdProfileBasic'
+      import_task_data:
+        $ref: '#/definitions/RESTImportTaskData'
+  RESTGroupDetail:
+    type: object
+    required:
+    - name
+    - learned
+    - reserved
+    - domain
+    - creater_domains
+    - kind
+    - platform_role
+    - cap_change_mode
+    - cfg_type
+    - monitor_metric
+    - group_sess_cur
+    - group_sess_rate
+    - group_band_width
+    - criteria
+    - members
+    - policy_rules
+    - response_rules
+    properties:
+      name:
+        type: string
+        example: containers
+      learned:
+        type: boolean
+        example: true
+      reserved:
+        type: boolean
+        example: false
+      policy_mode:
+        type: string
+        example: ''
+      domain:
+        type: string
+        example: external
+      creater_domains:
+        type: array
+        items:
+          type: string
+        example:
+        - domain1
+        - domain2
+      kind:
+        type: string
+        example: ''
+      platform_role:
+        type: string
+        example: admin
+      cap_change_mode:
+        type: boolean
+        example: false
+      cfg_type:
+        type: string
+        enum:
+        - learned
+        - user_created
+        - ground
+        - federal
+      monitor_metric:
+        type: boolean
+        example: false
+      group_sess_cur:
+        type: integer
+        format: uint32
+        example: 1
+      group_sess_rate:
+        type: integer
+        format: uint32
+        example: 1
+      group_band_width:
+        type: integer
+        format: uint32
+        example: 1
+      criteria:
+        type: array
+        items:
+          $ref: '#/definitions/RESTCriteriaEntry'
+      members:
+        type: array
+        items:
+          $ref: '#/definitions/RESTWorkloadBrief'
+      policy_rules:
+        type: array
+        items:
+          $ref: '#/definitions/RESTPolicyRule'
+      response_rules:
+        type: array
+        items:
+          $ref: '#/definitions/RESTResponseRule'
+  RESTPolicyRule:
+    type: object
+    required:
+    - id
+    - comment
+    - from
+    - to
+    - ports
+    - action
+    - applications
+    - learned
+    - disable
+    - created_timestamp
+    - last_modified_timestamp
+    - cfg_type
+    - priority
+    - match_counter
+    - last_match_timestamp
+    properties:
+      id:
+        type: integer
+        format: uint32
+        example: 10002
+      comment:
+        type: string
+        example: a rule
+      from:
+        type: string
+        description: group name
+        example: nv.iperfc
+      to:
+        type: string
+        description: group name
+        example: Host:10.2.127.3
+      ports:
+        type: string
+        description: free-style port list
+        example: any
+      action:
+        type: string
+        example: allow
+      applications:
+        type: array
+        items:
+          type: string
+          example: DNS
+      learned:
+        type: boolean
+        example: true
+      disable:
+        type: boolean
+        example: false
+      created_timestamp:
+        type: integer
+        format: int64
+        example: 1516563263
+      last_modified_timestamp:
+        type: integer
+        format: int64
+        example: 1516573243
+      cfg_type:
+        type: string
+        enum:
+        - learned
+        - user_created
+        - ground
+        - federal
+      priority:
+        type: integer
+        format: uint32
+        example: 0
+      match_counter:
+        type: integer
+        format: uint64
+        example: 699
+      last_match_timestamp:
+        type: integer
+        format: int64
+        example: 1736811451
+  RESTScanBrief:
+    type: object
+    required:
+    - status
+    - high
+    - medium
+    - result
+    - scanned_timestamp
+    - scanned_at
+    - base_os
+    - scanner_version
+    - cvedb_create_time
+    properties:
+      status:
+        type: string
+        example: scheduled
+      high:
+        type: integer
+        example: 0
+      medium:
+        type: integer
+        example: 0
+      result:
+        type: string
+        example: success
+      scanned_timestamp:
+        type: integer
+        format: int64
+        example: 1516561253
+      scanned_at:
+        type: string
+        format: date-time
+        example: 2018-01-21 19:00:53+00:00
+      base_os:
+        type: string
+        example: ubuntu:16.04
+      scanner_version:
+        type: string
+        example: '1.011'
+      cvedb_create_time:
+        type: string
+        format: date-time
+        example: 2018-06-20 19:00:53+00:00
+  RESTCriteriaEntry:
+    type: object
+    required:
+    - key
+    - value
+    - op
+    properties:
+      key:
+        type: string
+        example: pattern
+      value:
+        type: string
+        example: '[0-9]'
+      op:
+        type: string
+        example: regex
+  RESTWorkloadBrief:
+    type: object
+    required:
+    - id
+    - name
+    - display_name
+    - pod_name
+    - image
+    - image_id
+    - image_created_at
+    - platform_role
+    - domain
+    - state
+    - service
+    - author
+    - service_group
+    - cap_sniff
+    - cap_quarantine
+    - cap_change_mode
+    - policy_mode
+    - profile_mode
+    - scan_summary
+    - children
+    - service_mesh
+    - service_mesh_sidecar
+    - privileged
+    - run_as_root
+    - baseline_profile
+    properties:
+      id:
+        type: string
+        example: 7304e72fd093155c4cbcd65d07375329b2db82cc679
+      name:
+        type: string
+        example: k8s_POD.d86c_calico-node-mzhtk_kube-system_0050565a_365c13d
+      display_name:
+        type: string
+        example: calico-node-mzhtk
+      pod_name:
+        type: string
+        example: istio-policy-5cdbc47674-t67p4
+      image:
+        type: string
+        example: calico
+      image_id:
+        type: string
+        example: d572b7ee3511b21a2b78b8915bc03c5786ad01949704c1418624224c4cae2c5f
+      image_digest:
+        type: array
+        items:
+          type: string
+          example: c2ced31c5dda37cb805f481e3fa34b742cc8980f439b20af3111b08e66cff8e1
+      image_created_at:
+        type: string
+        format: date-time
+        example: 2018-01-18 00:44:02+00:00
+      image_reg_scanned:
+        type: boolean
+        example: false
+      platform_role:
+        type: string
+        example: core
+      domain:
+        type: string
+        example: ''
+      state:
+        type: string
+        example: exit
+      service:
+        type: string
+        example: kafkazookeeper
+      author:
+        type: string
+        example: ''
+      service_group:
+        type: string
+        example: nv.calico
+      share_ns_with:
+        type: string
+        example: cc0709d522749203042e89dba28bf6924a4b0d360648
+      cap_sniff:
+        type: boolean
+        example: true
+      cap_quarantine:
+        type: boolean
+        example: true
+      cap_change_mode:
+        type: boolean
+        example: true
+      policy_mode:
+        type: string
+        example: Discover
+      profile_mode:
+        type: string
+        example: Discover
+      scan_summary:
+        $ref: '#/definitions/RESTScanBrief'
+      children:
+        type: array
+        items:
+          $ref: '#/definitions/RESTWorkloadBrief'
+      quarantine_reason:
+        type: string
+        example: violation
+      service_mesh:
+        type: boolean
+        example: true
+      service_mesh_sidecar:
+        type: boolean
+        example: true
+      privileged:
+        type: boolean
+        example: true
+      run_as_root:
+        type: boolean
+        example: true
+      baseline_profile:
+        type: string
+        example: ''
+  RESTResponseRule:
+    type: object
+    required:
+    - id
+    - event
+    - comment
+    - group
+    - conditions
+    - actions
+    - webhooks
+    - disable
+    - cfg_type
+    properties:
+      id:
+        type: integer
+        format: uint32
+        example: 1001
+      event:
+        type: string
+        example: ''
+      comment:
+        type: string
+        example: ''
+      group:
+        type: string
+        example: ''
+      conditions:
+        type: array
+        items:
+          $ref: '#/definitions/RESTCLUSEventCondition'
+      actions:
+        type: array
+        items:
+          type: string
+          example: ''
+      webhooks:
+        type: array
+        items:
+          type: string
+          example: ''
+      disable:
+        type: boolean
+        example: false
+      cfg_type:
+        type: string
+        enum:
+        - user_created
+        - ground
+        - federal
+  RESTImportTaskData:
+    type: object
+    required:
+    - data
+    properties:
+      data:
+        $ref: '#/definitions/RESTImportTask'
+  RESTCLUSEventCondition:
+    type: object
+    properties:
+      type:
+        type: string
+        example: ''
+      value:
+        type: string
+        example: ''
+  RESTImportTask:
+    type: object
+    required:
+    - tid
+    - ctrler_id
+    - percentage
+    properties:
+      tid:
+        type: string
+        example: c5af897b62a258212ece91c0551d3a4a
+      ctrler_id:
+        type: string
+        example: 6e60452b244b90456f3450c9fed0a50f57f4b849dcb74a5fad289e8116f32f36
+      last_update_time:
+        type: string
+        format: date-time
+        example: '2022-03-17T17:31:55.832768041Z'
+      percentage:
+        type: integer
+        example: 100
+      triggered_by:
+        type: string
+        example: admin
+      status:
+        type: string
+        example: done
+      temp_token:
+        type: string
+        example: ''
+      fail_to_decrypt_key_fields:
+        type: object
+        description: Object key is kv key and value is array of cloaked fields that cannot be decrypted
+        additionalProperties:
+          type: array
+          items:
+            type: string
+          example:
+          - x509_cert
+          - signing_cert
+  RESTGroupConfig:
+    type: object
+    required:
+    - name
+    - cfg_type
+    properties:
+      name:
+        type: string
+        example: containerEQU
+      criteria:
+        type: array
+        items:
+          $ref: '#/definitions/RESTCriteriaEntry'
+      cfg_type:
+        type: string
+        enum:
+        - learned
+        - user_created
+        - ground
+        - federal
+  RESTGroupsData:
+    type: object
+    required:
+    - groups
+    properties:
+      groups:
+        type: array
+        items:
+          $ref: '#/definitions/RESTGroup'
+  RESTGroupConfigData:
+    type: object
+    required:
+    - config
+    properties:
+      config:
+        $ref: '#/definitions/RESTGroupConfig'
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Apikey
+  TokenAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Token
+externalDocs:
+  description: Find out more about NeuVector
+  url: https://www.suse.com/products/neuvector/

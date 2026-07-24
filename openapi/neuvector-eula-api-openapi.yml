@@ -1,0 +1,80 @@
+swagger: '2.0'
+info:
+  description: Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.
+  version: 5.6.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  title: NeuVector EULA API
+  contact:
+    email: support@neuvector.com
+schemes:
+- https
+tags:
+- name: EULA
+  description: End-User License Agreement
+paths:
+  /v1/eula:
+    get:
+      tags:
+      - EULA
+      summary: Get EULA agreement acceptance status
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTEULAData'
+    post:
+      tags:
+      - EULA
+      summary: Accept EULA agreement
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: EULA data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTEULAData'
+      responses:
+        '200':
+          description: Success
+definitions:
+  RESTEULAData:
+    type: object
+    required:
+    - eula
+    properties:
+      eula:
+        $ref: '#/definitions/RESTEULA'
+      bootstrap_password_command:
+        type: string
+        description: kubectl command for retrieving bootstrap password of default admin user
+      k8s_rbac_alert_message:
+        type: string
+        description: alert message when k8s role/rolebinding neuvector-binding-secret is not correctly configured
+  RESTEULA:
+    type: object
+    required:
+    - accepted
+    properties:
+      accepted:
+        type: boolean
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Apikey
+  TokenAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Token
+externalDocs:
+  description: Find out more about NeuVector
+  url: https://www.suse.com/products/neuvector/

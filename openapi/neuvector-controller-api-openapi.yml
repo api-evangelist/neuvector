@@ -1,0 +1,335 @@
+swagger: '2.0'
+info:
+  description: Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.
+  version: 5.6.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  title: NeuVector Controller API
+  contact:
+    email: support@neuvector.com
+schemes:
+- https
+tags:
+- name: Controller
+  description: Operations about Controller
+paths:
+  /v1/controller:
+    get:
+      tags:
+      - Controller
+      summary: Get a list of controllers
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTController'
+  /v1/controller/{id}:
+    get:
+      tags:
+      - Controller
+      summary: Show controller
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Controller ID
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTControllerData'
+    patch:
+      tags:
+      - Controller
+      summary: Update controller
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Controller ID
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Controller update data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTControllerConfigData'
+      responses:
+        '200':
+          description: Success
+  /v1/controller/{id}/stats:
+    get:
+      tags:
+      - Controller
+      summary: Controller get system statistics
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Controller ID
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTWorkloadStatsData'
+  /v1/controller/{id}/config:
+    get:
+      tags:
+      - Controller
+      summary: Controller get configure
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Controller ID
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTControllerConfigData'
+definitions:
+  RESTWorkloadStatsData:
+    type: object
+    required:
+    - id
+    - read_at
+    - stats
+    properties:
+      id:
+        type: string
+        example: 0fdf601ddc3ab541386aa8e36fe113593c
+      read_at:
+        type: string
+        format: date-time
+        example: 2018-01-21 06:25:15+00:00
+      stats:
+        $ref: '#/definitions/RESTStats'
+  RESTControllerData:
+    type: object
+    required:
+    - controller
+    properties:
+      controller:
+        $ref: '#/definitions/RESTController'
+  RESTControllerConfigData:
+    type: object
+    required:
+    - config
+    properties:
+      config:
+        $ref: '#/definitions/RESTControllerConfig'
+  RESTController:
+    type: object
+    required:
+    - id
+    - name
+    - display_name
+    - host_name
+    - host_id
+    - version
+    - labels
+    - domain
+    - created_at
+    - started_at
+    - joined_at
+    - memory_limit
+    - cpus
+    - cluster_ip
+    - leader
+    - connection_state
+    - disconnected_at
+    - orch_conn_status
+    - orch_conn_last_error
+    properties:
+      id:
+        type: string
+        example: b63882364cd1a56b2234ce0c9266ca403090e5e8148
+      name:
+        type: string
+        example: allinone
+      display_name:
+        type: string
+        example: allinone
+      host_name:
+        type: string
+        example: ubuntu64
+      host_id:
+        type: string
+        example: 2AU7:TIEN:O5KX:QK56:LFQP:IJSV:FXBN:QJV7
+      version:
+        type: string
+        example: 0.1.0
+      labels:
+        type: object
+        description: map key is string type
+        additionalProperties:
+          type: string
+        example:
+          com.docker.compose.config-hash: e94ce458b3bc97cd478e9738a759d76fb819
+      domain:
+        type: string
+        example: ''
+      created_at:
+        type: string
+        format: date-time
+        example: 2018-01-24 17:16:59+00:00
+      started_at:
+        type: string
+        format: date-time
+        example: 2018-01-24 17:16:59+00:00
+      joined_at:
+        type: string
+        format: date-time
+        example: 2018-01-24 17:17:10+00:00
+      memory_limit:
+        type: integer
+        format: int64
+        example: 0
+      cpus:
+        type: string
+        example: ''
+      cluster_ip:
+        type: string
+        example: 10.1.5.1
+      leader:
+        type: boolean
+        example: true
+      connection_state:
+        type: string
+        example: connected
+      disconnected_at:
+        type: string
+        example: ''
+      orch_conn_status:
+        type: string
+        example: ''
+      orch_conn_last_error:
+        type: string
+        example: ''
+  RESTMetry:
+    type: object
+    required:
+    - cpu
+    - memory
+    - session_in
+    - session_out
+    - packet_in
+    - packet_out
+    - byte_in
+    - byte_out
+    properties:
+      cpu:
+        type: number
+        format: float64
+        example: 1
+      memory:
+        type: integer
+        format: uint64
+        example: 2089816064
+      session_in:
+        type: integer
+        format: uint32
+        example: 0
+      session_out:
+        type: integer
+        format: uint32
+        example: 0
+      cur_session_in:
+        type: integer
+        format: uint32
+        example: 1
+      cur_session_out:
+        type: integer
+        format: uint32
+        example: 1
+      packet_in:
+        type: integer
+        format: uint64
+        example: 0
+      packet_out:
+        type: integer
+        format: uint64
+        example: 0
+      byte_in:
+        type: integer
+        format: uint64
+        example: 0
+      byte_out:
+        type: integer
+        format: uint64
+        example: 0
+  RESTControllerConfig:
+    type: object
+    properties:
+      debug:
+        type: array
+        items:
+          type: string
+        example:
+        - log
+        - parser
+        - tcp
+        - session
+        - error
+  RESTStats:
+    type: object
+    required:
+    - interval
+    - total
+    - span_1
+    - span_12
+    - span_60
+    properties:
+      interval:
+        type: integer
+        format: uint32
+        example: 5
+      total:
+        $ref: '#/definitions/RESTMetry'
+      span_1:
+        $ref: '#/definitions/RESTMetry'
+      span_12:
+        $ref: '#/definitions/RESTMetry'
+      span_60:
+        $ref: '#/definitions/RESTMetry'
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Apikey
+  TokenAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Token
+externalDocs:
+  description: Find out more about NeuVector
+  url: https://www.suse.com/products/neuvector/

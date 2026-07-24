@@ -1,0 +1,887 @@
+swagger: '2.0'
+info:
+  description: Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.
+  version: 5.6.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  title: NeuVector Server API
+  contact:
+    email: support@neuvector.com
+schemes:
+- https
+tags:
+- name: Server
+  description: Operations about Server
+paths:
+  /v1/server:
+    get:
+      tags:
+      - Server
+      summary: Get a list of servers
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTServersData'
+    post:
+      tags:
+      - Server
+      summary: Create server
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Server data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTServerConfigData'
+      responses:
+        '200':
+          description: Success
+  /v1/server/{name}:
+    get:
+      tags:
+      - Server
+      summary: Show server
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: name
+        description: Name of the server
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTServerData'
+    patch:
+      tags:
+      - Server
+      summary: Update server
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: path
+        name: name
+        description: Name of the server
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Server data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTServerConfigData'
+      responses:
+        '200':
+          description: Success
+    delete:
+      tags:
+      - Server
+      summary: Delete the server
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      parameters:
+      - in: path
+        name: name
+        description: Name of the server
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+  /v1/server/{name}/role/{role}:
+    patch:
+      tags:
+      - Server
+      summary: Update server role groups
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: path
+        name: name
+        description: Server name
+        required: true
+        type: string
+      - in: path
+        name: role
+        description: Role name
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Server role groups update data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTServerRoleGroupsConfigData'
+      responses:
+        '200':
+          description: Success
+  /v1/server/{name}/user:
+    get:
+      tags:
+      - Server
+      summary: Show server user list
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: name
+        description: Name of the server
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTUsersData'
+definitions:
+  RESTServerData:
+    type: object
+    required:
+    - server
+    properties:
+      server:
+        $ref: '#/definitions/RESTServer'
+  RESTServerOIDCConfig:
+    type: object
+    required:
+    - issuer
+    - client_id
+    - group_claim
+    - enable
+    - default_role
+    properties:
+      issuer:
+        type: string
+        example: https://dev-256438.oktapreview.com
+      client_id:
+        type: string
+        example: 0oai4gcl8xXh2itGi1h7
+      client_secret:
+        type: string
+        example: QJju4mL1VLU0CAcD05WJ83K0D_e0gQEydowOvVqv
+      group_claim:
+        type: string
+        example: ''
+      scopes:
+        type: array
+        items:
+          type: string
+          example: ''
+      enable:
+        type: boolean
+        example: true
+      default_role:
+        type: string
+        example: admin
+      use_proxy:
+        type: boolean
+        example: false
+      role_groups:
+        type: object
+        properties:
+          role:
+            type: string
+            example: admin
+          groups:
+            type: array
+            items:
+              type: string
+            example:
+            - admin1
+            - admin2
+      group_mapped_roles:
+        type: array
+        items:
+          $ref: '#/definitions/GroupRoleMapping'
+  RESTServer:
+    type: object
+    required:
+    - server_name
+    - server_type
+    properties:
+      server_name:
+        type: string
+        example: iperfserver
+      server_type:
+        type: string
+        example: ldap
+      ldap:
+        $ref: '#/definitions/RESTServerLDAP'
+      saml:
+        $ref: '#/definitions/RESTServerSAML'
+      oidc:
+        $ref: '#/definitions/RESTServerOIDC'
+  RESTServerConfig:
+    type: object
+    required:
+    - name
+    properties:
+      name:
+        type: string
+        example: ad
+      ldap:
+        $ref: '#/definitions/RESTServerLDAPConfig'
+      saml:
+        $ref: '#/definitions/RESTServerSAMLConfig'
+      oidc:
+        $ref: '#/definitions/RESTServerOIDCConfig'
+  RESTPermitsAssigned:
+    type: object
+    properties:
+      permissions:
+        type: array
+        description: array of permissions
+        items:
+          $ref: '#/definitions/RESTRolePermission'
+      domains:
+        type: array
+        description: array of domains that have the same permissions
+        items:
+          type: string
+        example:
+        - domain1
+        - domain2
+  RESTMappableRoles:
+    type: object
+    required:
+    - default_roles
+    - group_roles
+    - group_domain_roles
+    properties:
+      default_roles:
+        type: array
+        items:
+          type: string
+        example:
+        - default_role_1
+        - default_role_2
+      group_roles:
+        type: array
+        items:
+          type: string
+        example:
+        - group_role_1
+        - group_role_2
+      group_domain_roles:
+        type: array
+        items:
+          type: string
+        example:
+        - group_domain_role_1
+        - group_domain_role_2
+  RESTServerOIDC:
+    type: object
+    required:
+    - issuer
+    - authorization_endpoint
+    - token_endpoint
+    - user_info_endpoint
+    - client_id
+    - group_claim
+    - scopes
+    - enable
+    - default_role
+    properties:
+      issuer:
+        type: string
+        example: https://dev-256438.oktapreview.com
+      authorization_endpoint:
+        type: string
+        example: https://dev-256438.oktapreview.com/oauth2/v1/authorize
+      token_endpoint:
+        type: string
+        example: https://dev-256438.oktapreview.com/oauth2/v1/token
+      user_info_endpoint:
+        type: string
+        example: https://dev-256438.oktapreview.com/oauth2/v1/userinfo
+      client_id:
+        type: string
+        example: 0oai4gal8xXh0itGi0h7
+      ClientSecret:
+        type: string
+        example: ''
+      group_claim:
+        type: string
+        example: ''
+      scopes:
+        type: array
+        items:
+          type: string
+          example: ''
+      enable:
+        type: boolean
+        example: true
+      default_role:
+        type: string
+        example: admin
+      use_proxy:
+        type: boolean
+        example: false
+      role_groups:
+        type: object
+        properties:
+          role:
+            type: string
+            example: admin
+          groups:
+            type: array
+            items:
+              type: string
+            example:
+            - admin1
+            - admin2
+      group_mapped_roles:
+        type: array
+        items:
+          $ref: '#/definitions/GroupRoleMapping'
+  RESTServerSAMLConfig:
+    type: object
+    required:
+    - sso_url
+    - issuer
+    - group_claim
+    properties:
+      sso_url:
+        type: string
+        example: https://dev-258.oktapreview.com/app/88_examplesamlapp_1/exYKIvqo0h7/sso/saml
+      issuer:
+        type: string
+        example: http://www.okta.com/xkbjKIvo0h
+      x509_cert:
+        type: string
+        example: E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF
+      group_claim:
+        type: string
+        example: ''
+      enable:
+        type: boolean
+        example: true
+      default_role:
+        type: string
+        example: admin
+      role_groups:
+        type: object
+        properties:
+          role:
+            type: string
+            example: admin
+          groups:
+            type: array
+            items:
+              type: string
+            example:
+            - admin1
+            - admin2
+      group_mapped_roles:
+        type: array
+        items:
+          $ref: '#/definitions/GroupRoleMapping'
+      x509_cert_extra:
+        type: array
+        items:
+          type: string
+        example:
+        - E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF
+        - E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF
+      slo_enabled:
+        type: boolean
+        example: true
+      slo_url:
+        type: string
+        example: https://dev.oktapreview.com/app/examplesamlapp_1/exjlpo0/slo/saml
+      signing_cert:
+        type: string
+        example: E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF
+      signing_key:
+        type: string
+        example: E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF
+  RESTServerSAML:
+    type: object
+    required:
+    - sso_url
+    - issuer
+    - group_claim
+    - enable
+    - default_role
+    properties:
+      sso_url:
+        type: string
+        example: https://dev-2588.oktapreview.com/app/examplesamlapp_1/exjlpo0/sso/saml
+      issuer:
+        type: string
+        example: http://www.okta.com/exkgp9avqo07
+      x509_cert:
+        type: string
+        example: E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF
+      group_claim:
+        type: string
+        example: ''
+      enable:
+        type: boolean
+        example: true
+      default_role:
+        type: string
+        example: admin
+      role_groups:
+        type: object
+        properties:
+          role:
+            type: string
+            example: admin
+          groups:
+            type: array
+            items:
+              type: string
+            example:
+            - admin1
+            - admin2
+      group_mapped_roles:
+        type: array
+        items:
+          $ref: '#/definitions/GroupRoleMapping'
+      x509_certs:
+        type: array
+        items:
+          $ref: '#/definitions/RESTX509CertInfo'
+      slo_enabled:
+        type: boolean
+        example: true
+      slo_url:
+        type: string
+        example: https://dev.oktapreview.com/app/examplesamlapp_1/exjlpo0/slo/saml
+      signing_cert:
+        type: string
+        example: E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF
+  RESTServerLDAP:
+    type: object
+    required:
+    - directory
+    - hostname
+    - port
+    - ssl
+    - base_dn
+    - group_dn
+    - bind_dn
+    - group_member_attr
+    - username_attr
+    - enable
+    - default_role
+    properties:
+      directory:
+        type: string
+        example: ''
+      hostname:
+        type: string
+        example: 172.17.0.3
+      port:
+        type: integer
+        format: uint16
+        example: 389
+      ssl:
+        type: boolean
+        example: false
+      base_dn:
+        type: string
+        example: dc=example,dc=org
+      group_dn:
+        type: string
+        example: dc=example,dc=org
+      bind_dn:
+        type: string
+        example: cn=admin,dc=example,dc=org
+      bind_password:
+        type: string
+        example: mypassword
+      group_member_attr:
+        type: string
+        example: ''
+      username_attr:
+        type: string
+        example: ''
+      enable:
+        type: boolean
+        example: false
+      default_role:
+        type: string
+        example: reader
+      role_groups:
+        type: object
+        properties:
+          role:
+            type: string
+            example: admin
+          groups:
+            type: array
+            items:
+              type: string
+            example:
+            - admin1
+            - admin2
+      group_mapped_roles:
+        type: array
+        items:
+          $ref: '#/definitions/GroupRoleMapping'
+  RESTServerRoleGroupsConfig:
+    type: object
+    required:
+    - name
+    - role
+    - groups
+    properties:
+      name:
+        type: string
+        example: reader
+      role:
+        type: string
+        example: reader
+      groups:
+        type: array
+        items:
+          type: string
+        example:
+        - reader1
+        - reader2
+  RESTServerConfigData:
+    type: object
+    required:
+    - config
+    properties:
+      config:
+        $ref: '#/definitions/RESTServerConfig'
+  RESTUser:
+    type: object
+    required:
+    - fullname
+    - server
+    - username
+    - email
+    - role
+    - timeout
+    - locale
+    - default_password
+    - modify_password
+    - last_login_timestamp
+    - last_login_at
+    - login_count
+    - blocked_for_failed_login
+    - blocked_for_password_expired
+    - password_resettable
+    properties:
+      fullname:
+        type: string
+        example: admin
+      server:
+        type: string
+        example: server1
+      username:
+        type: string
+        example: admin
+      password:
+        type: string
+        format: password
+        example: mypassword
+      email:
+        type: string
+        format: email
+        example: user@mail.com
+      role:
+        type: string
+        description: role on global domain
+        example: admin
+      extra_permissions:
+        description: extra permissions(other than 'role') extra permissions(other than 'Role') on global domain. only for Rancher SSO
+        type: array
+        items:
+          $ref: '#/definitions/RESTRolePermission'
+      timeout:
+        type: integer
+        format: uint32
+        example: 300
+      locale:
+        type: string
+        example: en
+      default_password:
+        type: boolean
+        description: If the user is using default password
+      modify_password:
+        type: boolean
+        default: false
+        description: If the password should be modified
+      role_domains:
+        type: object
+        description: map of roles on namespaces
+        properties:
+          key:
+            description: role
+            type: string
+          value:
+            type: object
+            description: array of domains
+            additionalProperties:
+              type: array
+              items:
+                type: string
+              example:
+              - domain1
+              - domain2
+      extra_permissions_domains:
+        type: array
+        description: list of extra permissions(other than 'role_domains') for namespaces on managed clusters in fed. only for Rancher SSO
+        items:
+          $ref: '#/definitions/RESTPermitsAssigned'
+      remote_role_permissions:
+        type: object
+        description: role/permissions on managed clusters in fed. only for Rancher SSO
+        properties:
+          user:
+            $ref: '#/definitions/RESTRemoteRolePermits'
+      last_login_timestamp:
+        type: integer
+        format: int64
+        example: 1505755716
+      last_login_at:
+        type: string
+        example: ''
+      login_count:
+        type: integer
+        format: uint32
+        example: 1
+      blocked_for_failed_login:
+        type: boolean
+        example: false
+      blocked_for_password_expired:
+        type: boolean
+        example: false
+      password_resettable:
+        type: boolean
+        description: whether the user's password can be reset by the current login user
+        example: false
+  RESTServerLDAPConfig:
+    type: object
+    properties:
+      directory:
+        type: string
+        example: ''
+      hostname:
+        type: string
+        example: 1.2.3.4
+      port:
+        type: integer
+        format: uint16
+        example: 1234
+      ssl:
+        type: boolean
+        example: true
+      base_dn:
+        type: string
+        example: dc=win,dc=nv,dc=com
+      group_dn:
+        type: string
+        example: dc=win,dc=nv,dc=com
+      bind_dn:
+        type: string
+        example: administrator
+      bind_password:
+        type: string
+        example: '2222'
+      group_member_attr:
+        type: string
+        example: ''
+      username_attr:
+        type: string
+        example: ''
+      enable:
+        type: boolean
+        example: true
+      default_role:
+        type: string
+        example: admin
+      role_groups:
+        type: object
+        properties:
+          role:
+            type: string
+            example: admin
+          groups:
+            type: array
+            items:
+              type: string
+            example:
+            - admin1
+            - admin2
+      group_mapped_roles:
+        type: array
+        items:
+          $ref: '#/definitions/GroupRoleMapping'
+  RESTRemoteRolePermits:
+    type: object
+    required:
+    - role
+    properties:
+      role:
+        type: string
+        description: global role on managed clusters in fed
+        example: admin
+      role_domains:
+        type: object
+        description: role -> domains on managed clusters in fed
+        properties:
+          key:
+            description: role
+            type: string
+          value:
+            type: object
+            description: array of domains
+            additionalProperties:
+              type: array
+              items:
+                type: string
+              example:
+              - domain1
+              - domain2
+      extra_permissions:
+        description: extra permissions(other than 'role') for global domain on managed clusters in fed. only for Rancher SSO
+        type: array
+        items:
+          $ref: '#/definitions/RESTRolePermission'
+      extra_permissions_domains:
+        type: array
+        description: list of extra permissions(other than 'role_domains') for namespaces on managed clusters in fed. only for Rancher SSO
+        items:
+          $ref: '#/definitions/RESTPermitsAssigned'
+  RESTServersData:
+    type: object
+    required:
+    - servers
+    properties:
+      servers:
+        type: array
+        items:
+          $ref: '#/definitions/RESTServer'
+      mappable_role:
+        $ref: '#/definitions/RESTMappableRoles'
+  RESTX509CertInfo:
+    type: object
+    properties:
+      x509_cert:
+        type: string
+        example: E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF
+      issuer_cn:
+        type: string
+        example: dev-11563853
+      subject_cn:
+        type: string
+        example: dev-11563853
+      subject_notafter:
+        type: integer
+        format: uint64
+        example: 1988147822
+  RESTServerRoleGroupsConfigData:
+    type: object
+    required:
+    - config
+    properties:
+      config:
+        $ref: '#/definitions/RESTServerRoleGroupsConfig'
+  RESTRolePermission:
+    type: object
+    required:
+    - id
+    - read
+    - write
+    properties:
+      id:
+        type: string
+        example: ci_scan
+      read:
+        type: boolean
+        example: false
+      write:
+        type: boolean
+        example: true
+  GroupRoleMapping:
+    type: object
+    required:
+    - group
+    - global_role
+    properties:
+      group:
+        type: string
+        example: Domain Admins
+      global_role:
+        type: string
+        example: admin
+      role_domains:
+        type: object
+        description: Object key is role and value is array of domains
+        additionalProperties:
+          type: array
+          items:
+            type: string
+          example:
+          - domain1
+          - domain2
+  RESTUsersData:
+    type: object
+    required:
+    - users
+    - global_roles
+    - domain_roles
+    properties:
+      users:
+        type: array
+        items:
+          $ref: '#/definitions/RESTUser'
+      global_roles:
+        type: array
+        items:
+          type: string
+        example:
+        - admin
+        - reader
+      domain_roles:
+        type: array
+        items:
+          type: string
+        example:
+        - role1
+        - role2
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Apikey
+  TokenAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Token
+externalDocs:
+  description: Find out more about NeuVector
+  url: https://www.suse.com/products/neuvector/

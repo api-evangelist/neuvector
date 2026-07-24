@@ -1,0 +1,1465 @@
+swagger: '2.0'
+info:
+  description: Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.
+  version: 5.6.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  title: NeuVector Container API
+  contact:
+    email: support@neuvector.com
+schemes:
+- https
+tags:
+- name: Container
+  description: Operations about Container
+paths:
+  /v1/workload:
+    get:
+      tags:
+      - Container
+      summary: Get container list
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTWorkloadsData'
+  /v2/workload:
+    get:
+      tags:
+      - Container
+      summary: Get container list (starting from 5.0, rest client should call this api.)
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTWorkloadsDataV2'
+    post:
+      tags:
+      - Container
+      summary: Get container list that match the provided ID list
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Container ID list
+        required: true
+        schema:
+          $ref: '#/definitions/RESTAssetIDList'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTWorkloadsDataV2'
+  /v1/workload/{id}:
+    get:
+      tags:
+      - Container
+      summary: Get container detail
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Workload ID
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTWorkloadDetailData'
+    patch:
+      tags:
+      - Container
+      summary: Update Container
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Container ID
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Container update data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTWorkloadConfigData'
+      responses:
+        '200':
+          description: Success
+  /v2/workload/{id}:
+    get:
+      tags:
+      - Container
+      summary: Get container detail (starting from 5.0, rest client should call this api.)
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Workload ID
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTWorkloadDetailDataV2'
+  /v1/workload/{id}/stats:
+    get:
+      tags:
+      - Container
+      summary: get container stats
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Container ID
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTWorkloadStatsData'
+  /v1/workload/{id}/config:
+    get:
+      tags:
+      - Container
+      summary: Get a container configure
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: container ID
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTWorkloadConfigData'
+  /v1/workload/{id}/process:
+    get:
+      tags:
+      - Container
+      summary: Get a container process
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Container ID
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTProcessList'
+        '400':
+          description: Container not running
+          schema:
+            $ref: '#/definitions/RESTError'
+  /v1/workload/{id}/process_history:
+    get:
+      tags:
+      - Container
+      summary: Get a container process history
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Container ID
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTProcessProfileEntry'
+  /v1/workload/{id}/compliance:
+    get:
+      tags:
+      - Container
+      summary: Get a container compliance report
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Container ID
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RESTComplianceData'
+  /v1/workload/request/{id}:
+    post:
+      tags:
+      - Container
+      summary: Container request
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      consumes:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Container ID
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Container request data
+        required: true
+        schema:
+          $ref: '#/definitions/RESTWorkloadRequestData'
+      responses:
+        '200':
+          description: Success
+definitions:
+  RESTWorkloadV2:
+    type: object
+    required:
+    - brief
+    - security
+    - rt_attributes
+    - children
+    - enforcer_id
+    - enforcer_name
+    - platform_role
+    - created_at
+    - started_at
+    - finished_at
+    - running
+    - secured_at
+    - exit_code
+    properties:
+      brief:
+        $ref: '#/definitions/RESTWorkloadBriefV2'
+      security:
+        $ref: '#/definitions/RESTWorkloadSecurityV2'
+      rt_attributes:
+        $ref: '#/definitions/RESTWorkloadRtAttribesV2'
+      children:
+        type: array
+        items:
+          $ref: '#/definitions/RESTWorkloadV2'
+      enforcer_id:
+        type: string
+        example: 002a4f71d9dbdb40db81c31484ac25564fe80574dfbe
+      enforcer_name:
+        type: string
+        example: allinone
+      platform_role:
+        type: string
+        example: core
+      created_at:
+        type: string
+        format: date-time
+        example: 2018-01-18 00:44:02+00:00
+      started_at:
+        type: string
+        format: date-time
+        example: 2018-01-18 00:44:02+00:00
+      finished_at:
+        type: string
+        format: date-time
+        example: 2018-01-18 01:20:02+00:00
+      running:
+        type: boolean
+        example: false
+      secured_at:
+        type: string
+        format: date-time
+        example: 2018-01-18 01:20:02+00:00
+      exit_code:
+        type: integer
+        example: 0
+  RESTWorkloadStatsData:
+    type: object
+    required:
+    - id
+    - read_at
+    - stats
+    properties:
+      id:
+        type: string
+        example: 0fdf601ddc3ab541386aa8e36fe113593c
+      read_at:
+        type: string
+        format: date-time
+        example: 2018-01-21 06:25:15+00:00
+      stats:
+        $ref: '#/definitions/RESTStats'
+  RESTAssetIDList:
+    type: object
+    required:
+    - ids
+    properties:
+      ids:
+        type: array
+        items:
+          type: string
+          example: <container id>
+  RESTWorkloadConfigData:
+    type: object
+    required:
+    - config
+    properties:
+      config:
+        $ref: '#/definitions/RESTWorkloadConfig'
+  RESTWorkloadRequest:
+    type: object
+    properties:
+      command:
+        type: string
+        example: uname -r
+  RESTWorkloadsDataV2:
+    type: object
+    required:
+    - workloads
+    properties:
+      workloads:
+        type: array
+        items:
+          $ref: '#/definitions/RESTWorkloadV2'
+  RESTProcessList:
+    type: object
+    required:
+    - processes
+    properties:
+      processes:
+        type: array
+        items:
+          $ref: '#/definitions/RESTProcessInfo'
+  RESTWorkload:
+    type: object
+    required:
+    - id
+    - name
+    - display_name
+    - pod_name
+    - image
+    - image_id
+    - platform_role
+    - domain
+    - state
+    - service
+    - author
+    - service_group
+    - cap_sniff
+    - cap_quarantine
+    - cap_change_mode
+    - scan_summary
+    - service_mesh
+    - service_mesh_sidecar
+    - privileged
+    - run_as_root
+    - host_name
+    - host_id
+    - enforcer_id
+    - enforcer_name
+    - network_mode
+    - created_at
+    - started_at
+    - finished_at
+    - running
+    - secured_at
+    - exit_code
+    - interfaces
+    - ports
+    - labels
+    - applications
+    - memory_limit
+    - cpus
+    - children
+    - service_account
+    properties:
+      id:
+        type: string
+        example: 7304e72fd093155c4cbcd65d07375329b2db82cc679
+      name:
+        type: string
+        example: k8s_POD.d86c_calico-node-mzhtk_kube-system_0050565a_365c13d
+      display_name:
+        type: string
+        example: calico-node-mzhtk
+      pod_name:
+        type: string
+        example: istio-policy-5cdbc47674-t67p4
+      image:
+        type: string
+        example: istio/mixer:1.4.3
+      image_id:
+        type: string
+        example: 5b7b52f8e75898efe2b7b258322e623c280d856b9f5a527fbbdc25689adf6e95
+      platform_role:
+        type: string
+        example: core
+      domain:
+        type: string
+        example: istio-system
+      state:
+        type: string
+        example: exit
+      service:
+        type: string
+        example: kafka.zookeeper
+      author:
+        type: string
+        example: ''
+      service_group:
+        type: string
+        example: nv.calico
+      share_ns_with:
+        type: string
+        example: cc0709d522749203042e89dba28bf6924a4b0d360648
+      cap_sniff:
+        type: boolean
+        example: true
+      cap_quarantine:
+        type: boolean
+        example: false
+      cap_change_mode:
+        type: boolean
+        example: true
+      policy_mode:
+        type: string
+        example: Discover
+      scan_summary:
+        $ref: '#/definitions/RESTScanBrief'
+      quarantine_reason:
+        type: string
+        example: ''
+      service_mesh:
+        type: boolean
+        example: false
+      service_mesh_sidecar:
+        type: boolean
+        example: false
+      privileged:
+        type: boolean
+        example: false
+      run_as_root:
+        type: boolean
+        example: false
+      host_name:
+        type: string
+        example: ubuntu1604-k8worker1-calico
+      host_id:
+        type: string
+        example: GRSW:3RCY:YL6O:TIGT:666B:OW22:XYQF:YHGI:JB3L
+      enforcer_id:
+        type: string
+        example: 002a4f71d9dbdb40db81c31484ac25564fe80574dfbe
+      enforcer_name:
+        type: string
+        example: allinone
+      network_mode:
+        type: string
+        example: host
+      created_at:
+        type: string
+        format: date-time
+        example: 2018-01-18 00:44:02+00:00
+      started_at:
+        type: string
+        format: date-time
+        example: 2018-01-18 00:44:02+00:00
+      finished_at:
+        type: string
+        format: date-time
+        example: 2018-01-18 01:20:02+00:00
+      running:
+        type: boolean
+        example: false
+      secured_at:
+        type: string
+        format: date-time
+        example: 2018-01-18 01:20:02+00:00
+      exit_code:
+        type: integer
+        example: 0
+      interfaces:
+        type: object
+        description: map key is string type like "eth0"
+        additionalProperties:
+          type: array
+          items:
+            $ref: '#/definitions/RESTIPAddr'
+      ports:
+        type: array
+        items:
+          $ref: '#/definitions/RESTWorkloadPorts'
+      labels:
+        type: object
+        description: map key is string type
+        additionalProperties:
+          type: string
+        example:
+          io.kubernetes.pod.name: calico-node-mzhtk
+      applications:
+        type: array
+        items:
+          type: string
+          example: TCP/9999
+      memory_limit:
+        type: integer
+        format: int64
+        example: 0
+      cpus:
+        type: string
+        example: ''
+      service_account:
+        type: string
+        example: ''
+      children:
+        type: array
+        items:
+          $ref: '#/definitions/RESTWorkload'
+  RESTWorkloadDetailMiscV2:
+    type: object
+    required:
+    - groups
+    - app_ports
+    - children
+    properties:
+      groups:
+        type: array
+        items:
+          type: string
+        example:
+        - nv.iperfclient-pod
+        - nv.pod
+      app_ports:
+        type: object
+        description: map key is string type
+        additionalProperties:
+          type: string
+        example:
+          TCP: '9999'
+      children:
+        type: array
+        items:
+          $ref: '#/definitions/RESTWorkloadDetailV2'
+  RESTPwdProfileBasic:
+    type: object
+    required:
+    - min_len
+    - min_uppercase_count
+    - min_lowercase_count
+    - min_digit_count
+    - min_special_count
+    properties:
+      min_len:
+        type: integer
+        example: 6
+      min_uppercase_count:
+        type: integer
+        example: 0
+      min_lowercase_count:
+        type: integer
+        example: 0
+      min_digit_count:
+        type: integer
+        example: 0
+      min_special_count:
+        type: integer
+        example: 0
+  RESTWorkloadConfig:
+    type: object
+    required:
+    - quarantine
+    properties:
+      wire:
+        type: string
+        example: default
+      quarantine:
+        type: boolean
+        example: true
+      quarantine_reason:
+        type: string
+        example: violation
+  RESTWorkloadDetailDataV2:
+    type: object
+    required:
+    - workload
+    properties:
+      workload:
+        $ref: '#/definitions/RESTWorkloadDetailV2'
+  RESTWorkloadRtAttribesV2:
+    type: object
+    required:
+    - pod_name
+    - privileged
+    - run_as_root
+    - labels
+    - memory_limit
+    - cpus
+    - service_account
+    - network_mode
+    - interfaces
+    - ports
+    - applications
+    properties:
+      pod_name:
+        type: string
+        example: istio-policy-5cdbc47674-t67p4
+      share_ns_with:
+        type: string
+        example: cc0709d522749203042e89dba28bf6924a4b0d360648
+      privileged:
+        type: boolean
+        example: false
+      run_as_root:
+        type: boolean
+        example: false
+      labels:
+        type: object
+        description: map key is string type
+        additionalProperties:
+          type: string
+        example:
+          io.kubernetes.pod.name: calico-node-mzhtk
+      memory_limit:
+        type: integer
+        format: int64
+        example: 0
+      cpus:
+        type: string
+        example: ''
+      service_account:
+        type: string
+        example: ''
+      network_mode:
+        type: string
+        example: host
+      interfaces:
+        type: object
+        description: map key is string type like "eth0"
+        additionalProperties:
+          type: array
+          items:
+            $ref: '#/definitions/RESTIPAddr'
+      ports:
+        type: array
+        items:
+          $ref: '#/definitions/RESTWorkloadPorts'
+      applications:
+        type: array
+        items:
+          type: string
+          example: TCP/9999
+  RESTWorkloadBriefV2:
+    type: object
+    required:
+    - id
+    - name
+    - display_name
+    - host_name
+    - host_id
+    - image
+    - image_id
+    - image_created_at
+    - domain
+    - state
+    - service
+    - author
+    - service_group
+    properties:
+      id:
+        type: string
+        example: 7304e72fd093155c4cbcd65d07375329b2db82cc679
+      name:
+        type: string
+        example: k8s_POD.d86c_calico-node-mzhtk_kube-system_0050565a_365c13d
+      display_name:
+        type: string
+        example: calico-node-mzhtk
+      host_name:
+        type: string
+        example: ubuntu1604-k8worker1-calico
+      host_id:
+        type: string
+        example: GRSW:3RCY:YL6O:TIGT:666B:OW22:XYQF:YHGI:JB3L
+      image:
+        type: string
+        example: calico
+      image_id:
+        type: string
+        example: d572b7ee3511b21a2b78b8915bc03c5786ad01949704c1418624224c4cae2c5f
+      image_digest:
+        type: array
+        items:
+          type: string
+          example: c2ced31c5dda37cb805f481e3fa34b742cc8980f439b20af3111b08e66cff8e1
+      image_created_at:
+        type: string
+        format: date-time
+        example: 2018-01-18 00:44:02+00:00
+      image_reg_scanned:
+        type: boolean
+        example: false
+      domain:
+        type: string
+        example: ''
+      state:
+        type: string
+        example: exit
+      service:
+        type: string
+        example: kafkazookeeper
+      author:
+        type: string
+        example: ''
+      service_group:
+        type: string
+        example: nv.calico
+  RESTWorkloadDetailV2:
+    type: object
+    required:
+    - brief
+    - security
+    - rt_attributes
+    - children
+    - enforcer_id
+    - enforcer_name
+    - platform_role
+    - created_at
+    - started_at
+    - finished_at
+    - running
+    - secured_at
+    - exit_code
+    - misc
+    properties:
+      brief:
+        $ref: '#/definitions/RESTWorkloadBriefV2'
+      security:
+        $ref: '#/definitions/RESTWorkloadSecurityV2'
+      rt_attributes:
+        $ref: '#/definitions/RESTWorkloadRtAttribesV2'
+      children:
+        type: array
+        items:
+          $ref: '#/definitions/RESTWorkloadV2'
+      enforcer_id:
+        type: string
+        example: 002a4f71d9dbdb40db81c31484ac25564fe80574dfbe
+      enforcer_name:
+        type: string
+        example: allinone
+      platform_role:
+        type: string
+        example: core
+      created_at:
+        type: string
+        format: date-time
+        example: 2018-01-18 00:44:02+00:00
+      started_at:
+        type: string
+        format: date-time
+        example: 2018-01-18 00:44:02+00:00
+      finished_at:
+        type: string
+        format: date-time
+        example: 2018-01-18 01:20:02+00:00
+      running:
+        type: boolean
+        example: false
+      secured_at:
+        type: string
+        format: date-time
+        example: 2018-01-18 01:20:02+00:00
+      exit_code:
+        type: integer
+        example: 0
+      misc:
+        $ref: '#/definitions/RESTWorkloadDetailMiscV2'
+  RESTImportTaskData:
+    type: object
+    required:
+    - data
+    properties:
+      data:
+        $ref: '#/definitions/RESTImportTask'
+  RESTWorkloadSecurityV2:
+    type: object
+    required:
+    - cap_sniff
+    - cap_quarantine
+    - cap_change_mode
+    - service_mesh
+    - service_mesh_sidecar
+    - policy_mode
+    - profile_mode
+    - baseline_profile
+    - scan_summary
+    properties:
+      cap_sniff:
+        type: boolean
+        example: true
+      cap_quarantine:
+        type: boolean
+        example: true
+      cap_change_mode:
+        type: boolean
+        example: true
+      service_mesh:
+        type: boolean
+        example: true
+      service_mesh_sidecar:
+        type: boolean
+        example: true
+      policy_mode:
+        type: string
+        example: Discover
+      profile_mode:
+        type: string
+        example: Discover
+      baseline_profile:
+        type: string
+        example: ''
+      quarantine_reason:
+        type: string
+        example: violation
+      scan_summary:
+        $ref: '#/definitions/RESTScanBrief'
+  RESTStats:
+    type: object
+    required:
+    - interval
+    - total
+    - span_1
+    - span_12
+    - span_60
+    properties:
+      interval:
+        type: integer
+        format: uint32
+        example: 5
+      total:
+        $ref: '#/definitions/RESTMetry'
+      span_1:
+        $ref: '#/definitions/RESTMetry'
+      span_12:
+        $ref: '#/definitions/RESTMetry'
+      span_60:
+        $ref: '#/definitions/RESTMetry'
+  RESTImportTask:
+    type: object
+    required:
+    - tid
+    - ctrler_id
+    - percentage
+    properties:
+      tid:
+        type: string
+        example: c5af897b62a258212ece91c0551d3a4a
+      ctrler_id:
+        type: string
+        example: 6e60452b244b90456f3450c9fed0a50f57f4b849dcb74a5fad289e8116f32f36
+      last_update_time:
+        type: string
+        format: date-time
+        example: '2022-03-17T17:31:55.832768041Z'
+      percentage:
+        type: integer
+        example: 100
+      triggered_by:
+        type: string
+        example: admin
+      status:
+        type: string
+        example: done
+      temp_token:
+        type: string
+        example: ''
+      fail_to_decrypt_key_fields:
+        type: object
+        description: Object key is kv key and value is array of cloaked fields that cannot be decrypted
+        additionalProperties:
+          type: array
+          items:
+            type: string
+          example:
+          - x509_cert
+          - signing_cert
+  RESTBenchItem:
+    type: object
+    required:
+    - catalog
+    - type
+    - level
+    - test_number
+    - profile
+    - scored
+    - automated
+    - description
+    - message
+    - remediation
+    - group
+    properties:
+      catalog:
+        type: string
+        example: docker
+      type:
+        type: string
+        example: ''
+      level:
+        type: string
+        example: INFO
+      test_number:
+        type: string
+        example: '1'
+      profile:
+        type: string
+        example: Level 1
+      scored:
+        type: boolean
+        example: true
+      automated:
+        type: boolean
+        example: true
+      description:
+        type: string
+        example: General Configuration
+      message:
+        type: array
+        items:
+          type: string
+          example: Host Configuration
+      remediation:
+        type: string
+        example: ''
+      group:
+        type: string
+        example: nv.calico
+  RESTIPAddr:
+    type: object
+    required:
+    - ip
+    - ip_prefix
+    - gateway
+    properties:
+      ip:
+        type: string
+        example: 192.168.209.197
+      ip_prefix:
+        type: integer
+        example: 32
+      gateway:
+        type: string
+        example: ''
+  RESTWorkloadRequestData:
+    type: object
+    required:
+    - request
+    properties:
+      request:
+        $ref: '#/definitions/RESTWorkloadRequest'
+  RESTProcessProfileEntry:
+    type: object
+    required:
+    - name
+    - action
+    - cfg_type
+    - uuid
+    - created_timestamp
+    - last_modified_timestamp
+    properties:
+      name:
+        type: string
+        example: name
+      path:
+        type: string
+        example: path
+      user:
+        type: string
+        example: user
+      uid:
+        type: integer
+        format: int32
+        example: 1273
+      action:
+        type: string
+        example: allow
+      cfg_type:
+        type: string
+        enum:
+        - learned
+        - user_created
+        - ground
+        - federal
+        - system_defined
+      uuid:
+        type: string
+        format: uuid
+        example: 5654bfac-0011-4678-8e67-9eda136f18b1
+      group:
+        type: string
+        example: nodes
+      created_timestamp:
+        type: integer
+        format: int64
+        example: 1516561258
+      last_modified_timestamp:
+        type: integer
+        format: int64
+        example: 1516561268
+  RESTWorkloadPorts:
+    type: object
+    required:
+    - ip_proto
+    - port
+    - host_ip
+    - host_port
+    properties:
+      ip_proto:
+        type: integer
+        format: uint8
+        example: 6
+      port:
+        type: integer
+        format: uint16
+        example: 51764
+      host_ip:
+        type: string
+        example: 10.1.5.1
+      host_port:
+        type: integer
+        format: uint16
+        example: 5000
+  RESTMetry:
+    type: object
+    required:
+    - cpu
+    - memory
+    - session_in
+    - session_out
+    - packet_in
+    - packet_out
+    - byte_in
+    - byte_out
+    properties:
+      cpu:
+        type: number
+        format: float64
+        example: 1
+      memory:
+        type: integer
+        format: uint64
+        example: 2089816064
+      session_in:
+        type: integer
+        format: uint32
+        example: 0
+      session_out:
+        type: integer
+        format: uint32
+        example: 0
+      cur_session_in:
+        type: integer
+        format: uint32
+        example: 1
+      cur_session_out:
+        type: integer
+        format: uint32
+        example: 1
+      packet_in:
+        type: integer
+        format: uint64
+        example: 0
+      packet_out:
+        type: integer
+        format: uint64
+        example: 0
+      byte_in:
+        type: integer
+        format: uint64
+        example: 0
+      byte_out:
+        type: integer
+        format: uint64
+        example: 0
+  RESTComplianceData:
+    type: object
+    required:
+    - run_timestamp
+    - run_at
+    - kubernetes_cis_category
+    - kubernetes_cis_version
+    - docker_cis_version
+    - items
+    properties:
+      run_timestamp:
+        type: integer
+        format: int64
+        example: 1516561253
+      run_at:
+        type: string
+        format: date-time
+        example: 2018-06-21 19:00:53+00:00
+      kubernetes_cis_category:
+        type: string
+        example: ''
+      kubernetes_cis_version:
+        type: string
+        example: 1.5.1
+      docker_cis_version:
+        type: string
+        example: 1.2.0
+      items:
+        type: array
+        items:
+          $ref: '#/definitions/RESTBenchItem'
+  RESTWorkloadDetail:
+    type: object
+    required:
+    - id
+    - name
+    - display_name
+    - platform_role
+    - domain
+    - state
+    - service
+    - service_group
+    - host_name
+    - host_id
+    - enforcer_id
+    - image
+    - network_mode
+    - privileged
+    - cap_quarantine
+    - created_at
+    - started_at
+    - finished_at
+    - running
+    - secured_at
+    - exit_code
+    - interfaces
+    - ports
+    - labels
+    - applications
+    - memory_limit
+    - cpus
+    - groups
+    - app_ports
+    - children
+    properties:
+      id:
+        type: string
+        example: 7304e72fd093155c4cbcd65d07375329b2db82cc679
+      name:
+        type: string
+        example: k8s_POD.d86c_calico-node-mzhtk_kube-system_0050565a_365c13d
+      display_name:
+        type: string
+        example: calico-node-mzhtk
+      platform_role:
+        type: string
+        example: core
+      domain:
+        type: string
+        example: ''
+      state:
+        type: string
+        example: exit
+      service:
+        type: string
+        example: kafka.zookeeper
+      service_group:
+        type: string
+        example: nv.calico
+      share_ns_with:
+        type: string
+        example: cc0709d522749203042e89dba28bf6924a4b0d360648
+      policy_mode:
+        type: string
+        example: Discover
+      scan_summary:
+        $ref: '#/definitions/RESTScanBrief'
+      host_name:
+        type: string
+        example: ubuntu1604-k8worker1-calico
+      host_id:
+        type: string
+        example: GRSW:3RCY:YL6O:TIGT:666B:OW22:XYQF:YHGI:JB3L
+      enforcer_id:
+        type: string
+        example: 002a4f71d9dbdb40db81c31484ac25564fe80574dfbe
+      image:
+        type: string
+        example: gcr.io/google_containers/pause-amd24:3.0
+      network_mode:
+        type: string
+        example: host
+      privileged:
+        type: boolean
+        example: false
+      cap_quarantine:
+        type: boolean
+        example: true
+      created_at:
+        type: string
+        format: date-time
+        example: 2018-01-18 00:44:02+00:00
+      started_at:
+        type: string
+        format: date-time
+        example: 2018-01-18 00:44:02+00:00
+      finished_at:
+        type: string
+        format: date-time
+        example: 2018-01-18 01:20:02+00:00
+      running:
+        type: boolean
+        example: false
+      secured_at:
+        type: string
+        format: date-time
+        example: 2018-01-18 01:20:02+00:00
+      exit_code:
+        type: integer
+        example: 0
+      interfaces:
+        type: object
+        description: map key is string type like "eth0"
+        additionalProperties:
+          type: array
+          items:
+            $ref: '#/definitions/RESTIPAddr'
+      ports:
+        type: array
+        items:
+          $ref: '#/definitions/RESTWorkloadPorts'
+      labels:
+        type: object
+        description: map key is string type
+        additionalProperties:
+          type: string
+        example:
+          io.kubernetes.pod.name: calico-node-mzhtk
+      applications:
+        type: array
+        items:
+          type: string
+          example: TCP/9999
+      memory_limit:
+        type: integer
+        format: int64
+        example: 0
+      cpus:
+        type: string
+        example: ''
+      groups:
+        type: array
+        items:
+          type: string
+        example:
+        - nv.iperfclient-pod
+        - nv.pod
+      app_ports:
+        type: object
+        description: map key is string type
+        additionalProperties:
+          type: string
+        example:
+          TCP: '9999'
+      children:
+        type: array
+        items:
+          $ref: '#/definitions/RESTWorkloadDetail'
+  RESTProcessInfo:
+    type: object
+    required:
+    - name
+    - pid
+    - parent
+    - group
+    - session
+    - cmdline
+    - root
+    - user
+    - status
+    - start_timestamp
+    - action
+    properties:
+      name:
+        type: string
+        example: ''
+      pid:
+        type: integer
+        format: uint32
+        example: 2394
+      parent:
+        type: integer
+        format: uint32
+        example: 2379
+      group:
+        type: integer
+        format: uint32
+        example: 2394
+      session:
+        type: integer
+        format: uint32
+        example: 2394
+      cmdline:
+        type: string
+        example: /sbin/runsvdir
+      root:
+        type: boolean
+        example: true
+      user:
+        type: string
+        example: root
+      status:
+        type: string
+        example: Sleeping
+      start_timestamp:
+        type: integer
+        format: int64
+        example: 1516561258
+      action:
+        type: string
+        example: ''
+  RESTError:
+    type: object
+    required:
+    - code
+    - error
+    - message
+    properties:
+      code:
+        type: integer
+        example: 3
+      error:
+        type: string
+        example: Request failed
+      message:
+        type: string
+        example: Invalid format
+      password_profile_basic:
+        $ref: '#/definitions/RESTPwdProfileBasic'
+      import_task_data:
+        $ref: '#/definitions/RESTImportTaskData'
+  RESTScanBrief:
+    type: object
+    required:
+    - status
+    - high
+    - medium
+    - result
+    - scanned_timestamp
+    - scanned_at
+    - base_os
+    - scanner_version
+    - cvedb_create_time
+    properties:
+      status:
+        type: string
+        example: scheduled
+      high:
+        type: integer
+        example: 0
+      medium:
+        type: integer
+        example: 0
+      result:
+        type: string
+        example: success
+      scanned_timestamp:
+        type: integer
+        format: int64
+        example: 1516561253
+      scanned_at:
+        type: string
+        format: date-time
+        example: 2018-01-21 19:00:53+00:00
+      base_os:
+        type: string
+        example: ubuntu:16.04
+      scanner_version:
+        type: string
+        example: '1.011'
+      cvedb_create_time:
+        type: string
+        format: date-time
+        example: 2018-06-20 19:00:53+00:00
+  RESTWorkloadDetailData:
+    type: object
+    required:
+    - workload
+    properties:
+      workload:
+        $ref: '#/definitions/RESTWorkloadDetail'
+  RESTWorkloadsData:
+    type: object
+    required:
+    - workloads
+    properties:
+      workloads:
+        type: array
+        items:
+          $ref: '#/definitions/RESTWorkload'
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Apikey
+  TokenAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Token
+externalDocs:
+  description: Find out more about NeuVector
+  url: https://www.suse.com/products/neuvector/

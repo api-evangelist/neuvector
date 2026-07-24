@@ -1,0 +1,36 @@
+swagger: '2.0'
+info:
+  description: Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.
+  version: 5.6.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  title: NeuVector Federation API
+  contact:
+    email: support@neuvector.com
+schemes:
+- https
+tags:
+- name: Federation
+  description: Operations about Federation
+paths:
+  /v1/fed/healthcheck:
+    get:
+      tags:
+      - Federation
+      summary: Health Check of Federate Primary REST server
+      responses:
+        '200':
+          description: Success
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Apikey
+  TokenAuth:
+    type: apiKey
+    in: header
+    name: X-Auth-Token
+externalDocs:
+  description: Find out more about NeuVector
+  url: https://www.suse.com/products/neuvector/
