@@ -8,7 +8,19 @@ description: >-
   policy management, configuration, user administration, and federated
   cluster operations.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/neuvector.png
 tags:
   - Compliance
   - Containers
@@ -23,41 +35,642 @@ created: '2026-03-26'
 modified: '2026-04-28'
 specificationVersion: '0.19'
 apis:
-  - aid: neuvector:neuvector
-    name: NeuVector
-    description: >-
-      The NeuVector REST API enables automation of container security
-      operations including vulnerability scanning, runtime policy management,
-      configuration import/export, packet capture, container quarantine,
-      CVE database queries, and federated cluster management. Two
-      authentication options are supported - username/password sessions
-      and API key tokens. The published OpenAPI (Swagger 2.0) describes
-      the full surface.
-    humanURL: https://open-docs.neuvector.com/
-    baseURL: https://localhost:10443
-    tags:
-      - Compliance
-      - Containers
-      - Kubernetes
-      - Runtime Protection
-      - Security
-      - Vulnerability Scanning
-    properties:
-      - type: Documentation
-        url: https://open-docs.neuvector.com/
-      - type: GettingStarted
-        url: https://open-docs.neuvector.com/deploying
-      - type: APIReference
-        url: https://open-docs.neuvector.com/automation/automation
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/neuvector/refs/heads/main/openapi/neuvector-openapi-original.yaml
-      - type: Source OpenAPI
-        url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
-      - type: Source Code
-        url: https://github.com/neuvector/neuvector
-    contact:
-      - FN: NeuVector Support
-        email: support@neuvector.com
+- aid: neuvector:neuvector-admission-api
+  name: NeuVector Admission API
+  description: Admission Control
+  humanURL: https://open-docs.neuvector.com/
+  baseURL: https://localhost:10443
+  tags:
+  - Admission
+  properties:
+  - type: OpenAPI
+    url: openapi/neuvector-admission-api-openapi.yml
+  - type: Documentation
+    url: https://open-docs.neuvector.com/
+  - type: GettingStarted
+    url: https://open-docs.neuvector.com/deploying
+  - type: APIReference
+    url: https://open-docs.neuvector.com/automation/automation
+  - type: Source OpenAPI
+    url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
+  - type: Source Code
+    url: https://github.com/neuvector/neuvector
+- aid: neuvector:neuvector-apikey-api
+  name: NeuVector Apikey API
+  description: The Apikey API from NeuVector — 2 operation(s) for apikey.
+  humanURL: https://open-docs.neuvector.com/
+  baseURL: https://localhost:10443
+  tags:
+  - Apikey
+  properties:
+  - type: OpenAPI
+    url: openapi/neuvector-apikey-api-openapi.yml
+  - type: Documentation
+    url: https://open-docs.neuvector.com/
+  - type: GettingStarted
+    url: https://open-docs.neuvector.com/deploying
+  - type: APIReference
+    url: https://open-docs.neuvector.com/automation/automation
+  - type: Source OpenAPI
+    url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
+  - type: Source Code
+    url: https://github.com/neuvector/neuvector
+- aid: neuvector:neuvector-authentication-api
+  name: NeuVector Authentication API
+  description: Authenticates login or logout
+  humanURL: https://open-docs.neuvector.com/
+  baseURL: https://localhost:10443
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/neuvector-authentication-api-openapi.yml
+  - type: Documentation
+    url: https://open-docs.neuvector.com/
+  - type: GettingStarted
+    url: https://open-docs.neuvector.com/deploying
+  - type: APIReference
+    url: https://open-docs.neuvector.com/automation/automation
+  - type: Source OpenAPI
+    url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
+  - type: Source Code
+    url: https://github.com/neuvector/neuvector
+- aid: neuvector:neuvector-compliance-api
+  name: NeuVector Compliance API
+  description: Operations about Compliance
+  humanURL: https://open-docs.neuvector.com/
+  baseURL: https://localhost:10443
+  tags:
+  - Compliance
+  properties:
+  - type: OpenAPI
+    url: openapi/neuvector-compliance-api-openapi.yml
+  - type: Documentation
+    url: https://open-docs.neuvector.com/
+  - type: GettingStarted
+    url: https://open-docs.neuvector.com/deploying
+  - type: APIReference
+    url: https://open-docs.neuvector.com/automation/automation
+  - type: Source OpenAPI
+    url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
+  - type: Source Code
+    url: https://github.com/neuvector/neuvector
+- aid: >-
+    neuvector:neuvector-compliance-profile-the-payload-body-is-the-content-of-the-compliance-profile-yaml-file-api
+  name: >-
+    NeuVector compliance profile. The payload body is the content of the compliance profile yaml file.
+    API
+  description: >-
+    The compliance profile. The payload body is the content of the compliance profile yaml file. API from
+    NeuVector — 1 operation(s) for compliance profile. the payload body is the content of the compliance
+    profile yaml file..
+  humanURL: https://open-docs.neuvector.com/
+  baseURL: https://localhost:10443
+  tags:
+  - compliance profile. The payload body is the content of the compliance profile yaml file.
+  properties:
+  - type: OpenAPI
+    url: >-
+      openapi/neuvector-compliance-profile-the-payload-body-is-the-content-of-the-compliance-profile-yaml-file-api-openapi.yml
+  - type: Documentation
+    url: https://open-docs.neuvector.com/
+  - type: GettingStarted
+    url: https://open-docs.neuvector.com/deploying
+  - type: APIReference
+    url: https://open-docs.neuvector.com/automation/automation
+  - type: Source OpenAPI
+    url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
+  - type: Source Code
+    url: https://github.com/neuvector/neuvector
+- aid: >-
+    neuvector:neuvector-compliance-profile-the-payload-body-is-the-content-of-the-vulnerability-profile-yaml-file-api
+  name: >-
+    NeuVector compliance profile. The payload body is the content of the vulnerability profile yaml file.
+    API
+  description: >-
+    The compliance profile. The payload body is the content of the vulnerability profile yaml file. API
+    from NeuVector — 1 operation(s) for compliance profile. the payload body is the content of the vulnerability
+    profile yaml file..
+  humanURL: https://open-docs.neuvector.com/
+  baseURL: https://localhost:10443
+  tags:
+  - >-
+    compliance profile. The payload body is the content of the vulnerability profile yaml file.
+  properties:
+  - type: OpenAPI
+    url: >-
+      openapi/neuvector-compliance-profile-the-payload-body-is-the-content-of-the-vulnerability-profile-yaml-file-api-openapi.yml
+  - type: Documentation
+    url: https://open-docs.neuvector.com/
+  - type: GettingStarted
+    url: https://open-docs.neuvector.com/deploying
+  - type: APIReference
+    url: https://open-docs.neuvector.com/automation/automation
+  - type: Source OpenAPI
+    url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
+  - type: Source Code
+    url: https://github.com/neuvector/neuvector
+- aid: neuvector:neuvector-container-api
+  name: NeuVector Container API
+  description: Operations about Container
+  humanURL: https://open-docs.neuvector.com/
+  baseURL: https://localhost:10443
+  tags:
+  - Container
+  properties:
+  - type: OpenAPI
+    url: openapi/neuvector-container-api-openapi.yml
+  - type: Documentation
+    url: https://open-docs.neuvector.com/
+  - type: GettingStarted
+    url: https://open-docs.neuvector.com/deploying
+  - type: APIReference
+    url: https://open-docs.neuvector.com/automation/automation
+  - type: Source OpenAPI
+    url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
+  - type: Source Code
+    url: https://github.com/neuvector/neuvector
+- aid: neuvector:neuvector-controller-api
+  name: NeuVector Controller API
+  description: Operations about Controller
+  humanURL: https://open-docs.neuvector.com/
+  baseURL: https://localhost:10443
+  tags:
+  - Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/neuvector-controller-api-openapi.yml
+  - type: Documentation
+    url: https://open-docs.neuvector.com/
+  - type: GettingStarted
+    url: https://open-docs.neuvector.com/deploying
+  - type: APIReference
+    url: https://open-docs.neuvector.com/automation/automation
+  - type: Source OpenAPI
+    url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
+  - type: Source Code
+    url: https://github.com/neuvector/neuvector
+- aid: neuvector:neuvector-dlp-api
+  name: NeuVector DLP API
+  description: Operations about DLP
+  humanURL: https://open-docs.neuvector.com/
+  baseURL: https://localhost:10443
+  tags:
+  - DLP
+  properties:
+  - type: OpenAPI
+    url: openapi/neuvector-dlp-api-openapi.yml
+  - type: Documentation
+    url: https://open-docs.neuvector.com/
+  - type: GettingStarted
+    url: https://open-docs.neuvector.com/deploying
+  - type: APIReference
+    url: https://open-docs.neuvector.com/automation/automation
+  - type: Source OpenAPI
+    url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
+  - type: Source Code
+    url: https://github.com/neuvector/neuvector
+- aid: neuvector:neuvector-enforcer-api
+  name: NeuVector Enforcer API
+  description: Operations about Enforcer
+  humanURL: https://open-docs.neuvector.com/
+  baseURL: https://localhost:10443
+  tags:
+  - Enforcer
+  properties:
+  - type: OpenAPI
+    url: openapi/neuvector-enforcer-api-openapi.yml
+  - type: Documentation
+    url: https://open-docs.neuvector.com/
+  - type: GettingStarted
+    url: https://open-docs.neuvector.com/deploying
+  - type: APIReference
+    url: https://open-docs.neuvector.com/automation/automation
+  - type: Source OpenAPI
+    url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
+  - type: Source Code
+    url: https://github.com/neuvector/neuvector
+- aid: neuvector:neuvector-eula-api
+  name: NeuVector EULA API
+  description: End-User License Agreement
+  humanURL: https://open-docs.neuvector.com/
+  baseURL: https://localhost:10443
+  tags:
+  - EULA
+  properties:
+  - type: OpenAPI
+    url: openapi/neuvector-eula-api-openapi.yml
+  - type: Documentation
+    url: https://open-docs.neuvector.com/
+  - type: GettingStarted
+    url: https://open-docs.neuvector.com/deploying
+  - type: APIReference
+    url: https://open-docs.neuvector.com/automation/automation
+  - type: Source OpenAPI
+    url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
+  - type: Source Code
+    url: https://github.com/neuvector/neuvector
+- aid: neuvector:neuvector-federation-api
+  name: NeuVector Federation API
+  description: Operations about Federation
+  humanURL: https://open-docs.neuvector.com/
+  baseURL: https://localhost:10443
+  tags:
+  - Federation
+  properties:
+  - type: OpenAPI
+    url: openapi/neuvector-federation-api-openapi.yml
+  - type: Documentation
+    url: https://open-docs.neuvector.com/
+  - type: GettingStarted
+    url: https://open-docs.neuvector.com/deploying
+  - type: APIReference
+    url: https://open-docs.neuvector.com/automation/automation
+  - type: Source OpenAPI
+    url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
+  - type: Source Code
+    url: https://github.com/neuvector/neuvector
+- aid: neuvector:neuvector-file-api
+  name: NeuVector File API
+  description: Operations about File
+  humanURL: https://open-docs.neuvector.com/
+  baseURL: https://localhost:10443
+  tags:
+  - File
+  properties:
+  - type: OpenAPI
+    url: openapi/neuvector-file-api-openapi.yml
+  - type: Documentation
+    url: https://open-docs.neuvector.com/
+  - type: GettingStarted
+    url: https://open-docs.neuvector.com/deploying
+  - type: APIReference
+    url: https://open-docs.neuvector.com/automation/automation
+  - type: Source OpenAPI
+    url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
+  - type: Source Code
+    url: https://github.com/neuvector/neuvector
+- aid: neuvector:neuvector-file-monitor-api
+  name: NeuVector File Monitor API
+  description: Operations about File Monitor
+  humanURL: https://open-docs.neuvector.com/
+  baseURL: https://localhost:10443
+  tags:
+  - File Monitor
+  properties:
+  - type: OpenAPI
+    url: openapi/neuvector-file-monitor-api-openapi.yml
+  - type: Documentation
+    url: https://open-docs.neuvector.com/
+  - type: GettingStarted
+    url: https://open-docs.neuvector.com/deploying
+  - type: APIReference
+    url: https://open-docs.neuvector.com/automation/automation
+  - type: Source OpenAPI
+    url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
+  - type: Source Code
+    url: https://github.com/neuvector/neuvector
+- aid: neuvector:neuvector-group-api
+  name: NeuVector Group API
+  description: Operations about Group
+  humanURL: https://open-docs.neuvector.com/
+  baseURL: https://localhost:10443
+  tags:
+  - Group
+  properties:
+  - type: OpenAPI
+    url: openapi/neuvector-group-api-openapi.yml
+  - type: Documentation
+    url: https://open-docs.neuvector.com/
+  - type: GettingStarted
+    url: https://open-docs.neuvector.com/deploying
+  - type: APIReference
+    url: https://open-docs.neuvector.com/automation/automation
+  - type: Source OpenAPI
+    url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
+  - type: Source Code
+    url: https://github.com/neuvector/neuvector
+- aid: neuvector:neuvector-host-api
+  name: NeuVector Host API
+  description: Operations about Host
+  humanURL: https://open-docs.neuvector.com/
+  baseURL: https://localhost:10443
+  tags:
+  - Host
+  properties:
+  - type: OpenAPI
+    url: openapi/neuvector-host-api-openapi.yml
+  - type: Documentation
+    url: https://open-docs.neuvector.com/
+  - type: GettingStarted
+    url: https://open-docs.neuvector.com/deploying
+  - type: APIReference
+    url: https://open-docs.neuvector.com/automation/automation
+  - type: Source OpenAPI
+    url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
+  - type: Source Code
+    url: https://github.com/neuvector/neuvector
+- aid: neuvector:neuvector-log-api
+  name: NeuVector Log API
+  description: Operations about Log
+  humanURL: https://open-docs.neuvector.com/
+  baseURL: https://localhost:10443
+  tags:
+  - Log
+  properties:
+  - type: OpenAPI
+    url: openapi/neuvector-log-api-openapi.yml
+  - type: Documentation
+    url: https://open-docs.neuvector.com/
+  - type: GettingStarted
+    url: https://open-docs.neuvector.com/deploying
+  - type: APIReference
+    url: https://open-docs.neuvector.com/automation/automation
+  - type: Source OpenAPI
+    url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
+  - type: Source Code
+    url: https://github.com/neuvector/neuvector
+- aid: neuvector:neuvector-namespace-api
+  name: NeuVector Namespace API
+  description: Operations about Namespace
+  humanURL: https://open-docs.neuvector.com/
+  baseURL: https://localhost:10443
+  tags:
+  - Namespace
+  properties:
+  - type: OpenAPI
+    url: openapi/neuvector-namespace-api-openapi.yml
+  - type: Documentation
+    url: https://open-docs.neuvector.com/
+  - type: GettingStarted
+    url: https://open-docs.neuvector.com/deploying
+  - type: APIReference
+    url: https://open-docs.neuvector.com/automation/automation
+  - type: Source OpenAPI
+    url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
+  - type: Source Code
+    url: https://github.com/neuvector/neuvector
+- aid: neuvector:neuvector-policy-api
+  name: NeuVector Policy API
+  description: Operations about Policy
+  humanURL: https://open-docs.neuvector.com/
+  baseURL: https://localhost:10443
+  tags:
+  - Policy
+  properties:
+  - type: OpenAPI
+    url: openapi/neuvector-policy-api-openapi.yml
+  - type: Documentation
+    url: https://open-docs.neuvector.com/
+  - type: GettingStarted
+    url: https://open-docs.neuvector.com/deploying
+  - type: APIReference
+    url: https://open-docs.neuvector.com/automation/automation
+  - type: Source OpenAPI
+    url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
+  - type: Source Code
+    url: https://github.com/neuvector/neuvector
+- aid: neuvector:neuvector-process-api
+  name: NeuVector Process API
+  description: Operations about Process Profile
+  humanURL: https://open-docs.neuvector.com/
+  baseURL: https://localhost:10443
+  tags:
+  - Process
+  properties:
+  - type: OpenAPI
+    url: openapi/neuvector-process-api-openapi.yml
+  - type: Documentation
+    url: https://open-docs.neuvector.com/
+  - type: GettingStarted
+    url: https://open-docs.neuvector.com/deploying
+  - type: APIReference
+    url: https://open-docs.neuvector.com/automation/automation
+  - type: Source OpenAPI
+    url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
+  - type: Source Code
+    url: https://github.com/neuvector/neuvector
+- aid: neuvector:neuvector-remote-export-repository-api
+  name: NeuVector Remote Export Repository API
+  description: >-
+    The Remote Export Repository API from NeuVector — 1 operation(s) for remote export repository.
+  humanURL: https://open-docs.neuvector.com/
+  baseURL: https://localhost:10443
+  tags:
+  - Remote Export Repository
+  properties:
+  - type: OpenAPI
+    url: openapi/neuvector-remote-export-repository-api-openapi.yml
+  - type: Documentation
+    url: https://open-docs.neuvector.com/
+  - type: GettingStarted
+    url: https://open-docs.neuvector.com/deploying
+  - type: APIReference
+    url: https://open-docs.neuvector.com/automation/automation
+  - type: Source OpenAPI
+    url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
+  - type: Source Code
+    url: https://github.com/neuvector/neuvector
+- aid: neuvector:neuvector-remote-repository-api
+  name: NeuVector Remote Repository API
+  description: The Remote Repository API from NeuVector — 2 operation(s) for remote repository.
+  humanURL: https://open-docs.neuvector.com/
+  baseURL: https://localhost:10443
+  tags:
+  - Remote Repository
+  properties:
+  - type: OpenAPI
+    url: openapi/neuvector-remote-repository-api-openapi.yml
+  - type: Documentation
+    url: https://open-docs.neuvector.com/
+  - type: GettingStarted
+    url: https://open-docs.neuvector.com/deploying
+  - type: APIReference
+    url: https://open-docs.neuvector.com/automation/automation
+  - type: Source OpenAPI
+    url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
+  - type: Source Code
+    url: https://github.com/neuvector/neuvector
+- aid: neuvector:neuvector-response-rule-api
+  name: NeuVector Response Rule API
+  description: Operations about Response Rule
+  humanURL: https://open-docs.neuvector.com/
+  baseURL: https://localhost:10443
+  tags:
+  - Response Rule
+  properties:
+  - type: OpenAPI
+    url: openapi/neuvector-response-rule-api-openapi.yml
+  - type: Documentation
+    url: https://open-docs.neuvector.com/
+  - type: GettingStarted
+    url: https://open-docs.neuvector.com/deploying
+  - type: APIReference
+    url: https://open-docs.neuvector.com/automation/automation
+  - type: Source OpenAPI
+    url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
+  - type: Source Code
+    url: https://github.com/neuvector/neuvector
+- aid: neuvector:neuvector-scan-api
+  name: NeuVector Scan API
+  description: Operations about Scan
+  humanURL: https://open-docs.neuvector.com/
+  baseURL: https://localhost:10443
+  tags:
+  - Scan
+  properties:
+  - type: OpenAPI
+    url: openapi/neuvector-scan-api-openapi.yml
+  - type: Documentation
+    url: https://open-docs.neuvector.com/
+  - type: GettingStarted
+    url: https://open-docs.neuvector.com/deploying
+  - type: APIReference
+    url: https://open-docs.neuvector.com/automation/automation
+  - type: Source OpenAPI
+    url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
+  - type: Source Code
+    url: https://github.com/neuvector/neuvector
+- aid: neuvector:neuvector-server-api
+  name: NeuVector Server API
+  description: Operations about Server
+  humanURL: https://open-docs.neuvector.com/
+  baseURL: https://localhost:10443
+  tags:
+  - Server
+  properties:
+  - type: OpenAPI
+    url: openapi/neuvector-server-api-openapi.yml
+  - type: Documentation
+    url: https://open-docs.neuvector.com/
+  - type: GettingStarted
+    url: https://open-docs.neuvector.com/deploying
+  - type: APIReference
+    url: https://open-docs.neuvector.com/automation/automation
+  - type: Source OpenAPI
+    url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
+  - type: Source Code
+    url: https://github.com/neuvector/neuvector
+- aid: neuvector:neuvector-service-api
+  name: NeuVector Service API
+  description: Operations about Service
+  humanURL: https://open-docs.neuvector.com/
+  baseURL: https://localhost:10443
+  tags:
+  - Service
+  properties:
+  - type: OpenAPI
+    url: openapi/neuvector-service-api-openapi.yml
+  - type: Documentation
+    url: https://open-docs.neuvector.com/
+  - type: GettingStarted
+    url: https://open-docs.neuvector.com/deploying
+  - type: APIReference
+    url: https://open-docs.neuvector.com/automation/automation
+  - type: Source OpenAPI
+    url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
+  - type: Source Code
+    url: https://github.com/neuvector/neuvector
+- aid: neuvector:neuvector-sniffer-api
+  name: NeuVector Sniffer API
+  description: Operations about Sniffer
+  humanURL: https://open-docs.neuvector.com/
+  baseURL: https://localhost:10443
+  tags:
+  - Sniffer
+  properties:
+  - type: OpenAPI
+    url: openapi/neuvector-sniffer-api-openapi.yml
+  - type: Documentation
+    url: https://open-docs.neuvector.com/
+  - type: GettingStarted
+    url: https://open-docs.neuvector.com/deploying
+  - type: APIReference
+    url: https://open-docs.neuvector.com/automation/automation
+  - type: Source OpenAPI
+    url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
+  - type: Source Code
+    url: https://github.com/neuvector/neuvector
+- aid: neuvector:neuvector-system-api
+  name: NeuVector System API
+  description: Operations about System
+  humanURL: https://open-docs.neuvector.com/
+  baseURL: https://localhost:10443
+  tags:
+  - System
+  properties:
+  - type: OpenAPI
+    url: openapi/neuvector-system-api-openapi.yml
+  - type: Documentation
+    url: https://open-docs.neuvector.com/
+  - type: GettingStarted
+    url: https://open-docs.neuvector.com/deploying
+  - type: APIReference
+    url: https://open-docs.neuvector.com/automation/automation
+  - type: Source OpenAPI
+    url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
+  - type: Source Code
+    url: https://github.com/neuvector/neuvector
+- aid: neuvector:neuvector-user-api
+  name: NeuVector User API
+  description: Operations about User
+  humanURL: https://open-docs.neuvector.com/
+  baseURL: https://localhost:10443
+  tags:
+  - User
+  properties:
+  - type: OpenAPI
+    url: openapi/neuvector-user-api-openapi.yml
+  - type: Documentation
+    url: https://open-docs.neuvector.com/
+  - type: GettingStarted
+    url: https://open-docs.neuvector.com/deploying
+  - type: APIReference
+    url: https://open-docs.neuvector.com/automation/automation
+  - type: Source OpenAPI
+    url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
+  - type: Source Code
+    url: https://github.com/neuvector/neuvector
+- aid: neuvector:neuvector-vulnerability-api
+  name: NeuVector Vulnerability API
+  description: Operations about Vulnerability management
+  humanURL: https://open-docs.neuvector.com/
+  baseURL: https://localhost:10443
+  tags:
+  - Vulnerability
+  properties:
+  - type: OpenAPI
+    url: openapi/neuvector-vulnerability-api-openapi.yml
+  - type: Documentation
+    url: https://open-docs.neuvector.com/
+  - type: GettingStarted
+    url: https://open-docs.neuvector.com/deploying
+  - type: APIReference
+    url: https://open-docs.neuvector.com/automation/automation
+  - type: Source OpenAPI
+    url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
+  - type: Source Code
+    url: https://github.com/neuvector/neuvector
+- aid: neuvector:neuvector-waf-rule-api
+  name: NeuVector WAF Rule API
+  description: Operations about waf Rule
+  humanURL: https://open-docs.neuvector.com/
+  baseURL: https://localhost:10443
+  tags:
+  - WAF Rule
+  properties:
+  - type: OpenAPI
+    url: openapi/neuvector-waf-rule-api-openapi.yml
+  - type: Documentation
+    url: https://open-docs.neuvector.com/
+  - type: GettingStarted
+    url: https://open-docs.neuvector.com/deploying
+  - type: APIReference
+    url: https://open-docs.neuvector.com/automation/automation
+  - type: Source OpenAPI
+    url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
+  - type: Source Code
+    url: https://github.com/neuvector/neuvector
 common:
   - type: DomainSecurity
     url: security/neuvector-domain-security.yml
