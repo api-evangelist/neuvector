@@ -1,0 +1,52 @@
+{
+  "provider": "neuvector",
+  "sources": [
+    "neuvector-openapi-original.yaml"
+  ],
+  "outputs": [
+    "neuvector-admission-api-openapi.yml",
+    "neuvector-apikey-api-openapi.yml",
+    "neuvector-authentication-api-openapi.yml",
+    "neuvector-compliance-api-openapi.yml",
+    "neuvector-container-api-openapi.yml",
+    "neuvector-controller-api-openapi.yml",
+    "neuvector-dlp-api-openapi.yml",
+    "neuvector-eula-api-openapi.yml",
+    "neuvector-enforcer-api-openapi.yml",
+    "neuvector-federation-api-openapi.yml",
+    "neuvector-file-api-openapi.yml",
+    "neuvector-file-monitor-api-openapi.yml",
+    "neuvector-group-api-openapi.yml",
+    "neuvector-host-api-openapi.yml",
+    "neuvector-log-api-openapi.yml",
+    "neuvector-namespace-api-openapi.yml",
+    "neuvector-policy-api-openapi.yml",
+    "neuvector-process-api-openapi.yml",
+    "neuvector-remote-export-repository-api-openapi.yml",
+    "neuvector-remote-repository-api-openapi.yml",
+    "neuvector-response-rule-api-openapi.yml",
+    "neuvector-scan-api-openapi.yml",
+    "neuvector-server-api-openapi.yml",
+    "neuvector-service-api-openapi.yml",
+    "neuvector-sniffer-api-openapi.yml",
+    "neuvector-system-api-openapi.yml",
+    "neuvector-user-api-openapi.yml",
+    "neuvector-vulnerability-api-openapi.yml",
+    "neuvector-waf-rule-api-openapi.yml",
+    "neuvector-compliance-profile-the-payload-body-is-the-content-of-the-compliance-profile-yaml-file-api-openapi.yml",
+    "neuvector-compliance-profile-the-payload-body-is-the-content-of-the-vulnerability-profile-yaml-file-api-openapi.yml"
+  ],
+  "archived": [
+    "archived openapi/neuvector-openapi-original.yaml"
+  ],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "neuvector-openapi-original.yaml: declared missing tag: Apikey",
+    "neuvector-openapi-original.yaml: declared missing tag: Remote Export Repository",
+    "neuvector-openapi-original.yaml: declared missing tag: Remote Repository",
+    "neuvector-openapi-original.yaml: declared missing tag: compliance profile. The payload body is the content of the compliance profile yaml file.",
+    "neuvector-openapi-original.yaml: declared missing tag: compliance profile. The payload body is the content of the vulnerability profile yaml file."
+  ],
+  "skipped": []
+}
