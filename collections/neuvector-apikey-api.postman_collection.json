@@ -1,0 +1,451 @@
+{
+  "item": [
+    {
+      "id": "27cefc2a-7b08-44d3-96f1-7c30b32ecfa2",
+      "name": "Apikey",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f6c3eb71-c205-4b6d-ae6a-fa11fd1e3659",
+          "name": "Gets a list of apikeys",
+          "request": {
+            "name": "Gets a list of apikeys",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "api_key"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a1077f29-1114-4436-b32b-1e8a6fc113fc",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "api_key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"apikeys\": [\n    {\n      \"expiration_type\": \"never\",\n      \"apikey_name\": \"token-cicd-scan\",\n      \"role\": \"admin\",\n      \"expiration_hours\": 1,\n      \"apikey_secret\": \"0u+tVOWNPRfpCK7p9qz\",\n      \"description\": \"cicd image scanning\",\n      \"role_domains\": {\n        \"key_0\": [\n          \"domain1\",\n          \"domain2\"\n        ],\n        \"key_1\": [\n          \"domain1\",\n          \"domain2\"\n        ],\n        \"key_2\": [\n          \"domain1\",\n          \"domain2\"\n        ]\n      },\n      \"expiration_timestamp\": 11515020888,\n      \"created_timestamp\": 11515020888,\n      \"created_by_entity\": \"admin\"\n    },\n    {\n      \"expiration_type\": \"never\",\n      \"apikey_name\": \"token-cicd-scan\",\n      \"role\": \"admin\",\n      \"expiration_hours\": 1,\n      \"apikey_secret\": \"0u+tVOWNPRfpCK7p9qz\",\n      \"description\": \"cicd image scanning\",\n      \"role_domains\": {\n        \"key_0\": [\n          \"domain1\",\n          \"domain2\"\n        ],\n        \"key_1\": [\n          \"domain1\",\n          \"domain2\"\n        ],\n        \"key_2\": [\n          \"domain1\",\n          \"domain2\"\n        ]\n      },\n      \"expiration_timestamp\": 11515020888,\n      \"created_timestamp\": 11515020888,\n      \"created_by_entity\": \"admin\"\n    }\n  ],\n  \"global_roles\": [\n    \"admin\",\n    \"reader\"\n  ],\n  \"domain_roles\": [\n    \"role1\",\n    \"role2\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f370ab17-ab94-4526-a62b-cfcb128e4f0e",
+          "name": "Creates an apikey",
+          "request": {
+            "name": "Creates an apikey",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "api_key"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"apikey\": {\n    \"expiration_type\": \"<string>\",\n    \"apikey_name\": \"<string>\",\n    \"role\": \"<string>\",\n    \"expiration_hours\": \"<uint32>\",\n    \"description\": \"<string>\",\n    \"role_domains\": {\n      \"key_0\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c8712a60-e8cd-4048-9218-1a8c5d93387f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "api_key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"apikey\": {\n    \"expiration_type\": \"never\",\n    \"apikey_name\": \"token-cicd-scan\",\n    \"role\": \"admin\",\n    \"expiration_hours\": 1,\n    \"description\": \"cicd image scanning\",\n    \"role_domains\": {\n      \"key_0\": [\n        \"domain1\",\n        \"domain2\"\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"apikey\": {\n    \"apikey_name\": \"token-cicd-scan\",\n    \"apikey_secret\": \"0u+tVOWNPRfpCK7p9qz\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "81ba61f2-490f-452c-a3ce-9d1a609cf616",
+          "name": "Gets an apikey",
+          "request": {
+            "name": "Gets an apikey",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "api_key",
+                ":accesskey"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accesskey",
+                  "description": "(Required) Apikey access key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "65c3a884-4dde-4c7c-a708-c065838a85f9",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "api_key",
+                    ":accesskey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accesskey",
+                      "description": "(Required) Apikey access key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"apikey\": {\n    \"expiration_type\": \"never\",\n    \"apikey_name\": \"token-cicd-scan\",\n    \"role\": \"admin\",\n    \"expiration_hours\": 1,\n    \"apikey_secret\": \"0u+tVOWNPRfpCK7p9qz\",\n    \"description\": \"cicd image scanning\",\n    \"role_domains\": {\n      \"key_0\": [\n        \"domain1\",\n        \"domain2\"\n      ],\n      \"key_1\": [\n        \"domain1\",\n        \"domain2\"\n      ],\n      \"key_2\": [\n        \"domain1\",\n        \"domain2\"\n      ]\n    },\n    \"expiration_timestamp\": 11515020888,\n    \"created_timestamp\": 11515020888,\n    \"created_by_entity\": \"admin\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "12421c83-34ef-4c9d-86a5-1be1535b988a",
+          "name": "Delete apikey",
+          "request": {
+            "name": "Delete apikey",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "api_key",
+                ":accesskey"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accesskey",
+                  "description": "(Required) Apikey access key"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "613caba9-7843-434b-aa88-138c803c75e1",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "api_key",
+                    ":accesskey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accesskey",
+                      "description": "(Required) Apikey access key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "081a52bf-8499-4662-9cca-f26a1449341f",
+    "name": "NeuVector Apikey API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.\n\nContact Support:\n Email: support@neuvector.com",
+      "type": "text/plain"
+    }
+  }
+}

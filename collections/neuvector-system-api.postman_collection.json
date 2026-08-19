@@ -1,0 +1,1208 @@
+{
+  "item": [
+    {
+      "id": "c1e6ed05-2a34-4e11-9477-ba91ce8ea7bc",
+      "name": "System",
+      "description": {
+        "content": "Operations about System",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0c4b03a0-ecda-4502-af64-9451f18aa45a",
+          "name": "System summary",
+          "request": {
+            "name": "System summary",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "system",
+                "summary"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "610a1190-34aa-445e-8835-d62131a12d65",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "system",
+                    "summary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"summary\": {\n    \"hosts\": 1,\n    \"controllers\": 1,\n    \"enforcers\": 1,\n    \"disconnected_enforcers\": 1,\n    \"workloads\": 0,\n    \"running_workloads\": 100,\n    \"running_pods\": 100,\n    \"services\": 10,\n    \"policy_rules\": 2,\n    \"scanners\": 3,\n    \"platform\": \"Docker\",\n    \"kube_version\": \"1.19.2\",\n    \"openshift_version\": \"\",\n    \"cvedb_version\": \"1.011\",\n    \"cvedb_create_time\": \"2018-06-20 19:00:53+00:00\",\n    \"component_versions\": [\n      \"\",\n      \"\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e9b3c966-ba9e-4bbb-82f5-c9b71b2809d2",
+          "name": "System get configure",
+          "request": {
+            "name": "System get configure",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "system",
+                "config"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "scope",
+                  "value": "<string>",
+                  "description": "When set the scope to be fed, it will return the fed system configures. When set the scope to be local, it will return the local system configures. If there is no query string 'scope', it will return all system configures."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f60ca270-6024-47c0-ad14-a089c44394ff",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "system",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"config\": {\n    \"new_service_policy_mode\": \"Discover\",\n    \"new_service_profile_baseline\": \"zero-drift\",\n    \"unused_group_aging\": 123,\n    \"syslog_ip\": \"10.1.0.14\",\n    \"syslog_ip_proto\": 6,\n    \"syslog_port\": 514,\n    \"syslog_level\": \"INFO\",\n    \"syslog_status\": false,\n    \"syslog_categories\": [\n      \"event\",\n      \"violation\",\n      \"threat\",\n      \"incident\"\n    ],\n    \"syslog_in_json\": true,\n    \"single_cve_per_syslog\": false,\n    \"syslog_cve_in_layers\": false,\n    \"output_event_to_logs\": true,\n    \"auth_order\": [\n      \"local\",\n      \"ldap\"\n    ],\n    \"auth_by_platform\": true,\n    \"rancher_ep\": \"\",\n    \"webhooks\": [\n      {\n        \"name\": \"slack-webhook\",\n        \"url\": \"https://neuvector.slack.com/archives/C8AU75GKE\",\n        \"enable\": true,\n        \"use_proxy\": false,\n        \"type\": \"\",\n        \"cfg_type\": \"federal\"\n      },\n      {\n        \"name\": \"slack-webhook\",\n        \"url\": \"https://neuvector.slack.com/archives/C8AU75GKE\",\n        \"enable\": true,\n        \"use_proxy\": false,\n        \"type\": \"Slack\",\n        \"cfg_type\": \"federal\"\n      }\n    ],\n    \"cluster_name\": \"cluster1\",\n    \"controller_debug\": [\n      \"cpath\",\n      \"scan\",\n      \"k8s_monitor\"\n    ],\n    \"monitor_service_mesh\": true,\n    \"registry_http_proxy_status\": true,\n    \"registry_https_proxy_status\": false,\n    \"registry_http_proxy\": {\n      \"url\": \"\",\n      \"username\": \"username\",\n      \"password\": \"password\"\n    },\n    \"registry_https_proxy\": {\n      \"url\": \"\",\n      \"username\": \"username\",\n      \"password\": \"password\"\n    },\n    \"ibmsa_ep_enabled\": false,\n    \"ibmsa_ep_start\": 1,\n    \"ibmsa_ep_dashboard_url\": \"\",\n    \"ibmsa_ep_connected_at\": \"\",\n    \"xff_enabled\": false,\n    \"net_service_status\": false,\n    \"net_service_policy_mode\": \"Monitor\",\n    \"mode_auto_d2m\": false,\n    \"mode_auto_d2m_duration\": 1505755716,\n    \"mode_auto_m2p\": false,\n    \"mode_auto_m2p_duration\": 1505755716,\n    \"scanner_autoscale\": {\n      \"strategy\": \"immediate\",\n      \"min_pods\": 1,\n      \"max_pods\": 3\n    },\n    \"no_telemetry_report\": false,\n    \"syslog_server_cert\": \"E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF\",\n    \"configured_internal_subnets\": [\n      \"69.89.0.0/16\",\n      \"172.217.5.0/23\"\n    ],\n    \"csp_type\": \"aws\"\n  },\n  \"fed_config\": {\n    \"webhooks\": {\n      \"name\": \"slack-webhook\",\n      \"url\": \"https://neuvector.slack.com/archives/C8AU75GKE\",\n      \"enable\": true,\n      \"use_proxy\": false,\n      \"type\": \"\",\n      \"cfg_type\": \"user_created\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "58d857c1-b01b-40a3-9432-9bf51b4dd48e",
+          "name": "System configure",
+          "request": {
+            "name": "System configure",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "system",
+                "config"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"new_service_policy_mode\": \"<string>\",\n    \"new_service_profile_baseline\": \"<string>\",\n    \"unused_group_aging\": \"<uint8>\",\n    \"syslog_ip\": \"<string>\",\n    \"syslog_ip_proto\": \"<uint8>\",\n    \"syslog_port\": \"<uint16>\",\n    \"syslog_level\": \"<string>\",\n    \"syslog_status\": \"<boolean>\",\n    \"syslog_categories\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"syslog_in_json\": \"<boolean>\",\n    \"syslog_server_cert\": \"<string>\",\n    \"single_cve_per_syslog\": \"<boolean>\",\n    \"syslog_cve_in_layers\": \"<boolean>\",\n    \"output_event_to_logs\": \"<boolean>\",\n    \"auth_order\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"auth_by_platform\": \"<boolean>\",\n    \"rancher_ep\": \"<string>\",\n    \"webhooks\": [\n      {\n        \"name\": \"<string>\",\n        \"url\": \"<string>\",\n        \"enable\": \"<boolean>\",\n        \"use_proxy\": \"<boolean>\",\n        \"type\": \"<string>\",\n        \"cfg_type\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"url\": \"<string>\",\n        \"enable\": \"<boolean>\",\n        \"use_proxy\": \"<boolean>\",\n        \"type\": \"<string>\",\n        \"cfg_type\": \"<string>\"\n      }\n    ],\n    \"cluster_name\": \"<string>\",\n    \"controller_debug\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"monitor_service_mesh\": \"<boolean>\",\n    \"registry_http_proxy_status\": \"<boolean>\",\n    \"registry_https_proxy_status\": \"<boolean>\",\n    \"registry_http_proxy\": {\n      \"url\": \"<string>\",\n      \"username\": \"<string>\",\n      \"password\": \"<password>\"\n    },\n    \"registry_https_proxy\": {\n      \"url\": \"<string>\",\n      \"username\": \"<string>\",\n      \"password\": \"<password>\"\n    },\n    \"ibmsa_ep_enabled\": \"<boolean>\",\n    \"ibmsa_ep_dashboard_url\": \"<string>\",\n    \"xff_enabled\": \"<boolean>\",\n    \"scanner_autoscale\": {\n      \"strategy\": \"<string>\",\n      \"min_pods\": \"<uint32>\",\n      \"max_pods\": \"<uint32>\"\n    },\n    \"no_telemetry_report\": \"<boolean>\",\n    \"remote_repositories\": [\n      {\n        \"nickname\": \"<string>\",\n        \"provider\": \"<string>\",\n        \"github_configuration\": {\n          \"repository_owner_username\": \"<string>\",\n          \"repository_name\": \"<string>\",\n          \"repository_branch_name\": \"<string>\",\n          \"personal_access_token\": \"<string>\",\n          \"personal_access_token_committer_name\": \"<string>\",\n          \"personal_access_token_committer_email\": \"<string>\"\n        },\n        \"comment\": \"<string>\",\n        \"enable\": \"<boolean>\"\n      },\n      {\n        \"nickname\": \"<string>\",\n        \"provider\": \"<string>\",\n        \"github_configuration\": {\n          \"repository_owner_username\": \"<string>\",\n          \"repository_name\": \"<string>\",\n          \"repository_branch_name\": \"<string>\",\n          \"personal_access_token\": \"<string>\",\n          \"personal_access_token_committer_name\": \"<string>\",\n          \"personal_access_token_committer_email\": \"<string>\"\n        },\n        \"comment\": \"<string>\",\n        \"enable\": \"<boolean>\"\n      }\n    ]\n  },\n  \"fed_config\": {\n    \"webhooks\": [\n      {\n        \"name\": \"<string>\",\n        \"url\": \"<string>\",\n        \"enable\": \"<boolean>\",\n        \"use_proxy\": \"<boolean>\",\n        \"type\": \"<string>\",\n        \"cfg_type\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"url\": \"<string>\",\n        \"enable\": \"<boolean>\",\n        \"use_proxy\": \"<boolean>\",\n        \"type\": \"<string>\",\n        \"cfg_type\": \"<string>\"\n      }\n    ]\n  },\n  \"net_config\": {\n    \"net_service_status\": \"<boolean>\",\n    \"net_service_policy_mode\": \"<string>\",\n    \"disable_net_policy\": \"<boolean>\",\n    \"detect_unmanaged_wl\": \"<boolean>\",\n    \"strict_group_mode\": \"<boolean>\"\n  },\n  \"atmo_config\": {\n    \"mode_auto_d2m\": \"<boolean>\",\n    \"mode_auto_d2m_duration\": \"<long>\",\n    \"mode_auto_m2p\": \"<boolean>\",\n    \"mode_auto_m2p_duration\": \"<long>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e30d1a36-9b4a-4075-a1d6-8ae4eca44ae9",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "system",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"new_service_policy_mode\": \"Discover\",\n    \"new_service_profile_baseline\": \"zero-drift\",\n    \"unused_group_aging\": 123,\n    \"syslog_ip\": \"\",\n    \"syslog_ip_proto\": 6,\n    \"syslog_port\": 514,\n    \"syslog_level\": \"INFO\",\n    \"syslog_status\": false,\n    \"syslog_categories\": [\n      \"event\",\n      \"violation\",\n      \"threat\",\n      \"incident\"\n    ],\n    \"syslog_in_json\": true,\n    \"syslog_server_cert\": \"E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF\",\n    \"single_cve_per_syslog\": true,\n    \"syslog_cve_in_layers\": true,\n    \"output_event_to_logs\": true,\n    \"auth_order\": [\n      \"\",\n      \"\"\n    ],\n    \"auth_by_platform\": true,\n    \"rancher_ep\": \"\",\n    \"webhooks\": [\n      {\n        \"name\": \"slack-webhook\",\n        \"url\": \"https://neuvector.slack.com/archives/C8AU75GKE\",\n        \"enable\": true,\n        \"use_proxy\": false,\n        \"type\": \"<string>\",\n        \"cfg_type\": \"<string>\"\n      },\n      {\n        \"name\": \"slack-webhook\",\n        \"url\": \"https://neuvector.slack.com/archives/C8AU75GKE\",\n        \"enable\": true,\n        \"use_proxy\": false,\n        \"type\": \"<string>\",\n        \"cfg_type\": \"<string>\"\n      }\n    ],\n    \"cluster_name\": \"cluster1\",\n    \"controller_debug\": [\n      \"cpath\",\n      \"scan\",\n      \"k8s_monitor\"\n    ],\n    \"monitor_service_mesh\": true,\n    \"registry_http_proxy_status\": true,\n    \"registry_https_proxy_status\": false,\n    \"registry_http_proxy\": {\n      \"url\": \"\",\n      \"username\": \"username\",\n      \"password\": \"password\"\n    },\n    \"registry_https_proxy\": {\n      \"url\": \"\",\n      \"username\": \"username\",\n      \"password\": \"password\"\n    },\n    \"ibmsa_ep_enabled\": false,\n    \"ibmsa_ep_dashboard_url\": \"\",\n    \"xff_enabled\": false,\n    \"scanner_autoscale\": {\n      \"strategy\": \"<string>\",\n      \"min_pods\": 1,\n      \"max_pods\": 3\n    },\n    \"no_telemetry_report\": false,\n    \"remote_repositories\": [\n      {\n        \"nickname\": \"default\",\n        \"provider\": \"github\",\n        \"github_configuration\": {\n          \"repository_owner_username\": \"myuser\",\n          \"repository_name\": \"myrepo\",\n          \"repository_branch_name\": \"main\",\n          \"personal_access_token\": \"<access token from GitHub>\",\n          \"personal_access_token_committer_name\": \"myuser\",\n          \"personal_access_token_committer_email\": \"myuser@example.com\"\n        },\n        \"comment\": \"<string>\",\n        \"enable\": true\n      },\n      {\n        \"nickname\": \"default\",\n        \"provider\": \"github\",\n        \"github_configuration\": {\n          \"repository_owner_username\": \"myuser\",\n          \"repository_name\": \"myrepo\",\n          \"repository_branch_name\": \"main\",\n          \"personal_access_token\": \"<access token from GitHub>\",\n          \"personal_access_token_committer_name\": \"myuser\",\n          \"personal_access_token_committer_email\": \"myuser@example.com\"\n        },\n        \"comment\": \"<string>\",\n        \"enable\": true\n      }\n    ]\n  },\n  \"fed_config\": {\n    \"webhooks\": [\n      {\n        \"name\": \"slack-webhook\",\n        \"url\": \"https://neuvector.slack.com/archives/C8AU75GKE\",\n        \"enable\": true,\n        \"use_proxy\": false,\n        \"type\": \"<string>\",\n        \"cfg_type\": \"<string>\"\n      },\n      {\n        \"name\": \"slack-webhook\",\n        \"url\": \"https://neuvector.slack.com/archives/C8AU75GKE\",\n        \"enable\": true,\n        \"use_proxy\": false,\n        \"type\": \"<string>\",\n        \"cfg_type\": \"<string>\"\n      }\n    ]\n  },\n  \"net_config\": {\n    \"net_service_status\": true,\n    \"net_service_policy_mode\": \"\",\n    \"disable_net_policy\": false,\n    \"detect_unmanaged_wl\": true,\n    \"strict_group_mode\": true\n  },\n  \"atmo_config\": {\n    \"mode_auto_d2m\": false,\n    \"mode_auto_d2m_duration\": 1505755716,\n    \"mode_auto_m2p\": false,\n    \"mode_auto_m2p_duration\": 1505755716\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e7109b97-4e49-4bb3-a7ed-f44803421dac",
+          "name": "Get system configuration (starting from 5.0, rest client should call this api.)",
+          "request": {
+            "name": "Get system configuration (starting from 5.0, rest client should call this api.)",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "system",
+                "config"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "scope",
+                  "value": "<string>",
+                  "description": "When set the scope to be fed, it will return the fed system configures. When set the scope to be local, it will return the local system configures. If there is no query string 'scope', it will return all system configures."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "946304ae-fa1b-4521-a999-46525c347eea",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "system",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"config\": {\n    \"new_svc\": {\n      \"new_service_policy_mode\": \"Discover\",\n      \"new_service_profile_baseline\": \"zero-drift\"\n    },\n    \"syslog\": {\n      \"syslog_ip\": \"10.1.0.14\",\n      \"syslog_ip_proto\": 6,\n      \"syslog_port\": 514,\n      \"syslog_level\": \"INFO\",\n      \"syslog_status\": false,\n      \"syslog_categories\": [\n        \"event\",\n        \"violation\",\n        \"threat\",\n        \"incident\"\n      ],\n      \"syslog_in_json\": true,\n      \"single_cve_per_syslog\": false,\n      \"syslog_cve_in_layers\": false,\n      \"syslog_server_cert\": \"\",\n      \"output_event_to_logs\": true\n    },\n    \"auth\": {\n      \"auth_order\": [\n        \"local\",\n        \"ldap\"\n      ],\n      \"auth_by_platform\": true,\n      \"rancher_ep\": \"\"\n    },\n    \"misc\": {\n      \"unused_group_aging\": 123,\n      \"cluster_name\": \"cluster1\",\n      \"controller_debug\": [\n        \"scan\",\n        \"k8s_monitor\"\n      ],\n      \"monitor_service_mesh\": true,\n      \"xff_enabled\": false,\n      \"no_telemetry_report\": false,\n      \"cfg_type\": \"federal\",\n      \"configured_internal_subnets\": [\n        \"69.89.0.0/16\",\n        \"172.217.5.0/23\"\n      ],\n      \"csp_type\": \"aws\"\n    },\n    \"webhooks\": [\n      {\n        \"name\": \"slack-webhook\",\n        \"url\": \"https://neuvector.slack.com/archives/C8AU75GKE\",\n        \"enable\": true,\n        \"use_proxy\": false,\n        \"type\": \"<string>\",\n        \"cfg_type\": \"<string>\"\n      },\n      {\n        \"name\": \"slack-webhook\",\n        \"url\": \"https://neuvector.slack.com/archives/C8AU75GKE\",\n        \"enable\": true,\n        \"use_proxy\": false,\n        \"type\": \"<string>\",\n        \"cfg_type\": \"<string>\"\n      }\n    ],\n    \"proxy\": {\n      \"registry_http_proxy_status\": true,\n      \"registry_https_proxy_status\": false,\n      \"registry_http_proxy\": {\n        \"url\": \"\",\n        \"username\": \"username\",\n        \"password\": \"password\"\n      },\n      \"registry_https_proxy\": {\n        \"url\": \"\",\n        \"username\": \"username\",\n        \"password\": \"password\"\n      },\n      \"registry_http_proxy_cfg\": {\n        \"url\": \"\",\n        \"username\": \"username\",\n        \"password\": \"password\"\n      },\n      \"registry_https_proxy_cfg\": {\n        \"url\": \"\",\n        \"username\": \"username\",\n        \"password\": \"password\"\n      }\n    },\n    \"ibmsa\": {\n      \"ibmsa_ep_enabled\": false,\n      \"ibmsa_ep_start\": 1,\n      \"ibmsa_ep_dashboard_url\": \"\",\n      \"ibmsa_ep_connected_at\": \"\"\n    },\n    \"net_svc\": {\n      \"net_service_status\": true,\n      \"new_service_profile_baseline\": \"zero-drift\",\n      \"disable_net_policy\": false,\n      \"detect_unmanaged_wl\": true,\n      \"strict_group_mode\": true\n    },\n    \"mode_auto\": {\n      \"mode_auto_d2m\": false,\n      \"mode_auto_d2m_duration\": 1505755716,\n      \"mode_auto_m2p\": false,\n      \"mode_auto_m2p_duration\": 1505755716\n    },\n    \"scanner_autoscale\": {\n      \"strategy\": \"<string>\",\n      \"min_pods\": 1,\n      \"max_pods\": 3\n    },\n    \"tls_cfg\": {\n      \"enable_tls_verification\": false,\n      \"cacerts\": [\n        \"-----BEGIN CERTIFICATE-----...\",\n        \"-----BEGIN CERTIFICATE-----...\"\n      ]\n    }\n  },\n  \"fed_config\": {\n    \"webhooks\": {\n      \"name\": \"slack-webhook\",\n      \"url\": \"https://neuvector.slack.com/archives/C8AU75GKE\",\n      \"enable\": true,\n      \"use_proxy\": false,\n      \"type\": \"<string>\",\n      \"cfg_type\": \"<string>\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8d23dba4-7ff4-4e65-aa3f-36ed0cb55bd1",
+          "name": "System configure (starting from 5.0, rest client should call this api.)",
+          "request": {
+            "name": "System configure (starting from 5.0, rest client should call this api.)",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "system",
+                "config"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config_v2\": {\n    \"svc_cfg\": {\n      \"new_service_policy_mode\": \"<string>\",\n      \"new_service_profile_baseline\": \"<string>\"\n    },\n    \"syslog_cfg\": {\n      \"syslog_ip\": \"<string>\",\n      \"syslog_ip_proto\": \"<uint8>\",\n      \"syslog_port\": \"<uint16>\",\n      \"syslog_level\": \"<string>\",\n      \"syslog_status\": \"<boolean>\",\n      \"syslog_categories\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"syslog_in_json\": \"<boolean>\",\n      \"single_cve_per_syslog\": \"<boolean>\",\n      \"syslog_cve_in_layers\": \"<boolean>\",\n      \"syslog_server_cert\": \"<string>\",\n      \"output_event_to_logs\": \"<boolean>\"\n    },\n    \"auth_cfg\": {\n      \"auth_order\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"auth_by_platform\": \"<boolean>\",\n      \"rancher_ep\": \"<string>\"\n    },\n    \"proxy_cfg\": {\n      \"registry_http_proxy_status\": \"<boolean>\",\n      \"registry_https_proxy_status\": \"<boolean>\",\n      \"registry_http_proxy\": {\n        \"url\": \"<string>\",\n        \"username\": \"<string>\",\n        \"password\": \"<password>\"\n      },\n      \"registry_https_proxy\": {\n        \"url\": \"<string>\",\n        \"username\": \"<string>\",\n        \"password\": \"<password>\"\n      },\n      \"registry_http_proxy_cfg\": {\n        \"url\": \"<string>\",\n        \"username\": \"<string>\",\n        \"password\": \"<password>\"\n      },\n      \"registry_https_proxy_cfg\": {\n        \"url\": \"<string>\",\n        \"username\": \"<string>\",\n        \"password\": \"<password>\"\n      }\n    },\n    \"webhooks\": [\n      {\n        \"name\": \"<string>\",\n        \"url\": \"<string>\",\n        \"enable\": \"<boolean>\",\n        \"use_proxy\": \"<boolean>\",\n        \"type\": \"<string>\",\n        \"cfg_type\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"url\": \"<string>\",\n        \"enable\": \"<boolean>\",\n        \"use_proxy\": \"<boolean>\",\n        \"type\": \"<string>\",\n        \"cfg_type\": \"<string>\"\n      }\n    ],\n    \"ibmsa_cfg\": {\n      \"ibmsa_ep_enabled\": \"<boolean>\",\n      \"ibmsa_ep_dashboard_url\": \"<string>\"\n    },\n    \"scanner_autoscale_cfg\": {\n      \"strategy\": \"<string>\",\n      \"min_pods\": \"<uint32>\",\n      \"max_pods\": \"<uint32>\"\n    },\n    \"remote_repositories\": [\n      {\n        \"nickname\": \"<string>\",\n        \"provider\": \"<string>\",\n        \"github_configuration\": {\n          \"repository_owner_username\": \"<string>\",\n          \"repository_name\": \"<string>\",\n          \"repository_branch_name\": \"<string>\",\n          \"personal_access_token\": \"<string>\",\n          \"personal_access_token_committer_name\": \"<string>\",\n          \"personal_access_token_committer_email\": \"<string>\"\n        },\n        \"comment\": \"<string>\",\n        \"enable\": \"<boolean>\"\n      },\n      {\n        \"nickname\": \"<string>\",\n        \"provider\": \"<string>\",\n        \"github_configuration\": {\n          \"repository_owner_username\": \"<string>\",\n          \"repository_name\": \"<string>\",\n          \"repository_branch_name\": \"<string>\",\n          \"personal_access_token\": \"<string>\",\n          \"personal_access_token_committer_name\": \"<string>\",\n          \"personal_access_token_committer_email\": \"<string>\"\n        },\n        \"comment\": \"<string>\",\n        \"enable\": \"<boolean>\"\n      }\n    ],\n    \"misc_cfg\": {\n      \"unused_group_aging\": \"<uint8>\",\n      \"cluster_name\": \"<string>\",\n      \"controller_debug\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"monitor_service_mesh\": \"<boolean>\",\n      \"xff_enabled\": \"<boolean>\",\n      \"no_telemetry_report\": \"<boolean>\"\n    },\n    \"tls_cfg\": {\n      \"enable_tls_verification\": \"<boolean>\",\n      \"cacerts\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"fed_config\": {\n    \"webhooks\": [\n      {\n        \"name\": \"<string>\",\n        \"url\": \"<string>\",\n        \"enable\": \"<boolean>\",\n        \"use_proxy\": \"<boolean>\",\n        \"type\": \"<string>\",\n        \"cfg_type\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"url\": \"<string>\",\n        \"enable\": \"<boolean>\",\n        \"use_proxy\": \"<boolean>\",\n        \"type\": \"<string>\",\n        \"cfg_type\": \"<string>\"\n      }\n    ]\n  },\n  \"net_config\": {\n    \"net_service_status\": \"<boolean>\",\n    \"net_service_policy_mode\": \"<string>\",\n    \"disable_net_policy\": \"<boolean>\",\n    \"detect_unmanaged_wl\": \"<boolean>\",\n    \"strict_group_mode\": \"<boolean>\"\n  },\n  \"atmo_config\": {\n    \"mode_auto_d2m\": \"<boolean>\",\n    \"mode_auto_d2m_duration\": \"<long>\",\n    \"mode_auto_m2p\": \"<boolean>\",\n    \"mode_auto_m2p_duration\": \"<long>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "15fb1ab1-3eb6-4ee0-9064-3af985dd7ebe",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "system",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config_v2\": {\n    \"svc_cfg\": {\n      \"new_service_policy_mode\": \"Discover\",\n      \"new_service_profile_baseline\": \"zero-drift\"\n    },\n    \"syslog_cfg\": {\n      \"syslog_ip\": \"\",\n      \"syslog_ip_proto\": 6,\n      \"syslog_port\": 514,\n      \"syslog_level\": \"INFO\",\n      \"syslog_status\": true,\n      \"syslog_categories\": [\n        \"event\",\n        \"violation\",\n        \"threat\",\n        \"incident\"\n      ],\n      \"syslog_in_json\": true,\n      \"single_cve_per_syslog\": true,\n      \"syslog_cve_in_layers\": true,\n      \"syslog_server_cert\": \"E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF\",\n      \"output_event_to_logs\": true\n    },\n    \"auth_cfg\": {\n      \"auth_order\": [\n        \"local\",\n        \"ldap\"\n      ],\n      \"auth_by_platform\": true,\n      \"rancher_ep\": \"https://my-rancher.test:30000\"\n    },\n    \"proxy_cfg\": {\n      \"registry_http_proxy_status\": true,\n      \"registry_https_proxy_status\": false,\n      \"registry_http_proxy\": {\n        \"url\": \"\",\n        \"username\": \"username\",\n        \"password\": \"password\"\n      },\n      \"registry_https_proxy\": {\n        \"url\": \"\",\n        \"username\": \"username\",\n        \"password\": \"password\"\n      },\n      \"registry_http_proxy_cfg\": {\n        \"url\": \"\",\n        \"username\": \"username\",\n        \"password\": \"password\"\n      },\n      \"registry_https_proxy_cfg\": {\n        \"url\": \"\",\n        \"username\": \"username\",\n        \"password\": \"password\"\n      }\n    },\n    \"webhooks\": [\n      {\n        \"name\": \"slack-webhook\",\n        \"url\": \"https://neuvector.slack.com/archives/C8AU75GKE\",\n        \"enable\": true,\n        \"use_proxy\": false,\n        \"type\": \"<string>\",\n        \"cfg_type\": \"<string>\"\n      },\n      {\n        \"name\": \"slack-webhook\",\n        \"url\": \"https://neuvector.slack.com/archives/C8AU75GKE\",\n        \"enable\": true,\n        \"use_proxy\": false,\n        \"type\": \"<string>\",\n        \"cfg_type\": \"<string>\"\n      }\n    ],\n    \"ibmsa_cfg\": {\n      \"ibmsa_ep_enabled\": false,\n      \"ibmsa_ep_dashboard_url\": \"<string>\"\n    },\n    \"scanner_autoscale_cfg\": {\n      \"strategy\": \"<string>\",\n      \"min_pods\": 1,\n      \"max_pods\": 3\n    },\n    \"remote_repositories\": [\n      {\n        \"nickname\": \"default\",\n        \"provider\": \"github\",\n        \"github_configuration\": {\n          \"repository_owner_username\": \"myuser\",\n          \"repository_name\": \"myrepo\",\n          \"repository_branch_name\": \"main\",\n          \"personal_access_token\": \"<access token from GitHub>\",\n          \"personal_access_token_committer_name\": \"myuser\",\n          \"personal_access_token_committer_email\": \"myuser@example.com\"\n        },\n        \"comment\": \"<string>\",\n        \"enable\": true\n      },\n      {\n        \"nickname\": \"default\",\n        \"provider\": \"github\",\n        \"github_configuration\": {\n          \"repository_owner_username\": \"myuser\",\n          \"repository_name\": \"myrepo\",\n          \"repository_branch_name\": \"main\",\n          \"personal_access_token\": \"<access token from GitHub>\",\n          \"personal_access_token_committer_name\": \"myuser\",\n          \"personal_access_token_committer_email\": \"myuser@example.com\"\n        },\n        \"comment\": \"<string>\",\n        \"enable\": true\n      }\n    ],\n    \"misc_cfg\": {\n      \"unused_group_aging\": 30,\n      \"cluster_name\": \"cluster1\",\n      \"controller_debug\": [\n        \"scan\",\n        \"k8s_monitor\"\n      ],\n      \"monitor_service_mesh\": true,\n      \"xff_enabled\": false,\n      \"no_telemetry_report\": false\n    },\n    \"tls_cfg\": {\n      \"enable_tls_verification\": false,\n      \"cacerts\": [\n        \"-----BEGIN CERTIFICATE-----...\",\n        \"-----BEGIN CERTIFICATE-----...\"\n      ]\n    }\n  },\n  \"fed_config\": {\n    \"webhooks\": [\n      {\n        \"name\": \"slack-webhook\",\n        \"url\": \"https://neuvector.slack.com/archives/C8AU75GKE\",\n        \"enable\": true,\n        \"use_proxy\": false,\n        \"type\": \"<string>\",\n        \"cfg_type\": \"<string>\"\n      },\n      {\n        \"name\": \"slack-webhook\",\n        \"url\": \"https://neuvector.slack.com/archives/C8AU75GKE\",\n        \"enable\": true,\n        \"use_proxy\": false,\n        \"type\": \"<string>\",\n        \"cfg_type\": \"<string>\"\n      }\n    ]\n  },\n  \"net_config\": {\n    \"net_service_status\": true,\n    \"net_service_policy_mode\": \"\",\n    \"disable_net_policy\": false,\n    \"detect_unmanaged_wl\": true,\n    \"strict_group_mode\": true\n  },\n  \"atmo_config\": {\n    \"mode_auto_d2m\": false,\n    \"mode_auto_d2m_duration\": 1505755716,\n    \"mode_auto_m2p\": false,\n    \"mode_auto_m2p_duration\": 1505755716\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "13da2e63-cf74-42fe-89cf-6036b8962168",
+          "name": "System alerts",
+          "request": {
+            "name": "System alerts",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "system",
+                "alerts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "382344fb-16a4-48f6-9b1b-baf1ffe83847",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "system",
+                    "alerts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"neuvector_upgrade_info\": {\n    \"min_upgrade_version\": {\n      \"version\": \"v5.3.0\",\n      \"release_date\": \"2023-10-12T00:41:38.00Z\",\n      \"tag\": \"v5.3.0\"\n    },\n    \"max_upgrade_version\": {\n      \"version\": \"v5.3.0\",\n      \"release_date\": \"2023-10-12T00:41:38.00Z\",\n      \"tag\": \"v5.3.0\"\n    }\n  },\n  \"acceptable_alerts\": {\n    \"clusterrole_alerts\": {\n      \"type\": \"RBAC\",\n      \"data\": [\n        {\n          \"id\": \"d08afddc9f4516b68a82d7ff4da20fb3\",\n          \"message\": \"Managed cluster cluster.local-42 is disconnected from primary cluster\"\n        },\n        {\n          \"id\": \"d08afddc9f4516b68a82d7ff4da20fb3\",\n          \"message\": \"Managed cluster cluster.local-42 is disconnected from primary cluster\"\n        }\n      ]\n    },\n    \"clusterrolebinding_alerts\": {\n      \"type\": \"RBAC\",\n      \"data\": [\n        {\n          \"id\": \"d08afddc9f4516b68a82d7ff4da20fb3\",\n          \"message\": \"Managed cluster cluster.local-42 is disconnected from primary cluster\"\n        },\n        {\n          \"id\": \"d08afddc9f4516b68a82d7ff4da20fb3\",\n          \"message\": \"Managed cluster cluster.local-42 is disconnected from primary cluster\"\n        }\n      ]\n    },\n    \"role_alerts\": {\n      \"type\": \"RBAC\",\n      \"data\": [\n        {\n          \"id\": \"d08afddc9f4516b68a82d7ff4da20fb3\",\n          \"message\": \"Managed cluster cluster.local-42 is disconnected from primary cluster\"\n        },\n        {\n          \"id\": \"d08afddc9f4516b68a82d7ff4da20fb3\",\n          \"message\": \"Managed cluster cluster.local-42 is disconnected from primary cluster\"\n        }\n      ]\n    },\n    \"rolebinding_alerts\": {\n      \"type\": \"RBAC\",\n      \"data\": [\n        {\n          \"id\": \"d08afddc9f4516b68a82d7ff4da20fb3\",\n          \"message\": \"Managed cluster cluster.local-42 is disconnected from primary cluster\"\n        },\n        {\n          \"id\": \"d08afddc9f4516b68a82d7ff4da20fb3\",\n          \"message\": \"Managed cluster cluster.local-42 is disconnected from primary cluster\"\n        }\n      ]\n    },\n    \"neuvector_crd_alerts\": {\n      \"type\": \"RBAC\",\n      \"data\": [\n        {\n          \"id\": \"d08afddc9f4516b68a82d7ff4da20fb3\",\n          \"message\": \"Managed cluster cluster.local-42 is disconnected from primary cluster\"\n        },\n        {\n          \"id\": \"d08afddc9f4516b68a82d7ff4da20fb3\",\n          \"message\": \"Managed cluster cluster.local-42 is disconnected from primary cluster\"\n        }\n      ]\n    },\n    \"certificate_alerts\": {\n      \"type\": \"RBAC\",\n      \"data\": [\n        {\n          \"id\": \"d08afddc9f4516b68a82d7ff4da20fb3\",\n          \"message\": \"Managed cluster cluster.local-42 is disconnected from primary cluster\"\n        },\n        {\n          \"id\": \"d08afddc9f4516b68a82d7ff4da20fb3\",\n          \"message\": \"Managed cluster cluster.local-42 is disconnected from primary cluster\"\n        }\n      ]\n    },\n    \"other_alerts\": {\n      \"type\": \"RBAC\",\n      \"data\": [\n        {\n          \"id\": \"d08afddc9f4516b68a82d7ff4da20fb3\",\n          \"message\": \"Managed cluster cluster.local-42 is disconnected from primary cluster\"\n        },\n        {\n          \"id\": \"d08afddc9f4516b68a82d7ff4da20fb3\",\n          \"message\": \"Managed cluster cluster.local-42 is disconnected from primary cluster\"\n        }\n      ]\n    }\n  },\n  \"accepted_alerts\": [\n    \"Managed cluster cluster.local-42 is disconnected from primary cluster\",\n    \"Internal CA certificate will be expired in 180 days\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "96988ba5-39c8-4a22-b06e-c64ff5384e18",
+          "name": "Create system webhook",
+          "request": {
+            "name": "Create system webhook",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "system",
+                "config",
+                "webhook"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"name\": \"<string>\",\n    \"url\": \"<string>\",\n    \"enable\": \"<boolean>\",\n    \"use_proxy\": \"<boolean>\",\n    \"type\": \"<string>\",\n    \"cfg_type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4b57f47c-1368-4ac0-86f5-67a48a44b0a3",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "system",
+                    "config",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f700e6c-1f17-4955-ba3a-b62f879661a8",
+          "name": "Configure system webhook",
+          "request": {
+            "name": "Configure system webhook",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "system",
+                "config",
+                "webhook",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "scope",
+                  "value": "<string>",
+                  "description": "When set the scope to be fed, it will update the fed level webhook. When set the scope to be local, it will update the local webhook. If there is no query string 'scope', it will use 'local' as the default value."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) System webhook name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"name\": \"<string>\",\n    \"url\": \"<string>\",\n    \"enable\": \"<boolean>\",\n    \"use_proxy\": \"<boolean>\",\n    \"type\": \"<string>\",\n    \"cfg_type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "becf4bdb-8fbc-44b3-bf97-d1f3a413c667",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "system",
+                    "config",
+                    "webhook",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) System webhook name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "638694b9-5df6-4e7c-a1da-d33647b13875",
+          "name": "Delete system webhook",
+          "request": {
+            "name": "Delete system webhook",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "system",
+                "config",
+                "webhook",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "scope",
+                  "value": "<string>",
+                  "description": "When set the scope to be fed, it will delete the fed level webhook. When set the scope to be local, it will delete the local webhook. If there is no query string 'scope', it will use 'local' as the default value."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) System webhook name"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "21ff82c7-ccae-4041-86eb-1290252cb694",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "system",
+                    "config",
+                    "webhook",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) System webhook name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac8ecaa3-325b-4bcd-b5b5-6238cb50876e",
+          "name": "System request",
+          "request": {
+            "name": "System request",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "system",
+                "request"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"request\": {\n    \"baseline_profile\": \"<string>\",\n    \"policy_mode\": \"<string>\",\n    \"unquarantine\": {\n      \"response_rule\": \"<uint32>\",\n      \"group\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "848e2f63-1b81-4716-ba97-afd219b29624",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "system",
+                    "request"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"request\": {\n    \"baseline_profile\": \"Zero-Drift\",\n    \"policy_mode\": \"Discover\",\n    \"unquarantine\": {\n      \"response_rule\": 1007,\n      \"group\": \"\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d9978986-5a73-4ba1-a401-2ff59d906247",
+          "name": "Get system score metrics data",
+          "request": {
+            "name": "Get system score metrics data",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "system",
+                "score",
+                "metrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4453aaf5-abbd-4a17-90d6-a1544a266ccc",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "system",
+                    "score",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metrics\": [\n    {\n      \"name\": \"default\",\n      \"disable_system\": false,\n      \"entries\": [\n        {\n          \"test_number\": \"\",\n          \"tags\": [\n            \"\",\n            \"\"\n          ]\n        },\n        {\n          \"test_number\": \"\",\n          \"tags\": [\n            \"\",\n            \"\"\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"default\",\n      \"disable_system\": false,\n      \"entries\": [\n        {\n          \"test_number\": \"\",\n          \"tags\": [\n            \"\",\n            \"\"\n          ]\n        },\n        {\n          \"test_number\": \"\",\n          \"tags\": [\n            \"\",\n            \"\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"ingress\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"display_name\": \"string\",\n      \"pod_name\": \"string\",\n      \"service\": \"string\",\n      \"severity\": \"string\",\n      \"critical\": 3214,\n      \"high\": 3467,\n      \"medium\": 1374,\n      \"policy_mode\": \"string\",\n      \"policy_action\": \"string\",\n      \"protocols\": [\n        \"string\",\n        \"string\"\n      ],\n      \"applications\": [\n        \"string\",\n        \"string\"\n      ],\n      \"ports\": [\n        \"string\",\n        \"string\"\n      ],\n      \"entries\": [\n        {\n          \"bytes\": 6604,\n          \"sessions\": 3679,\n          \"port\": \"string\",\n          \"application\": \"string\",\n          \"policy_action\": \"string\",\n          \"client_ip\": \"string\",\n          \"server_ip\": \"string\",\n          \"fqdn\": \"string\",\n          \"last_seen_at\": 871\n        },\n        {\n          \"bytes\": 26,\n          \"sessions\": 6957,\n          \"port\": \"string\",\n          \"application\": \"string\",\n          \"policy_action\": \"string\",\n          \"client_ip\": \"string\",\n          \"server_ip\": \"string\",\n          \"fqdn\": \"string\",\n          \"last_seen_at\": 2612\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"display_name\": \"string\",\n      \"pod_name\": \"string\",\n      \"service\": \"string\",\n      \"severity\": \"string\",\n      \"critical\": 24,\n      \"high\": 7665,\n      \"medium\": 1339,\n      \"policy_mode\": \"string\",\n      \"policy_action\": \"string\",\n      \"protocols\": [\n        \"string\",\n        \"string\"\n      ],\n      \"applications\": [\n        \"string\",\n        \"string\"\n      ],\n      \"ports\": [\n        \"string\",\n        \"string\"\n      ],\n      \"entries\": [\n        {\n          \"bytes\": 14,\n          \"sessions\": 3966,\n          \"port\": \"string\",\n          \"application\": \"string\",\n          \"policy_action\": \"string\",\n          \"client_ip\": \"string\",\n          \"server_ip\": \"string\",\n          \"fqdn\": \"string\",\n          \"last_seen_at\": 7985\n        },\n        {\n          \"bytes\": 2544,\n          \"sessions\": 9162,\n          \"port\": \"string\",\n          \"application\": \"string\",\n          \"policy_action\": \"string\",\n          \"client_ip\": \"string\",\n          \"server_ip\": \"string\",\n          \"fqdn\": \"string\",\n          \"last_seen_at\": 7446\n        }\n      ]\n    }\n  ],\n  \"egress\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"display_name\": \"string\",\n      \"pod_name\": \"string\",\n      \"service\": \"string\",\n      \"severity\": \"string\",\n      \"critical\": 7350,\n      \"high\": 5451,\n      \"medium\": 6081,\n      \"policy_mode\": \"string\",\n      \"policy_action\": \"string\",\n      \"protocols\": [\n        \"string\",\n        \"string\"\n      ],\n      \"applications\": [\n        \"string\",\n        \"string\"\n      ],\n      \"ports\": [\n        \"string\",\n        \"string\"\n      ],\n      \"entries\": [\n        {\n          \"bytes\": 4661,\n          \"sessions\": 3007,\n          \"port\": \"string\",\n          \"application\": \"string\",\n          \"policy_action\": \"string\",\n          \"client_ip\": \"string\",\n          \"server_ip\": \"string\",\n          \"fqdn\": \"string\",\n          \"last_seen_at\": 5605\n        },\n        {\n          \"bytes\": 7285,\n          \"sessions\": 1676,\n          \"port\": \"string\",\n          \"application\": \"string\",\n          \"policy_action\": \"string\",\n          \"client_ip\": \"string\",\n          \"server_ip\": \"string\",\n          \"fqdn\": \"string\",\n          \"last_seen_at\": 6492\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"display_name\": \"string\",\n      \"pod_name\": \"string\",\n      \"service\": \"string\",\n      \"severity\": \"string\",\n      \"critical\": 8123,\n      \"high\": 3938,\n      \"medium\": 6017,\n      \"policy_mode\": \"string\",\n      \"policy_action\": \"string\",\n      \"protocols\": [\n        \"string\",\n        \"string\"\n      ],\n      \"applications\": [\n        \"string\",\n        \"string\"\n      ],\n      \"ports\": [\n        \"string\",\n        \"string\"\n      ],\n      \"entries\": [\n        {\n          \"bytes\": 2008,\n          \"sessions\": 8052,\n          \"port\": \"string\",\n          \"application\": \"string\",\n          \"policy_action\": \"string\",\n          \"client_ip\": \"string\",\n          \"server_ip\": \"string\",\n          \"fqdn\": \"string\",\n          \"last_seen_at\": 6550\n        },\n        {\n          \"bytes\": 8389,\n          \"sessions\": 3862,\n          \"port\": \"string\",\n          \"application\": \"string\",\n          \"policy_action\": \"string\",\n          \"client_ip\": \"string\",\n          \"server_ip\": \"string\",\n          \"fqdn\": \"string\",\n          \"last_seen_at\": 3155\n        }\n      ]\n    }\n  ],\n  \"security_scores\": {\n    \"new_service_mode_score\": 9191,\n    \"service_mode_score\": 7344,\n    \"service_mode_score_by_100\": 887,\n    \"exposure_score\": 2941,\n    \"exposure_score_by_100\": 494,\n    \"privileged_container_score\": 29,\n    \"run_as_root_score\": 1092,\n    \"admission_rule_score\": 8665,\n    \"vulnerability_score\": 4517,\n    \"vulnerability_score_by_100\": 5925,\n    \"security_risk_score\": 185\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "eaff7804-35a3-4609-b354-32d33df73487",
+    "name": "NeuVector System API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.\n\nContact Support:\n Email: support@neuvector.com",
+      "type": "text/plain"
+    }
+  }
+}

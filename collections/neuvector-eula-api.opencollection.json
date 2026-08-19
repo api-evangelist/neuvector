@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NeuVector EULA API",
+    "version": "5.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "EULA",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get EULA agreement acceptance status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/eula"
+          },
+          "docs": "Get EULA agreement acceptance status"
+        },
+        {
+          "info": {
+            "name": "Accept EULA agreement",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/eula"
+          },
+          "docs": "Accept EULA agreement"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

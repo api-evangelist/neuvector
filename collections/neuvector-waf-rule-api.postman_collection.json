@@ -1,0 +1,1143 @@
+{
+  "item": [
+    {
+      "id": "38e9d671-9ddf-4308-9897-f3490c788b54",
+      "name": "WAF Rule",
+      "description": {
+        "content": "Operations about waf Rule",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0870abd5-97d7-4815-9f28-7c7dc51ee659",
+          "name": "Get waf rule list",
+          "request": {
+            "name": "Get waf rule list",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "waf",
+                "sensor"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "scope",
+                  "value": "<string>",
+                  "description": "The default value is local which returns local waf rule list."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "07b1532d-1b2f-4d37-a196-e9d64e48f4ba",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "waf",
+                    "sensor"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sensors\": [\n    {\n      \"name\": \"test4321546242574254672462572452615362453\",\n      \"groups\": [\n        \"nv.kube-proxy.kube-system\",\n        \"nv.kube-proxy.kube-system\"\n      ],\n      \"rules\": [\n        {\n          \"name\": \"test\",\n          \"id\": 40003,\n          \"patterns\": [\n            {\n              \"key\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"op\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"context\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"key\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"op\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"context\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"cfg_type\": \"ground\"\n        },\n        {\n          \"name\": \"test\",\n          \"id\": 40003,\n          \"patterns\": [\n            {\n              \"key\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"op\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"context\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"key\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"op\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"context\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"cfg_type\": \"user_created\"\n        }\n      ],\n      \"comment\": \"\",\n      \"predefine\": false,\n      \"cfg_type\": \"user_created\"\n    },\n    {\n      \"name\": \"test4321546242574254672462572452615362453\",\n      \"groups\": [\n        \"nv.kube-proxy.kube-system\",\n        \"nv.kube-proxy.kube-system\"\n      ],\n      \"rules\": [\n        {\n          \"name\": \"test\",\n          \"id\": 40003,\n          \"patterns\": [\n            {\n              \"key\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"op\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"context\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"key\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"op\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"context\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"cfg_type\": \"ground\"\n        },\n        {\n          \"name\": \"test\",\n          \"id\": 40003,\n          \"patterns\": [\n            {\n              \"key\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"op\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"context\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"key\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"op\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"context\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"cfg_type\": \"user_created\"\n        }\n      ],\n      \"comment\": \"\",\n      \"predefine\": false,\n      \"cfg_type\": \"user_created\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2e363730-3253-4799-9165-afdd7919a0d1",
+          "name": "Create waf sensor",
+          "request": {
+            "name": "Create waf sensor",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "waf",
+                "sensor"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"name\": \"<string>\",\n    \"change\": [\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<uint32>\",\n        \"patterns\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<uint32>\",\n        \"patterns\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      }\n    ],\n    \"delete\": [\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<uint32>\",\n        \"patterns\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<uint32>\",\n        \"patterns\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      }\n    ],\n    \"rules\": [\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<uint32>\",\n        \"patterns\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<uint32>\",\n        \"patterns\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      }\n    ],\n    \"comment\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3af0617a-f6ef-4e4e-9e52-6791e94455dc",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "waf",
+                    "sensor"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"name\": \"sensor.creditcard\",\n    \"change\": [\n      {\n        \"name\": \"testrule413251424153561246153614615462515134635\",\n        \"id\": 4001,\n        \"patterns\": [\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\"\n          },\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      },\n      {\n        \"name\": \"testrule413251424153561246153614615462515134635\",\n        \"id\": 4001,\n        \"patterns\": [\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\"\n          },\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      }\n    ],\n    \"delete\": [\n      {\n        \"name\": \"testrule413251424153561246153614615462515134635\",\n        \"id\": 4001,\n        \"patterns\": [\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\"\n          },\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      },\n      {\n        \"name\": \"testrule413251424153561246153614615462515134635\",\n        \"id\": 4001,\n        \"patterns\": [\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\"\n          },\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      }\n    ],\n    \"rules\": [\n      {\n        \"name\": \"testrule413251424153561246153614615462515134635\",\n        \"id\": 4001,\n        \"patterns\": [\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\"\n          },\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      },\n      {\n        \"name\": \"testrule413251424153561246153614615462515134635\",\n        \"id\": 4001,\n        \"patterns\": [\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\"\n          },\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      }\n    ],\n    \"comment\": \"Sensor for Credit Card detection\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6c86959a-8bda-45bb-b644-eca80b7a1763",
+          "name": "Get waf sensor detail",
+          "request": {
+            "name": "Get waf sensor detail",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "waf",
+                "sensor",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) waf sensor name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ae2f2492-ce32-4916-9cb9-5e22cdc85f9d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "waf",
+                    "sensor",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) waf sensor name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sensor\": {\n    \"name\": \"test4321546242574254672462572452615362453\",\n    \"groups\": [\n      \"nv.kube-proxy.kube-system\",\n      \"nv.kube-proxy.kube-system\"\n    ],\n    \"rules\": [\n      {\n        \"name\": \"test\",\n        \"id\": 40003,\n        \"patterns\": [\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\",\n            \"context\": \"packet\"\n          },\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\",\n            \"context\": \"packet\"\n          }\n        ],\n        \"cfg_type\": \"user_created\"\n      },\n      {\n        \"name\": \"test\",\n        \"id\": 40003,\n        \"patterns\": [\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\",\n            \"context\": \"packet\"\n          },\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\",\n            \"context\": \"packet\"\n          }\n        ],\n        \"cfg_type\": \"ground\"\n      }\n    ],\n    \"comment\": \"\",\n    \"predefine\": false,\n    \"cfg_type\": \"user_created\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bb1f06e4-2b0e-4beb-acc9-2bdf4ce7764d",
+          "name": "Update a waf sensor",
+          "request": {
+            "name": "Update a waf sensor",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "waf",
+                "sensor",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) waf sensor name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"name\": \"<string>\",\n    \"change\": [\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<uint32>\",\n        \"patterns\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\",\n            \"context\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\",\n            \"context\": \"<string>\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<uint32>\",\n        \"patterns\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\",\n            \"context\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\",\n            \"context\": \"<string>\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      }\n    ],\n    \"delete\": [\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<uint32>\",\n        \"patterns\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\",\n            \"context\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\",\n            \"context\": \"<string>\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<uint32>\",\n        \"patterns\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\",\n            \"context\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\",\n            \"context\": \"<string>\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      }\n    ],\n    \"rules\": [\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<uint32>\",\n        \"patterns\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\",\n            \"context\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\",\n            \"context\": \"<string>\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<uint32>\",\n        \"patterns\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\",\n            \"context\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\",\n            \"context\": \"<string>\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      }\n    ],\n    \"comment\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0eab7865-4500-42b8-a924-ca0e10242c7d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "waf",
+                    "sensor",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) waf sensor name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"name\": \"\",\n    \"change\": [\n      {\n        \"name\": \"test\",\n        \"id\": 40003,\n        \"patterns\": [\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\",\n            \"context\": \"packet\"\n          },\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\",\n            \"context\": \"packet\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      },\n      {\n        \"name\": \"test\",\n        \"id\": 40003,\n        \"patterns\": [\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\",\n            \"context\": \"packet\"\n          },\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\",\n            \"context\": \"packet\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      }\n    ],\n    \"delete\": [\n      {\n        \"name\": \"test\",\n        \"id\": 40003,\n        \"patterns\": [\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\",\n            \"context\": \"packet\"\n          },\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\",\n            \"context\": \"packet\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      },\n      {\n        \"name\": \"test\",\n        \"id\": 40003,\n        \"patterns\": [\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\",\n            \"context\": \"packet\"\n          },\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\",\n            \"context\": \"packet\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      }\n    ],\n    \"rules\": [\n      {\n        \"name\": \"test\",\n        \"id\": 40003,\n        \"patterns\": [\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\",\n            \"context\": \"packet\"\n          },\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\",\n            \"context\": \"packet\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      },\n      {\n        \"name\": \"test\",\n        \"id\": 40003,\n        \"patterns\": [\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\",\n            \"context\": \"packet\"\n          },\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\",\n            \"context\": \"packet\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      }\n    ],\n    \"comment\": \"\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "43893739-b8ef-40c1-8baf-e3944392d9ef",
+          "name": "Delete a waf sensor",
+          "request": {
+            "name": "Delete a waf sensor",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "waf",
+                "sensor",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) waf sensor name"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b690fc52-047a-4617-b793-2ba45e5bb953",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "waf",
+                    "sensor",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) waf sensor name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aa77c212-e163-43ae-bb06-9b92af219f12",
+          "name": "Get waf group list",
+          "request": {
+            "name": "Get waf group list",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "waf",
+                "group"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "scope",
+                  "value": "<string>",
+                  "description": "The default value is local. It returns local waf group list."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c55c391e-9ceb-4fdb-80f7-80021034f49c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "waf",
+                    "group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"waf_groups\": [\n    {\n      \"name\": \"nv.kube-proxy.kube-system\",\n      \"status\": true,\n      \"sensors\": [\n        {\n          \"name\": \"test\",\n          \"action\": \"deny\",\n          \"exist\": true,\n          \"cfg_type\": \"user_created\",\n          \"comment\": \"\"\n        },\n        {\n          \"name\": \"test\",\n          \"action\": \"deny\",\n          \"exist\": true,\n          \"cfg_type\": \"ground\",\n          \"comment\": \"\"\n        }\n      ],\n      \"cfg_type\": \"ground\"\n    },\n    {\n      \"name\": \"nv.kube-proxy.kube-system\",\n      \"status\": true,\n      \"sensors\": [\n        {\n          \"name\": \"test\",\n          \"action\": \"deny\",\n          \"exist\": true,\n          \"cfg_type\": \"user_created\",\n          \"comment\": \"\"\n        },\n        {\n          \"name\": \"test\",\n          \"action\": \"deny\",\n          \"exist\": true,\n          \"cfg_type\": \"ground\",\n          \"comment\": \"\"\n        }\n      ],\n      \"cfg_type\": \"ground\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9a01613c-865e-4216-a763-71e8c98b118e",
+          "name": "Get waf group detail",
+          "request": {
+            "name": "Get waf group detail",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "waf",
+                "group",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) waf group name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2590e73d-0fb9-48fc-9c1e-8807d3867ed8",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "waf",
+                    "group",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) waf group name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"waf_group\": {\n    \"name\": \"nv.kube-proxy.kube-system\",\n    \"status\": true,\n    \"sensors\": [\n      {\n        \"name\": \"test\",\n        \"action\": \"deny\",\n        \"exist\": true,\n        \"cfg_type\": \"ground\",\n        \"comment\": \"\"\n      },\n      {\n        \"name\": \"test\",\n        \"action\": \"deny\",\n        \"exist\": true,\n        \"cfg_type\": \"ground\",\n        \"comment\": \"\"\n      }\n    ],\n    \"cfg_type\": \"ground\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f02f8054-a000-428c-a17a-28202a793ba4",
+          "name": "Update a waf group",
+          "request": {
+            "name": "Update a waf group",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "waf",
+                "group",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) waf group name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"name\": \"<string>\",\n    \"status\": \"<boolean>\",\n    \"delete\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"sensors\": [\n      {\n        \"name\": \"<string>\",\n        \"action\": \"<string>\",\n        \"comment\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"action\": \"<string>\",\n        \"comment\": \"<string>\"\n      }\n    ],\n    \"replace\": [\n      {\n        \"name\": \"<string>\",\n        \"action\": \"<string>\",\n        \"comment\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"action\": \"<string>\",\n        \"comment\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1b0ba997-fe90-46a3-9cd1-965b7497871b",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "waf",
+                    "group",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) waf group name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"name\": \"\",\n    \"status\": false,\n    \"delete\": [\n      \"\",\n      \"\"\n    ],\n    \"sensors\": [\n      {\n        \"name\": \"\",\n        \"action\": \"\",\n        \"comment\": \"\"\n      },\n      {\n        \"name\": \"\",\n        \"action\": \"\",\n        \"comment\": \"\"\n      }\n    ],\n    \"replace\": [\n      {\n        \"name\": \"\",\n        \"action\": \"\",\n        \"comment\": \"\"\n      },\n      {\n        \"name\": \"\",\n        \"action\": \"\",\n        \"comment\": \"\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2377fc2f-7a0e-4027-b43f-f8a9f2f5162c",
+          "name": "Get waf rule list",
+          "request": {
+            "name": "Get waf rule list",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "waf",
+                "rule"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0f4fcc5d-9d6b-4816-899e-777ba7657ec5",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "waf",
+                    "rule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rules\": [\n    {\n      \"name\": \"test\",\n      \"id\": 40003,\n      \"patterns\": [\n        {\n          \"key\": \"pattern\",\n          \"value\": \"[0-9]\",\n          \"op\": \"regex\",\n          \"context\": \"packet\"\n        },\n        {\n          \"key\": \"pattern\",\n          \"value\": \"[0-9]\",\n          \"op\": \"regex\",\n          \"context\": \"packet\"\n        }\n      ],\n      \"cfg_type\": \"<string>\"\n    },\n    {\n      \"name\": \"test\",\n      \"id\": 40003,\n      \"patterns\": [\n        {\n          \"key\": \"pattern\",\n          \"value\": \"[0-9]\",\n          \"op\": \"regex\",\n          \"context\": \"packet\"\n        },\n        {\n          \"key\": \"pattern\",\n          \"value\": \"[0-9]\",\n          \"op\": \"regex\",\n          \"context\": \"packet\"\n        }\n      ],\n      \"cfg_type\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9ffbec41-209b-4121-98c2-b4035214de2b",
+          "name": "Get waf rule detail",
+          "request": {
+            "name": "Get waf rule detail",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "waf",
+                "rule",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) waf rule name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "49361c29-b559-440f-8a2c-68a7e48908a5",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "waf",
+                    "rule",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) waf rule name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rule\": {\n    \"sensors\": [\n      \"test\",\n      \"test\"\n    ],\n    \"rules\": [\n      {\n        \"name\": \"test\",\n        \"id\": 40003,\n        \"patterns\": [\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\",\n            \"context\": \"packet\"\n          },\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\",\n            \"context\": \"packet\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      },\n      {\n        \"name\": \"test\",\n        \"id\": 40003,\n        \"patterns\": [\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\",\n            \"context\": \"packet\"\n          },\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\",\n            \"context\": \"packet\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "cdbd42fa-0d7f-4d9a-bd53-7ef47850936f",
+    "name": "NeuVector WAF Rule API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.\n\nContact Support:\n Email: support@neuvector.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,799 @@
+{
+  "item": [
+    {
+      "id": "19ef3ffa-295e-42a3-ad07-bd10f66cc479",
+      "name": "Response Rule",
+      "description": {
+        "content": "Operations about Response Rule",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f06a97ae-37df-4175-9e67-0abf08f63bbe",
+          "name": "Get a list of response rules",
+          "request": {
+            "name": "Get a list of response rules",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "response",
+                "rule"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "scope",
+                  "value": "<string>",
+                  "description": "When set to fed, returned fed response rules. When set to local, returned local response rules. If there is no query string 'scope', all response rules will be returned."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d19e3a0f-abe4-46e3-9a41-bdc777668939",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "response",
+                    "rule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rules\": [\n    {\n      \"id\": 1001,\n      \"event\": \"\",\n      \"comment\": \"\",\n      \"group\": \"\",\n      \"conditions\": [\n        {\n          \"type\": \"\",\n          \"value\": \"\"\n        },\n        {\n          \"type\": \"\",\n          \"value\": \"\"\n        }\n      ],\n      \"actions\": [\n        \"\",\n        \"\"\n      ],\n      \"webhooks\": [\n        \"\",\n        \"\"\n      ],\n      \"disable\": false,\n      \"cfg_type\": \"federal\"\n    },\n    {\n      \"id\": 1001,\n      \"event\": \"\",\n      \"comment\": \"\",\n      \"group\": \"\",\n      \"conditions\": [\n        {\n          \"type\": \"\",\n          \"value\": \"\"\n        },\n        {\n          \"type\": \"\",\n          \"value\": \"\"\n        }\n      ],\n      \"actions\": [\n        \"\",\n        \"\"\n      ],\n      \"webhooks\": [\n        \"\",\n        \"\"\n      ],\n      \"disable\": false,\n      \"cfg_type\": \"ground\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b23d92eb-e6f4-4483-86ce-a26b24e84168",
+          "name": "Update response rule action",
+          "request": {
+            "name": "Update response rule action",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "response",
+                "rule"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"insert\": {\n    \"rules\": [\n      {\n        \"id\": \"<uint32>\",\n        \"event\": \"<string>\",\n        \"comment\": \"<string>\",\n        \"group\": \"<string>\",\n        \"conditions\": [\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ],\n        \"actions\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"webhooks\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"disable\": \"<boolean>\",\n        \"cfg_type\": \"<string>\"\n      },\n      {\n        \"id\": \"<uint32>\",\n        \"event\": \"<string>\",\n        \"comment\": \"<string>\",\n        \"group\": \"<string>\",\n        \"conditions\": [\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ],\n        \"actions\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"webhooks\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"disable\": \"<boolean>\",\n        \"cfg_type\": \"<string>\"\n      }\n    ],\n    \"after\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2e773337-ba9c-42ec-b23a-77c8fe09a8f3",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "response",
+                    "rule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"insert\": {\n    \"rules\": [\n      {\n        \"id\": 1001,\n        \"event\": \"\",\n        \"comment\": \"\",\n        \"group\": \"\",\n        \"conditions\": [\n          {\n            \"type\": \"\",\n            \"value\": \"\"\n          },\n          {\n            \"type\": \"\",\n            \"value\": \"\"\n          }\n        ],\n        \"actions\": [\n          \"\",\n          \"\"\n        ],\n        \"webhooks\": [\n          \"\",\n          \"\"\n        ],\n        \"disable\": false,\n        \"cfg_type\": \"<string>\"\n      },\n      {\n        \"id\": 1001,\n        \"event\": \"\",\n        \"comment\": \"\",\n        \"group\": \"\",\n        \"conditions\": [\n          {\n            \"type\": \"\",\n            \"value\": \"\"\n          },\n          {\n            \"type\": \"\",\n            \"value\": \"\"\n          }\n        ],\n        \"actions\": [\n          \"\",\n          \"\"\n        ],\n        \"webhooks\": [\n          \"\",\n          \"\"\n        ],\n        \"disable\": false,\n        \"cfg_type\": \"<string>\"\n      }\n    ],\n    \"after\": 0\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d907ecc7-0604-44d4-9a02-cbeeabcb6fcd",
+          "name": "Delete all response rules",
+          "request": {
+            "name": "Delete all response rules",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "response",
+                "rule"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "scope",
+                  "value": "<string>",
+                  "description": "When set to fed, all fed response rules get removed. When set to local or no query string, local response rules will be removed."
+                }
+              ],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "12590f04-d538-4381-9833-0a3010fbb100",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "response",
+                    "rule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "444b180f-e3fb-4343-bcf7-b452fe3b31ef",
+          "name": "Get a response rule",
+          "request": {
+            "name": "Get a response rule",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "response",
+                "rule",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Rule ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0143f21c-cb43-47ad-a3a5-1fc3db693343",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "response",
+                    "rule",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Rule ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rule\": {\n    \"id\": 1001,\n    \"event\": \"\",\n    \"comment\": \"\",\n    \"group\": \"\",\n    \"conditions\": [\n      {\n        \"type\": \"\",\n        \"value\": \"\"\n      },\n      {\n        \"type\": \"\",\n        \"value\": \"\"\n      }\n    ],\n    \"actions\": [\n      \"\",\n      \"\"\n    ],\n    \"webhooks\": [\n      \"\",\n      \"\"\n    ],\n    \"disable\": false,\n    \"cfg_type\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bd54112c-b2df-4a65-ad2a-08696563f8c4",
+          "name": "Update a response rule",
+          "request": {
+            "name": "Update a response rule",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "response",
+                "rule",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Rule ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"id\": \"<uint32>\",\n    \"cfg_type\": \"<string>\",\n    \"comment\": \"<string>\",\n    \"group\": \"<string>\",\n    \"event\": \"<string>\",\n    \"conditions\": [\n      {\n        \"type\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"actions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"webhooks\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"disable\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9c624000-5156-4b31-96f0-19d4d5155a26",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "response",
+                    "rule",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Rule ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"id\": 1001,\n    \"cfg_type\": \"<string>\",\n    \"comment\": \"\",\n    \"group\": \"\",\n    \"event\": \"\",\n    \"conditions\": [\n      {\n        \"type\": \"\",\n        \"value\": \"\"\n      },\n      {\n        \"type\": \"\",\n        \"value\": \"\"\n      }\n    ],\n    \"actions\": [\n      \"\",\n      \"\"\n    ],\n    \"webhooks\": [\n      \"\",\n      \"\"\n    ],\n    \"disable\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a5d789d4-a6d8-457b-87f3-1ac8d1b5efa3",
+          "name": "Delete a response rule",
+          "request": {
+            "name": "Delete a response rule",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "response",
+                "rule",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Rule ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "367d38c3-63d9-45b3-a4e3-30438f9afc10",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "response",
+                    "rule",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Rule ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c16ac099-e4f6-4510-8753-e2ded59690d5",
+          "name": "Get response rule workload",
+          "request": {
+            "name": "Get response rule workload",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "response",
+                "workload_rules",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Workload rules ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "38397c2a-1e67-47b5-8cca-77cc4a3d744e",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "response",
+                    "workload_rules",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Workload rules ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rules\": [\n    {\n      \"id\": 1001,\n      \"event\": \"\",\n      \"comment\": \"\",\n      \"group\": \"\",\n      \"conditions\": [\n        {\n          \"type\": \"\",\n          \"value\": \"\"\n        },\n        {\n          \"type\": \"\",\n          \"value\": \"\"\n        }\n      ],\n      \"actions\": [\n        \"\",\n        \"\"\n      ],\n      \"webhooks\": [\n        \"\",\n        \"\"\n      ],\n      \"disable\": false,\n      \"cfg_type\": \"<string>\"\n    },\n    {\n      \"id\": 1001,\n      \"event\": \"\",\n      \"comment\": \"\",\n      \"group\": \"\",\n      \"conditions\": [\n        {\n          \"type\": \"\",\n          \"value\": \"\"\n        },\n        {\n          \"type\": \"\",\n          \"value\": \"\"\n        }\n      ],\n      \"actions\": [\n        \"\",\n        \"\"\n      ],\n      \"webhooks\": [\n        \"\",\n        \"\"\n      ],\n      \"disable\": false,\n      \"cfg_type\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e28a7e38-1bbb-478a-ac85-0fa12d595d8c",
+    "name": "NeuVector Response Rule API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.\n\nContact Support:\n Email: support@neuvector.com",
+      "type": "text/plain"
+    }
+  }
+}

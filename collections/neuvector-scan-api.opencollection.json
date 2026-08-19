@@ -1,0 +1,688 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NeuVector Scan API",
+    "version": "5.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Scan",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get scanner list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/scan/scanner"
+          },
+          "docs": "Get scanner list"
+        },
+        {
+          "info": {
+            "name": "Retrieve scan configuration, including global auto-scan settings and fine-grained controls for workloads and hosts.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/scan/config"
+          },
+          "docs": "Retrieve scan configuration, including global auto-scan settings and fine-grained controls for workloads and hosts."
+        },
+        {
+          "info": {
+            "name": "Auto-scan can be configured either globally or with fine-grained control for workloads and hosts. If any of the detailed control fields (enable_auto_scan_workload, enable_auto_scan_host) is explicitly provided, its value takes precedence and overrides the auto-scan setting.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/scan/config"
+          },
+          "docs": "Auto-scan can be configured either globally or with fine-grained control for workloads and hosts. If any of the detailed control fields (enable_auto_scan_workload, enable_auto_scan_host) is explicitly provided, its value takes precedence and overrides the auto-scan setting."
+        },
+        {
+          "info": {
+            "name": "Get hosts scan report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/scan/hosts/scan_report"
+          },
+          "docs": "Get hosts scan report"
+        },
+        {
+          "info": {
+            "name": "Get host scan report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/scan/host/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Host ID"
+              }
+            ]
+          },
+          "docs": "Get host scan report"
+        },
+        {
+          "info": {
+            "name": "Start host scan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/scan/host/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Host ID"
+              }
+            ]
+          },
+          "docs": "Start host scan"
+        },
+        {
+          "info": {
+            "name": "Get runtime scan summary by workload's images",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/scan/image"
+          },
+          "docs": "Get runtime scan summary by workload's images"
+        },
+        {
+          "info": {
+            "name": "Get runtime scan report by workload's image ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/scan/image/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Image id"
+              }
+            ]
+          },
+          "docs": "Get runtime scan report by workload's image ID"
+        },
+        {
+          "info": {
+            "name": "Show scan platform summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/scan/platform"
+          },
+          "docs": "Show scan platform summary"
+        },
+        {
+          "info": {
+            "name": "Show scan platform report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/scan/platform/platform"
+          },
+          "docs": "Show scan platform report"
+        },
+        {
+          "info": {
+            "name": "Request scan platform",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/scan/platform/platform"
+          },
+          "docs": "Request scan platform"
+        },
+        {
+          "info": {
+            "name": "Get a list of registries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/scan/registry",
+            "params": [
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "When set to fed, returned fed registries. When set to local, returned local-defined registries. If there is no query string 'scope', all registries will be returned."
+              }
+            ]
+          },
+          "docs": "Get a list of registries"
+        },
+        {
+          "info": {
+            "name": "Create a registry",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/scan/registry"
+          },
+          "docs": "Create a registry"
+        },
+        {
+          "info": {
+            "name": "Create a registry",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/scan/registry"
+          },
+          "docs": "Create a registry"
+        },
+        {
+          "info": {
+            "name": "Show registry",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/scan/registry/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the registry"
+              }
+            ]
+          },
+          "docs": "Show registry"
+        },
+        {
+          "info": {
+            "name": "Update registry",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/scan/registry/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the registry"
+              }
+            ]
+          },
+          "docs": "Update registry"
+        },
+        {
+          "info": {
+            "name": "Delete registry",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/scan/registry/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the registry"
+              }
+            ]
+          },
+          "docs": "Delete registry"
+        },
+        {
+          "info": {
+            "name": "Update registry",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v2/scan/registry/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the registry"
+              }
+            ]
+          },
+          "docs": "Update registry"
+        },
+        {
+          "info": {
+            "name": "Show registry image summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/scan/registry/:name/images",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the registry"
+              }
+            ]
+          },
+          "docs": "Show registry image summary"
+        },
+        {
+          "info": {
+            "name": "Get registry image scan report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/scan/registry/:name/image/:id",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the registry"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Image ID"
+              }
+            ]
+          },
+          "docs": "Get registry image scan report"
+        },
+        {
+          "info": {
+            "name": "Show registry layers report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/scan/registry/:name/layers/:id",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the registry"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Layer ID"
+              }
+            ]
+          },
+          "docs": "Show registry layers report"
+        },
+        {
+          "info": {
+            "name": "Start a registry scan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/scan/registry/:name/scan",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the registry"
+              }
+            ]
+          },
+          "docs": "Start a registry scan"
+        },
+        {
+          "info": {
+            "name": "Stop registry scan",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/scan/registry/:name/scan",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the registry"
+              }
+            ]
+          },
+          "docs": "Stop registry scan"
+        },
+        {
+          "info": {
+            "name": "Scan repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/scan/repository"
+          },
+          "docs": "Scan repository"
+        },
+        {
+          "info": {
+            "name": "Scan status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/scan/status"
+          },
+          "docs": "Scan status"
+        },
+        {
+          "info": {
+            "name": "Get scanner cache statistic data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/scan/cache_stat/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Scanner ID"
+              }
+            ]
+          },
+          "docs": "Get scanner cache statistic data"
+        },
+        {
+          "info": {
+            "name": "Get scanner cache index data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/scan/cache_data/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Scanner ID"
+              }
+            ]
+          },
+          "docs": "Get scanner cache index data"
+        },
+        {
+          "info": {
+            "name": "Get container scan report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/scan/workload/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Workload ID"
+              }
+            ]
+          },
+          "docs": "Get container scan report"
+        },
+        {
+          "info": {
+            "name": "Start container scan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/scan/workload/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Workload ID"
+              }
+            ]
+          },
+          "docs": "Start container scan"
+        },
+        {
+          "info": {
+            "name": "Get containers scan report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/scan/workloads/scan_report"
+          },
+          "docs": "Get containers scan report"
+        },
+        {
+          "info": {
+            "name": "Get all sigstore roots of trust",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/scan/sigstore/root_of_trust"
+          },
+          "docs": "Get all sigstore roots of trust"
+        },
+        {
+          "info": {
+            "name": "Create new sigstore root of trust",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/scan/sigstore/root_of_trust"
+          },
+          "docs": "Create new sigstore root of trust"
+        },
+        {
+          "info": {
+            "name": "Get single sigstore root of trust by name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/scan/sigstore/root_of_trust/:root_name",
+            "params": [
+              {
+                "name": "root_name",
+                "value": "",
+                "type": "path",
+                "description": "Root Of Trust Name"
+              }
+            ]
+          },
+          "docs": "Get single sigstore root of trust by name"
+        },
+        {
+          "info": {
+            "name": "Update single sigstore root of trust by name",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/scan/sigstore/root_of_trust/:root_name",
+            "params": [
+              {
+                "name": "root_name",
+                "value": "",
+                "type": "path",
+                "description": "Root Of Trust Name"
+              }
+            ]
+          },
+          "docs": "Update single sigstore root of trust by name"
+        },
+        {
+          "info": {
+            "name": "Delete single sigstore root of trust by name",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/scan/sigstore/root_of_trust/:root_name",
+            "params": [
+              {
+                "name": "root_name",
+                "value": "",
+                "type": "path",
+                "description": "Root Of Trust Name"
+              }
+            ]
+          },
+          "docs": "Delete single sigstore root of trust by name"
+        },
+        {
+          "info": {
+            "name": "Get all sigstore verifiers for given sigstore root of trust",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/scan/sigstore/root_of_trust/:root_name/verifier",
+            "params": [
+              {
+                "name": "root_name",
+                "value": "",
+                "type": "path",
+                "description": "Root Of Trust Name"
+              }
+            ]
+          },
+          "docs": "Get all sigstore verifiers for given sigstore root of trust"
+        },
+        {
+          "info": {
+            "name": "Create new sigstore verifier for given sigstore root of trust",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/scan/sigstore/root_of_trust/:root_name/verifier",
+            "params": [
+              {
+                "name": "root_name",
+                "value": "",
+                "type": "path",
+                "description": "Root Of Trust Name"
+              }
+            ]
+          },
+          "docs": "Create new sigstore verifier for given sigstore root of trust"
+        },
+        {
+          "info": {
+            "name": "Get sigstore verifier by name under given sigstore root of trust",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/scan/sigstore/root_of_trust/:root_name/verifier/:verifier_name",
+            "params": [
+              {
+                "name": "root_name",
+                "value": "",
+                "type": "path",
+                "description": "Root Of Trust Name"
+              },
+              {
+                "name": "verifier_name",
+                "value": "",
+                "type": "path",
+                "description": "Verifier Name"
+              }
+            ]
+          },
+          "docs": "Get sigstore verifier by name under given sigstore root of trust"
+        },
+        {
+          "info": {
+            "name": "Update sigstore verifier by name under given sigstore root of trust",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/scan/sigstore/root_of_trust/:root_name/verifier/:verifier_name",
+            "params": [
+              {
+                "name": "root_name",
+                "value": "",
+                "type": "path",
+                "description": "Root Of Trust Name"
+              },
+              {
+                "name": "verifier_name",
+                "value": "",
+                "type": "path",
+                "description": "Verifier Name"
+              }
+            ]
+          },
+          "docs": "Update sigstore verifier by name under given sigstore root of trust"
+        },
+        {
+          "info": {
+            "name": "Delete sigstore verifier by name under given sigstore root of trust",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/scan/sigstore/root_of_trust/:root_name/verifier/:verifier_name",
+            "params": [
+              {
+                "name": "root_name",
+                "value": "",
+                "type": "path",
+                "description": "Root Of Trust Name"
+              },
+              {
+                "name": "verifier_name",
+                "value": "",
+                "type": "path",
+                "description": "Verifier Name"
+              }
+            ]
+          },
+          "docs": "Delete sigstore verifier by name under given sigstore root of trust"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

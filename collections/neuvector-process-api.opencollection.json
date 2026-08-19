@@ -1,0 +1,94 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NeuVector Process API",
+    "version": "5.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Process",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of process profiles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/process_profile",
+            "params": [
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "When set to fed, returned fed process profiles. When set to local, returned local process profiles. If there is no query string 'scope', all process profiles will be returned."
+              }
+            ]
+          },
+          "docs": "Get a list of process profiles"
+        },
+        {
+          "info": {
+            "name": "Get a process profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/process_profile/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Process profile name"
+              }
+            ]
+          },
+          "docs": "Get a process profile"
+        },
+        {
+          "info": {
+            "name": "Update a process profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/process_profile/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Process profile name"
+              }
+            ]
+          },
+          "docs": "Update a process profile"
+        },
+        {
+          "info": {
+            "name": "Get a process rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/process_rules/:uuid",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path",
+                "description": "Process rule uuid"
+              }
+            ]
+          },
+          "docs": "Get a process rule"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

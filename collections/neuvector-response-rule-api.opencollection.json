@@ -1,0 +1,143 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NeuVector Response Rule API",
+    "version": "5.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Response Rule",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of response rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/response/rule",
+            "params": [
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "When set to fed, returned fed response rules. When set to local, returned local response rules. If there is no query string 'scope', all response rules will be returned."
+              }
+            ]
+          },
+          "docs": "Get a list of response rules"
+        },
+        {
+          "info": {
+            "name": "Update response rule action",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/response/rule"
+          },
+          "docs": "Update response rule action"
+        },
+        {
+          "info": {
+            "name": "Delete all response rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/response/rule",
+            "params": [
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "When set to fed, all fed response rules get removed. When set to local or no query string, local response rules will be removed."
+              }
+            ]
+          },
+          "docs": "Delete all response rules"
+        },
+        {
+          "info": {
+            "name": "Get a response rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/response/rule/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Rule ID"
+              }
+            ]
+          },
+          "docs": "Get a response rule"
+        },
+        {
+          "info": {
+            "name": "Update a response rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/response/rule/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Rule ID"
+              }
+            ]
+          },
+          "docs": "Update a response rule"
+        },
+        {
+          "info": {
+            "name": "Delete a response rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/response/rule/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Rule ID"
+              }
+            ]
+          },
+          "docs": "Delete a response rule"
+        },
+        {
+          "info": {
+            "name": "Get response rule workload",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/response/workload_rules/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Workload rules ID"
+              }
+            ]
+          },
+          "docs": "Get response rule workload"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

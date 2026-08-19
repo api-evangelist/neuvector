@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NeuVector Remote Export Repository API",
+    "version": "5.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Remote Export Repository",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Delete a remote repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/system/config/remote_repository/:alias",
+            "params": [
+              {
+                "name": "alias",
+                "value": "",
+                "type": "path",
+                "description": "The alias of the remote repository to update."
+              }
+            ]
+          },
+          "docs": "Delete a remote repository."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

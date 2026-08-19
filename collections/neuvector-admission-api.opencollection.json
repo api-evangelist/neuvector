@@ -1,0 +1,182 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NeuVector Admission API",
+    "version": "5.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Admission",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of admission options",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/admission/options"
+          },
+          "docs": "Get a list of admission options"
+        },
+        {
+          "info": {
+            "name": "Show an admission rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/admission/rule/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Rule ID"
+              }
+            ]
+          },
+          "docs": "Show an admission rule"
+        },
+        {
+          "info": {
+            "name": "Delete an admission rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/admission/rule/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Rule ID"
+              }
+            ]
+          },
+          "docs": "Delete an admission rule"
+        },
+        {
+          "info": {
+            "name": "Add admission control rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/admission/rule"
+          },
+          "docs": "Add admission control rule"
+        },
+        {
+          "info": {
+            "name": "Update admission rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/admission/rule"
+          },
+          "docs": "Update admission rule"
+        },
+        {
+          "info": {
+            "name": "Promote admission control rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/admission/rule/promote"
+          },
+          "docs": "Promote admission control rule"
+        },
+        {
+          "info": {
+            "name": "Get a list of admission rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/admission/rules",
+            "params": [
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "When set to fed, returned fed admission rules. When set to local, returned local admission rules. If there is no query string 'scope', all admission rules will be returned."
+              }
+            ]
+          },
+          "docs": "Get a list of admission rules"
+        },
+        {
+          "info": {
+            "name": "Delete all admission rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/admission/rules",
+            "params": [
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "When set to fed, fed admission rules get removed. When set to local or no query string, local admission rules will be removed."
+              }
+            ]
+          },
+          "docs": "Delete all admission rules"
+        },
+        {
+          "info": {
+            "name": "Get admission state",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/admission/state"
+          },
+          "docs": "Get admission state"
+        },
+        {
+          "info": {
+            "name": "Update admission state",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/admission/state"
+          },
+          "docs": "Update admission state"
+        },
+        {
+          "info": {
+            "name": "Get admission control statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/admission/stats"
+          },
+          "docs": "Get admission control statistics"
+        },
+        {
+          "info": {
+            "name": "Test admission control rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/assess/admission/rule"
+          },
+          "docs": "Testing admission control rules. The payload body is the content of a resource yaml file."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

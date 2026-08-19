@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NeuVector Authentication API",
+    "version": "5.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Login Authentication",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/auth"
+          },
+          "docs": "Login Authentication"
+        },
+        {
+          "info": {
+            "name": "Keep login session alive",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/auth"
+          },
+          "docs": "Keep login session alive"
+        },
+        {
+          "info": {
+            "name": "Logout current logged in user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/auth"
+          },
+          "docs": "Logout current logged in user"
+        },
+        {
+          "info": {
+            "name": "Authenticate to specified server",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/auth/:server",
+            "params": [
+              {
+                "name": "server",
+                "value": "",
+                "type": "path",
+                "description": "Name of the specified server"
+              }
+            ]
+          },
+          "docs": "Authenticate to specified server"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

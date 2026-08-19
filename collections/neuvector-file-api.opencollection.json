@@ -1,0 +1,358 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NeuVector File API",
+    "version": "5.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "File",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Export compliance profile as a yaml format. The exported yaml file can be imported by CRD or REST API to update the compliance profile.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/file/compliance/profile",
+            "headers": [
+              {
+                "name": "X-Auth-Token",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Export compliance profile as a yaml format. The exported yaml file can be imported by CRD or REST API to update the compliance profile."
+        },
+        {
+          "info": {
+            "name": "Export admission control configuration as a yaml format. The exported yaml file can be imported by CRD (non-fed scope only) or REST API to update the admission control settings.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/file/admission",
+            "params": [
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "It exports the federated admission control rules when the scope is fed. Otherwise it's for exporting local admission control rules & state configurations."
+              }
+            ]
+          },
+          "docs": "Export admission control configuration as a yaml format. The exported yaml file can be imported by CRD (non-fed scope only) or REST API to update the admission control settings."
+        },
+        {
+          "info": {
+            "name": "import admission config",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/file/admission/config",
+            "headers": [
+              {
+                "name": "X-Transaction-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "It imports the federated admission control rules when the scope is fed. Otherwise it's for importing local admission control rules & state configurations."
+              }
+            ]
+          },
+          "docs": "Importing admission config. The payload body is the content of the admission config yaml file."
+        },
+        {
+          "info": {
+            "name": "Export non-group-dependent (federated) response rules as a yaml format. The exported yaml file can be imported by CRD (non-fed scope only) or REST API to update the response rules.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/file/response/rule",
+            "params": [
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "It exports the federated non-group-dependent response rules when the scope is fed. Otherwise it's for exporting local non-group-dependent response rules."
+              }
+            ]
+          },
+          "docs": "Export non-group-dependent (federated) response rules as a yaml format. The exported yaml file can be imported by CRD (non-fed scope only) or REST API to update the response rules."
+        },
+        {
+          "info": {
+            "name": "import non-group-dependent response rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/file/response/rule/config",
+            "headers": [
+              {
+                "name": "X-Transaction-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "It imports the federated non-group-dependent response rules when the scope is fed. Otherwise it's for importing local non-group-dependent response rules."
+              }
+            ]
+          },
+          "docs": "Importing non-group-dependent response rules. The payload body is the content of the response rules yaml file."
+        },
+        {
+          "info": {
+            "name": "Download a configure file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/file/config"
+          },
+          "docs": "Download a configure file"
+        },
+        {
+          "info": {
+            "name": "Upload configure file",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/file/config",
+            "headers": [
+              {
+                "name": "X-Transaction-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "It imports the federated configurations when the scope is fed. Otherwise it's for importing local configurations"
+              }
+            ]
+          },
+          "docs": "Upload configure file"
+        },
+        {
+          "info": {
+            "name": "Export federated webhooks configuration as a yaml format",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/file/fed_config",
+            "headers": [
+              {
+                "name": "X-Transaction-ID",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Export federated webhooks configuration as a yaml format"
+        },
+        {
+          "info": {
+            "name": "Export (federated) DLP configuration as a yaml format. The exported yaml file can be imported by CRD (non-fed scope only) or REST API to update the DLP configurations.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/file/dlp",
+            "params": [
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "It exports the federated DLP configurations when the scope is fed. Otherwise it's for exporting local DLP configurations"
+              }
+            ]
+          },
+          "docs": "Export (federated) DLP configuration as a yaml format. The exported yaml file can be imported by CRD (non-fed scope only) or REST API to update the DLP configurations."
+        },
+        {
+          "info": {
+            "name": "import DLP config",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/file/dlp/config",
+            "headers": [
+              {
+                "name": "X-Transaction-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "It imports the federated DLP configurations when the scope is fed. Otherwise it's for importing local DLP configurations"
+              }
+            ]
+          },
+          "docs": "Importing DLP config. The payload body is the content of the DLP config yaml file."
+        },
+        {
+          "info": {
+            "name": "Export vulnerability profile as a yaml format. The exported yaml file can be imported by CRD or REST API to update the compliance profile.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/file/vulnerability/profile",
+            "headers": [
+              {
+                "name": "X-Auth-Token",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Export vulnerability profile as a yaml format. The exported yaml file can be imported by CRD or REST API to update the compliance profile."
+        },
+        {
+          "info": {
+            "name": "Export (federated) WAF configuration as a yaml format. The exported yaml file can be imported by CRD (non-fed scope only) or REST API to update the WAF configurations.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/file/waf",
+            "params": [
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "It exports the federated WAF configurations when the scope is fed. Otherwise it's for exporting local WAF configurations."
+              }
+            ]
+          },
+          "docs": "Export (federated) WAF configuration as a yaml format. The exported yaml file can be imported by CRD (non-fed scope only) or REST API to update the WAF configurations."
+        },
+        {
+          "info": {
+            "name": "import waf config",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/file/waf/config",
+            "headers": [
+              {
+                "name": "X-Transaction-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "It imports the federated WAF configurations when the scope is fed. Otherwise it's for importing local WAF configurations."
+              }
+            ]
+          },
+          "docs": "Importing WAF config. The payload body is the content of the WAF config yaml file."
+        },
+        {
+          "info": {
+            "name": "(Obsolete, please use POST method.) Export the yaml format configuration file ( used for CRD or group policy ).",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/file/group"
+          },
+          "docs": "(Obsolete, please use POST method.) Export the yaml format configuration file ( used for CRD or group policy )."
+        },
+        {
+          "info": {
+            "name": "Export (federated) group configuration as a yaml format. The exported yaml file can be imported by CRD (non-fed scope only) or REST API to update the group policy.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/file/group",
+            "params": [
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "It exports the federated group configurations when the scope is fed. Otherwise it's for exporting local group configurations."
+              }
+            ]
+          },
+          "docs": "Export (federated) group configuration as a yaml format. The exported yaml file can be imported by CRD (non-fed scope only) or REST API to update the group policy."
+        },
+        {
+          "info": {
+            "name": "Get import status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/file/group/config"
+          },
+          "docs": "Get import status"
+        },
+        {
+          "info": {
+            "name": "import group policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/file/group/config",
+            "headers": [
+              {
+                "name": "X-Transaction-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "It imports the federated group policy when the scope is fed. Otherwise it's for importing local group policy."
+              }
+            ]
+          },
+          "docs": "Importing group policy. The payload body is the content of the group policy yaml file."
+        },
+        {
+          "info": {
+            "name": "Export support config tarball in gz format",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/csp/file/support"
+          },
+          "docs": "Export support config tarball in gz format"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

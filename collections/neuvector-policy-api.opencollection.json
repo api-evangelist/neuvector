@@ -1,0 +1,143 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NeuVector Policy API",
+    "version": "5.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Policy",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of policy rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/policy/rule",
+            "params": [
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "When set to fed, returned fed policy rules. When set to local, returned local policy rules. If there is no query string 'scope', all policy rules will be returned."
+              }
+            ]
+          },
+          "docs": "Get a list of policy rules"
+        },
+        {
+          "info": {
+            "name": "Policy rule action",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/policy/rule",
+            "params": [
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "When set to fed, fed policy rules get created. When set to local or no query string, local policy rules get created."
+              }
+            ]
+          },
+          "docs": "Policy rule action"
+        },
+        {
+          "info": {
+            "name": "Delete all policy rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/policy/rule",
+            "params": [
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "When set to fed, fed policy rules get removed. When set to local or no query string, local policy rules get removed."
+              }
+            ]
+          },
+          "docs": "Delete all policy rules"
+        },
+        {
+          "info": {
+            "name": "Show policy rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/policy/rule/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Rule ID"
+              }
+            ]
+          },
+          "docs": "Show policy rule"
+        },
+        {
+          "info": {
+            "name": "Update policy rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/policy/rule/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Rule ID"
+              }
+            ]
+          },
+          "docs": "Update policy rule"
+        },
+        {
+          "info": {
+            "name": "Delete policy rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/policy/rule/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Rule ID"
+              }
+            ]
+          },
+          "docs": "Delete policy rule"
+        },
+        {
+          "info": {
+            "name": "Promote policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/policy/rules/promote"
+          },
+          "docs": "Promote policy"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NeuVector Namespace API",
+    "version": "5.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Namespace",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Namespace list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/domain"
+          },
+          "docs": "Get Namespace list"
+        },
+        {
+          "info": {
+            "name": "Configure Namespace setting",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/domain"
+          },
+          "docs": "Configure Namespace setting"
+        },
+        {
+          "info": {
+            "name": "Update namespace",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/domain/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "namespace name"
+              }
+            ]
+          },
+          "docs": "Update namespace"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

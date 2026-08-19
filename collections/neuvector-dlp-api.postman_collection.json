@@ -1,0 +1,1103 @@
+{
+  "item": [
+    {
+      "id": "7673cb3c-ec62-48ff-81ad-cb234bb54c52",
+      "name": "DLP",
+      "description": {
+        "content": "Operations about DLP",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2baed61d-cf08-48f4-ab00-257e595c7afa",
+          "name": "Get DLP sensors",
+          "request": {
+            "name": "Get DLP sensors",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "dlp",
+                "sensor"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bd7a6f4b-b1a6-4152-9f43-abe0cbc48f77",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "dlp",
+                    "sensor"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sensors\": [\n    {\n      \"name\": \"sensor.ssn\",\n      \"groups\": [\n        \"external\",\n        \"nodes\"\n      ],\n      \"rules\": [\n        {\n          \"name\": \"testrule413251424153561246153614615462515134635\",\n          \"id\": 4001,\n          \"patterns\": [\n            {\n              \"key\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"op\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"key\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"op\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"cfg_type\": \"ground\"\n        },\n        {\n          \"name\": \"testrule413251424153561246153614615462515134635\",\n          \"id\": 4001,\n          \"patterns\": [\n            {\n              \"key\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"op\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"key\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"op\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"cfg_type\": \"ground\"\n        }\n      ],\n      \"comment\": \"Sensor for SSN detection\",\n      \"predefine\": true,\n      \"cfg_type\": \"user_created\"\n    },\n    {\n      \"name\": \"sensor.ssn\",\n      \"groups\": [\n        \"external\",\n        \"nodes\"\n      ],\n      \"rules\": [\n        {\n          \"name\": \"testrule413251424153561246153614615462515134635\",\n          \"id\": 4001,\n          \"patterns\": [\n            {\n              \"key\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"op\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"key\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"op\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"cfg_type\": \"user_created\"\n        },\n        {\n          \"name\": \"testrule413251424153561246153614615462515134635\",\n          \"id\": 4001,\n          \"patterns\": [\n            {\n              \"key\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"op\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"key\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"op\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"cfg_type\": \"user_created\"\n        }\n      ],\n      \"comment\": \"Sensor for SSN detection\",\n      \"predefine\": true,\n      \"cfg_type\": \"ground\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ba10f9a7-01c4-42f2-97e3-609c333b257a",
+          "name": "Create DLP sensor",
+          "request": {
+            "name": "Create DLP sensor",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "dlp",
+                "sensor"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"name\": \"<string>\",\n    \"change\": [\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<uint32>\",\n        \"patterns\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<uint32>\",\n        \"patterns\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      }\n    ],\n    \"delete\": [\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<uint32>\",\n        \"patterns\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<uint32>\",\n        \"patterns\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      }\n    ],\n    \"rules\": [\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<uint32>\",\n        \"patterns\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<uint32>\",\n        \"patterns\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      }\n    ],\n    \"comment\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1f554585-5209-4105-b67a-614e58918391",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "dlp",
+                    "sensor"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bba5b193-9228-408e-a949-8feaddf0f084",
+          "name": "Get DLP sensor detail",
+          "request": {
+            "name": "Get DLP sensor detail",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "dlp",
+                "sensor",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Sensor name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1bda5d0e-a032-4690-a0dc-3b796c556d6b",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "dlp",
+                    "sensor",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Sensor name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sensor\": {\n    \"name\": \"sensor.ssn\",\n    \"groups\": [\n      \"external\",\n      \"nodes\"\n    ],\n    \"rules\": [\n      {\n        \"name\": \"testrule413251424153561246153614615462515134635\",\n        \"id\": 4001,\n        \"patterns\": [\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\"\n          },\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      },\n      {\n        \"name\": \"testrule413251424153561246153614615462515134635\",\n        \"id\": 4001,\n        \"patterns\": [\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\"\n          },\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      }\n    ],\n    \"comment\": \"Sensor for SSN detection\",\n    \"predefine\": true,\n    \"cfg_type\": \"ground\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9328818a-1a41-48e0-909c-eaa3ab3a16ac",
+          "name": "Configure DLP sensor",
+          "request": {
+            "name": "Configure DLP sensor",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "dlp",
+                "sensor",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Sensor name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"name\": \"<string>\",\n    \"change\": [\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<uint32>\",\n        \"patterns\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<uint32>\",\n        \"patterns\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      }\n    ],\n    \"delete\": [\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<uint32>\",\n        \"patterns\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<uint32>\",\n        \"patterns\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      }\n    ],\n    \"rules\": [\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<uint32>\",\n        \"patterns\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<uint32>\",\n        \"patterns\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\",\n            \"op\": \"<string>\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      }\n    ],\n    \"comment\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4253f69c-3492-4621-8d9a-f013640874b5",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "dlp",
+                    "sensor",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Sensor name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "174b4add-4689-479c-8d72-3371f967e237",
+          "name": "Delete DLP sensor",
+          "request": {
+            "name": "Delete DLP sensor",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "dlp",
+                "sensor",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Sensor name"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "08221ce6-81d9-4c70-87d6-0ca16bb3bb59",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "dlp",
+                    "sensor",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Sensor name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5b89aac1-b6de-4783-a63d-7141067b1678",
+          "name": "Get DLP group list",
+          "request": {
+            "name": "Get DLP group list",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "dlp",
+                "group"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0fbcb488-8b2c-4704-a2dc-94d2f7b5e091",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "dlp",
+                    "group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dlp_groups\": [\n    {\n      \"name\": \"nodes\",\n      \"status\": true,\n      \"sensors\": [\n        {\n          \"name\": \"sensor.ssn\",\n          \"action\": \"log\",\n          \"comment\": \"logging sensor ssn\"\n        },\n        {\n          \"name\": \"sensor.ssn\",\n          \"action\": \"log\",\n          \"comment\": \"logging sensor ssn\"\n        }\n      ]\n    },\n    {\n      \"name\": \"nodes\",\n      \"status\": true,\n      \"sensors\": [\n        {\n          \"name\": \"sensor.ssn\",\n          \"action\": \"log\",\n          \"comment\": \"logging sensor ssn\"\n        },\n        {\n          \"name\": \"sensor.ssn\",\n          \"action\": \"log\",\n          \"comment\": \"logging sensor ssn\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e7844c9-4295-4253-afe9-b2cb810a0d83",
+          "name": "Get DLP group detail",
+          "request": {
+            "name": "Get DLP group detail",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "dlp",
+                "group",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) DLP group name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d4c05c02-9866-41a8-b9df-fffe41708102",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "dlp",
+                    "group",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) DLP group name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dlp_group\": {\n    \"name\": \"nodes\",\n    \"status\": true,\n    \"sensors\": [\n      {\n        \"name\": \"sensor.ssn\",\n        \"action\": \"log\",\n        \"comment\": \"logging sensor ssn\"\n      },\n      {\n        \"name\": \"sensor.ssn\",\n        \"action\": \"log\",\n        \"comment\": \"logging sensor ssn\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fdd448c0-05e6-444d-9a7e-1b92d95ef792",
+          "name": "Configure DLP group",
+          "request": {
+            "name": "Configure DLP group",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "dlp",
+                "group",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) DLP group name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"name\": \"<string>\",\n    \"status\": \"<boolean>\",\n    \"delete\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"sensors\": [\n      {\n        \"name\": \"<string>\",\n        \"action\": \"<string>\",\n        \"comment\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"action\": \"<string>\",\n        \"comment\": \"<string>\"\n      }\n    ],\n    \"replace\": [\n      {\n        \"name\": \"<string>\",\n        \"action\": \"<string>\",\n        \"comment\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"action\": \"<string>\",\n        \"comment\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f8860e75-dfb9-4384-b827-7aa2dc01e376",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "dlp",
+                    "group",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) DLP group name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"name\": \"ssn\",\n    \"status\": true,\n    \"delete\": [\n      \"\",\n      \"\"\n    ],\n    \"sensors\": [\n      {\n        \"name\": \"sensor.ssn\",\n        \"action\": \"log\",\n        \"comment\": \"logging sensor ssn\"\n      },\n      {\n        \"name\": \"sensor.ssn\",\n        \"action\": \"log\",\n        \"comment\": \"logging sensor ssn\"\n      }\n    ],\n    \"replace\": [\n      {\n        \"name\": \"sensor.ssn\",\n        \"action\": \"log\",\n        \"comment\": \"logging sensor ssn\"\n      },\n      {\n        \"name\": \"sensor.ssn\",\n        \"action\": \"log\",\n        \"comment\": \"logging sensor ssn\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f68df586-9020-4a69-910c-a5b55b82f141",
+          "name": "Get all DLP rules",
+          "request": {
+            "name": "Get all DLP rules",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "dlp",
+                "rule"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ddf4eaaa-ee1c-4dd2-8bbc-91c0b5d11ab4",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "dlp",
+                    "rule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rules\": [\n    {\n      \"name\": \"testrule413251424153561246153614615462515134635\",\n      \"id\": 4001,\n      \"patterns\": [\n        {\n          \"key\": \"pattern\",\n          \"value\": \"[0-9]\",\n          \"op\": \"regex\"\n        },\n        {\n          \"key\": \"pattern\",\n          \"value\": \"[0-9]\",\n          \"op\": \"regex\"\n        }\n      ],\n      \"cfg_type\": \"<string>\"\n    },\n    {\n      \"name\": \"testrule413251424153561246153614615462515134635\",\n      \"id\": 4001,\n      \"patterns\": [\n        {\n          \"key\": \"pattern\",\n          \"value\": \"[0-9]\",\n          \"op\": \"regex\"\n        },\n        {\n          \"key\": \"pattern\",\n          \"value\": \"[0-9]\",\n          \"op\": \"regex\"\n        }\n      ],\n      \"cfg_type\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e1103f6-8534-4e20-9145-91340a8f70ac",
+          "name": "Get DLP rule",
+          "request": {
+            "name": "Get DLP rule",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "dlp",
+                "rule",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) DLP rule name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "335d871f-3dd4-48be-aa8d-b07b818a384c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "dlp",
+                    "rule",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) DLP rule name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rule\": {\n    \"sensors\": [\n      \"ssn\",\n      \"credit\"\n    ],\n    \"rules\": [\n      {\n        \"name\": \"testrule413251424153561246153614615462515134635\",\n        \"id\": 4001,\n        \"patterns\": [\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\"\n          },\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      },\n      {\n        \"name\": \"testrule413251424153561246153614615462515134635\",\n        \"id\": 4001,\n        \"patterns\": [\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\"\n          },\n          {\n            \"key\": \"pattern\",\n            \"value\": \"[0-9]\",\n            \"op\": \"regex\"\n          }\n        ],\n        \"cfg_type\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "33038b06-aff2-47dd-9676-c7b65d261834",
+    "name": "NeuVector DLP API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.\n\nContact Support:\n Email: support@neuvector.com",
+      "type": "text/plain"
+    }
+  }
+}

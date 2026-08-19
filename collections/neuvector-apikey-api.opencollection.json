@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NeuVector Apikey API",
+    "version": "5.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Apikey",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gets a list of apikeys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/api_key"
+          },
+          "docs": "Gets a list of apikeys"
+        },
+        {
+          "info": {
+            "name": "Creates an apikey",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/api_key"
+          },
+          "docs": "Creates an apikey"
+        },
+        {
+          "info": {
+            "name": "Gets an apikey",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/api_key/:accesskey",
+            "params": [
+              {
+                "name": "accesskey",
+                "value": "",
+                "type": "path",
+                "description": "Apikey access key"
+              }
+            ]
+          },
+          "docs": "Gets an apikey"
+        },
+        {
+          "info": {
+            "name": "Delete apikey",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/api_key/:accesskey",
+            "params": [
+              {
+                "name": "accesskey",
+                "value": "",
+                "type": "path",
+                "description": "Apikey access key"
+              }
+            ]
+          },
+          "docs": "Delete apikey"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

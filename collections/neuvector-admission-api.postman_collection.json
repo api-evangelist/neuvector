@@ -1,0 +1,1376 @@
+{
+  "item": [
+    {
+      "id": "2831d58a-54e3-4317-bf01-40e2a75535ec",
+      "name": "Admission",
+      "description": {
+        "content": "Admission Control",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0a710605-fc1d-45d4-828d-698c75b36edf",
+          "name": "Get a list of admission options",
+          "request": {
+            "name": "Get a list of admission options",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admission",
+                "options"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4b006fe4-536a-4dd2-9de2-9b42fb6bf5ca",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admission",
+                    "options"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"k8s_env\": false,\n  \"state\": {\n    \"enable\": true,\n    \"mode\": \"Protect\",\n    \"default_action\": \"allow\",\n    \"adm_client_mode\": \"service\",\n    \"adm_svc_type\": \"\",\n    \"adm_client_mode_options\": {\n      \"service\": \"service\",\n      \"url\": \"service:xyz-svc-admission-webhook.xyz.svc\"\n    },\n    \"ctrl_states\": {\n      \"validate\": \"validate\",\n      \"states\": true\n    }\n  },\n  \"admission_options\": {\n    \"deny_options\": {\n      \"k8s_options\": {\n        \"rule_options\": {\n          \"rule\": \"criterion_name\",\n          \"options\": {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ops\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"match_src\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sub_options\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    },\n    \"exception_options\": {\n      \"k8s_options\": {\n        \"rule_options\": {\n          \"rule\": \"criterion_name\",\n          \"options\": {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ops\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"match_src\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sub_options\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    },\n    \"psp_collection\": [\n      {\n        \"name\": \"namespace\",\n        \"op\": \"=\",\n        \"value\": \"kube-system\",\n        \"sub_criteria\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          }\n        ],\n        \"type\": \"customPath\",\n        \"template_kind\": \"podTemplate\",\n        \"path\": \"item.spec.serviceAccountName\",\n        \"value_type\": \"string\"\n      },\n      {\n        \"name\": \"namespace\",\n        \"op\": \"=\",\n        \"value\": \"kube-system\",\n        \"sub_criteria\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          }\n        ],\n        \"type\": \"customPath\",\n        \"template_kind\": \"podTemplate\",\n        \"path\": \"item.spec.serviceAccountName\",\n        \"value_type\": \"string\"\n      }\n    ],\n    \"pss_collections\": {\n      \"restricted\": [\n        \"Uses illegal volume type.\",\n        \"Allows running as root user.\"\n      ],\n      \"baseline\": [\n        \"Sets HostNetwork, HostPID, or HostIPC to true.\",\n        \"Allows privileged container(s).\"\n      ]\n    },\n    \"sigstore_verifiers\": [\n      \"public/verifier1\",\n      \"private1/verifier1\",\n      \"private1/verifier2\"\n    ]\n  },\n  \"admission_custom_criteria_options\": {\n    \"ops\": [\n      \"exist\",\n      \"notExist\"\n    ],\n    \"valuetype\": \"key\",\n    \"values\": [\n      \"true\",\n      \"false\"\n    ]\n  },\n  \"admission_custom_criteria_templates\": {\n    \"kind\": \"podTemplate\",\n    \"rawjson\": \"{\\\"key\\\": \\\"value\\\"}\"\n  },\n  \"predefined_risky_roles\": [\n    \"risky_role_view_secret\",\n    \"risky_role_create_pod\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d5716cfa-b57d-470f-9357-83e352ec92aa",
+          "name": "Show an admission rule",
+          "request": {
+            "name": "Show an admission rule",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admission",
+                "rule",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Rule ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d63179dd-d429-4b5e-9a88-e067d49f9109",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admission",
+                    "rule",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Rule ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rule\": {\n    \"id\": 2,\n    \"category\": \"Kubernetes\",\n    \"comment\": \"Do not delete this exception rule\",\n    \"criteria\": [\n      {\n        \"name\": \"namespace\",\n        \"op\": \"=\",\n        \"value\": \"kube-system\",\n        \"sub_criteria\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          }\n        ],\n        \"type\": \"customPath\",\n        \"template_kind\": \"podTemplate\",\n        \"path\": \"item.spec.serviceAccountName\",\n        \"value_type\": \"string\"\n      },\n      {\n        \"name\": \"namespace\",\n        \"op\": \"=\",\n        \"value\": \"kube-system\",\n        \"sub_criteria\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          }\n        ],\n        \"type\": \"customPath\",\n        \"template_kind\": \"podTemplate\",\n        \"path\": \"item.spec.serviceAccountName\",\n        \"value_type\": \"string\"\n      }\n    ],\n    \"disable\": false,\n    \"critical\": false,\n    \"cfg_type\": \"user_created\",\n    \"rule_type\": \"exception\",\n    \"rule_mode\": \"protect\",\n    \"containers\": [\n      \"containers\",\n      \"init_containers\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e77116de-0303-4a15-be70-b17cdbbd10a8",
+          "name": "Delete an admission rule",
+          "request": {
+            "name": "Delete an admission rule",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admission",
+                "rule",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Rule ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fa9573e8-54fa-4f1d-ba7a-72feb2101cca",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admission",
+                    "rule",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Rule ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eec7fc22-ea6e-466c-856a-b74884c7bc6f",
+          "name": "Add admission control rule",
+          "request": {
+            "name": "Add admission control rule",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admission",
+                "rule"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"id\": \"<uint32>\",\n    \"category\": \"<string>\",\n    \"cfg_type\": \"<string>\",\n    \"rule_type\": \"<string>\",\n    \"containers\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"comment\": \"<string>\",\n    \"criteria\": [\n      {\n        \"name\": \"<string>\",\n        \"op\": \"<string>\",\n        \"value\": \"<string>\",\n        \"sub_criteria\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          }\n        ],\n        \"type\": \"<string>\",\n        \"template_kind\": \"<string>\",\n        \"path\": \"<string>\",\n        \"value_type\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"op\": \"<string>\",\n        \"value\": \"<string>\",\n        \"sub_criteria\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          }\n        ],\n        \"type\": \"<string>\",\n        \"template_kind\": \"<string>\",\n        \"path\": \"<string>\",\n        \"value_type\": \"<string>\"\n      }\n    ],\n    \"disable\": \"<boolean>\",\n    \"actions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"rule_mode\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cfa828bb-0c8a-4b2d-aeec-268fdfe25c1f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admission",
+                    "rule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"rule\": {\n    \"id\": 2,\n    \"category\": \"Kubernetes\",\n    \"comment\": \"Do not delete this exception rule\",\n    \"criteria\": [\n      {\n        \"name\": \"namespace\",\n        \"op\": \"=\",\n        \"value\": \"kube-system\",\n        \"sub_criteria\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          }\n        ],\n        \"type\": \"customPath\",\n        \"template_kind\": \"podTemplate\",\n        \"path\": \"item.spec.serviceAccountName\",\n        \"value_type\": \"string\"\n      },\n      {\n        \"name\": \"namespace\",\n        \"op\": \"=\",\n        \"value\": \"kube-system\",\n        \"sub_criteria\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          }\n        ],\n        \"type\": \"customPath\",\n        \"template_kind\": \"podTemplate\",\n        \"path\": \"item.spec.serviceAccountName\",\n        \"value_type\": \"string\"\n      }\n    ],\n    \"disable\": false,\n    \"critical\": false,\n    \"cfg_type\": \"user_created\",\n    \"rule_type\": \"deny\",\n    \"rule_mode\": \"protect\",\n    \"containers\": [\n      \"containers\",\n      \"init_containers\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aec149d1-6dd5-4e08-a76c-fb60c048070a",
+          "name": "Update admission rule",
+          "request": {
+            "name": "Update admission rule",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admission",
+                "rule"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"id\": \"<uint32>\",\n    \"category\": \"<string>\",\n    \"cfg_type\": \"<string>\",\n    \"rule_type\": \"<string>\",\n    \"containers\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"comment\": \"<string>\",\n    \"criteria\": [\n      {\n        \"name\": \"<string>\",\n        \"op\": \"<string>\",\n        \"value\": \"<string>\",\n        \"sub_criteria\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          }\n        ],\n        \"type\": \"<string>\",\n        \"template_kind\": \"<string>\",\n        \"path\": \"<string>\",\n        \"value_type\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"op\": \"<string>\",\n        \"value\": \"<string>\",\n        \"sub_criteria\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          }\n        ],\n        \"type\": \"<string>\",\n        \"template_kind\": \"<string>\",\n        \"path\": \"<string>\",\n        \"value_type\": \"<string>\"\n      }\n    ],\n    \"disable\": \"<boolean>\",\n    \"actions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"rule_mode\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5c31d75e-f8b5-4173-8846-a591b46bb5d4",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admission",
+                    "rule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e26479a0-bbbd-4cdf-a65d-d24d85126fc5",
+          "name": "Promote admission control rule",
+          "request": {
+            "name": "Promote admission control rule",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admission",
+                "rule",
+                "promote"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"request\": {\n    \"ids\": [\n      \"<uint32>\",\n      \"<uint32>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cdbe42c8-7107-41f8-a4b6-156ecb83219d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admission",
+                    "rule",
+                    "promote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"request\": {\n    \"ids\": [\n      12,\n      12\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6992598c-21eb-4e3d-9f1a-b8a9cca19c6d",
+          "name": "Get a list of admission rules",
+          "request": {
+            "name": "Get a list of admission rules",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admission",
+                "rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "scope",
+                  "value": "<string>",
+                  "description": "When set to fed, returned fed admission rules. When set to local, returned local admission rules. If there is no query string 'scope', all admission rules will be returned."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6236c365-0d83-45ce-976e-5d5a8c6e0b8d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admission",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rules\": [\n    {\n      \"id\": 2,\n      \"category\": \"Kubernetes\",\n      \"comment\": \"Do not delete this exception rule\",\n      \"criteria\": [\n        {\n          \"name\": \"namespace\",\n          \"op\": \"=\",\n          \"value\": \"kube-system\",\n          \"sub_criteria\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n            }\n          ],\n          \"type\": \"customPath\",\n          \"template_kind\": \"podTemplate\",\n          \"path\": \"item.spec.serviceAccountName\",\n          \"value_type\": \"string\"\n        },\n        {\n          \"name\": \"namespace\",\n          \"op\": \"=\",\n          \"value\": \"kube-system\",\n          \"sub_criteria\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n            }\n          ],\n          \"type\": \"customPath\",\n          \"template_kind\": \"podTemplate\",\n          \"path\": \"item.spec.serviceAccountName\",\n          \"value_type\": \"string\"\n        }\n      ],\n      \"disable\": false,\n      \"critical\": false,\n      \"cfg_type\": \"user_created\",\n      \"rule_type\": \"deny\",\n      \"rule_mode\": \"monitor\",\n      \"containers\": [\n        \"ephemeral_containers\",\n        \"ephemeral_containers\"\n      ]\n    },\n    {\n      \"id\": 2,\n      \"category\": \"Kubernetes\",\n      \"comment\": \"Do not delete this exception rule\",\n      \"criteria\": [\n        {\n          \"name\": \"namespace\",\n          \"op\": \"=\",\n          \"value\": \"kube-system\",\n          \"sub_criteria\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n            }\n          ],\n          \"type\": \"customPath\",\n          \"template_kind\": \"podTemplate\",\n          \"path\": \"item.spec.serviceAccountName\",\n          \"value_type\": \"string\"\n        },\n        {\n          \"name\": \"namespace\",\n          \"op\": \"=\",\n          \"value\": \"kube-system\",\n          \"sub_criteria\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n            }\n          ],\n          \"type\": \"customPath\",\n          \"template_kind\": \"podTemplate\",\n          \"path\": \"item.spec.serviceAccountName\",\n          \"value_type\": \"string\"\n        }\n      ],\n      \"disable\": false,\n      \"critical\": false,\n      \"cfg_type\": \"user_created\",\n      \"rule_type\": \"deny\",\n      \"rule_mode\": \"protect\",\n      \"containers\": [\n        \"containers\",\n        \"containers\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3104142b-fe68-4569-88b1-60d3c709856d",
+          "name": "Delete all admission rules",
+          "request": {
+            "name": "Delete all admission rules",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admission",
+                "rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "scope",
+                  "value": "<string>",
+                  "description": "When set to fed, fed admission rules get removed. When set to local or no query string, local admission rules will be removed."
+                }
+              ],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3090dafa-2b96-47ee-8b3b-7f3033d35e2d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admission",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e3737fd2-6972-4785-955e-a6d81b00d674",
+          "name": "Get admission state",
+          "request": {
+            "name": "Get admission state",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admission",
+                "state"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9cad89d2-9267-4e42-b45e-e357fecd962a",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admission",
+                    "state"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"k8s_env\": false,\n  \"state\": {\n    \"enable\": true,\n    \"mode\": \"Protect\",\n    \"default_action\": \"allow\",\n    \"adm_client_mode\": \"service\",\n    \"adm_svc_type\": \"\",\n    \"adm_client_mode_options\": {\n      \"service\": \"service\",\n      \"url\": \"service:xyz-svc-admission-webhook.xyz.svc\"\n    },\n    \"ctrl_states\": {\n      \"validate\": \"validate\",\n      \"states\": true\n    }\n  },\n  \"admission_options\": {\n    \"deny_options\": {\n      \"k8s_options\": {\n        \"rule_options\": {\n          \"rule\": \"criterion_name\",\n          \"options\": {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ops\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"match_src\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sub_options\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    },\n    \"exception_options\": {\n      \"k8s_options\": {\n        \"rule_options\": {\n          \"rule\": \"criterion_name\",\n          \"options\": {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ops\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"match_src\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sub_options\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    },\n    \"psp_collection\": [\n      {\n        \"name\": \"namespace\",\n        \"op\": \"=\",\n        \"value\": \"kube-system\",\n        \"sub_criteria\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          }\n        ],\n        \"type\": \"customPath\",\n        \"template_kind\": \"podTemplate\",\n        \"path\": \"item.spec.serviceAccountName\",\n        \"value_type\": \"string\"\n      },\n      {\n        \"name\": \"namespace\",\n        \"op\": \"=\",\n        \"value\": \"kube-system\",\n        \"sub_criteria\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          }\n        ],\n        \"type\": \"customPath\",\n        \"template_kind\": \"podTemplate\",\n        \"path\": \"item.spec.serviceAccountName\",\n        \"value_type\": \"string\"\n      }\n    ],\n    \"pss_collections\": {\n      \"restricted\": [\n        \"Uses illegal volume type.\",\n        \"Allows running as root user.\"\n      ],\n      \"baseline\": [\n        \"Sets HostNetwork, HostPID, or HostIPC to true.\",\n        \"Allows privileged container(s).\"\n      ]\n    },\n    \"sigstore_verifiers\": [\n      \"public/verifier1\",\n      \"private1/verifier1\",\n      \"private1/verifier2\"\n    ]\n  },\n  \"admission_custom_criteria_options\": {\n    \"ops\": [\n      \"exist\",\n      \"notExist\"\n    ],\n    \"valuetype\": \"key\",\n    \"values\": [\n      \"true\",\n      \"false\"\n    ]\n  },\n  \"admission_custom_criteria_templates\": {\n    \"kind\": \"podTemplate\",\n    \"rawjson\": \"{\\\"key\\\": \\\"value\\\"}\"\n  },\n  \"predefined_risky_roles\": [\n    \"risky_role_view_secret\",\n    \"risky_role_create_pod\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d55f4255-65e3-4b59-a71e-9c4fca1b1bd2",
+              "name": "Operation not allowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admission",
+                    "state"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 3,\n  \"error\": \"Request failed\",\n  \"message\": \"Invalid format\",\n  \"password_profile_basic\": {\n    \"min_len\": 6,\n    \"min_uppercase_count\": 0,\n    \"min_lowercase_count\": 0,\n    \"min_digit_count\": 0,\n    \"min_special_count\": 0\n  },\n  \"import_task_data\": {\n    \"data\": {\n      \"tid\": \"c5af897b62a258212ece91c0551d3a4a\",\n      \"ctrler_id\": \"6e60452b244b90456f3450c9fed0a50f57f4b849dcb74a5fad289e8116f32f36\",\n      \"percentage\": 100,\n      \"last_update_time\": \"2022-03-17T17:31:55.832768041Z\",\n      \"triggered_by\": \"admin\",\n      \"status\": \"done\",\n      \"temp_token\": \"\",\n      \"fail_to_decrypt_key_fields\": {\n        \"key_0\": [\n          \"x509_cert\",\n          \"signing_cert\"\n        ],\n        \"key_1\": [\n          \"x509_cert\",\n          \"signing_cert\"\n        ],\n        \"key_2\": [\n          \"x509_cert\",\n          \"signing_cert\"\n        ]\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e0bcca63-0504-4af6-88ca-503fd7639eb9",
+          "name": "Update admission state",
+          "request": {
+            "name": "Update admission state",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admission",
+                "state"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"k8s_env\": \"<boolean>\",\n  \"state\": {\n    \"enable\": \"<boolean>\",\n    \"mode\": \"<string>\",\n    \"default_action\": \"<string>\",\n    \"adm_client_mode\": \"<string>\",\n    \"adm_svc_type\": \"<string>\",\n    \"adm_client_mode_options\": {\n      \"service\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    \"ctrl_states\": {\n      \"validate\": \"<string>\",\n      \"states\": \"<boolean>\"\n    }\n  },\n  \"admission_options\": {\n    \"deny_options\": {\n      \"k8s_options\": {\n        \"rule_options\": {\n          \"rule\": \"<string>\",\n          \"options\": {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ops\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"match_src\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sub_options\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    },\n    \"exception_options\": {\n      \"k8s_options\": {\n        \"rule_options\": {\n          \"rule\": \"<string>\",\n          \"options\": {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ops\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"match_src\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sub_options\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    },\n    \"psp_collection\": [\n      {\n        \"name\": \"<string>\",\n        \"op\": \"<string>\",\n        \"value\": \"<string>\",\n        \"sub_criteria\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          }\n        ],\n        \"type\": \"<string>\",\n        \"template_kind\": \"<string>\",\n        \"path\": \"<string>\",\n        \"value_type\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"op\": \"<string>\",\n        \"value\": \"<string>\",\n        \"sub_criteria\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          }\n        ],\n        \"type\": \"<string>\",\n        \"template_kind\": \"<string>\",\n        \"path\": \"<string>\",\n        \"value_type\": \"<string>\"\n      }\n    ],\n    \"pss_collections\": {\n      \"key_0\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"sigstore_verifiers\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"admission_custom_criteria_options\": {\n    \"ops\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"valuetype\": \"<string>\",\n    \"values\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"admission_custom_criteria_templates\": {\n    \"kind\": \"<string>\",\n    \"rawjson\": \"<string>\"\n  },\n  \"predefined_risky_roles\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "809f3d83-2667-406b-8409-df5c868eb1bd",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admission",
+                    "state"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"k8s_env\": false,\n  \"state\": {\n    \"enable\": true,\n    \"mode\": \"Protect\",\n    \"default_action\": \"allow\",\n    \"adm_client_mode\": \"service\",\n    \"adm_svc_type\": \"\",\n    \"adm_client_mode_options\": {\n      \"service\": \"service\",\n      \"url\": \"service:xyz-svc-admission-webhook.xyz.svc\"\n    },\n    \"ctrl_states\": {\n      \"validate\": \"validate\",\n      \"states\": true\n    }\n  },\n  \"admission_options\": {\n    \"deny_options\": {\n      \"k8s_options\": {\n        \"rule_options\": {\n          \"rule\": \"criterion_name\",\n          \"options\": {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ops\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"match_src\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sub_options\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    },\n    \"exception_options\": {\n      \"k8s_options\": {\n        \"rule_options\": {\n          \"rule\": \"criterion_name\",\n          \"options\": {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ops\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"match_src\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sub_options\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    },\n    \"psp_collection\": [\n      {\n        \"name\": \"namespace\",\n        \"op\": \"=\",\n        \"value\": \"kube-system\",\n        \"sub_criteria\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          }\n        ],\n        \"type\": \"customPath\",\n        \"template_kind\": \"podTemplate\",\n        \"path\": \"item.spec.serviceAccountName\",\n        \"value_type\": \"string\"\n      },\n      {\n        \"name\": \"namespace\",\n        \"op\": \"=\",\n        \"value\": \"kube-system\",\n        \"sub_criteria\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          }\n        ],\n        \"type\": \"customPath\",\n        \"template_kind\": \"podTemplate\",\n        \"path\": \"item.spec.serviceAccountName\",\n        \"value_type\": \"string\"\n      }\n    ],\n    \"pss_collections\": {\n      \"restricted\": [\n        \"Uses illegal volume type.\",\n        \"Allows running as root user.\"\n      ],\n      \"baseline\": [\n        \"Sets HostNetwork, HostPID, or HostIPC to true.\",\n        \"Allows privileged container(s).\"\n      ]\n    },\n    \"sigstore_verifiers\": [\n      \"public/verifier1\",\n      \"private1/verifier1\",\n      \"private1/verifier2\"\n    ]\n  },\n  \"admission_custom_criteria_options\": {\n    \"ops\": [\n      \"exist\",\n      \"notExist\"\n    ],\n    \"valuetype\": \"key\",\n    \"values\": [\n      \"true\",\n      \"false\"\n    ]\n  },\n  \"admission_custom_criteria_templates\": {\n    \"kind\": \"podTemplate\",\n    \"rawjson\": \"{\\\"key\\\": \\\"value\\\"}\"\n  },\n  \"predefined_risky_roles\": [\n    \"risky_role_view_secret\",\n    \"risky_role_create_pod\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cfca4020-24b2-4a8a-ae97-eb08ba2ded1d",
+              "name": "Operation not allowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admission",
+                    "state"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"k8s_env\": false,\n  \"state\": {\n    \"enable\": true,\n    \"mode\": \"Protect\",\n    \"default_action\": \"allow\",\n    \"adm_client_mode\": \"service\",\n    \"adm_svc_type\": \"\",\n    \"adm_client_mode_options\": {\n      \"service\": \"service\",\n      \"url\": \"service:xyz-svc-admission-webhook.xyz.svc\"\n    },\n    \"ctrl_states\": {\n      \"validate\": \"validate\",\n      \"states\": true\n    }\n  },\n  \"admission_options\": {\n    \"deny_options\": {\n      \"k8s_options\": {\n        \"rule_options\": {\n          \"rule\": \"criterion_name\",\n          \"options\": {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ops\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"match_src\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sub_options\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    },\n    \"exception_options\": {\n      \"k8s_options\": {\n        \"rule_options\": {\n          \"rule\": \"criterion_name\",\n          \"options\": {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ops\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"match_src\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sub_options\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    },\n    \"psp_collection\": [\n      {\n        \"name\": \"namespace\",\n        \"op\": \"=\",\n        \"value\": \"kube-system\",\n        \"sub_criteria\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          }\n        ],\n        \"type\": \"customPath\",\n        \"template_kind\": \"podTemplate\",\n        \"path\": \"item.spec.serviceAccountName\",\n        \"value_type\": \"string\"\n      },\n      {\n        \"name\": \"namespace\",\n        \"op\": \"=\",\n        \"value\": \"kube-system\",\n        \"sub_criteria\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTAdmRuleCriterion detected>\"\n          }\n        ],\n        \"type\": \"customPath\",\n        \"template_kind\": \"podTemplate\",\n        \"path\": \"item.spec.serviceAccountName\",\n        \"value_type\": \"string\"\n      }\n    ],\n    \"pss_collections\": {\n      \"restricted\": [\n        \"Uses illegal volume type.\",\n        \"Allows running as root user.\"\n      ],\n      \"baseline\": [\n        \"Sets HostNetwork, HostPID, or HostIPC to true.\",\n        \"Allows privileged container(s).\"\n      ]\n    },\n    \"sigstore_verifiers\": [\n      \"public/verifier1\",\n      \"private1/verifier1\",\n      \"private1/verifier2\"\n    ]\n  },\n  \"admission_custom_criteria_options\": {\n    \"ops\": [\n      \"exist\",\n      \"notExist\"\n    ],\n    \"valuetype\": \"key\",\n    \"values\": [\n      \"true\",\n      \"false\"\n    ]\n  },\n  \"admission_custom_criteria_templates\": {\n    \"kind\": \"podTemplate\",\n    \"rawjson\": \"{\\\"key\\\": \\\"value\\\"}\"\n  },\n  \"predefined_risky_roles\": [\n    \"risky_role_view_secret\",\n    \"risky_role_create_pod\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 3,\n  \"error\": \"Request failed\",\n  \"message\": \"Invalid format\",\n  \"password_profile_basic\": {\n    \"min_len\": 6,\n    \"min_uppercase_count\": 0,\n    \"min_lowercase_count\": 0,\n    \"min_digit_count\": 0,\n    \"min_special_count\": 0\n  },\n  \"import_task_data\": {\n    \"data\": {\n      \"tid\": \"c5af897b62a258212ece91c0551d3a4a\",\n      \"ctrler_id\": \"6e60452b244b90456f3450c9fed0a50f57f4b849dcb74a5fad289e8116f32f36\",\n      \"percentage\": 100,\n      \"last_update_time\": \"2022-03-17T17:31:55.832768041Z\",\n      \"triggered_by\": \"admin\",\n      \"status\": \"done\",\n      \"temp_token\": \"\",\n      \"fail_to_decrypt_key_fields\": {\n        \"key_0\": [\n          \"x509_cert\",\n          \"signing_cert\"\n        ],\n        \"key_1\": [\n          \"x509_cert\",\n          \"signing_cert\"\n        ]\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c540e353-343f-4a47-b298-d48b359bd224",
+          "name": "Get admission control statistics",
+          "request": {
+            "name": "Get admission control statistics",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admission",
+                "stats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "66ba2fbe-9f32-4197-9f53-93a5a4ff6e27",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admission",
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"stats\": {\n    \"k8s_allowed_requests\": 2,\n    \"k8s_denied_requests\": 1,\n    \"k8s_erroneous_requests\": 1,\n    \"k8s_ignored_requests\": 1,\n    \"jenkins_allowed_requests\": 3,\n    \"jenkins_denied_requests\": 1,\n    \"jenkins_erroneous_requests\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b43cdba8-b889-4d8c-b109-156ff12dfa9c",
+          "name": "Test admission control rules",
+          "request": {
+            "name": "Test admission control rules",
+            "description": {
+              "content": "Testing admission control rules. The payload body is the content of a resource yaml file.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "assess",
+                "admission",
+                "rule"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/plain; charset=utf-8"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "a1c9c162-103f-49b4-afe6-f1d17d4167e6",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "assess",
+                    "admission",
+                    "rule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: nginx-deployment\n  labels:\n    app: nginx\nspec:\n  replicas: 3\n  selector:\n    matchLabels:\n      app: nginx\n  template:\n    metadata:\n      labels:\n        app: nginx\n    spec:\n      containers:\n        - name: nginx\n          image: nginx:latest\n          ports:\n            - containerPort: 80\n"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"props_unavailable\": [\n    \"user\",\n    \"userGroups\"\n  ],\n  \"global_mode\": \"\",\n  \"results\": [\n    {\n      \"index\": 1,\n      \"name\": \"iperfserver\",\n      \"kind\": \"Deployment\",\n      \"message\": \"<Assessment> Creation of Kubernetes Deployment is allowed [Notice: the requested image(s) are not scanned: quay.io/nvlab/iperf].\",\n      \"matched_rules\": [\n        {\n          \"container_image\": \"string\",\n          \"id\": 10001,\n          \"disabled\": false,\n          \"type\": \"deny\",\n          \"mode\": \"monitor\",\n          \"rule_details\": \"It matches deny rule id 1000 with criteria: (allow privilege escalation = true)\",\n          \"rule_cfg_type\": \"federal\"\n        },\n        {\n          \"container_image\": \"string\",\n          \"id\": 10001,\n          \"disabled\": false,\n          \"type\": \"allow\",\n          \"mode\": \"monitor\",\n          \"rule_details\": \"It matches deny rule id 1000 with criteria: (allow privilege escalation = true)\",\n          \"rule_cfg_type\": \"federal\"\n        }\n      ],\n      \"allowed\": false\n    },\n    {\n      \"index\": 1,\n      \"name\": \"iperfserver\",\n      \"kind\": \"Deployment\",\n      \"message\": \"<Assessment> Creation of Kubernetes Deployment is allowed [Notice: the requested image(s) are not scanned: quay.io/nvlab/iperf].\",\n      \"matched_rules\": [\n        {\n          \"container_image\": \"string\",\n          \"id\": 10001,\n          \"disabled\": false,\n          \"type\": \"deny\",\n          \"mode\": \"\",\n          \"rule_details\": \"It matches deny rule id 1000 with criteria: (allow privilege escalation = true)\",\n          \"rule_cfg_type\": \"ground\"\n        },\n        {\n          \"container_image\": \"string\",\n          \"id\": 10001,\n          \"disabled\": false,\n          \"type\": \"deny\",\n          \"mode\": \"protect\",\n          \"rule_details\": \"It matches deny rule id 1000 with criteria: (allow privilege escalation = true)\",\n          \"rule_cfg_type\": \"ground\"\n        }\n      ],\n      \"allowed\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "00e25d71-71a8-4004-b8fa-15047b7b9d36",
+    "name": "NeuVector Admission API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.\n\nContact Support:\n Email: support@neuvector.com",
+      "type": "text/plain"
+    }
+  }
+}

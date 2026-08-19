@@ -1,0 +1,176 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NeuVector DLP API",
+    "version": "5.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DLP",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get DLP sensors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/dlp/sensor"
+          },
+          "docs": "Get DLP sensors"
+        },
+        {
+          "info": {
+            "name": "Create DLP sensor",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/dlp/sensor"
+          },
+          "docs": "Create DLP sensor"
+        },
+        {
+          "info": {
+            "name": "Get DLP sensor detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/dlp/sensor/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Sensor name"
+              }
+            ]
+          },
+          "docs": "Get DLP sensor detail"
+        },
+        {
+          "info": {
+            "name": "Configure DLP sensor",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/dlp/sensor/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Sensor name"
+              }
+            ]
+          },
+          "docs": "Configure DLP sensor"
+        },
+        {
+          "info": {
+            "name": "Delete DLP sensor",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/dlp/sensor/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Sensor name"
+              }
+            ]
+          },
+          "docs": "Delete DLP sensor"
+        },
+        {
+          "info": {
+            "name": "Get DLP group list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/dlp/group"
+          },
+          "docs": "Get DLP group list"
+        },
+        {
+          "info": {
+            "name": "Get DLP group detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/dlp/group/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "DLP group name"
+              }
+            ]
+          },
+          "docs": "Get DLP group detail"
+        },
+        {
+          "info": {
+            "name": "Configure DLP group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/dlp/group/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "DLP group name"
+              }
+            ]
+          },
+          "docs": "Configure DLP group"
+        },
+        {
+          "info": {
+            "name": "Get all DLP rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/dlp/rule"
+          },
+          "docs": "Get all DLP rules"
+        },
+        {
+          "info": {
+            "name": "Get DLP rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/dlp/rule/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "DLP rule name"
+              }
+            ]
+          },
+          "docs": "Get DLP rule"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

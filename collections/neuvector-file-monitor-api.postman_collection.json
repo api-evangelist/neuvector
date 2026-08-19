@@ -1,0 +1,372 @@
+{
+  "item": [
+    {
+      "id": "32f0926a-36bb-4dc9-9bf3-635f3f862de9",
+      "name": "File Monitor",
+      "description": {
+        "content": "Operations about File Monitor",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ba016a4a-e368-4bab-aece-466175c66992",
+          "name": "Get a list of file monitors",
+          "request": {
+            "name": "Get a list of file monitors",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "file_monitor"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "scope",
+                  "value": "<string>",
+                  "description": "When set to fed, returned fed file monitor list. When set to local, returned local file monitor list. If there is no query string 'scope', all file monitor list will be returned."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3233687e-50c7-40e6-9dd4-f821b90ae168",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "file_monitor"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"files\": [\n    {\n      \"path\": \"\",\n      \"mask\": 0,\n      \"is_dir\": false,\n      \"protect\": false,\n      \"files\": [\n        \"\"\n      ]\n    },\n    {\n      \"path\": \"\",\n      \"mask\": 0,\n      \"is_dir\": false,\n      \"protect\": false,\n      \"files\": [\n        \"\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "966d641f-dd81-4a7d-8346-aa3ecb69bad2",
+          "name": "Show file monitor",
+          "request": {
+            "name": "Show file monitor",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "file_monitor",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) File monitor name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6df52c02-9ea6-48e6-8726-83a883c32067",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "file_monitor",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) File monitor name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"path\": \"\",\n  \"mask\": 0,\n  \"is_dir\": false,\n  \"protect\": false,\n  \"files\": [\n    \"\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aa568add-da5a-4ab9-981a-77dde5d5e44a",
+          "name": "Update file monitor",
+          "request": {
+            "name": "Update file monitor",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "file_monitor",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) File monitor name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"add_filters\": [\n      {\n        \"filter\": \"<string>\",\n        \"recursive\": \"<boolean>\",\n        \"behavior\": \"<string>\",\n        \"applications\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"group\": \"<string>\"\n      },\n      {\n        \"filter\": \"<string>\",\n        \"recursive\": \"<boolean>\",\n        \"behavior\": \"<string>\",\n        \"applications\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"group\": \"<string>\"\n      }\n    ],\n    \"delete_filters\": [\n      {\n        \"filter\": \"<string>\",\n        \"recursive\": \"<boolean>\",\n        \"behavior\": \"<string>\",\n        \"applications\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"group\": \"<string>\"\n      },\n      {\n        \"filter\": \"<string>\",\n        \"recursive\": \"<boolean>\",\n        \"behavior\": \"<string>\",\n        \"applications\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"group\": \"<string>\"\n      }\n    ],\n    \"update_filters\": [\n      {\n        \"filter\": \"<string>\",\n        \"recursive\": \"<boolean>\",\n        \"behavior\": \"<string>\",\n        \"applications\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"group\": \"<string>\"\n      },\n      {\n        \"filter\": \"<string>\",\n        \"recursive\": \"<boolean>\",\n        \"behavior\": \"<string>\",\n        \"applications\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"group\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dd5a434a-7f84-4412-b34c-55cce2bc4ba1",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "file_monitor",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) File monitor name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"add_filters\": [\n      {\n        \"filter\": \"\",\n        \"recursive\": false,\n        \"behavior\": \"\",\n        \"applications\": [\n          \"\",\n          \"\"\n        ],\n        \"group\": \"\"\n      },\n      {\n        \"filter\": \"\",\n        \"recursive\": false,\n        \"behavior\": \"\",\n        \"applications\": [\n          \"\",\n          \"\"\n        ],\n        \"group\": \"\"\n      }\n    ],\n    \"delete_filters\": [\n      {\n        \"filter\": \"\",\n        \"recursive\": false,\n        \"behavior\": \"\",\n        \"applications\": [\n          \"\",\n          \"\"\n        ],\n        \"group\": \"\"\n      },\n      {\n        \"filter\": \"\",\n        \"recursive\": false,\n        \"behavior\": \"\",\n        \"applications\": [\n          \"\",\n          \"\"\n        ],\n        \"group\": \"\"\n      }\n    ],\n    \"update_filters\": [\n      {\n        \"filter\": \"\",\n        \"recursive\": false,\n        \"behavior\": \"\",\n        \"applications\": [\n          \"\",\n          \"\"\n        ],\n        \"group\": \"\"\n      },\n      {\n        \"filter\": \"\",\n        \"recursive\": false,\n        \"behavior\": \"\",\n        \"applications\": [\n          \"\",\n          \"\"\n        ],\n        \"group\": \"\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ace3e3ff-9e65-434a-bd94-11fb1ed04214",
+    "name": "NeuVector File Monitor API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.\n\nContact Support:\n Email: support@neuvector.com",
+      "type": "text/plain"
+    }
+  }
+}

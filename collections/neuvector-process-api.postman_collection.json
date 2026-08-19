@@ -1,0 +1,483 @@
+{
+  "item": [
+    {
+      "id": "b1a4ae25-82df-4f10-8e2d-880e17abf418",
+      "name": "Process",
+      "description": {
+        "content": "Operations about Process Profile",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a4d3c74d-a28a-4663-8e02-abb9cb4f7cf5",
+          "name": "Get a list of process profiles",
+          "request": {
+            "name": "Get a list of process profiles",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "process_profile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "scope",
+                  "value": "<string>",
+                  "description": "When set to fed, returned fed process profiles. When set to local, returned local process profiles. If there is no query string 'scope', all process profiles will be returned."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7780f9c4-3510-48ce-9965-b47293a06ee7",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "process_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"process_profiles\": [\n    {\n      \"group\": \"admin\",\n      \"mode\": \"\",\n      \"process_list\": [\n        {\n          \"name\": \"name\",\n          \"action\": \"allow\",\n          \"cfg_type\": \"federal\",\n          \"uuid\": \"5654bfac-0011-4678-8e67-9eda136f18b1\",\n          \"created_timestamp\": 1516561258,\n          \"last_modified_timestamp\": 1516561268,\n          \"path\": \"path\",\n          \"user\": \"user\",\n          \"uid\": 1273,\n          \"group\": \"nodes\"\n        },\n        {\n          \"name\": \"name\",\n          \"action\": \"allow\",\n          \"cfg_type\": \"ground\",\n          \"uuid\": \"5654bfac-0011-4678-8e67-9eda136f18b1\",\n          \"created_timestamp\": 1516561258,\n          \"last_modified_timestamp\": 1516561268,\n          \"path\": \"path\",\n          \"user\": \"user\",\n          \"uid\": 1273,\n          \"group\": \"nodes\"\n        }\n      ],\n      \"alert_disabled\": false,\n      \"hash_enabled\": true\n    },\n    {\n      \"group\": \"admin\",\n      \"mode\": \"\",\n      \"process_list\": [\n        {\n          \"name\": \"name\",\n          \"action\": \"allow\",\n          \"cfg_type\": \"user_created\",\n          \"uuid\": \"5654bfac-0011-4678-8e67-9eda136f18b1\",\n          \"created_timestamp\": 1516561258,\n          \"last_modified_timestamp\": 1516561268,\n          \"path\": \"path\",\n          \"user\": \"user\",\n          \"uid\": 1273,\n          \"group\": \"nodes\"\n        },\n        {\n          \"name\": \"name\",\n          \"action\": \"allow\",\n          \"cfg_type\": \"learned\",\n          \"uuid\": \"5654bfac-0011-4678-8e67-9eda136f18b1\",\n          \"created_timestamp\": 1516561258,\n          \"last_modified_timestamp\": 1516561268,\n          \"path\": \"path\",\n          \"user\": \"user\",\n          \"uid\": 1273,\n          \"group\": \"nodes\"\n        }\n      ],\n      \"alert_disabled\": false,\n      \"hash_enabled\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e2833935-6307-4ce3-8595-b30839ea2ba9",
+          "name": "Get a process profile",
+          "request": {
+            "name": "Get a process profile",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "process_profile",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Process profile name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "19242189-dbf7-40b7-b6ae-4618f2196ec0",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "process_profile",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Process profile name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"process_profile\": {\n    \"group\": \"admin\",\n    \"mode\": \"\",\n    \"process_list\": [\n      {\n        \"name\": \"name\",\n        \"action\": \"allow\",\n        \"cfg_type\": \"federal\",\n        \"uuid\": \"5654bfac-0011-4678-8e67-9eda136f18b1\",\n        \"created_timestamp\": 1516561258,\n        \"last_modified_timestamp\": 1516561268,\n        \"path\": \"path\",\n        \"user\": \"user\",\n        \"uid\": 1273,\n        \"group\": \"nodes\"\n      },\n      {\n        \"name\": \"name\",\n        \"action\": \"allow\",\n        \"cfg_type\": \"learned\",\n        \"uuid\": \"5654bfac-0011-4678-8e67-9eda136f18b1\",\n        \"created_timestamp\": 1516561258,\n        \"last_modified_timestamp\": 1516561268,\n        \"path\": \"path\",\n        \"user\": \"user\",\n        \"uid\": 1273,\n        \"group\": \"nodes\"\n      }\n    ],\n    \"alert_disabled\": false,\n    \"hash_enabled\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "921a9083-13d8-4def-85ee-7e5d20950ff6",
+          "name": "Update a process profile",
+          "request": {
+            "name": "Update a process profile",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "process_profile",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Process profile name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"process_profile_config\": {\n    \"group\": \"<string>\",\n    \"alert_disabled\": \"<boolean>\",\n    \"hash_enabled\": \"<boolean>\",\n    \"process_change_list\": [\n      {\n        \"name\": \"<string>\",\n        \"path\": \"<string>\",\n        \"action\": \"<string>\",\n        \"group\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"path\": \"<string>\",\n        \"action\": \"<string>\",\n        \"group\": \"<string>\"\n      }\n    ],\n    \"process_delete_list\": [\n      {\n        \"name\": \"<string>\",\n        \"path\": \"<string>\",\n        \"action\": \"<string>\",\n        \"group\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"path\": \"<string>\",\n        \"action\": \"<string>\",\n        \"group\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f62cfce1-6a9c-40ba-a960-341d4a631d15",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "process_profile",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Process profile name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"process_profile_config\": {\n    \"group\": \"myGroup\",\n    \"alert_disabled\": false,\n    \"hash_enabled\": true,\n    \"process_change_list\": [\n      {\n        \"name\": \"myEntryConfig\",\n        \"path\": \"\",\n        \"action\": \"monitor\",\n        \"group\": \"myGroup\"\n      },\n      {\n        \"name\": \"myEntryConfig\",\n        \"path\": \"\",\n        \"action\": \"monitor\",\n        \"group\": \"myGroup\"\n      }\n    ],\n    \"process_delete_list\": [\n      {\n        \"name\": \"myEntryConfig\",\n        \"path\": \"\",\n        \"action\": \"monitor\",\n        \"group\": \"myGroup\"\n      },\n      {\n        \"name\": \"myEntryConfig\",\n        \"path\": \"\",\n        \"action\": \"monitor\",\n        \"group\": \"myGroup\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d635ff7c-96c7-4d3d-8142-357a33686ee2",
+          "name": "Get a process rule",
+          "request": {
+            "name": "Get a process rule",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "process_rules",
+                ":uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uuid",
+                  "description": "(Required) Process rule uuid"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5137f34c-50e4-4aae-9959-dade107aa6f9",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "process_rules",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uuid",
+                      "description": "(Required) Process rule uuid"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"process_rules\": [\n    {\n      \"active\": 1,\n      \"group\": \"nodes\",\n      \"rule\": {\n        \"name\": \"name\",\n        \"action\": \"allow\",\n        \"cfg_type\": \"ground\",\n        \"uuid\": \"5654bfac-0011-4678-8e67-9eda136f18b1\",\n        \"created_timestamp\": 1516561258,\n        \"last_modified_timestamp\": 1516561268,\n        \"path\": \"path\",\n        \"user\": \"user\",\n        \"uid\": 1273,\n        \"group\": \"nodes\"\n      }\n    },\n    {\n      \"active\": 1,\n      \"group\": \"nodes\",\n      \"rule\": {\n        \"name\": \"name\",\n        \"action\": \"allow\",\n        \"cfg_type\": \"ground\",\n        \"uuid\": \"5654bfac-0011-4678-8e67-9eda136f18b1\",\n        \"created_timestamp\": 1516561258,\n        \"last_modified_timestamp\": 1516561268,\n        \"path\": \"path\",\n        \"user\": \"user\",\n        \"uid\": 1273,\n        \"group\": \"nodes\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1f87f4ff-5706-417a-9ac2-b5436db35a36",
+    "name": "NeuVector Process API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.\n\nContact Support:\n Email: support@neuvector.com",
+      "type": "text/plain"
+    }
+  }
+}

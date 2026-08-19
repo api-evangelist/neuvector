@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NeuVector File Monitor API",
+    "version": "5.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "File Monitor",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of file monitors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/file_monitor",
+            "params": [
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "When set to fed, returned fed file monitor list. When set to local, returned local file monitor list. If there is no query string 'scope', all file monitor list will be returned."
+              }
+            ]
+          },
+          "docs": "Get a list of file monitors"
+        },
+        {
+          "info": {
+            "name": "Show file monitor",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/file_monitor/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "File monitor name"
+              }
+            ]
+          },
+          "docs": "Show file monitor"
+        },
+        {
+          "info": {
+            "name": "Update file monitor",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/file_monitor/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "File monitor name"
+              }
+            ]
+          },
+          "docs": "Update file monitor"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

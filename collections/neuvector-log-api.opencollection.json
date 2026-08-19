@@ -1,0 +1,125 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NeuVector Log API",
+    "version": "5.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Log",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get activity list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/log/activity"
+          },
+          "docs": "Get activity list"
+        },
+        {
+          "info": {
+            "name": "Get a list of audits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/log/audit"
+          },
+          "docs": "Get a list of audits"
+        },
+        {
+          "info": {
+            "name": "Get a list of events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/log/event"
+          },
+          "docs": "Get a list of events"
+        },
+        {
+          "info": {
+            "name": "Get a list of incidents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/log/incident"
+          },
+          "docs": "Get a list of incidents"
+        },
+        {
+          "info": {
+            "name": "Get a list of threats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/log/threat"
+          },
+          "docs": "Get a list of threats"
+        },
+        {
+          "info": {
+            "name": "Show threat",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/log/threat/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Threat ID"
+              }
+            ]
+          },
+          "docs": "Show threat"
+        },
+        {
+          "info": {
+            "name": "Get a list of violations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/log/violation"
+          },
+          "docs": "Get a list of violations"
+        },
+        {
+          "info": {
+            "name": "Get violation workloads",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/log/violation/workload"
+          },
+          "docs": "Get violation workloads"
+        },
+        {
+          "info": {
+            "name": "Get security event list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/log/security"
+          },
+          "docs": "Get security event list"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

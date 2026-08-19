@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NeuVector Federation API",
+    "version": "5.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Federation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Health Check of Federate Primary REST server",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/fed/healthcheck"
+          },
+          "docs": "Health Check of Federate Primary REST server"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

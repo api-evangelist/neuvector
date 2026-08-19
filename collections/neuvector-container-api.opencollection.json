@@ -1,0 +1,222 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NeuVector Container API",
+    "version": "5.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Container",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get container list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/workload"
+          },
+          "docs": "Get container list"
+        },
+        {
+          "info": {
+            "name": "Get container list (starting from 5.0, rest client should call this api.)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/workload"
+          },
+          "docs": "Get container list (starting from 5.0, rest client should call this api.)"
+        },
+        {
+          "info": {
+            "name": "Get container list that match the provided ID list",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/workload"
+          },
+          "docs": "Get container list that match the provided ID list"
+        },
+        {
+          "info": {
+            "name": "Get container detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/workload/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Workload ID"
+              }
+            ]
+          },
+          "docs": "Get container detail"
+        },
+        {
+          "info": {
+            "name": "Update Container",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/workload/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Container ID"
+              }
+            ]
+          },
+          "docs": "Update Container"
+        },
+        {
+          "info": {
+            "name": "Get container detail (starting from 5.0, rest client should call this api.)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/workload/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Workload ID"
+              }
+            ]
+          },
+          "docs": "Get container detail (starting from 5.0, rest client should call this api.)"
+        },
+        {
+          "info": {
+            "name": "get container stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/workload/:id/stats",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Container ID"
+              }
+            ]
+          },
+          "docs": "get container stats"
+        },
+        {
+          "info": {
+            "name": "Get a container configure",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/workload/:id/config",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "container ID"
+              }
+            ]
+          },
+          "docs": "Get a container configure"
+        },
+        {
+          "info": {
+            "name": "Get a container process",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/workload/:id/process",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Container ID"
+              }
+            ]
+          },
+          "docs": "Get a container process"
+        },
+        {
+          "info": {
+            "name": "Get a container process history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/workload/:id/process_history",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Container ID"
+              }
+            ]
+          },
+          "docs": "Get a container process history"
+        },
+        {
+          "info": {
+            "name": "Get a container compliance report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/workload/:id/compliance",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Container ID"
+              }
+            ]
+          },
+          "docs": "Get a container compliance report"
+        },
+        {
+          "info": {
+            "name": "Container request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/workload/request/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Container ID"
+              }
+            ]
+          },
+          "docs": "Container request"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

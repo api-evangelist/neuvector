@@ -1,0 +1,270 @@
+{
+  "item": [
+    {
+      "id": "f7318d4b-6a38-45cf-aa23-e2984a2c4e81",
+      "name": "Remote Repository",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9175289d-9478-4ecc-9156-8d1edbb19c7d",
+          "name": "Create a remote repository.",
+          "request": {
+            "name": "Create a remote repository.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "system",
+                "config",
+                "remote_repository"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nickname\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"github_configuration\": {\n    \"repository_owner_username\": \"<string>\",\n    \"repository_name\": \"<string>\",\n    \"repository_branch_name\": \"<string>\",\n    \"personal_access_token\": \"<string>\",\n    \"personal_access_token_committer_name\": \"<string>\",\n    \"personal_access_token_committer_email\": \"<string>\"\n  },\n  \"comment\": \"<string>\",\n  \"enable\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6234dcf4-d16e-4f81-b0b5-dad9a40d7989",
+              "name": "Created the remote repository.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "system",
+                    "config",
+                    "remote_repository"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nickname\": \"default\",\n  \"provider\": \"github\",\n  \"github_configuration\": {\n    \"repository_owner_username\": \"myuser\",\n    \"repository_name\": \"myrepo\",\n    \"repository_branch_name\": \"main\",\n    \"personal_access_token\": \"<access token from GitHub>\",\n    \"personal_access_token_committer_name\": \"myuser\",\n    \"personal_access_token_committer_email\": \"myuser@example.com\"\n  },\n  \"comment\": \"<string>\",\n  \"enable\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "86c25fa9-bec1-4608-b0a6-b23b2e10cd28",
+          "name": "Update a remote repository.",
+          "request": {
+            "name": "Update a remote repository.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "system",
+                "config",
+                "remote_repository",
+                ":alias"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "alias",
+                  "description": "(Required) The alias of the remote repository to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"nickname\": \"<string>\",\n    \"comment\": \"<string>\",\n    \"enable\": \"<boolean>\",\n    \"github_configuration\": {\n      \"repository_owner_username\": \"<string>\",\n      \"repository_name\": \"<string>\",\n      \"repository_branch_name\": \"<string>\",\n      \"personal_access_token\": \"<string>\",\n      \"personal_access_token_committer_name\": \"<string>\",\n      \"personal_access_token_committer_email\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "05da2313-2ea3-4948-9eac-787b3893e2d7",
+              "name": "Updated the remote repository.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "system",
+                    "config",
+                    "remote_repository",
+                    ":alias"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "alias",
+                      "description": "(Required) The alias of the remote repository to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"nickname\": \"default\",\n    \"comment\": \"<string>\",\n    \"enable\": true,\n    \"github_configuration\": {\n      \"repository_owner_username\": \"myuser\",\n      \"repository_name\": \"myrepo\",\n      \"repository_branch_name\": \"main\",\n      \"personal_access_token\": \"<access token from GitHub>\",\n      \"personal_access_token_committer_name\": \"myuser\",\n      \"personal_access_token_committer_email\": \"myuser@example.com\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f14958b9-6092-4e89-846f-36d93d628bbd",
+    "name": "NeuVector Remote Repository API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.\n\nContact Support:\n Email: support@neuvector.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,242 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NeuVector Compliance API",
+    "version": "5.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Compliance",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Docker bench",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/bench/host/:id/docker",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Host ID"
+              }
+            ]
+          },
+          "docs": "Docker bench"
+        },
+        {
+          "info": {
+            "name": "Docker bench run",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/bench/host/:id/docker",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Host ID"
+              }
+            ]
+          },
+          "docs": "Docker bench run"
+        },
+        {
+          "info": {
+            "name": "Kubernetes bench",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/bench/host/:id/kubernetes",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Host ID"
+              }
+            ]
+          },
+          "docs": "Kubernetes bench"
+        },
+        {
+          "info": {
+            "name": "Kubernetes bench run",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/bench/host/:id/kubernetes",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Host ID"
+              }
+            ]
+          },
+          "docs": "Kubernetes bench run"
+        },
+        {
+          "info": {
+            "name": "Get compliance profile list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/compliance/profile"
+          },
+          "docs": "Get compliance profile list"
+        },
+        {
+          "info": {
+            "name": "Get compliance profile detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/compliance/profile/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Profile name"
+              }
+            ]
+          },
+          "docs": "Get compliance profile detail"
+        },
+        {
+          "info": {
+            "name": "Configure compliance profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/compliance/profile/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Compliance profile name"
+              }
+            ]
+          },
+          "docs": "Configure compliance profile"
+        },
+        {
+          "info": {
+            "name": "Configure compliance profile entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/compliance/profile/:name/entry/:check",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Compliance profile name"
+              },
+              {
+                "name": "check",
+                "value": "",
+                "type": "path",
+                "description": "Compliance profile entry check name"
+              }
+            ]
+          },
+          "docs": "Configure compliance profile entry"
+        },
+        {
+          "info": {
+            "name": "Delete compliance profile entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/compliance/profile/:name/entry/:check",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Compliance profile name"
+              },
+              {
+                "name": "check",
+                "value": "",
+                "type": "path",
+                "description": "Compliance profile entry check name"
+              }
+            ]
+          },
+          "docs": "Delete compliance profile entry"
+        },
+        {
+          "info": {
+            "name": "Get custom check scripts of all groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/custom_check"
+          },
+          "docs": "Get custom check scripts of all groups"
+        },
+        {
+          "info": {
+            "name": "GET custom check scripts of the specified group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/custom_check/:group",
+            "params": [
+              {
+                "name": "group",
+                "value": "",
+                "type": "path",
+                "description": "Script config name"
+              }
+            ]
+          },
+          "docs": "GET custom check scripts of the specified group"
+        },
+        {
+          "info": {
+            "name": "Update custom check scripts of the specified group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/custom_check/:group",
+            "params": [
+              {
+                "name": "group",
+                "value": "",
+                "type": "path",
+                "description": "Script config name"
+              }
+            ]
+          },
+          "docs": "Update custom check scripts of the specified group"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

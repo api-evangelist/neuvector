@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NeuVector Service API",
+    "version": "5.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of services",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/service"
+          },
+          "docs": "Get a list of services"
+        },
+        {
+          "info": {
+            "name": "Create service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/service"
+          },
+          "docs": "Create service"
+        },
+        {
+          "info": {
+            "name": "Show service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/service/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Service name"
+              }
+            ]
+          },
+          "docs": "Show service"
+        },
+        {
+          "info": {
+            "name": "Configure service",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/service/config"
+          },
+          "docs": "Configure service"
+        },
+        {
+          "info": {
+            "name": "Configure services in batch",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/service/config/network"
+          },
+          "docs": "Configure services in batch"
+        },
+        {
+          "info": {
+            "name": "Configure services in batch",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/service/config/profile"
+          },
+          "docs": "Configure services in batch"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

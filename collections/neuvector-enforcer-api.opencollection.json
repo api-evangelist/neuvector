@@ -1,0 +1,105 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NeuVector Enforcer API",
+    "version": "5.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Enforcer",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of enforcers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/enforcer"
+          },
+          "docs": "Get a list of enforcers"
+        },
+        {
+          "info": {
+            "name": "Show enforcer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/enforcer/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Enforcer ID"
+              }
+            ]
+          },
+          "docs": "Show enforcer"
+        },
+        {
+          "info": {
+            "name": "Update enforcer",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/enforcer/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Enforcer ID"
+              }
+            ]
+          },
+          "docs": "Update enforcer"
+        },
+        {
+          "info": {
+            "name": "Get enforcer statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/enforcer/:id/stats",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Enforcer ID"
+              }
+            ]
+          },
+          "docs": "Get enforcer statistics"
+        },
+        {
+          "info": {
+            "name": "Enforcer get configure",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/enforcer/:id/config",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Enforcer ID"
+              }
+            ]
+          },
+          "docs": "Enforcer get configure"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,105 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NeuVector Controller API",
+    "version": "5.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of controllers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/controller"
+          },
+          "docs": "Get a list of controllers"
+        },
+        {
+          "info": {
+            "name": "Show controller",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/controller/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Controller ID"
+              }
+            ]
+          },
+          "docs": "Show controller"
+        },
+        {
+          "info": {
+            "name": "Update controller",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/controller/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Controller ID"
+              }
+            ]
+          },
+          "docs": "Update controller"
+        },
+        {
+          "info": {
+            "name": "Controller get system statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/controller/:id/stats",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Controller ID"
+              }
+            ]
+          },
+          "docs": "Controller get system statistics"
+        },
+        {
+          "info": {
+            "name": "Controller get configure",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/controller/:id/config",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Controller ID"
+              }
+            ]
+          },
+          "docs": "Controller get configure"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

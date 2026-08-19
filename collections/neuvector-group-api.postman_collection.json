@@ -1,0 +1,635 @@
+{
+  "item": [
+    {
+      "id": "862a43cc-78af-4b57-9522-4b909179120f",
+      "name": "Group",
+      "description": {
+        "content": "Operations about Group",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a0253b78-2625-4671-bbc7-6d1ffe46c814",
+          "name": "Get a list of groups",
+          "request": {
+            "name": "Get a list of groups",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "group"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "scope",
+                  "value": "<string>",
+                  "description": "When set to fed, returned fed groups. When set to local, returned local groups. If there is no query string 'scope', all groups will be returned."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b65b4e88-7573-4523-acb5-ed41315209d0",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"groups\": [\n    {\n      \"name\": \"kafkadocker_kafka\",\n      \"learned\": true,\n      \"reserved\": false,\n      \"domain\": \"\",\n      \"creater_domains\": [\n        \"domain1\",\n        \"domain2\"\n      ],\n      \"kind\": \"\",\n      \"platform_role\": \"core\",\n      \"cap_change_mode\": true,\n      \"criteria\": [\n        {\n          \"key\": \"pattern\",\n          \"value\": \"[0-9]\",\n          \"op\": \"regex\"\n        },\n        {\n          \"key\": \"pattern\",\n          \"value\": \"[0-9]\",\n          \"op\": \"regex\"\n        }\n      ],\n      \"members\": [\n        {\n          \"id\": \"7304e72fd093155c4cbcd65d07375329b2db82cc679\",\n          \"name\": \"k8s_POD.d86c_calico-node-mzhtk_kube-system_0050565a_365c13d\",\n          \"display_name\": \"calico-node-mzhtk\",\n          \"pod_name\": \"istio-policy-5cdbc47674-t67p4\",\n          \"image\": \"calico\",\n          \"image_id\": \"d572b7ee3511b21a2b78b8915bc03c5786ad01949704c1418624224c4cae2c5f\",\n          \"image_created_at\": \"2018-01-18 00:44:02+00:00\",\n          \"platform_role\": \"core\",\n          \"domain\": \"\",\n          \"state\": \"exit\",\n          \"service\": \"kafkazookeeper\",\n          \"author\": \"\",\n          \"service_group\": \"nv.calico\",\n          \"cap_sniff\": true,\n          \"cap_quarantine\": true,\n          \"cap_change_mode\": true,\n          \"policy_mode\": \"Discover\",\n          \"profile_mode\": \"Discover\",\n          \"scan_summary\": {\n            \"status\": \"scheduled\",\n            \"high\": 0,\n            \"medium\": 0,\n            \"result\": \"success\",\n            \"scanned_timestamp\": 1516561253,\n            \"scanned_at\": \"2018-01-21 19:00:53+00:00\",\n            \"base_os\": \"ubuntu:16.04\",\n            \"scanner_version\": \"1.011\",\n            \"cvedb_create_time\": \"2018-06-20 19:00:53+00:00\"\n          },\n          \"children\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/RESTWorkloadBrief detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/RESTWorkloadBrief detected>\"\n            }\n          ],\n          \"service_mesh\": true,\n          \"service_mesh_sidecar\": true,\n          \"privileged\": true,\n          \"run_as_root\": true,\n          \"baseline_profile\": \"\",\n          \"image_digest\": [\n            \"c2ced31c5dda37cb805f481e3fa34b742cc8980f439b20af3111b08e66cff8e1\",\n            \"c2ced31c5dda37cb805f481e3fa34b742cc8980f439b20af3111b08e66cff8e1\"\n          ],\n          \"image_reg_scanned\": false,\n          \"share_ns_with\": \"cc0709d522749203042e89dba28bf6924a4b0d360648\",\n          \"quarantine_reason\": \"violation\"\n        },\n        {\n          \"id\": \"7304e72fd093155c4cbcd65d07375329b2db82cc679\",\n          \"name\": \"k8s_POD.d86c_calico-node-mzhtk_kube-system_0050565a_365c13d\",\n          \"display_name\": \"calico-node-mzhtk\",\n          \"pod_name\": \"istio-policy-5cdbc47674-t67p4\",\n          \"image\": \"calico\",\n          \"image_id\": \"d572b7ee3511b21a2b78b8915bc03c5786ad01949704c1418624224c4cae2c5f\",\n          \"image_created_at\": \"2018-01-18 00:44:02+00:00\",\n          \"platform_role\": \"core\",\n          \"domain\": \"\",\n          \"state\": \"exit\",\n          \"service\": \"kafkazookeeper\",\n          \"author\": \"\",\n          \"service_group\": \"nv.calico\",\n          \"cap_sniff\": true,\n          \"cap_quarantine\": true,\n          \"cap_change_mode\": true,\n          \"policy_mode\": \"Discover\",\n          \"profile_mode\": \"Discover\",\n          \"scan_summary\": {\n            \"status\": \"scheduled\",\n            \"high\": 0,\n            \"medium\": 0,\n            \"result\": \"success\",\n            \"scanned_timestamp\": 1516561253,\n            \"scanned_at\": \"2018-01-21 19:00:53+00:00\",\n            \"base_os\": \"ubuntu:16.04\",\n            \"scanner_version\": \"1.011\",\n            \"cvedb_create_time\": \"2018-06-20 19:00:53+00:00\"\n          },\n          \"children\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/RESTWorkloadBrief detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/RESTWorkloadBrief detected>\"\n            }\n          ],\n          \"service_mesh\": true,\n          \"service_mesh_sidecar\": true,\n          \"privileged\": true,\n          \"run_as_root\": true,\n          \"baseline_profile\": \"\",\n          \"image_digest\": [\n            \"c2ced31c5dda37cb805f481e3fa34b742cc8980f439b20af3111b08e66cff8e1\",\n            \"c2ced31c5dda37cb805f481e3fa34b742cc8980f439b20af3111b08e66cff8e1\"\n          ],\n          \"image_reg_scanned\": false,\n          \"share_ns_with\": \"cc0709d522749203042e89dba28bf6924a4b0d360648\",\n          \"quarantine_reason\": \"violation\"\n        }\n      ],\n      \"policy_rules\": [\n        10005,\n        10005\n      ],\n      \"response_rules\": [\n        1247,\n        1247\n      ],\n      \"policy_mode\": \"Discover\"\n    },\n    {\n      \"name\": \"kafkadocker_kafka\",\n      \"learned\": true,\n      \"reserved\": false,\n      \"domain\": \"\",\n      \"creater_domains\": [\n        \"domain1\",\n        \"domain2\"\n      ],\n      \"kind\": \"\",\n      \"platform_role\": \"core\",\n      \"cap_change_mode\": true,\n      \"criteria\": [\n        {\n          \"key\": \"pattern\",\n          \"value\": \"[0-9]\",\n          \"op\": \"regex\"\n        },\n        {\n          \"key\": \"pattern\",\n          \"value\": \"[0-9]\",\n          \"op\": \"regex\"\n        }\n      ],\n      \"members\": [\n        {\n          \"id\": \"7304e72fd093155c4cbcd65d07375329b2db82cc679\",\n          \"name\": \"k8s_POD.d86c_calico-node-mzhtk_kube-system_0050565a_365c13d\",\n          \"display_name\": \"calico-node-mzhtk\",\n          \"pod_name\": \"istio-policy-5cdbc47674-t67p4\",\n          \"image\": \"calico\",\n          \"image_id\": \"d572b7ee3511b21a2b78b8915bc03c5786ad01949704c1418624224c4cae2c5f\",\n          \"image_created_at\": \"2018-01-18 00:44:02+00:00\",\n          \"platform_role\": \"core\",\n          \"domain\": \"\",\n          \"state\": \"exit\",\n          \"service\": \"kafkazookeeper\",\n          \"author\": \"\",\n          \"service_group\": \"nv.calico\",\n          \"cap_sniff\": true,\n          \"cap_quarantine\": true,\n          \"cap_change_mode\": true,\n          \"policy_mode\": \"Discover\",\n          \"profile_mode\": \"Discover\",\n          \"scan_summary\": {\n            \"status\": \"scheduled\",\n            \"high\": 0,\n            \"medium\": 0,\n            \"result\": \"success\",\n            \"scanned_timestamp\": 1516561253,\n            \"scanned_at\": \"2018-01-21 19:00:53+00:00\",\n            \"base_os\": \"ubuntu:16.04\",\n            \"scanner_version\": \"1.011\",\n            \"cvedb_create_time\": \"2018-06-20 19:00:53+00:00\"\n          },\n          \"children\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/RESTWorkloadBrief detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/RESTWorkloadBrief detected>\"\n            }\n          ],\n          \"service_mesh\": true,\n          \"service_mesh_sidecar\": true,\n          \"privileged\": true,\n          \"run_as_root\": true,\n          \"baseline_profile\": \"\",\n          \"image_digest\": [\n            \"c2ced31c5dda37cb805f481e3fa34b742cc8980f439b20af3111b08e66cff8e1\",\n            \"c2ced31c5dda37cb805f481e3fa34b742cc8980f439b20af3111b08e66cff8e1\"\n          ],\n          \"image_reg_scanned\": false,\n          \"share_ns_with\": \"cc0709d522749203042e89dba28bf6924a4b0d360648\",\n          \"quarantine_reason\": \"violation\"\n        },\n        {\n          \"id\": \"7304e72fd093155c4cbcd65d07375329b2db82cc679\",\n          \"name\": \"k8s_POD.d86c_calico-node-mzhtk_kube-system_0050565a_365c13d\",\n          \"display_name\": \"calico-node-mzhtk\",\n          \"pod_name\": \"istio-policy-5cdbc47674-t67p4\",\n          \"image\": \"calico\",\n          \"image_id\": \"d572b7ee3511b21a2b78b8915bc03c5786ad01949704c1418624224c4cae2c5f\",\n          \"image_created_at\": \"2018-01-18 00:44:02+00:00\",\n          \"platform_role\": \"core\",\n          \"domain\": \"\",\n          \"state\": \"exit\",\n          \"service\": \"kafkazookeeper\",\n          \"author\": \"\",\n          \"service_group\": \"nv.calico\",\n          \"cap_sniff\": true,\n          \"cap_quarantine\": true,\n          \"cap_change_mode\": true,\n          \"policy_mode\": \"Discover\",\n          \"profile_mode\": \"Discover\",\n          \"scan_summary\": {\n            \"status\": \"scheduled\",\n            \"high\": 0,\n            \"medium\": 0,\n            \"result\": \"success\",\n            \"scanned_timestamp\": 1516561253,\n            \"scanned_at\": \"2018-01-21 19:00:53+00:00\",\n            \"base_os\": \"ubuntu:16.04\",\n            \"scanner_version\": \"1.011\",\n            \"cvedb_create_time\": \"2018-06-20 19:00:53+00:00\"\n          },\n          \"children\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/RESTWorkloadBrief detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/RESTWorkloadBrief detected>\"\n            }\n          ],\n          \"service_mesh\": true,\n          \"service_mesh_sidecar\": true,\n          \"privileged\": true,\n          \"run_as_root\": true,\n          \"baseline_profile\": \"\",\n          \"image_digest\": [\n            \"c2ced31c5dda37cb805f481e3fa34b742cc8980f439b20af3111b08e66cff8e1\",\n            \"c2ced31c5dda37cb805f481e3fa34b742cc8980f439b20af3111b08e66cff8e1\"\n          ],\n          \"image_reg_scanned\": false,\n          \"share_ns_with\": \"cc0709d522749203042e89dba28bf6924a4b0d360648\",\n          \"quarantine_reason\": \"violation\"\n        }\n      ],\n      \"policy_rules\": [\n        10005,\n        10005\n      ],\n      \"response_rules\": [\n        1247,\n        1247\n      ],\n      \"policy_mode\": \"Discover\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "17ea68d2-8338-40b8-8691-b726436be53a",
+          "name": "Create group",
+          "request": {
+            "name": "Create group",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "group"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"name\": \"<string>\",\n    \"cfg_type\": \"<string>\",\n    \"criteria\": [\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<string>\",\n        \"op\": \"<string>\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<string>\",\n        \"op\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e9f08d40-8d72-48eb-9e7d-c4a44b2691d1",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"name\": \"containerEQU\",\n    \"cfg_type\": \"<string>\",\n    \"criteria\": [\n      {\n        \"key\": \"pattern\",\n        \"value\": \"[0-9]\",\n        \"op\": \"regex\"\n      },\n      {\n        \"key\": \"pattern\",\n        \"value\": \"[0-9]\",\n        \"op\": \"regex\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bd20da63-c615-422c-a36b-9ed00ed618ba",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"name\": \"containerEQU\",\n    \"cfg_type\": \"<string>\",\n    \"criteria\": [\n      {\n        \"key\": \"pattern\",\n        \"value\": \"[0-9]\",\n        \"op\": \"regex\"\n      },\n      {\n        \"key\": \"pattern\",\n        \"value\": \"[0-9]\",\n        \"op\": \"regex\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 3,\n  \"error\": \"Request failed\",\n  \"message\": \"Invalid format\",\n  \"password_profile_basic\": {\n    \"min_len\": 6,\n    \"min_uppercase_count\": 0,\n    \"min_lowercase_count\": 0,\n    \"min_digit_count\": 0,\n    \"min_special_count\": 0\n  },\n  \"import_task_data\": {\n    \"data\": {\n      \"tid\": \"c5af897b62a258212ece91c0551d3a4a\",\n      \"ctrler_id\": \"6e60452b244b90456f3450c9fed0a50f57f4b849dcb74a5fad289e8116f32f36\",\n      \"percentage\": 100,\n      \"last_update_time\": \"2022-03-17T17:31:55.832768041Z\",\n      \"triggered_by\": \"admin\",\n      \"status\": \"done\",\n      \"temp_token\": \"\",\n      \"fail_to_decrypt_key_fields\": {\n        \"key_0\": [\n          \"x509_cert\",\n          \"signing_cert\"\n        ],\n        \"key_1\": [\n          \"x509_cert\",\n          \"signing_cert\"\n        ],\n        \"key_2\": [\n          \"x509_cert\",\n          \"signing_cert\"\n        ],\n        \"key_3\": [\n          \"x509_cert\",\n          \"signing_cert\"\n        ]\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "31d0accb-d816-4b4b-aa9b-1c91877999f9",
+          "name": "Show group",
+          "request": {
+            "name": "Show group",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "group",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Group name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "03a06165-842c-42d1-b913-06bb07c1e7a3",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "group",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Group name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"group\": {\n    \"name\": \"containers\",\n    \"learned\": true,\n    \"reserved\": false,\n    \"domain\": \"external\",\n    \"creater_domains\": [\n      \"domain1\",\n      \"domain2\"\n    ],\n    \"kind\": \"\",\n    \"platform_role\": \"admin\",\n    \"cap_change_mode\": false,\n    \"cfg_type\": \"learned\",\n    \"monitor_metric\": false,\n    \"group_sess_cur\": 1,\n    \"group_sess_rate\": 1,\n    \"group_band_width\": 1,\n    \"criteria\": [\n      {\n        \"key\": \"pattern\",\n        \"value\": \"[0-9]\",\n        \"op\": \"regex\"\n      },\n      {\n        \"key\": \"pattern\",\n        \"value\": \"[0-9]\",\n        \"op\": \"regex\"\n      }\n    ],\n    \"members\": [\n      {\n        \"id\": \"7304e72fd093155c4cbcd65d07375329b2db82cc679\",\n        \"name\": \"k8s_POD.d86c_calico-node-mzhtk_kube-system_0050565a_365c13d\",\n        \"display_name\": \"calico-node-mzhtk\",\n        \"pod_name\": \"istio-policy-5cdbc47674-t67p4\",\n        \"image\": \"calico\",\n        \"image_id\": \"d572b7ee3511b21a2b78b8915bc03c5786ad01949704c1418624224c4cae2c5f\",\n        \"image_created_at\": \"2018-01-18 00:44:02+00:00\",\n        \"platform_role\": \"core\",\n        \"domain\": \"\",\n        \"state\": \"exit\",\n        \"service\": \"kafkazookeeper\",\n        \"author\": \"\",\n        \"service_group\": \"nv.calico\",\n        \"cap_sniff\": true,\n        \"cap_quarantine\": true,\n        \"cap_change_mode\": true,\n        \"policy_mode\": \"Discover\",\n        \"profile_mode\": \"Discover\",\n        \"scan_summary\": {\n          \"status\": \"scheduled\",\n          \"high\": 0,\n          \"medium\": 0,\n          \"result\": \"success\",\n          \"scanned_timestamp\": 1516561253,\n          \"scanned_at\": \"2018-01-21 19:00:53+00:00\",\n          \"base_os\": \"ubuntu:16.04\",\n          \"scanner_version\": \"1.011\",\n          \"cvedb_create_time\": \"2018-06-20 19:00:53+00:00\"\n        },\n        \"children\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTWorkloadBrief detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTWorkloadBrief detected>\"\n          }\n        ],\n        \"service_mesh\": true,\n        \"service_mesh_sidecar\": true,\n        \"privileged\": true,\n        \"run_as_root\": true,\n        \"baseline_profile\": \"\",\n        \"image_digest\": [\n          \"c2ced31c5dda37cb805f481e3fa34b742cc8980f439b20af3111b08e66cff8e1\",\n          \"c2ced31c5dda37cb805f481e3fa34b742cc8980f439b20af3111b08e66cff8e1\"\n        ],\n        \"image_reg_scanned\": false,\n        \"share_ns_with\": \"cc0709d522749203042e89dba28bf6924a4b0d360648\",\n        \"quarantine_reason\": \"violation\"\n      },\n      {\n        \"id\": \"7304e72fd093155c4cbcd65d07375329b2db82cc679\",\n        \"name\": \"k8s_POD.d86c_calico-node-mzhtk_kube-system_0050565a_365c13d\",\n        \"display_name\": \"calico-node-mzhtk\",\n        \"pod_name\": \"istio-policy-5cdbc47674-t67p4\",\n        \"image\": \"calico\",\n        \"image_id\": \"d572b7ee3511b21a2b78b8915bc03c5786ad01949704c1418624224c4cae2c5f\",\n        \"image_created_at\": \"2018-01-18 00:44:02+00:00\",\n        \"platform_role\": \"core\",\n        \"domain\": \"\",\n        \"state\": \"exit\",\n        \"service\": \"kafkazookeeper\",\n        \"author\": \"\",\n        \"service_group\": \"nv.calico\",\n        \"cap_sniff\": true,\n        \"cap_quarantine\": true,\n        \"cap_change_mode\": true,\n        \"policy_mode\": \"Discover\",\n        \"profile_mode\": \"Discover\",\n        \"scan_summary\": {\n          \"status\": \"scheduled\",\n          \"high\": 0,\n          \"medium\": 0,\n          \"result\": \"success\",\n          \"scanned_timestamp\": 1516561253,\n          \"scanned_at\": \"2018-01-21 19:00:53+00:00\",\n          \"base_os\": \"ubuntu:16.04\",\n          \"scanner_version\": \"1.011\",\n          \"cvedb_create_time\": \"2018-06-20 19:00:53+00:00\"\n        },\n        \"children\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTWorkloadBrief detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTWorkloadBrief detected>\"\n          }\n        ],\n        \"service_mesh\": true,\n        \"service_mesh_sidecar\": true,\n        \"privileged\": true,\n        \"run_as_root\": true,\n        \"baseline_profile\": \"\",\n        \"image_digest\": [\n          \"c2ced31c5dda37cb805f481e3fa34b742cc8980f439b20af3111b08e66cff8e1\",\n          \"c2ced31c5dda37cb805f481e3fa34b742cc8980f439b20af3111b08e66cff8e1\"\n        ],\n        \"image_reg_scanned\": false,\n        \"share_ns_with\": \"cc0709d522749203042e89dba28bf6924a4b0d360648\",\n        \"quarantine_reason\": \"violation\"\n      }\n    ],\n    \"policy_rules\": [\n      {\n        \"id\": 10002,\n        \"comment\": \"a rule\",\n        \"from\": \"nv.iperfc\",\n        \"to\": \"Host:10.2.127.3\",\n        \"ports\": \"any\",\n        \"action\": \"allow\",\n        \"applications\": [\n          \"DNS\",\n          \"DNS\"\n        ],\n        \"learned\": true,\n        \"disable\": false,\n        \"created_timestamp\": 1516563263,\n        \"last_modified_timestamp\": 1516573243,\n        \"cfg_type\": \"user_created\",\n        \"priority\": 0,\n        \"match_counter\": 699,\n        \"last_match_timestamp\": 1736811451\n      },\n      {\n        \"id\": 10002,\n        \"comment\": \"a rule\",\n        \"from\": \"nv.iperfc\",\n        \"to\": \"Host:10.2.127.3\",\n        \"ports\": \"any\",\n        \"action\": \"allow\",\n        \"applications\": [\n          \"DNS\",\n          \"DNS\"\n        ],\n        \"learned\": true,\n        \"disable\": false,\n        \"created_timestamp\": 1516563263,\n        \"last_modified_timestamp\": 1516573243,\n        \"cfg_type\": \"federal\",\n        \"priority\": 0,\n        \"match_counter\": 699,\n        \"last_match_timestamp\": 1736811451\n      }\n    ],\n    \"response_rules\": [\n      {\n        \"id\": 1001,\n        \"event\": \"\",\n        \"comment\": \"\",\n        \"group\": \"\",\n        \"conditions\": [\n          {\n            \"type\": \"\",\n            \"value\": \"\"\n          },\n          {\n            \"type\": \"\",\n            \"value\": \"\"\n          }\n        ],\n        \"actions\": [\n          \"\",\n          \"\"\n        ],\n        \"webhooks\": [\n          \"\",\n          \"\"\n        ],\n        \"disable\": false,\n        \"cfg_type\": \"federal\"\n      },\n      {\n        \"id\": 1001,\n        \"event\": \"\",\n        \"comment\": \"\",\n        \"group\": \"\",\n        \"conditions\": [\n          {\n            \"type\": \"\",\n            \"value\": \"\"\n          },\n          {\n            \"type\": \"\",\n            \"value\": \"\"\n          }\n        ],\n        \"actions\": [\n          \"\",\n          \"\"\n        ],\n        \"webhooks\": [\n          \"\",\n          \"\"\n        ],\n        \"disable\": false,\n        \"cfg_type\": \"ground\"\n      }\n    ],\n    \"policy_mode\": \"\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8960c430-cafd-495f-b418-86d618b5b444",
+          "name": "Update group",
+          "request": {
+            "name": "Update group",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "group",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Group name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"name\": \"<string>\",\n    \"cfg_type\": \"<string>\",\n    \"criteria\": [\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<string>\",\n        \"op\": \"<string>\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<string>\",\n        \"op\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "265a1920-13bb-4378-aeda-ead29f42c7e8",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "group",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Group name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"name\": \"containerEQU\",\n    \"cfg_type\": \"<string>\",\n    \"criteria\": [\n      {\n        \"key\": \"pattern\",\n        \"value\": \"[0-9]\",\n        \"op\": \"regex\"\n      },\n      {\n        \"key\": \"pattern\",\n        \"value\": \"[0-9]\",\n        \"op\": \"regex\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2d4178fa-7812-45ff-85b8-bb91c613d8f7",
+          "name": "Delete group",
+          "request": {
+            "name": "Delete group",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "group",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Group name"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b61ea8b2-fb61-4300-8657-ceb225379db7",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "group",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Group name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "219cd3df-7cdf-4261-9069-d01de07f21c3",
+    "name": "NeuVector Group API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.\n\nContact Support:\n Email: support@neuvector.com",
+      "type": "text/plain"
+    }
+  }
+}

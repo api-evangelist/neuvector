@@ -1,0 +1,806 @@
+{
+  "item": [
+    {
+      "id": "c6758147-0445-427e-a357-f14b4e3d4d3d",
+      "name": "Server",
+      "description": {
+        "content": "Operations about Server",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b2f62844-5c27-4355-be7b-640f7bf53b7f",
+          "name": "Get a list of servers",
+          "request": {
+            "name": "Get a list of servers",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "server"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1a371a67-4144-4ebd-8cd5-99e728bc8365",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "server"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"servers\": [\n    {\n      \"server_name\": \"iperfserver\",\n      \"server_type\": \"ldap\",\n      \"ldap\": {\n        \"directory\": \"\",\n        \"hostname\": \"172.17.0.3\",\n        \"port\": 389,\n        \"ssl\": false,\n        \"base_dn\": \"dc=example,dc=org\",\n        \"group_dn\": \"dc=example,dc=org\",\n        \"bind_dn\": \"cn=admin,dc=example,dc=org\",\n        \"group_member_attr\": \"\",\n        \"username_attr\": \"\",\n        \"enable\": false,\n        \"default_role\": \"reader\",\n        \"bind_password\": \"mypassword\",\n        \"role_groups\": {\n          \"role\": \"admin\",\n          \"groups\": [\n            \"admin1\",\n            \"admin2\"\n          ]\n        },\n        \"group_mapped_roles\": [\n          {\n            \"group\": \"Domain Admins\",\n            \"global_role\": \"admin\",\n            \"role_domains\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          {\n            \"group\": \"Domain Admins\",\n            \"global_role\": \"admin\",\n            \"role_domains\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        ]\n      },\n      \"saml\": {\n        \"sso_url\": \"https://dev-2588.oktapreview.com/app/examplesamlapp_1/exjlpo0/sso/saml\",\n        \"issuer\": \"http://www.okta.com/exkgp9avqo07\",\n        \"group_claim\": \"\",\n        \"enable\": true,\n        \"default_role\": \"admin\",\n        \"x509_cert\": \"E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF\",\n        \"role_groups\": {\n          \"role\": \"admin\",\n          \"groups\": [\n            \"admin1\",\n            \"admin2\"\n          ]\n        },\n        \"group_mapped_roles\": [\n          {\n            \"group\": \"Domain Admins\",\n            \"global_role\": \"admin\",\n            \"role_domains\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          {\n            \"group\": \"Domain Admins\",\n            \"global_role\": \"admin\",\n            \"role_domains\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        ],\n        \"x509_certs\": [\n          {\n            \"x509_cert\": \"E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF\",\n            \"issuer_cn\": \"dev-11563853\",\n            \"subject_cn\": \"dev-11563853\",\n            \"subject_notafter\": 1988147822\n          },\n          {\n            \"x509_cert\": \"E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF\",\n            \"issuer_cn\": \"dev-11563853\",\n            \"subject_cn\": \"dev-11563853\",\n            \"subject_notafter\": 1988147822\n          }\n        ],\n        \"slo_enabled\": true,\n        \"slo_url\": \"https://dev.oktapreview.com/app/examplesamlapp_1/exjlpo0/slo/saml\",\n        \"signing_cert\": \"E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF\"\n      },\n      \"oidc\": {\n        \"issuer\": \"https://dev-256438.oktapreview.com\",\n        \"authorization_endpoint\": \"https://dev-256438.oktapreview.com/oauth2/v1/authorize\",\n        \"token_endpoint\": \"https://dev-256438.oktapreview.com/oauth2/v1/token\",\n        \"user_info_endpoint\": \"https://dev-256438.oktapreview.com/oauth2/v1/userinfo\",\n        \"client_id\": \"0oai4gal8xXh0itGi0h7\",\n        \"group_claim\": \"\",\n        \"scopes\": [\n          \"\",\n          \"\"\n        ],\n        \"enable\": true,\n        \"default_role\": \"admin\",\n        \"ClientSecret\": \"\",\n        \"use_proxy\": false,\n        \"role_groups\": {\n          \"role\": \"admin\",\n          \"groups\": [\n            \"admin1\",\n            \"admin2\"\n          ]\n        },\n        \"group_mapped_roles\": [\n          {\n            \"group\": \"Domain Admins\",\n            \"global_role\": \"admin\",\n            \"role_domains\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          {\n            \"group\": \"Domain Admins\",\n            \"global_role\": \"admin\",\n            \"role_domains\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        ]\n      }\n    },\n    {\n      \"server_name\": \"iperfserver\",\n      \"server_type\": \"ldap\",\n      \"ldap\": {\n        \"directory\": \"\",\n        \"hostname\": \"172.17.0.3\",\n        \"port\": 389,\n        \"ssl\": false,\n        \"base_dn\": \"dc=example,dc=org\",\n        \"group_dn\": \"dc=example,dc=org\",\n        \"bind_dn\": \"cn=admin,dc=example,dc=org\",\n        \"group_member_attr\": \"\",\n        \"username_attr\": \"\",\n        \"enable\": false,\n        \"default_role\": \"reader\",\n        \"bind_password\": \"mypassword\",\n        \"role_groups\": {\n          \"role\": \"admin\",\n          \"groups\": [\n            \"admin1\",\n            \"admin2\"\n          ]\n        },\n        \"group_mapped_roles\": [\n          {\n            \"group\": \"Domain Admins\",\n            \"global_role\": \"admin\",\n            \"role_domains\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_2\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          {\n            \"group\": \"Domain Admins\",\n            \"global_role\": \"admin\",\n            \"role_domains\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        ]\n      },\n      \"saml\": {\n        \"sso_url\": \"https://dev-2588.oktapreview.com/app/examplesamlapp_1/exjlpo0/sso/saml\",\n        \"issuer\": \"http://www.okta.com/exkgp9avqo07\",\n        \"group_claim\": \"\",\n        \"enable\": true,\n        \"default_role\": \"admin\",\n        \"x509_cert\": \"E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF\",\n        \"role_groups\": {\n          \"role\": \"admin\",\n          \"groups\": [\n            \"admin1\",\n            \"admin2\"\n          ]\n        },\n        \"group_mapped_roles\": [\n          {\n            \"group\": \"Domain Admins\",\n            \"global_role\": \"admin\",\n            \"role_domains\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          {\n            \"group\": \"Domain Admins\",\n            \"global_role\": \"admin\",\n            \"role_domains\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        ],\n        \"x509_certs\": [\n          {\n            \"x509_cert\": \"E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF\",\n            \"issuer_cn\": \"dev-11563853\",\n            \"subject_cn\": \"dev-11563853\",\n            \"subject_notafter\": 1988147822\n          },\n          {\n            \"x509_cert\": \"E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF\",\n            \"issuer_cn\": \"dev-11563853\",\n            \"subject_cn\": \"dev-11563853\",\n            \"subject_notafter\": 1988147822\n          }\n        ],\n        \"slo_enabled\": true,\n        \"slo_url\": \"https://dev.oktapreview.com/app/examplesamlapp_1/exjlpo0/slo/saml\",\n        \"signing_cert\": \"E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF\"\n      },\n      \"oidc\": {\n        \"issuer\": \"https://dev-256438.oktapreview.com\",\n        \"authorization_endpoint\": \"https://dev-256438.oktapreview.com/oauth2/v1/authorize\",\n        \"token_endpoint\": \"https://dev-256438.oktapreview.com/oauth2/v1/token\",\n        \"user_info_endpoint\": \"https://dev-256438.oktapreview.com/oauth2/v1/userinfo\",\n        \"client_id\": \"0oai4gal8xXh0itGi0h7\",\n        \"group_claim\": \"\",\n        \"scopes\": [\n          \"\",\n          \"\"\n        ],\n        \"enable\": true,\n        \"default_role\": \"admin\",\n        \"ClientSecret\": \"\",\n        \"use_proxy\": false,\n        \"role_groups\": {\n          \"role\": \"admin\",\n          \"groups\": [\n            \"admin1\",\n            \"admin2\"\n          ]\n        },\n        \"group_mapped_roles\": [\n          {\n            \"group\": \"Domain Admins\",\n            \"global_role\": \"admin\",\n            \"role_domains\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          {\n            \"group\": \"Domain Admins\",\n            \"global_role\": \"admin\",\n            \"role_domains\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        ]\n      }\n    }\n  ],\n  \"mappable_role\": {\n    \"default_roles\": [\n      \"default_role_1\",\n      \"default_role_2\"\n    ],\n    \"group_roles\": [\n      \"group_role_1\",\n      \"group_role_2\"\n    ],\n    \"group_domain_roles\": [\n      \"group_domain_role_1\",\n      \"group_domain_role_2\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7975c927-37e0-4ab5-8308-b2d0f1322584",
+          "name": "Create server",
+          "request": {
+            "name": "Create server",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "server"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"name\": \"<string>\",\n    \"ldap\": {\n      \"directory\": \"<string>\",\n      \"hostname\": \"<string>\",\n      \"port\": \"<uint16>\",\n      \"ssl\": \"<boolean>\",\n      \"base_dn\": \"<string>\",\n      \"group_dn\": \"<string>\",\n      \"bind_dn\": \"<string>\",\n      \"bind_password\": \"<string>\",\n      \"group_member_attr\": \"<string>\",\n      \"username_attr\": \"<string>\",\n      \"enable\": \"<boolean>\",\n      \"default_role\": \"<string>\",\n      \"role_groups\": {\n        \"role\": \"<string>\",\n        \"groups\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"group_mapped_roles\": [\n        {\n          \"group\": \"<string>\",\n          \"global_role\": \"<string>\",\n          \"role_domains\": {\n            \"key_0\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"key_1\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        {\n          \"group\": \"<string>\",\n          \"global_role\": \"<string>\",\n          \"role_domains\": {\n            \"key_0\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      ]\n    },\n    \"saml\": {\n      \"sso_url\": \"<string>\",\n      \"issuer\": \"<string>\",\n      \"group_claim\": \"<string>\",\n      \"x509_cert\": \"<string>\",\n      \"enable\": \"<boolean>\",\n      \"default_role\": \"<string>\",\n      \"role_groups\": {\n        \"role\": \"<string>\",\n        \"groups\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"group_mapped_roles\": [\n        {\n          \"group\": \"<string>\",\n          \"global_role\": \"<string>\",\n          \"role_domains\": {\n            \"key_0\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"key_1\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"key_2\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        {\n          \"group\": \"<string>\",\n          \"global_role\": \"<string>\",\n          \"role_domains\": {\n            \"key_0\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"key_1\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"key_2\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      ],\n      \"x509_cert_extra\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"slo_enabled\": \"<boolean>\",\n      \"slo_url\": \"<string>\",\n      \"signing_cert\": \"<string>\",\n      \"signing_key\": \"<string>\"\n    },\n    \"oidc\": {\n      \"issuer\": \"<string>\",\n      \"client_id\": \"<string>\",\n      \"group_claim\": \"<string>\",\n      \"enable\": \"<boolean>\",\n      \"default_role\": \"<string>\",\n      \"client_secret\": \"<string>\",\n      \"scopes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"use_proxy\": \"<boolean>\",\n      \"role_groups\": {\n        \"role\": \"<string>\",\n        \"groups\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"group_mapped_roles\": [\n        {\n          \"group\": \"<string>\",\n          \"global_role\": \"<string>\",\n          \"role_domains\": {\n            \"key_0\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"key_1\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"key_2\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        {\n          \"group\": \"<string>\",\n          \"global_role\": \"<string>\",\n          \"role_domains\": {\n            \"key_0\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"key_1\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      ]\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9eaf7cda-c424-4282-aefa-55c65f784c03",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "server"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7155f970-d2c4-4766-b577-f80576d88320",
+          "name": "Show server",
+          "request": {
+            "name": "Show server",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "server",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Name of the server"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7241493f-3945-4cb6-a131-1f3dc5d665b8",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "server",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name of the server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"server\": {\n    \"server_name\": \"iperfserver\",\n    \"server_type\": \"ldap\",\n    \"ldap\": {\n      \"directory\": \"\",\n      \"hostname\": \"172.17.0.3\",\n      \"port\": 389,\n      \"ssl\": false,\n      \"base_dn\": \"dc=example,dc=org\",\n      \"group_dn\": \"dc=example,dc=org\",\n      \"bind_dn\": \"cn=admin,dc=example,dc=org\",\n      \"group_member_attr\": \"\",\n      \"username_attr\": \"\",\n      \"enable\": false,\n      \"default_role\": \"reader\",\n      \"bind_password\": \"mypassword\",\n      \"role_groups\": {\n        \"role\": \"admin\",\n        \"groups\": [\n          \"admin1\",\n          \"admin2\"\n        ]\n      },\n      \"group_mapped_roles\": [\n        {\n          \"group\": \"Domain Admins\",\n          \"global_role\": \"admin\",\n          \"role_domains\": {\n            \"key_0\": [\n              \"domain1\",\n              \"domain2\"\n            ]\n          }\n        },\n        {\n          \"group\": \"Domain Admins\",\n          \"global_role\": \"admin\",\n          \"role_domains\": {\n            \"key_0\": [\n              \"domain1\",\n              \"domain2\"\n            ],\n            \"key_1\": [\n              \"domain1\",\n              \"domain2\"\n            ]\n          }\n        }\n      ]\n    },\n    \"saml\": {\n      \"sso_url\": \"https://dev-2588.oktapreview.com/app/examplesamlapp_1/exjlpo0/sso/saml\",\n      \"issuer\": \"http://www.okta.com/exkgp9avqo07\",\n      \"group_claim\": \"\",\n      \"enable\": true,\n      \"default_role\": \"admin\",\n      \"x509_cert\": \"E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF\",\n      \"role_groups\": {\n        \"role\": \"admin\",\n        \"groups\": [\n          \"admin1\",\n          \"admin2\"\n        ]\n      },\n      \"group_mapped_roles\": [\n        {\n          \"group\": \"Domain Admins\",\n          \"global_role\": \"admin\",\n          \"role_domains\": {\n            \"key_0\": [\n              \"domain1\",\n              \"domain2\"\n            ]\n          }\n        },\n        {\n          \"group\": \"Domain Admins\",\n          \"global_role\": \"admin\",\n          \"role_domains\": {\n            \"key_0\": [\n              \"domain1\",\n              \"domain2\"\n            ],\n            \"key_1\": [\n              \"domain1\",\n              \"domain2\"\n            ]\n          }\n        }\n      ],\n      \"x509_certs\": [\n        {\n          \"x509_cert\": \"E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF\",\n          \"issuer_cn\": \"dev-11563853\",\n          \"subject_cn\": \"dev-11563853\",\n          \"subject_notafter\": 1988147822\n        },\n        {\n          \"x509_cert\": \"E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF\",\n          \"issuer_cn\": \"dev-11563853\",\n          \"subject_cn\": \"dev-11563853\",\n          \"subject_notafter\": 1988147822\n        }\n      ],\n      \"slo_enabled\": true,\n      \"slo_url\": \"https://dev.oktapreview.com/app/examplesamlapp_1/exjlpo0/slo/saml\",\n      \"signing_cert\": \"E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF\"\n    },\n    \"oidc\": {\n      \"issuer\": \"https://dev-256438.oktapreview.com\",\n      \"authorization_endpoint\": \"https://dev-256438.oktapreview.com/oauth2/v1/authorize\",\n      \"token_endpoint\": \"https://dev-256438.oktapreview.com/oauth2/v1/token\",\n      \"user_info_endpoint\": \"https://dev-256438.oktapreview.com/oauth2/v1/userinfo\",\n      \"client_id\": \"0oai4gal8xXh0itGi0h7\",\n      \"group_claim\": \"\",\n      \"scopes\": [\n        \"\",\n        \"\"\n      ],\n      \"enable\": true,\n      \"default_role\": \"admin\",\n      \"ClientSecret\": \"\",\n      \"use_proxy\": false,\n      \"role_groups\": {\n        \"role\": \"admin\",\n        \"groups\": [\n          \"admin1\",\n          \"admin2\"\n        ]\n      },\n      \"group_mapped_roles\": [\n        {\n          \"group\": \"Domain Admins\",\n          \"global_role\": \"admin\",\n          \"role_domains\": {\n            \"key_0\": [\n              \"domain1\",\n              \"domain2\"\n            ],\n            \"key_1\": [\n              \"domain1\",\n              \"domain2\"\n            ]\n          }\n        },\n        {\n          \"group\": \"Domain Admins\",\n          \"global_role\": \"admin\",\n          \"role_domains\": {\n            \"key_0\": [\n              \"domain1\",\n              \"domain2\"\n            ],\n            \"key_1\": [\n              \"domain1\",\n              \"domain2\"\n            ]\n          }\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de634acd-dd1e-464d-b375-2d6aa29f7434",
+          "name": "Update server",
+          "request": {
+            "name": "Update server",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "server",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Name of the server"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"name\": \"<string>\",\n    \"ldap\": {\n      \"directory\": \"<string>\",\n      \"hostname\": \"<string>\",\n      \"port\": \"<uint16>\",\n      \"ssl\": \"<boolean>\",\n      \"base_dn\": \"<string>\",\n      \"group_dn\": \"<string>\",\n      \"bind_dn\": \"<string>\",\n      \"bind_password\": \"<string>\",\n      \"group_member_attr\": \"<string>\",\n      \"username_attr\": \"<string>\",\n      \"enable\": \"<boolean>\",\n      \"default_role\": \"<string>\",\n      \"role_groups\": {\n        \"role\": \"<string>\",\n        \"groups\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"group_mapped_roles\": [\n        {\n          \"group\": \"<string>\",\n          \"global_role\": \"<string>\",\n          \"role_domains\": {\n            \"key_0\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"key_1\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        {\n          \"group\": \"<string>\",\n          \"global_role\": \"<string>\",\n          \"role_domains\": {\n            \"key_0\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"key_1\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      ]\n    },\n    \"saml\": {\n      \"sso_url\": \"<string>\",\n      \"issuer\": \"<string>\",\n      \"group_claim\": \"<string>\",\n      \"x509_cert\": \"<string>\",\n      \"enable\": \"<boolean>\",\n      \"default_role\": \"<string>\",\n      \"role_groups\": {\n        \"role\": \"<string>\",\n        \"groups\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"group_mapped_roles\": [\n        {\n          \"group\": \"<string>\",\n          \"global_role\": \"<string>\",\n          \"role_domains\": {\n            \"key_0\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        {\n          \"group\": \"<string>\",\n          \"global_role\": \"<string>\",\n          \"role_domains\": {\n            \"key_0\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"key_1\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      ],\n      \"x509_cert_extra\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"slo_enabled\": \"<boolean>\",\n      \"slo_url\": \"<string>\",\n      \"signing_cert\": \"<string>\",\n      \"signing_key\": \"<string>\"\n    },\n    \"oidc\": {\n      \"issuer\": \"<string>\",\n      \"client_id\": \"<string>\",\n      \"group_claim\": \"<string>\",\n      \"enable\": \"<boolean>\",\n      \"default_role\": \"<string>\",\n      \"client_secret\": \"<string>\",\n      \"scopes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"use_proxy\": \"<boolean>\",\n      \"role_groups\": {\n        \"role\": \"<string>\",\n        \"groups\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"group_mapped_roles\": [\n        {\n          \"group\": \"<string>\",\n          \"global_role\": \"<string>\",\n          \"role_domains\": {\n            \"key_0\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"key_1\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        {\n          \"group\": \"<string>\",\n          \"global_role\": \"<string>\",\n          \"role_domains\": {\n            \"key_0\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"key_1\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      ]\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "31fa33a1-18c7-4c4b-b7ed-240e5fbce8a8",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "server",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name of the server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b7922e62-ce1d-461b-a393-0bcf0ed258a7",
+          "name": "Delete the server",
+          "request": {
+            "name": "Delete the server",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "server",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Name of the server"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8de98dcd-0190-45c7-9433-5216feaafec0",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "server",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name of the server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "49ef2089-9d10-4ee0-9d34-d2d021f71d1a",
+          "name": "Update server role groups",
+          "request": {
+            "name": "Update server role groups",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "server",
+                ":name",
+                "role",
+                ":role"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Server name"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "role",
+                  "description": "(Required) Role name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"name\": \"<string>\",\n    \"role\": \"<string>\",\n    \"groups\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "801e504b-8c1f-4f11-88b0-71d989d832f0",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "server",
+                    ":name",
+                    "role",
+                    ":role"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Server name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "role",
+                      "description": "(Required) Role name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"name\": \"reader\",\n    \"role\": \"reader\",\n    \"groups\": [\n      \"reader1\",\n      \"reader2\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8f645c01-1e15-494b-8709-7655957d43f5",
+          "name": "Show server user list",
+          "request": {
+            "name": "Show server user list",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "server",
+                ":name",
+                "user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Name of the server"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cde86e0f-72bf-45d4-9cff-268490a08b13",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "server",
+                    ":name",
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name of the server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"users\": [\n    {\n      \"fullname\": \"admin\",\n      \"server\": \"server1\",\n      \"username\": \"admin\",\n      \"email\": \"user@mail.com\",\n      \"role\": \"admin\",\n      \"timeout\": 300,\n      \"locale\": \"en\",\n      \"default_password\": false,\n      \"modify_password\": false,\n      \"last_login_timestamp\": 1505755716,\n      \"last_login_at\": \"\",\n      \"login_count\": 1,\n      \"blocked_for_failed_login\": false,\n      \"blocked_for_password_expired\": false,\n      \"password_resettable\": false,\n      \"password\": \"mypassword\",\n      \"extra_permissions\": [\n        {\n          \"id\": \"ci_scan\",\n          \"read\": false,\n          \"write\": true\n        },\n        {\n          \"id\": \"ci_scan\",\n          \"read\": false,\n          \"write\": true\n        }\n      ],\n      \"role_domains\": {\n        \"key\": \"string\",\n        \"value\": {\n          \"key_0\": [\n            \"domain1\",\n            \"domain2\"\n          ]\n        }\n      },\n      \"extra_permissions_domains\": [\n        {\n          \"permissions\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"read\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"write\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"read\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"write\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"domains\": [\n            \"domain1\",\n            \"domain2\"\n          ]\n        },\n        {\n          \"permissions\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"read\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"write\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"read\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"write\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"domains\": [\n            \"domain1\",\n            \"domain2\"\n          ]\n        }\n      ],\n      \"remote_role_permissions\": {\n        \"user\": {\n          \"role\": \"admin\",\n          \"role_domains\": {\n            \"key\": \"string\",\n            \"value\": {\n              \"key_0\": [\n                \"domain1\",\n                \"domain2\"\n              ],\n              \"key_1\": [\n                \"domain1\",\n                \"domain2\"\n              ]\n            }\n          },\n          \"extra_permissions\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"read\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"write\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"read\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"write\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"extra_permissions_domains\": [\n            {\n              \"permissions\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"domains\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"permissions\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"domains\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"fullname\": \"admin\",\n      \"server\": \"server1\",\n      \"username\": \"admin\",\n      \"email\": \"user@mail.com\",\n      \"role\": \"admin\",\n      \"timeout\": 300,\n      \"locale\": \"en\",\n      \"default_password\": false,\n      \"modify_password\": false,\n      \"last_login_timestamp\": 1505755716,\n      \"last_login_at\": \"\",\n      \"login_count\": 1,\n      \"blocked_for_failed_login\": false,\n      \"blocked_for_password_expired\": false,\n      \"password_resettable\": false,\n      \"password\": \"mypassword\",\n      \"extra_permissions\": [\n        {\n          \"id\": \"ci_scan\",\n          \"read\": false,\n          \"write\": true\n        },\n        {\n          \"id\": \"ci_scan\",\n          \"read\": false,\n          \"write\": true\n        }\n      ],\n      \"role_domains\": {\n        \"key\": \"string\",\n        \"value\": {\n          \"key_0\": [\n            \"domain1\",\n            \"domain2\"\n          ],\n          \"key_1\": [\n            \"domain1\",\n            \"domain2\"\n          ]\n        }\n      },\n      \"extra_permissions_domains\": [\n        {\n          \"permissions\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"read\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"write\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"read\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"write\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"domains\": [\n            \"domain1\",\n            \"domain2\"\n          ]\n        },\n        {\n          \"permissions\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"read\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"write\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"read\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"write\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"domains\": [\n            \"domain1\",\n            \"domain2\"\n          ]\n        }\n      ],\n      \"remote_role_permissions\": {\n        \"user\": {\n          \"role\": \"admin\",\n          \"role_domains\": {\n            \"key\": \"string\",\n            \"value\": {\n              \"key_0\": [\n                \"domain1\",\n                \"domain2\"\n              ],\n              \"key_1\": [\n                \"domain1\",\n                \"domain2\"\n              ]\n            }\n          },\n          \"extra_permissions\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"read\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"write\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"read\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"write\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"extra_permissions_domains\": [\n            {\n              \"permissions\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"domains\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"permissions\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"domains\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      }\n    }\n  ],\n  \"global_roles\": [\n    \"admin\",\n    \"reader\"\n  ],\n  \"domain_roles\": [\n    \"role1\",\n    \"role2\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "af9c4e53-2aa6-4ee0-9ec4-cb6207778438",
+    "name": "NeuVector Server API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.\n\nContact Support:\n Email: support@neuvector.com",
+      "type": "text/plain"
+    }
+  }
+}

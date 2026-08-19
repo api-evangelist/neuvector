@@ -1,0 +1,349 @@
+{
+  "item": [
+    {
+      "id": "6c7a96e8-3ded-4d49-b6cd-0ab54fec3821",
+      "name": "Host",
+      "description": {
+        "content": "Operations about Host",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e8298814-a861-431d-8d2b-bad1c69043f3",
+          "name": "Get a list of hosts",
+          "request": {
+            "name": "Get a list of hosts",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "host"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f6125093-0e5e-48c2-8c73-dd7e563fe5b2",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "host"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hosts\": [\n    {\n      \"name\": \"ubuntu64\",\n      \"id\": \"2AU7:TIEN:O5KX:QK56:LFQP:IJSV:FXBN:QJV7:XPAH\",\n      \"runtime\": \"docker\",\n      \"runtime_version\": \"1.10.2\",\n      \"runtime_api_version\": \"1.22\",\n      \"platform\": \"Docker\",\n      \"os\": \"Ubuntu 14.04.3 LTS\",\n      \"kernel\": \"3.19.0-25-generic\",\n      \"cpus\": 1,\n      \"memory\": 2089816064,\n      \"cgroup_version\": 1,\n      \"containers\": 107,\n      \"interfaces\": {\n        \"key_0\": [\n          {\n            \"ip\": \"192.168.209.197\",\n            \"ip_prefix\": 32,\n            \"gateway\": \"\"\n          },\n          {\n            \"ip\": \"192.168.209.197\",\n            \"ip_prefix\": 32,\n            \"gateway\": \"\"\n          }\n        ],\n        \"key_1\": [\n          {\n            \"ip\": \"192.168.209.197\",\n            \"ip_prefix\": 32,\n            \"gateway\": \"\"\n          },\n          {\n            \"ip\": \"192.168.209.197\",\n            \"ip_prefix\": 32,\n            \"gateway\": \"\"\n          }\n        ],\n        \"key_2\": [\n          {\n            \"ip\": \"192.168.209.197\",\n            \"ip_prefix\": 32,\n            \"gateway\": \"\"\n          },\n          {\n            \"ip\": \"192.168.209.197\",\n            \"ip_prefix\": 32,\n            \"gateway\": \"\"\n          }\n        ]\n      },\n      \"state\": \"\",\n      \"cap_docker_bench\": true,\n      \"cap_kube_bench\": true,\n      \"policy_mode\": \"Discover\",\n      \"profile_mode\": \"Discover\",\n      \"scan_summary\": {\n        \"status\": \"scheduled\",\n        \"high\": 0,\n        \"medium\": 0,\n        \"result\": \"success\",\n        \"scanned_timestamp\": 1516561253,\n        \"scanned_at\": \"2018-01-21 19:00:53+00:00\",\n        \"base_os\": \"ubuntu:16.04\",\n        \"scanner_version\": \"1.011\",\n        \"cvedb_create_time\": \"2018-06-20 19:00:53+00:00\"\n      },\n      \"storage_driver\": \"aufs\",\n      \"labels\": {\n        \"beta.kubernetes.io/os\": \"linux\"\n      },\n      \"annotations\": {\n        \"kubeadm.alpha.kubernetes.io/cri-socket\": \"/var/run/dockershim.sock\"\n      },\n      \"docker_bench_status\": \"running\",\n      \"kube_bench_status\": \"scheduled\"\n    },\n    {\n      \"name\": \"ubuntu64\",\n      \"id\": \"2AU7:TIEN:O5KX:QK56:LFQP:IJSV:FXBN:QJV7:XPAH\",\n      \"runtime\": \"docker\",\n      \"runtime_version\": \"1.10.2\",\n      \"runtime_api_version\": \"1.22\",\n      \"platform\": \"Docker\",\n      \"os\": \"Ubuntu 14.04.3 LTS\",\n      \"kernel\": \"3.19.0-25-generic\",\n      \"cpus\": 1,\n      \"memory\": 2089816064,\n      \"cgroup_version\": 1,\n      \"containers\": 107,\n      \"interfaces\": {\n        \"key_0\": [\n          {\n            \"ip\": \"192.168.209.197\",\n            \"ip_prefix\": 32,\n            \"gateway\": \"\"\n          },\n          {\n            \"ip\": \"192.168.209.197\",\n            \"ip_prefix\": 32,\n            \"gateway\": \"\"\n          }\n        ],\n        \"key_1\": [\n          {\n            \"ip\": \"192.168.209.197\",\n            \"ip_prefix\": 32,\n            \"gateway\": \"\"\n          },\n          {\n            \"ip\": \"192.168.209.197\",\n            \"ip_prefix\": 32,\n            \"gateway\": \"\"\n          }\n        ],\n        \"key_2\": [\n          {\n            \"ip\": \"192.168.209.197\",\n            \"ip_prefix\": 32,\n            \"gateway\": \"\"\n          },\n          {\n            \"ip\": \"192.168.209.197\",\n            \"ip_prefix\": 32,\n            \"gateway\": \"\"\n          }\n        ],\n        \"key_3\": [\n          {\n            \"ip\": \"192.168.209.197\",\n            \"ip_prefix\": 32,\n            \"gateway\": \"\"\n          },\n          {\n            \"ip\": \"192.168.209.197\",\n            \"ip_prefix\": 32,\n            \"gateway\": \"\"\n          }\n        ]\n      },\n      \"state\": \"\",\n      \"cap_docker_bench\": true,\n      \"cap_kube_bench\": true,\n      \"policy_mode\": \"Discover\",\n      \"profile_mode\": \"Discover\",\n      \"scan_summary\": {\n        \"status\": \"scheduled\",\n        \"high\": 0,\n        \"medium\": 0,\n        \"result\": \"success\",\n        \"scanned_timestamp\": 1516561253,\n        \"scanned_at\": \"2018-01-21 19:00:53+00:00\",\n        \"base_os\": \"ubuntu:16.04\",\n        \"scanner_version\": \"1.011\",\n        \"cvedb_create_time\": \"2018-06-20 19:00:53+00:00\"\n      },\n      \"storage_driver\": \"aufs\",\n      \"labels\": {\n        \"beta.kubernetes.io/os\": \"linux\"\n      },\n      \"annotations\": {\n        \"kubeadm.alpha.kubernetes.io/cri-socket\": \"/var/run/dockershim.sock\"\n      },\n      \"docker_bench_status\": \"running\",\n      \"kube_bench_status\": \"scheduled\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cfc42846-9a21-4818-9f77-9608ad71887a",
+          "name": "Show host",
+          "request": {
+            "name": "Show host",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "host",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Host ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8abd9bd0-b47a-4970-a8fa-5aa319462ba1",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "host",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Host ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"host\": {\n    \"name\": \"ubuntu64\",\n    \"id\": \"2AU7:TIEN:O5KX:QK56:LFQP:IJSV:FXBN:QJV7:XPAH\",\n    \"runtime\": \"docker\",\n    \"runtime_version\": \"1.10.2\",\n    \"runtime_api_version\": \"1.22\",\n    \"platform\": \"Docker\",\n    \"os\": \"Ubuntu 14.04.3 LTS\",\n    \"kernel\": \"3.19.0-25-generic\",\n    \"cpus\": 1,\n    \"memory\": 2089816064,\n    \"cgroup_version\": 1,\n    \"containers\": 107,\n    \"interfaces\": {\n      \"key_0\": [\n        {\n          \"ip\": \"192.168.209.197\",\n          \"ip_prefix\": 32,\n          \"gateway\": \"\"\n        },\n        {\n          \"ip\": \"192.168.209.197\",\n          \"ip_prefix\": 32,\n          \"gateway\": \"\"\n        }\n      ],\n      \"key_1\": [\n        {\n          \"ip\": \"192.168.209.197\",\n          \"ip_prefix\": 32,\n          \"gateway\": \"\"\n        },\n        {\n          \"ip\": \"192.168.209.197\",\n          \"ip_prefix\": 32,\n          \"gateway\": \"\"\n        }\n      ],\n      \"key_2\": [\n        {\n          \"ip\": \"192.168.209.197\",\n          \"ip_prefix\": 32,\n          \"gateway\": \"\"\n        },\n        {\n          \"ip\": \"192.168.209.197\",\n          \"ip_prefix\": 32,\n          \"gateway\": \"\"\n        }\n      ]\n    },\n    \"state\": \"\",\n    \"cap_docker_bench\": true,\n    \"cap_kube_bench\": true,\n    \"policy_mode\": \"Discover\",\n    \"profile_mode\": \"Discover\",\n    \"scan_summary\": {\n      \"status\": \"scheduled\",\n      \"high\": 0,\n      \"medium\": 0,\n      \"result\": \"success\",\n      \"scanned_timestamp\": 1516561253,\n      \"scanned_at\": \"2018-01-21 19:00:53+00:00\",\n      \"base_os\": \"ubuntu:16.04\",\n      \"scanner_version\": \"1.011\",\n      \"cvedb_create_time\": \"2018-06-20 19:00:53+00:00\"\n    },\n    \"storage_driver\": \"aufs\",\n    \"labels\": {\n      \"beta.kubernetes.io/os\": \"linux\"\n    },\n    \"annotations\": {\n      \"kubeadm.alpha.kubernetes.io/cri-socket\": \"/var/run/dockershim.sock\"\n    },\n    \"docker_bench_status\": \"running\",\n    \"kube_bench_status\": \"scheduled\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ec00ad55-95c5-4717-9e69-28c262513699",
+          "name": "Show host compliance report",
+          "request": {
+            "name": "Show host compliance report",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "host",
+                ":id",
+                "compliance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Host ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1f1c7222-6784-4b0e-bed0-a58f352c61f4",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "host",
+                    ":id",
+                    "compliance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Host ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"run_timestamp\": 1516561253,\n  \"run_at\": \"2018-06-21 19:00:53+00:00\",\n  \"kubernetes_cis_category\": \"\",\n  \"kubernetes_cis_version\": \"1.5.1\",\n  \"docker_cis_version\": \"1.2.0\",\n  \"items\": [\n    {\n      \"catalog\": \"docker\",\n      \"type\": \"\",\n      \"level\": \"INFO\",\n      \"test_number\": \"1\",\n      \"profile\": \"Level 1\",\n      \"scored\": true,\n      \"automated\": true,\n      \"description\": \"General Configuration\",\n      \"message\": [\n        \"Host Configuration\",\n        \"Host Configuration\"\n      ],\n      \"remediation\": \"\",\n      \"group\": \"nv.calico\"\n    },\n    {\n      \"catalog\": \"docker\",\n      \"type\": \"\",\n      \"level\": \"INFO\",\n      \"test_number\": \"1\",\n      \"profile\": \"Level 1\",\n      \"scored\": true,\n      \"automated\": true,\n      \"description\": \"General Configuration\",\n      \"message\": [\n        \"Host Configuration\",\n        \"Host Configuration\"\n      ],\n      \"remediation\": \"\",\n      \"group\": \"nv.calico\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5fea31e4-6dc9-41fa-bf6f-6664d2916844",
+    "name": "NeuVector Host API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.\n\nContact Support:\n Email: support@neuvector.com",
+      "type": "text/plain"
+    }
+  }
+}

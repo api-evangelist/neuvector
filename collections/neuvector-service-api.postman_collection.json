@@ -1,0 +1,646 @@
+{
+  "item": [
+    {
+      "id": "43329af8-8862-40d3-8db0-d57b368f5e8d",
+      "name": "Service",
+      "description": {
+        "content": "Operations about Service",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d6ef809e-b653-4be3-9e00-5c0a4e2e47c5",
+          "name": "Get a list of services",
+          "request": {
+            "name": "Get a list of services",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "service"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9f7540c3-04b7-46d9-924b-eb603a39e6a9",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "service"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"services\": [\n    {\n      \"name\": \"iperfc\",\n      \"comment\": \"\",\n      \"policy_mode\": \"Learn\",\n      \"profile_mode\": \"Learn\",\n      \"not_scored\": false,\n      \"domain\": \"\",\n      \"platform_role\": \"core\",\n      \"members\": [\n        {\n          \"id\": \"7304e72fd093155c4cbcd65d07375329b2db82cc679\",\n          \"name\": \"k8s_POD.d86c_calico-node-mzhtk_kube-system_0050565a_365c13d\",\n          \"display_name\": \"calico-node-mzhtk\",\n          \"pod_name\": \"istio-policy-5cdbc47674-t67p4\",\n          \"image\": \"calico\",\n          \"image_id\": \"d572b7ee3511b21a2b78b8915bc03c5786ad01949704c1418624224c4cae2c5f\",\n          \"image_created_at\": \"2018-01-18 00:44:02+00:00\",\n          \"platform_role\": \"core\",\n          \"domain\": \"\",\n          \"state\": \"exit\",\n          \"service\": \"kafkazookeeper\",\n          \"author\": \"\",\n          \"service_group\": \"nv.calico\",\n          \"cap_sniff\": true,\n          \"cap_quarantine\": true,\n          \"cap_change_mode\": true,\n          \"policy_mode\": \"Discover\",\n          \"profile_mode\": \"Discover\",\n          \"scan_summary\": {\n            \"status\": \"scheduled\",\n            \"high\": 0,\n            \"medium\": 0,\n            \"result\": \"success\",\n            \"scanned_timestamp\": 1516561253,\n            \"scanned_at\": \"2018-01-21 19:00:53+00:00\",\n            \"base_os\": \"ubuntu:16.04\",\n            \"scanner_version\": \"1.011\",\n            \"cvedb_create_time\": \"2018-06-20 19:00:53+00:00\"\n          },\n          \"children\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/RESTWorkloadBrief detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/RESTWorkloadBrief detected>\"\n            }\n          ],\n          \"service_mesh\": true,\n          \"service_mesh_sidecar\": true,\n          \"privileged\": true,\n          \"run_as_root\": true,\n          \"baseline_profile\": \"\",\n          \"image_digest\": [\n            \"c2ced31c5dda37cb805f481e3fa34b742cc8980f439b20af3111b08e66cff8e1\",\n            \"c2ced31c5dda37cb805f481e3fa34b742cc8980f439b20af3111b08e66cff8e1\"\n          ],\n          \"image_reg_scanned\": false,\n          \"share_ns_with\": \"cc0709d522749203042e89dba28bf6924a4b0d360648\",\n          \"quarantine_reason\": \"violation\"\n        },\n        {\n          \"id\": \"7304e72fd093155c4cbcd65d07375329b2db82cc679\",\n          \"name\": \"k8s_POD.d86c_calico-node-mzhtk_kube-system_0050565a_365c13d\",\n          \"display_name\": \"calico-node-mzhtk\",\n          \"pod_name\": \"istio-policy-5cdbc47674-t67p4\",\n          \"image\": \"calico\",\n          \"image_id\": \"d572b7ee3511b21a2b78b8915bc03c5786ad01949704c1418624224c4cae2c5f\",\n          \"image_created_at\": \"2018-01-18 00:44:02+00:00\",\n          \"platform_role\": \"core\",\n          \"domain\": \"\",\n          \"state\": \"exit\",\n          \"service\": \"kafkazookeeper\",\n          \"author\": \"\",\n          \"service_group\": \"nv.calico\",\n          \"cap_sniff\": true,\n          \"cap_quarantine\": true,\n          \"cap_change_mode\": true,\n          \"policy_mode\": \"Discover\",\n          \"profile_mode\": \"Discover\",\n          \"scan_summary\": {\n            \"status\": \"scheduled\",\n            \"high\": 0,\n            \"medium\": 0,\n            \"result\": \"success\",\n            \"scanned_timestamp\": 1516561253,\n            \"scanned_at\": \"2018-01-21 19:00:53+00:00\",\n            \"base_os\": \"ubuntu:16.04\",\n            \"scanner_version\": \"1.011\",\n            \"cvedb_create_time\": \"2018-06-20 19:00:53+00:00\"\n          },\n          \"children\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/RESTWorkloadBrief detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/RESTWorkloadBrief detected>\"\n            }\n          ],\n          \"service_mesh\": true,\n          \"service_mesh_sidecar\": true,\n          \"privileged\": true,\n          \"run_as_root\": true,\n          \"baseline_profile\": \"\",\n          \"image_digest\": [\n            \"c2ced31c5dda37cb805f481e3fa34b742cc8980f439b20af3111b08e66cff8e1\",\n            \"c2ced31c5dda37cb805f481e3fa34b742cc8980f439b20af3111b08e66cff8e1\"\n          ],\n          \"image_reg_scanned\": false,\n          \"share_ns_with\": \"cc0709d522749203042e89dba28bf6924a4b0d360648\",\n          \"quarantine_reason\": \"violation\"\n        }\n      ],\n      \"policy_rules\": [\n        {\n          \"id\": 10002,\n          \"comment\": \"a rule\",\n          \"from\": \"nv.iperfc\",\n          \"to\": \"Host:10.2.127.3\",\n          \"ports\": \"any\",\n          \"action\": \"allow\",\n          \"applications\": [\n            \"DNS\",\n            \"DNS\"\n          ],\n          \"learned\": true,\n          \"disable\": false,\n          \"created_timestamp\": 1516563263,\n          \"last_modified_timestamp\": 1516573243,\n          \"cfg_type\": \"ground\",\n          \"priority\": 0,\n          \"match_counter\": 699,\n          \"last_match_timestamp\": 1736811451\n        },\n        {\n          \"id\": 10002,\n          \"comment\": \"a rule\",\n          \"from\": \"nv.iperfc\",\n          \"to\": \"Host:10.2.127.3\",\n          \"ports\": \"any\",\n          \"action\": \"allow\",\n          \"applications\": [\n            \"DNS\",\n            \"DNS\"\n          ],\n          \"learned\": true,\n          \"disable\": false,\n          \"created_timestamp\": 1516563263,\n          \"last_modified_timestamp\": 1516573243,\n          \"cfg_type\": \"user_created\",\n          \"priority\": 0,\n          \"match_counter\": 699,\n          \"last_match_timestamp\": 1736811451\n        }\n      ],\n      \"response_rules\": [\n        {\n          \"id\": 1001,\n          \"event\": \"\",\n          \"comment\": \"\",\n          \"group\": \"\",\n          \"conditions\": [\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"actions\": [\n            \"\",\n            \"\"\n          ],\n          \"webhooks\": [\n            \"\",\n            \"\"\n          ],\n          \"disable\": false,\n          \"cfg_type\": \"ground\"\n        },\n        {\n          \"id\": 1001,\n          \"event\": \"\",\n          \"comment\": \"\",\n          \"group\": \"\",\n          \"conditions\": [\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"actions\": [\n            \"\",\n            \"\"\n          ],\n          \"webhooks\": [\n            \"\",\n            \"\"\n          ],\n          \"disable\": false,\n          \"cfg_type\": \"ground\"\n        }\n      ],\n      \"ingress_exposure\": true,\n      \"egress_exposure\": false,\n      \"baseline_profile\": \"\",\n      \"service_addr\": {\n        \"ip\": \"192.168.209.197\",\n        \"port\": 80\n      },\n      \"cap_change_mode\": false,\n      \"cap_scorable\": false\n    },\n    {\n      \"name\": \"iperfc\",\n      \"comment\": \"\",\n      \"policy_mode\": \"Learn\",\n      \"profile_mode\": \"Learn\",\n      \"not_scored\": false,\n      \"domain\": \"\",\n      \"platform_role\": \"core\",\n      \"members\": [\n        {\n          \"id\": \"7304e72fd093155c4cbcd65d07375329b2db82cc679\",\n          \"name\": \"k8s_POD.d86c_calico-node-mzhtk_kube-system_0050565a_365c13d\",\n          \"display_name\": \"calico-node-mzhtk\",\n          \"pod_name\": \"istio-policy-5cdbc47674-t67p4\",\n          \"image\": \"calico\",\n          \"image_id\": \"d572b7ee3511b21a2b78b8915bc03c5786ad01949704c1418624224c4cae2c5f\",\n          \"image_created_at\": \"2018-01-18 00:44:02+00:00\",\n          \"platform_role\": \"core\",\n          \"domain\": \"\",\n          \"state\": \"exit\",\n          \"service\": \"kafkazookeeper\",\n          \"author\": \"\",\n          \"service_group\": \"nv.calico\",\n          \"cap_sniff\": true,\n          \"cap_quarantine\": true,\n          \"cap_change_mode\": true,\n          \"policy_mode\": \"Discover\",\n          \"profile_mode\": \"Discover\",\n          \"scan_summary\": {\n            \"status\": \"scheduled\",\n            \"high\": 0,\n            \"medium\": 0,\n            \"result\": \"success\",\n            \"scanned_timestamp\": 1516561253,\n            \"scanned_at\": \"2018-01-21 19:00:53+00:00\",\n            \"base_os\": \"ubuntu:16.04\",\n            \"scanner_version\": \"1.011\",\n            \"cvedb_create_time\": \"2018-06-20 19:00:53+00:00\"\n          },\n          \"children\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/RESTWorkloadBrief detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/RESTWorkloadBrief detected>\"\n            }\n          ],\n          \"service_mesh\": true,\n          \"service_mesh_sidecar\": true,\n          \"privileged\": true,\n          \"run_as_root\": true,\n          \"baseline_profile\": \"\",\n          \"image_digest\": [\n            \"c2ced31c5dda37cb805f481e3fa34b742cc8980f439b20af3111b08e66cff8e1\",\n            \"c2ced31c5dda37cb805f481e3fa34b742cc8980f439b20af3111b08e66cff8e1\"\n          ],\n          \"image_reg_scanned\": false,\n          \"share_ns_with\": \"cc0709d522749203042e89dba28bf6924a4b0d360648\",\n          \"quarantine_reason\": \"violation\"\n        },\n        {\n          \"id\": \"7304e72fd093155c4cbcd65d07375329b2db82cc679\",\n          \"name\": \"k8s_POD.d86c_calico-node-mzhtk_kube-system_0050565a_365c13d\",\n          \"display_name\": \"calico-node-mzhtk\",\n          \"pod_name\": \"istio-policy-5cdbc47674-t67p4\",\n          \"image\": \"calico\",\n          \"image_id\": \"d572b7ee3511b21a2b78b8915bc03c5786ad01949704c1418624224c4cae2c5f\",\n          \"image_created_at\": \"2018-01-18 00:44:02+00:00\",\n          \"platform_role\": \"core\",\n          \"domain\": \"\",\n          \"state\": \"exit\",\n          \"service\": \"kafkazookeeper\",\n          \"author\": \"\",\n          \"service_group\": \"nv.calico\",\n          \"cap_sniff\": true,\n          \"cap_quarantine\": true,\n          \"cap_change_mode\": true,\n          \"policy_mode\": \"Discover\",\n          \"profile_mode\": \"Discover\",\n          \"scan_summary\": {\n            \"status\": \"scheduled\",\n            \"high\": 0,\n            \"medium\": 0,\n            \"result\": \"success\",\n            \"scanned_timestamp\": 1516561253,\n            \"scanned_at\": \"2018-01-21 19:00:53+00:00\",\n            \"base_os\": \"ubuntu:16.04\",\n            \"scanner_version\": \"1.011\",\n            \"cvedb_create_time\": \"2018-06-20 19:00:53+00:00\"\n          },\n          \"children\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/RESTWorkloadBrief detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/RESTWorkloadBrief detected>\"\n            }\n          ],\n          \"service_mesh\": true,\n          \"service_mesh_sidecar\": true,\n          \"privileged\": true,\n          \"run_as_root\": true,\n          \"baseline_profile\": \"\",\n          \"image_digest\": [\n            \"c2ced31c5dda37cb805f481e3fa34b742cc8980f439b20af3111b08e66cff8e1\",\n            \"c2ced31c5dda37cb805f481e3fa34b742cc8980f439b20af3111b08e66cff8e1\"\n          ],\n          \"image_reg_scanned\": false,\n          \"share_ns_with\": \"cc0709d522749203042e89dba28bf6924a4b0d360648\",\n          \"quarantine_reason\": \"violation\"\n        }\n      ],\n      \"policy_rules\": [\n        {\n          \"id\": 10002,\n          \"comment\": \"a rule\",\n          \"from\": \"nv.iperfc\",\n          \"to\": \"Host:10.2.127.3\",\n          \"ports\": \"any\",\n          \"action\": \"allow\",\n          \"applications\": [\n            \"DNS\",\n            \"DNS\"\n          ],\n          \"learned\": true,\n          \"disable\": false,\n          \"created_timestamp\": 1516563263,\n          \"last_modified_timestamp\": 1516573243,\n          \"cfg_type\": \"ground\",\n          \"priority\": 0,\n          \"match_counter\": 699,\n          \"last_match_timestamp\": 1736811451\n        },\n        {\n          \"id\": 10002,\n          \"comment\": \"a rule\",\n          \"from\": \"nv.iperfc\",\n          \"to\": \"Host:10.2.127.3\",\n          \"ports\": \"any\",\n          \"action\": \"allow\",\n          \"applications\": [\n            \"DNS\",\n            \"DNS\"\n          ],\n          \"learned\": true,\n          \"disable\": false,\n          \"created_timestamp\": 1516563263,\n          \"last_modified_timestamp\": 1516573243,\n          \"cfg_type\": \"federal\",\n          \"priority\": 0,\n          \"match_counter\": 699,\n          \"last_match_timestamp\": 1736811451\n        }\n      ],\n      \"response_rules\": [\n        {\n          \"id\": 1001,\n          \"event\": \"\",\n          \"comment\": \"\",\n          \"group\": \"\",\n          \"conditions\": [\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"actions\": [\n            \"\",\n            \"\"\n          ],\n          \"webhooks\": [\n            \"\",\n            \"\"\n          ],\n          \"disable\": false,\n          \"cfg_type\": \"user_created\"\n        },\n        {\n          \"id\": 1001,\n          \"event\": \"\",\n          \"comment\": \"\",\n          \"group\": \"\",\n          \"conditions\": [\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"actions\": [\n            \"\",\n            \"\"\n          ],\n          \"webhooks\": [\n            \"\",\n            \"\"\n          ],\n          \"disable\": false,\n          \"cfg_type\": \"user_created\"\n        }\n      ],\n      \"ingress_exposure\": true,\n      \"egress_exposure\": false,\n      \"baseline_profile\": \"\",\n      \"service_addr\": {\n        \"ip\": \"192.168.209.197\",\n        \"port\": 80\n      },\n      \"cap_change_mode\": false,\n      \"cap_scorable\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8838e0d1-39a3-4ffd-8924-cdb5e3a836bc",
+          "name": "Create service",
+          "request": {
+            "name": "Create service",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "service"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"name\": \"<string>\",\n    \"domain\": \"<string>\",\n    \"comment\": \"<string>\",\n    \"policy_mode\": \"<string>\",\n    \"baseline_profile\": \"<string>\",\n    \"not_scored\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "31956891-4d4d-4a53-9c6b-378532f768d0",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "service"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"name\": \"\",\n    \"domain\": \"\",\n    \"comment\": \"\",\n    \"policy_mode\": \"\",\n    \"baseline_profile\": \"\",\n    \"not_scored\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "660557da-1d5c-461d-bf0f-303b8a3419bb",
+          "name": "Show service",
+          "request": {
+            "name": "Show service",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "service",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Service name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0e969f43-8280-4ba2-87a7-4afa11bb676b",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "service",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Service name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"service\": {\n    \"name\": \"iperfc\",\n    \"comment\": \"\",\n    \"policy_mode\": \"Learn\",\n    \"profile_mode\": \"Learn\",\n    \"not_scored\": false,\n    \"domain\": \"\",\n    \"platform_role\": \"core\",\n    \"members\": [\n      {\n        \"id\": \"7304e72fd093155c4cbcd65d07375329b2db82cc679\",\n        \"name\": \"k8s_POD.d86c_calico-node-mzhtk_kube-system_0050565a_365c13d\",\n        \"display_name\": \"calico-node-mzhtk\",\n        \"pod_name\": \"istio-policy-5cdbc47674-t67p4\",\n        \"image\": \"calico\",\n        \"image_id\": \"d572b7ee3511b21a2b78b8915bc03c5786ad01949704c1418624224c4cae2c5f\",\n        \"image_created_at\": \"2018-01-18 00:44:02+00:00\",\n        \"platform_role\": \"core\",\n        \"domain\": \"\",\n        \"state\": \"exit\",\n        \"service\": \"kafkazookeeper\",\n        \"author\": \"\",\n        \"service_group\": \"nv.calico\",\n        \"cap_sniff\": true,\n        \"cap_quarantine\": true,\n        \"cap_change_mode\": true,\n        \"policy_mode\": \"Discover\",\n        \"profile_mode\": \"Discover\",\n        \"scan_summary\": {\n          \"status\": \"scheduled\",\n          \"high\": 0,\n          \"medium\": 0,\n          \"result\": \"success\",\n          \"scanned_timestamp\": 1516561253,\n          \"scanned_at\": \"2018-01-21 19:00:53+00:00\",\n          \"base_os\": \"ubuntu:16.04\",\n          \"scanner_version\": \"1.011\",\n          \"cvedb_create_time\": \"2018-06-20 19:00:53+00:00\"\n        },\n        \"children\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTWorkloadBrief detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTWorkloadBrief detected>\"\n          }\n        ],\n        \"service_mesh\": true,\n        \"service_mesh_sidecar\": true,\n        \"privileged\": true,\n        \"run_as_root\": true,\n        \"baseline_profile\": \"\",\n        \"image_digest\": [\n          \"c2ced31c5dda37cb805f481e3fa34b742cc8980f439b20af3111b08e66cff8e1\",\n          \"c2ced31c5dda37cb805f481e3fa34b742cc8980f439b20af3111b08e66cff8e1\"\n        ],\n        \"image_reg_scanned\": false,\n        \"share_ns_with\": \"cc0709d522749203042e89dba28bf6924a4b0d360648\",\n        \"quarantine_reason\": \"violation\"\n      },\n      {\n        \"id\": \"7304e72fd093155c4cbcd65d07375329b2db82cc679\",\n        \"name\": \"k8s_POD.d86c_calico-node-mzhtk_kube-system_0050565a_365c13d\",\n        \"display_name\": \"calico-node-mzhtk\",\n        \"pod_name\": \"istio-policy-5cdbc47674-t67p4\",\n        \"image\": \"calico\",\n        \"image_id\": \"d572b7ee3511b21a2b78b8915bc03c5786ad01949704c1418624224c4cae2c5f\",\n        \"image_created_at\": \"2018-01-18 00:44:02+00:00\",\n        \"platform_role\": \"core\",\n        \"domain\": \"\",\n        \"state\": \"exit\",\n        \"service\": \"kafkazookeeper\",\n        \"author\": \"\",\n        \"service_group\": \"nv.calico\",\n        \"cap_sniff\": true,\n        \"cap_quarantine\": true,\n        \"cap_change_mode\": true,\n        \"policy_mode\": \"Discover\",\n        \"profile_mode\": \"Discover\",\n        \"scan_summary\": {\n          \"status\": \"scheduled\",\n          \"high\": 0,\n          \"medium\": 0,\n          \"result\": \"success\",\n          \"scanned_timestamp\": 1516561253,\n          \"scanned_at\": \"2018-01-21 19:00:53+00:00\",\n          \"base_os\": \"ubuntu:16.04\",\n          \"scanner_version\": \"1.011\",\n          \"cvedb_create_time\": \"2018-06-20 19:00:53+00:00\"\n        },\n        \"children\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTWorkloadBrief detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/RESTWorkloadBrief detected>\"\n          }\n        ],\n        \"service_mesh\": true,\n        \"service_mesh_sidecar\": true,\n        \"privileged\": true,\n        \"run_as_root\": true,\n        \"baseline_profile\": \"\",\n        \"image_digest\": [\n          \"c2ced31c5dda37cb805f481e3fa34b742cc8980f439b20af3111b08e66cff8e1\",\n          \"c2ced31c5dda37cb805f481e3fa34b742cc8980f439b20af3111b08e66cff8e1\"\n        ],\n        \"image_reg_scanned\": false,\n        \"share_ns_with\": \"cc0709d522749203042e89dba28bf6924a4b0d360648\",\n        \"quarantine_reason\": \"violation\"\n      }\n    ],\n    \"policy_rules\": [\n      {\n        \"id\": 10002,\n        \"comment\": \"a rule\",\n        \"from\": \"nv.iperfc\",\n        \"to\": \"Host:10.2.127.3\",\n        \"ports\": \"any\",\n        \"action\": \"allow\",\n        \"applications\": [\n          \"DNS\",\n          \"DNS\"\n        ],\n        \"learned\": true,\n        \"disable\": false,\n        \"created_timestamp\": 1516563263,\n        \"last_modified_timestamp\": 1516573243,\n        \"cfg_type\": \"user_created\",\n        \"priority\": 0,\n        \"match_counter\": 699,\n        \"last_match_timestamp\": 1736811451\n      },\n      {\n        \"id\": 10002,\n        \"comment\": \"a rule\",\n        \"from\": \"nv.iperfc\",\n        \"to\": \"Host:10.2.127.3\",\n        \"ports\": \"any\",\n        \"action\": \"allow\",\n        \"applications\": [\n          \"DNS\",\n          \"DNS\"\n        ],\n        \"learned\": true,\n        \"disable\": false,\n        \"created_timestamp\": 1516563263,\n        \"last_modified_timestamp\": 1516573243,\n        \"cfg_type\": \"federal\",\n        \"priority\": 0,\n        \"match_counter\": 699,\n        \"last_match_timestamp\": 1736811451\n      }\n    ],\n    \"response_rules\": [\n      {\n        \"id\": 1001,\n        \"event\": \"\",\n        \"comment\": \"\",\n        \"group\": \"\",\n        \"conditions\": [\n          {\n            \"type\": \"\",\n            \"value\": \"\"\n          },\n          {\n            \"type\": \"\",\n            \"value\": \"\"\n          }\n        ],\n        \"actions\": [\n          \"\",\n          \"\"\n        ],\n        \"webhooks\": [\n          \"\",\n          \"\"\n        ],\n        \"disable\": false,\n        \"cfg_type\": \"ground\"\n      },\n      {\n        \"id\": 1001,\n        \"event\": \"\",\n        \"comment\": \"\",\n        \"group\": \"\",\n        \"conditions\": [\n          {\n            \"type\": \"\",\n            \"value\": \"\"\n          },\n          {\n            \"type\": \"\",\n            \"value\": \"\"\n          }\n        ],\n        \"actions\": [\n          \"\",\n          \"\"\n        ],\n        \"webhooks\": [\n          \"\",\n          \"\"\n        ],\n        \"disable\": false,\n        \"cfg_type\": \"user_created\"\n      }\n    ],\n    \"ingress_exposure\": true,\n    \"egress_exposure\": false,\n    \"baseline_profile\": \"\",\n    \"service_addr\": {\n      \"ip\": \"192.168.209.197\",\n      \"port\": 80\n    },\n    \"cap_change_mode\": false,\n    \"cap_scorable\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a7aeb005-31a4-4c90-9a76-158a8287fe22",
+          "name": "Configure service",
+          "request": {
+            "name": "Configure service",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "service",
+                "config"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"services\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"policy_mode\": \"<string>\",\n    \"baseline_profile\": \"<string>\",\n    \"not_scored\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d2556e3a-b9f0-45b4-9368-105e595e84fb",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "service",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4c6f8b6b-efdb-483a-b6c2-753390aed71f",
+          "name": "Configure services in batch",
+          "request": {
+            "name": "Configure services in batch",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "service",
+                "config",
+                "network"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"services\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"policy_mode\": \"<string>\",\n    \"baseline_profile\": \"<string>\",\n    \"not_scored\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "369a40b0-5764-445c-acac-270c18b8d7b7",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "service",
+                    "config",
+                    "network"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a0fd5c63-c532-4c27-83b4-0fb1403b2390",
+          "name": "Configure services in batch",
+          "request": {
+            "name": "Configure services in batch",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "service",
+                "config",
+                "profile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"services\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"policy_mode\": \"<string>\",\n    \"baseline_profile\": \"<string>\",\n    \"not_scored\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ac2da27b-feef-447b-a4b9-18164889b633",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "service",
+                    "config",
+                    "profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "322b1e2b-dad5-4b8d-9c69-25ad123888e2",
+    "name": "NeuVector Service API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.\n\nContact Support:\n Email: support@neuvector.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,1399 @@
+{
+  "item": [
+    {
+      "id": "c881c86d-3632-46a1-a609-cae061a11b75",
+      "name": "Compliance",
+      "description": {
+        "content": "Operations about Compliance",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "283bb408-4528-4cc5-8f94-bc31e8918488",
+          "name": "Docker bench",
+          "request": {
+            "name": "Docker bench",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "bench",
+                "host",
+                ":id",
+                "docker"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Host ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9a0c30c9-db6d-4cab-95a1-a5fd13cf62c3",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "bench",
+                    "host",
+                    ":id",
+                    "docker"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Host ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"run_timestamp\": 1516561253,\n  \"run_at\": \"2018-06-21 19:00:53+00:00\",\n  \"cis_version\": \"1.5.1\",\n  \"items\": [\n    {\n      \"catalog\": \"docker\",\n      \"type\": \"\",\n      \"level\": \"INFO\",\n      \"test_number\": \"1\",\n      \"profile\": \"Level 1\",\n      \"scored\": true,\n      \"automated\": true,\n      \"description\": \"General Configuration\",\n      \"message\": [\n        \"Host Configuration\",\n        \"Host Configuration\"\n      ],\n      \"remediation\": \"\",\n      \"group\": \"nv.calico\"\n    },\n    {\n      \"catalog\": \"docker\",\n      \"type\": \"\",\n      \"level\": \"INFO\",\n      \"test_number\": \"1\",\n      \"profile\": \"Level 1\",\n      \"scored\": true,\n      \"automated\": true,\n      \"description\": \"General Configuration\",\n      \"message\": [\n        \"Host Configuration\",\n        \"Host Configuration\"\n      ],\n      \"remediation\": \"\",\n      \"group\": \"nv.calico\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fe46712f-0135-499d-9a1d-20064921e3d3",
+          "name": "Docker bench run",
+          "request": {
+            "name": "Docker bench run",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "bench",
+                "host",
+                ":id",
+                "docker"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Host ID"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "53e106b2-dd1c-473f-a3fb-d70b6a3db09c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "bench",
+                    "host",
+                    ":id",
+                    "docker"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Host ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fa54a10e-83bd-498e-aced-6cbcaa7f9d16",
+          "name": "Kubernetes bench",
+          "request": {
+            "name": "Kubernetes bench",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "bench",
+                "host",
+                ":id",
+                "kubernetes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Host ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7417e1c5-1642-46fd-87f7-4749ad436e19",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "bench",
+                    "host",
+                    ":id",
+                    "kubernetes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Host ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"run_timestamp\": 1516561253,\n  \"run_at\": \"2018-06-21 19:00:53+00:00\",\n  \"cis_version\": \"1.5.1\",\n  \"items\": [\n    {\n      \"catalog\": \"docker\",\n      \"type\": \"\",\n      \"level\": \"INFO\",\n      \"test_number\": \"1\",\n      \"profile\": \"Level 1\",\n      \"scored\": true,\n      \"automated\": true,\n      \"description\": \"General Configuration\",\n      \"message\": [\n        \"Host Configuration\",\n        \"Host Configuration\"\n      ],\n      \"remediation\": \"\",\n      \"group\": \"nv.calico\"\n    },\n    {\n      \"catalog\": \"docker\",\n      \"type\": \"\",\n      \"level\": \"INFO\",\n      \"test_number\": \"1\",\n      \"profile\": \"Level 1\",\n      \"scored\": true,\n      \"automated\": true,\n      \"description\": \"General Configuration\",\n      \"message\": [\n        \"Host Configuration\",\n        \"Host Configuration\"\n      ],\n      \"remediation\": \"\",\n      \"group\": \"nv.calico\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "db1976c8-03a7-4097-8379-a592dcc0378d",
+          "name": "Kubernetes bench run",
+          "request": {
+            "name": "Kubernetes bench run",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "bench",
+                "host",
+                ":id",
+                "kubernetes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Host ID"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6de23b5c-c3de-44f1-b12b-01645bf2c34e",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "bench",
+                    "host",
+                    ":id",
+                    "kubernetes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Host ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aa6b3ac5-ab30-4032-ab47-01d334ad2585",
+          "name": "Get compliance profile list",
+          "request": {
+            "name": "Get compliance profile list",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "compliance",
+                "profile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "36a6a34e-8de5-494c-90b0-003383cde593",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "compliance",
+                    "profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"profiles\": [\n    {\n      \"name\": \"default\",\n      \"disable_system\": false,\n      \"entries\": [\n        {\n          \"test_number\": \"\",\n          \"tags\": [\n            \"\",\n            \"\"\n          ]\n        },\n        {\n          \"test_number\": \"\",\n          \"tags\": [\n            \"\",\n            \"\"\n          ]\n        }\n      ],\n      \"cfg_type\": \"ground\"\n    },\n    {\n      \"name\": \"default\",\n      \"disable_system\": false,\n      \"entries\": [\n        {\n          \"test_number\": \"\",\n          \"tags\": [\n            \"\",\n            \"\"\n          ]\n        },\n        {\n          \"test_number\": \"\",\n          \"tags\": [\n            \"\",\n            \"\"\n          ]\n        }\n      ],\n      \"cfg_type\": \"user_created\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cc2e8915-bb89-4536-b1e0-1dfbe2b9e53c",
+          "name": "Get compliance profile detail",
+          "request": {
+            "name": "Get compliance profile detail",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "compliance",
+                "profile",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Profile name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0acd2c54-c922-49a9-b1f5-3520a96b0057",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "compliance",
+                    "profile",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Profile name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"profile\": {\n    \"name\": \"default\",\n    \"disable_system\": false,\n    \"entries\": [\n      {\n        \"test_number\": \"\",\n        \"tags\": [\n          \"\",\n          \"\"\n        ]\n      },\n      {\n        \"test_number\": \"\",\n        \"tags\": [\n          \"\",\n          \"\"\n        ]\n      }\n    ],\n    \"cfg_type\": \"ground\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b07a843b-f645-4890-b7ac-fdd13a307dfc",
+          "name": "Configure compliance profile",
+          "request": {
+            "name": "Configure compliance profile",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "compliance",
+                "profile",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Compliance profile name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"name\": \"<string>\",\n    \"disable_system\": \"<boolean>\",\n    \"entries\": [\n      {\n        \"test_number\": \"<string>\",\n        \"tags\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"test_number\": \"<string>\",\n        \"tags\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "58c7618d-b11b-4e64-b89e-3c10250bde9f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "compliance",
+                    "profile",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Compliance profile name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"name\": \"default\",\n    \"disable_system\": false,\n    \"entries\": [\n      {\n        \"test_number\": \"\",\n        \"tags\": [\n          \"\",\n          \"\"\n        ]\n      },\n      {\n        \"test_number\": \"\",\n        \"tags\": [\n          \"\",\n          \"\"\n        ]\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ca298a1b-669d-4218-99e2-b18d3e00ca6b",
+          "name": "Configure compliance profile entry",
+          "request": {
+            "name": "Configure compliance profile entry",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "compliance",
+                "profile",
+                ":name",
+                "entry",
+                ":check"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Compliance profile name"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "check",
+                  "description": "(Required) Compliance profile entry check name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"test_number\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d8cd9380-bc2e-41b2-99d1-4196a60f9c84",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "compliance",
+                    "profile",
+                    ":name",
+                    "entry",
+                    ":check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Compliance profile name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "check",
+                      "description": "(Required) Compliance profile entry check name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"test_number\": \"\",\n    \"tags\": [\n      \"\",\n      \"\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8628584a-d70e-4f00-986b-7010a6c3e0ee",
+          "name": "Delete compliance profile entry",
+          "request": {
+            "name": "Delete compliance profile entry",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "compliance",
+                "profile",
+                ":name",
+                "entry",
+                ":check"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Compliance profile name"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "check",
+                  "description": "(Required) Compliance profile entry check name"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "508a246f-7e0b-4aa6-868e-407d31a3005f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "compliance",
+                    "profile",
+                    ":name",
+                    "entry",
+                    ":check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Compliance profile name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "check",
+                      "description": "(Required) Compliance profile entry check name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "468a4e23-12d2-4090-8019-9acd591f042c",
+          "name": "Get custom check scripts of all groups",
+          "request": {
+            "name": "Get custom check scripts of all groups",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "custom_check"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8c51848e-9994-4cee-8c01-70ac49d338d5",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "custom_check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"configs\": [\n    {\n      \"group\": \"containers\",\n      \"scripts\": [\n        {\n          \"name\": \"node\",\n          \"script\": \"uname -r \"\n        },\n        {\n          \"name\": \"node\",\n          \"script\": \"uname -r \"\n        }\n      ],\n      \"enabled\": false,\n      \"writable\": false\n    },\n    {\n      \"group\": \"containers\",\n      \"scripts\": [\n        {\n          \"name\": \"node\",\n          \"script\": \"uname -r \"\n        },\n        {\n          \"name\": \"node\",\n          \"script\": \"uname -r \"\n        }\n      ],\n      \"enabled\": false,\n      \"writable\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5704e153-37ab-4318-92c6-273290738a7e",
+          "name": "GET custom check scripts of the specified group",
+          "request": {
+            "name": "GET custom check scripts of the specified group",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "custom_check",
+                ":group"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "group",
+                  "description": "(Required) Script config name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cb105a64-5a82-40e6-9ff9-353a7aea91e8",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "custom_check",
+                    ":group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "group",
+                      "description": "(Required) Script config name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"config\": {\n    \"group\": \"containers\",\n    \"scripts\": [\n      {\n        \"name\": \"node\",\n        \"script\": \"uname -r \"\n      },\n      {\n        \"name\": \"node\",\n        \"script\": \"uname -r \"\n      }\n    ],\n    \"enabled\": false,\n    \"writable\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac8494d7-95ee-487c-bc24-ae7c3ad29c7f",
+          "name": "Update custom check scripts of the specified group",
+          "request": {
+            "name": "Update custom check scripts of the specified group",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "custom_check",
+                ":group"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "group",
+                  "description": "(Required) Script config name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"add\": {\n      \"group\": \"<string>\",\n      \"scripts\": [\n        {\n          \"name\": \"<string>\",\n          \"script\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"script\": \"<string>\"\n        }\n      ],\n      \"enabled\": \"<boolean>\",\n      \"writable\": \"<boolean>\"\n    },\n    \"delete\": {\n      \"group\": \"<string>\",\n      \"scripts\": [\n        {\n          \"name\": \"<string>\",\n          \"script\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"script\": \"<string>\"\n        }\n      ],\n      \"enabled\": \"<boolean>\",\n      \"writable\": \"<boolean>\"\n    },\n    \"update\": {\n      \"group\": \"<string>\",\n      \"scripts\": [\n        {\n          \"name\": \"<string>\",\n          \"script\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"script\": \"<string>\"\n        }\n      ],\n      \"enabled\": \"<boolean>\",\n      \"writable\": \"<boolean>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2b22dac3-4e58-4210-98ea-605a082db38f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "custom_check",
+                    ":group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "group",
+                      "description": "(Required) Script config name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"add\": {\n      \"group\": \"containers\",\n      \"scripts\": [\n        {\n          \"name\": \"node\",\n          \"script\": \"uname -r \"\n        },\n        {\n          \"name\": \"node\",\n          \"script\": \"uname -r \"\n        }\n      ],\n      \"enabled\": false,\n      \"writable\": false\n    },\n    \"delete\": {\n      \"group\": \"containers\",\n      \"scripts\": [\n        {\n          \"name\": \"node\",\n          \"script\": \"uname -r \"\n        },\n        {\n          \"name\": \"node\",\n          \"script\": \"uname -r \"\n        }\n      ],\n      \"enabled\": false,\n      \"writable\": false\n    },\n    \"update\": {\n      \"group\": \"containers\",\n      \"scripts\": [\n        {\n          \"name\": \"node\",\n          \"script\": \"uname -r \"\n        },\n        {\n          \"name\": \"node\",\n          \"script\": \"uname -r \"\n        }\n      ],\n      \"enabled\": false,\n      \"writable\": false\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "bef724c5-b6d3-49dc-9004-65267cf9570a",
+    "name": "NeuVector Compliance API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.\n\nContact Support:\n Email: support@neuvector.com",
+      "type": "text/plain"
+    }
+  }
+}

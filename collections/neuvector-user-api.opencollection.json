@@ -1,0 +1,269 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NeuVector User API",
+    "version": "5.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get password profile list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/password_profile"
+          },
+          "docs": "Get password profile list"
+        },
+        {
+          "info": {
+            "name": "Get password profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/password_profile/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Password profile name"
+              }
+            ]
+          },
+          "docs": "Get password profile"
+        },
+        {
+          "info": {
+            "name": "Configure password profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/password_profile/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Password profile name"
+              }
+            ]
+          },
+          "docs": "Configure password profile"
+        },
+        {
+          "info": {
+            "name": "Gets a list of users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/user"
+          },
+          "docs": "Gets a list of users"
+        },
+        {
+          "info": {
+            "name": "Creates a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/user"
+          },
+          "docs": "Creates a user"
+        },
+        {
+          "info": {
+            "name": "Gets a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/user/:fullname",
+            "params": [
+              {
+                "name": "fullname",
+                "value": "",
+                "type": "path",
+                "description": "User name"
+              }
+            ]
+          },
+          "docs": "Gets a user"
+        },
+        {
+          "info": {
+            "name": "Update user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/user/:fullname",
+            "params": [
+              {
+                "name": "fullname",
+                "value": "",
+                "type": "path",
+                "description": "User name"
+              }
+            ]
+          },
+          "docs": "Update user"
+        },
+        {
+          "info": {
+            "name": "Delete user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/user/:fullname",
+            "params": [
+              {
+                "name": "fullname",
+                "value": "",
+                "type": "path",
+                "description": "User name"
+              }
+            ]
+          },
+          "docs": "Delete user"
+        },
+        {
+          "info": {
+            "name": "Configure user login",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/user/:fullname/password",
+            "params": [
+              {
+                "name": "fullname",
+                "value": "",
+                "type": "path",
+                "description": "User name"
+              }
+            ]
+          },
+          "docs": "Configure user login"
+        },
+        {
+          "info": {
+            "name": "For CLI to modify one role",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/user/:fullname/role/:role",
+            "params": [
+              {
+                "name": "fullname",
+                "value": "",
+                "type": "path",
+                "description": "User name"
+              },
+              {
+                "name": "role",
+                "value": "",
+                "type": "path",
+                "description": "Role name"
+              }
+            ]
+          },
+          "docs": "For CLI to modify one role"
+        },
+        {
+          "info": {
+            "name": "Get role list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/user_role"
+          },
+          "docs": "Get role list"
+        },
+        {
+          "info": {
+            "name": "Creates a role",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/user_role"
+          },
+          "docs": "Creates a role"
+        },
+        {
+          "info": {
+            "name": "Get role details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/user_role/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "User role name"
+              }
+            ]
+          },
+          "docs": "Get role details"
+        },
+        {
+          "info": {
+            "name": "Config a user role",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/user_role/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "User role name"
+              }
+            ]
+          },
+          "docs": "Config a user role"
+        },
+        {
+          "info": {
+            "name": "Delete a user role",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/user_role/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "User role name"
+              }
+            ]
+          },
+          "docs": "Delete a user role"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

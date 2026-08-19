@@ -1,0 +1,1763 @@
+{
+  "item": [
+    {
+      "id": "b0b5cce6-0c2d-416f-99a4-76ee4ef83939",
+      "name": "User",
+      "description": {
+        "content": "Operations about User",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8eba2756-e1b1-4bd5-ac66-dcff1b6bf1e5",
+          "name": "Get password profile list",
+          "request": {
+            "name": "Get password profile list",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "password_profile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "72750bf9-a0a8-4d7b-9cd2-5f906be377f5",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "password_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pwd_profiles\": [\n    {\n      \"name\": \"default\",\n      \"comment\": \"default\",\n      \"min_len\": 6,\n      \"min_uppercase_count\": 0,\n      \"min_lowercase_count\": 0,\n      \"min_digit_count\": 0,\n      \"min_special_count\": 0,\n      \"enable_password_expiration\": false,\n      \"password_expire_after_days\": 0,\n      \"enable_password_history\": 0,\n      \"password_keep_history_count\": 0,\n      \"enable_block_after_failed_login\": false,\n      \"block_after_failed_login_count\": 0,\n      \"block_minutes\": 0,\n      \"session_timeout\": 300\n    },\n    {\n      \"name\": \"default\",\n      \"comment\": \"default\",\n      \"min_len\": 6,\n      \"min_uppercase_count\": 0,\n      \"min_lowercase_count\": 0,\n      \"min_digit_count\": 0,\n      \"min_special_count\": 0,\n      \"enable_password_expiration\": false,\n      \"password_expire_after_days\": 0,\n      \"enable_password_history\": 0,\n      \"password_keep_history_count\": 0,\n      \"enable_block_after_failed_login\": false,\n      \"block_after_failed_login_count\": 0,\n      \"block_minutes\": 0,\n      \"session_timeout\": 300\n    }\n  ],\n  \"active_profile_name\": \"default\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "31ee5339-ad5f-40bc-b116-0970c404aab6",
+          "name": "Get password profile",
+          "request": {
+            "name": "Get password profile",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "password_profile",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Password profile name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "49e4f093-2aee-49f2-bef4-9f96d683b73f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "password_profile",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Password profile name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pwd_profile\": {\n    \"name\": \"default\",\n    \"comment\": \"default\",\n    \"min_len\": 6,\n    \"min_uppercase_count\": 0,\n    \"min_lowercase_count\": 0,\n    \"min_digit_count\": 0,\n    \"min_special_count\": 0,\n    \"enable_password_expiration\": false,\n    \"password_expire_after_days\": 0,\n    \"enable_password_history\": 0,\n    \"password_keep_history_count\": 0,\n    \"enable_block_after_failed_login\": false,\n    \"block_after_failed_login_count\": 0,\n    \"block_minutes\": 0,\n    \"session_timeout\": 300\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e7808b17-8e83-4ec5-ad28-39a212fb8129",
+          "name": "Configure password profile",
+          "request": {
+            "name": "Configure password profile",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "password_profile",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Password profile name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"name\": \"<string>\",\n    \"active\": \"<boolean>\",\n    \"comment\": \"<string>\",\n    \"min_len\": \"<integer>\",\n    \"min_uppercase_count\": \"<integer>\",\n    \"min_lowercase_count\": \"<integer>\",\n    \"min_digit_count\": \"<integer>\",\n    \"min_special_count\": \"<integer>\",\n    \"enable_password_expiration\": \"<boolean>\",\n    \"password_expire_after_days\": \"<integer>\",\n    \"enable_password_history\": \"<boolean>\",\n    \"password_keep_history_count\": \"<integer>\",\n    \"enable_block_after_failed_login\": \"<boolean>\",\n    \"block_after_failed_login_count\": \"<integer>\",\n    \"block_minutes\": \"<integer>\",\n    \"session_timeout\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3dc58f87-caa8-4f0f-bfdf-bda5c0db0bef",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "password_profile",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Password profile name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"name\": \"default\",\n    \"active\": true,\n    \"comment\": \"\",\n    \"min_len\": 6,\n    \"min_uppercase_count\": 0,\n    \"min_lowercase_count\": 0,\n    \"min_digit_count\": 0,\n    \"min_special_count\": 0,\n    \"enable_password_expiration\": false,\n    \"password_expire_after_days\": 0,\n    \"enable_password_history\": true,\n    \"password_keep_history_count\": 0,\n    \"enable_block_after_failed_login\": false,\n    \"block_after_failed_login_count\": 0,\n    \"block_minutes\": 0,\n    \"session_timeout\": 300\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "407c34ef-aca7-44e6-80a9-5b87c0eeff29",
+          "name": "Gets a list of users",
+          "request": {
+            "name": "Gets a list of users",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "593bf1bc-0513-4581-baec-8eb7471b45a8",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"users\": [\n    {\n      \"fullname\": \"admin\",\n      \"server\": \"server1\",\n      \"username\": \"admin\",\n      \"email\": \"user@mail.com\",\n      \"role\": \"admin\",\n      \"timeout\": 300,\n      \"locale\": \"en\",\n      \"default_password\": false,\n      \"modify_password\": false,\n      \"last_login_timestamp\": 1505755716,\n      \"last_login_at\": \"\",\n      \"login_count\": 1,\n      \"blocked_for_failed_login\": false,\n      \"blocked_for_password_expired\": false,\n      \"password_resettable\": false,\n      \"password\": \"mypassword\",\n      \"extra_permissions\": [\n        {\n          \"id\": \"ci_scan\",\n          \"read\": false,\n          \"write\": true\n        },\n        {\n          \"id\": \"ci_scan\",\n          \"read\": false,\n          \"write\": true\n        }\n      ],\n      \"role_domains\": {\n        \"key\": \"string\",\n        \"value\": {\n          \"key_0\": [\n            \"domain1\",\n            \"domain2\"\n          ]\n        }\n      },\n      \"extra_permissions_domains\": [\n        {\n          \"permissions\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"read\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"write\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"read\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"write\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"domains\": [\n            \"domain1\",\n            \"domain2\"\n          ]\n        },\n        {\n          \"permissions\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"read\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"write\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"read\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"write\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"domains\": [\n            \"domain1\",\n            \"domain2\"\n          ]\n        }\n      ],\n      \"remote_role_permissions\": {\n        \"user\": {\n          \"role\": \"admin\",\n          \"role_domains\": {\n            \"key\": \"string\",\n            \"value\": {\n              \"key_0\": [\n                \"domain1\",\n                \"domain2\"\n              ]\n            }\n          },\n          \"extra_permissions\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"read\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"write\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"read\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"write\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"extra_permissions_domains\": [\n            {\n              \"permissions\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"domains\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"permissions\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"domains\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"fullname\": \"admin\",\n      \"server\": \"server1\",\n      \"username\": \"admin\",\n      \"email\": \"user@mail.com\",\n      \"role\": \"admin\",\n      \"timeout\": 300,\n      \"locale\": \"en\",\n      \"default_password\": false,\n      \"modify_password\": false,\n      \"last_login_timestamp\": 1505755716,\n      \"last_login_at\": \"\",\n      \"login_count\": 1,\n      \"blocked_for_failed_login\": false,\n      \"blocked_for_password_expired\": false,\n      \"password_resettable\": false,\n      \"password\": \"mypassword\",\n      \"extra_permissions\": [\n        {\n          \"id\": \"ci_scan\",\n          \"read\": false,\n          \"write\": true\n        },\n        {\n          \"id\": \"ci_scan\",\n          \"read\": false,\n          \"write\": true\n        }\n      ],\n      \"role_domains\": {\n        \"key\": \"string\",\n        \"value\": {\n          \"key_0\": [\n            \"domain1\",\n            \"domain2\"\n          ],\n          \"key_1\": [\n            \"domain1\",\n            \"domain2\"\n          ]\n        }\n      },\n      \"extra_permissions_domains\": [\n        {\n          \"permissions\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"read\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"write\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"read\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"write\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"domains\": [\n            \"domain1\",\n            \"domain2\"\n          ]\n        },\n        {\n          \"permissions\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"read\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"write\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"read\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"write\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"domains\": [\n            \"domain1\",\n            \"domain2\"\n          ]\n        }\n      ],\n      \"remote_role_permissions\": {\n        \"user\": {\n          \"role\": \"admin\",\n          \"role_domains\": {\n            \"key\": \"string\",\n            \"value\": {\n              \"key_0\": [\n                \"domain1\",\n                \"domain2\"\n              ]\n            }\n          },\n          \"extra_permissions\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"read\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"write\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"read\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"write\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"extra_permissions_domains\": [\n            {\n              \"permissions\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"domains\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"permissions\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"domains\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      }\n    }\n  ],\n  \"global_roles\": [\n    \"admin\",\n    \"reader\"\n  ],\n  \"domain_roles\": [\n    \"role1\",\n    \"role2\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "48d3840d-55b8-4b21-a939-ad4ea0039977",
+          "name": "Creates a user",
+          "request": {
+            "name": "Creates a user",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": {\n    \"fullname\": \"<string>\",\n    \"server\": \"<string>\",\n    \"username\": \"<string>\",\n    \"email\": \"<email>\",\n    \"role\": \"<string>\",\n    \"timeout\": \"<uint32>\",\n    \"locale\": \"<string>\",\n    \"default_password\": \"<boolean>\",\n    \"modify_password\": false,\n    \"last_login_timestamp\": \"<long>\",\n    \"last_login_at\": \"<string>\",\n    \"login_count\": \"<uint32>\",\n    \"blocked_for_failed_login\": \"<boolean>\",\n    \"blocked_for_password_expired\": \"<boolean>\",\n    \"password_resettable\": \"<boolean>\",\n    \"password\": \"<password>\",\n    \"extra_permissions\": [\n      {\n        \"id\": \"<string>\",\n        \"read\": \"<boolean>\",\n        \"write\": \"<boolean>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"read\": \"<boolean>\",\n        \"write\": \"<boolean>\"\n      }\n    ],\n    \"role_domains\": {\n      \"key\": \"<string>\",\n      \"value\": {\n        \"key_0\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    \"extra_permissions_domains\": [\n      {\n        \"permissions\": [\n          {\n            \"id\": \"<string>\",\n            \"read\": \"<boolean>\",\n            \"write\": \"<boolean>\"\n          },\n          {\n            \"id\": \"<string>\",\n            \"read\": \"<boolean>\",\n            \"write\": \"<boolean>\"\n          }\n        ],\n        \"domains\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"permissions\": [\n          {\n            \"id\": \"<string>\",\n            \"read\": \"<boolean>\",\n            \"write\": \"<boolean>\"\n          },\n          {\n            \"id\": \"<string>\",\n            \"read\": \"<boolean>\",\n            \"write\": \"<boolean>\"\n          }\n        ],\n        \"domains\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"remote_role_permissions\": {\n      \"user\": {\n        \"role\": \"<string>\",\n        \"role_domains\": {\n          \"key\": \"<string>\",\n          \"value\": {\n            \"key_0\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"key_1\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        \"extra_permissions\": [\n          {\n            \"id\": \"<string>\",\n            \"read\": \"<boolean>\",\n            \"write\": \"<boolean>\"\n          },\n          {\n            \"id\": \"<string>\",\n            \"read\": \"<boolean>\",\n            \"write\": \"<boolean>\"\n          }\n        ],\n        \"extra_permissions_domains\": [\n          {\n            \"permissions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"domains\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"permissions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"domains\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      }\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f2c89791-7020-4081-b7a4-1e3174acf354",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"fullname\": \"admin\",\n    \"server\": \"server1\",\n    \"username\": \"admin\",\n    \"email\": \"user@mail.com\",\n    \"role\": \"admin\",\n    \"timeout\": 300,\n    \"locale\": \"en\",\n    \"default_password\": \"<boolean>\",\n    \"modify_password\": false,\n    \"last_login_timestamp\": 1505755716,\n    \"last_login_at\": \"\",\n    \"login_count\": 1,\n    \"blocked_for_failed_login\": false,\n    \"blocked_for_password_expired\": false,\n    \"password_resettable\": false,\n    \"password\": \"mypassword\",\n    \"extra_permissions\": [\n      {\n        \"id\": \"ci_scan\",\n        \"read\": false,\n        \"write\": true\n      },\n      {\n        \"id\": \"ci_scan\",\n        \"read\": false,\n        \"write\": true\n      }\n    ],\n    \"role_domains\": {\n      \"key\": \"<string>\",\n      \"value\": {\n        \"key_0\": [\n          \"domain1\",\n          \"domain2\"\n        ]\n      }\n    },\n    \"extra_permissions_domains\": [\n      {\n        \"permissions\": [\n          {\n            \"id\": \"ci_scan\",\n            \"read\": false,\n            \"write\": true\n          },\n          {\n            \"id\": \"ci_scan\",\n            \"read\": false,\n            \"write\": true\n          }\n        ],\n        \"domains\": [\n          \"domain1\",\n          \"domain2\"\n        ]\n      },\n      {\n        \"permissions\": [\n          {\n            \"id\": \"ci_scan\",\n            \"read\": false,\n            \"write\": true\n          },\n          {\n            \"id\": \"ci_scan\",\n            \"read\": false,\n            \"write\": true\n          }\n        ],\n        \"domains\": [\n          \"domain1\",\n          \"domain2\"\n        ]\n      }\n    ],\n    \"remote_role_permissions\": {\n      \"user\": {\n        \"role\": \"admin\",\n        \"role_domains\": {\n          \"key\": \"<string>\",\n          \"value\": {\n            \"key_0\": [\n              \"domain1\",\n              \"domain2\"\n            ]\n          }\n        },\n        \"extra_permissions\": [\n          {\n            \"id\": \"ci_scan\",\n            \"read\": false,\n            \"write\": true\n          },\n          {\n            \"id\": \"ci_scan\",\n            \"read\": false,\n            \"write\": true\n          }\n        ],\n        \"extra_permissions_domains\": [\n          {\n            \"permissions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"domains\": [\n              \"domain1\",\n              \"domain2\"\n            ]\n          },\n          {\n            \"permissions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"domains\": [\n              \"domain1\",\n              \"domain2\"\n            ]\n          }\n        ]\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b514c88d-4a41-4c55-9038-57968cd169a8",
+          "name": "Gets a user",
+          "request": {
+            "name": "Gets a user",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "user",
+                ":fullname"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "fullname",
+                  "description": "(Required) User name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e57572cc-0381-429f-b80e-a3519ce47bd5",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":fullname"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fullname",
+                      "description": "(Required) User name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user\": {\n    \"fullname\": \"admin\",\n    \"server\": \"server1\",\n    \"username\": \"admin\",\n    \"email\": \"user@mail.com\",\n    \"role\": \"admin\",\n    \"timeout\": 300,\n    \"locale\": \"en\",\n    \"default_password\": \"<boolean>\",\n    \"modify_password\": false,\n    \"last_login_timestamp\": 1505755716,\n    \"last_login_at\": \"\",\n    \"login_count\": 1,\n    \"blocked_for_failed_login\": false,\n    \"blocked_for_password_expired\": false,\n    \"password_resettable\": false,\n    \"password\": \"mypassword\",\n    \"extra_permissions\": [\n      {\n        \"id\": \"ci_scan\",\n        \"read\": false,\n        \"write\": true\n      },\n      {\n        \"id\": \"ci_scan\",\n        \"read\": false,\n        \"write\": true\n      }\n    ],\n    \"role_domains\": {\n      \"key\": \"<string>\",\n      \"value\": {\n        \"key_0\": [\n          \"domain1\",\n          \"domain2\"\n        ]\n      }\n    },\n    \"extra_permissions_domains\": [\n      {\n        \"permissions\": [\n          {\n            \"id\": \"ci_scan\",\n            \"read\": false,\n            \"write\": true\n          },\n          {\n            \"id\": \"ci_scan\",\n            \"read\": false,\n            \"write\": true\n          }\n        ],\n        \"domains\": [\n          \"domain1\",\n          \"domain2\"\n        ]\n      },\n      {\n        \"permissions\": [\n          {\n            \"id\": \"ci_scan\",\n            \"read\": false,\n            \"write\": true\n          },\n          {\n            \"id\": \"ci_scan\",\n            \"read\": false,\n            \"write\": true\n          }\n        ],\n        \"domains\": [\n          \"domain1\",\n          \"domain2\"\n        ]\n      }\n    ],\n    \"remote_role_permissions\": {\n      \"user\": {\n        \"role\": \"admin\",\n        \"role_domains\": {\n          \"key\": \"<string>\",\n          \"value\": {\n            \"key_0\": [\n              \"domain1\",\n              \"domain2\"\n            ]\n          }\n        },\n        \"extra_permissions\": [\n          {\n            \"id\": \"ci_scan\",\n            \"read\": false,\n            \"write\": true\n          },\n          {\n            \"id\": \"ci_scan\",\n            \"read\": false,\n            \"write\": true\n          }\n        ],\n        \"extra_permissions_domains\": [\n          {\n            \"permissions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"domains\": [\n              \"domain1\",\n              \"domain2\"\n            ]\n          },\n          {\n            \"permissions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"domains\": [\n              \"domain1\",\n              \"domain2\"\n            ]\n          }\n        ]\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ae495ff7-9fd5-4349-a7c3-54a0f672db9b",
+          "name": "Update user",
+          "request": {
+            "name": "Update user",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "user",
+                ":fullname"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "fullname",
+                  "description": "(Required) User name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"fullname\": \"<string>\",\n    \"pwd_profile\": \"<string>\",\n    \"password\": \"<password>\",\n    \"new_password\": \"<string>\",\n    \"email\": \"<email>\",\n    \"role\": \"<string>\",\n    \"timeout\": \"<uint32>\",\n    \"locale\": \"<string>\",\n    \"role_domains\": {\n      \"key_0\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"key_1\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"key_2\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "717d89a7-753a-4f7b-bcf8-5c76b2f9517f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":fullname"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fullname",
+                      "description": "(Required) User name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"fullname\": \"name\",\n    \"pwd_profile\": \"<string>\",\n    \"password\": \"mypassword\",\n    \"new_password\": \"newpassword\",\n    \"email\": \"user@mail.com\",\n    \"role\": \"admin\",\n    \"timeout\": 300,\n    \"locale\": \"en\",\n    \"role_domains\": {\n      \"key_0\": [\n        \"domain1\",\n        \"domain2\"\n      ],\n      \"key_1\": [\n        \"domain1\",\n        \"domain2\"\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "390c5f3b-8ddb-4588-b8a5-e8a91f30055b",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":fullname"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fullname",
+                      "description": "(Required) User name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"fullname\": \"name\",\n    \"pwd_profile\": \"<string>\",\n    \"password\": \"mypassword\",\n    \"new_password\": \"newpassword\",\n    \"email\": \"user@mail.com\",\n    \"role\": \"admin\",\n    \"timeout\": 300,\n    \"locale\": \"en\",\n    \"role_domains\": {\n      \"key_0\": [\n        \"domain1\",\n        \"domain2\"\n      ],\n      \"key_1\": [\n        \"domain1\",\n        \"domain2\"\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 3,\n  \"error\": \"Request failed\",\n  \"message\": \"Invalid format\",\n  \"password_profile_basic\": {\n    \"min_len\": 6,\n    \"min_uppercase_count\": 0,\n    \"min_lowercase_count\": 0,\n    \"min_digit_count\": 0,\n    \"min_special_count\": 0\n  },\n  \"import_task_data\": {\n    \"data\": {\n      \"tid\": \"c5af897b62a258212ece91c0551d3a4a\",\n      \"ctrler_id\": \"6e60452b244b90456f3450c9fed0a50f57f4b849dcb74a5fad289e8116f32f36\",\n      \"percentage\": 100,\n      \"last_update_time\": \"2022-03-17T17:31:55.832768041Z\",\n      \"triggered_by\": \"admin\",\n      \"status\": \"done\",\n      \"temp_token\": \"\",\n      \"fail_to_decrypt_key_fields\": {\n        \"key_0\": [\n          \"x509_cert\",\n          \"signing_cert\"\n        ],\n        \"key_1\": [\n          \"x509_cert\",\n          \"signing_cert\"\n        ],\n        \"key_2\": [\n          \"x509_cert\",\n          \"signing_cert\"\n        ],\n        \"key_3\": [\n          \"x509_cert\",\n          \"signing_cert\"\n        ],\n        \"key_4\": [\n          \"x509_cert\",\n          \"signing_cert\"\n        ]\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aa73b636-d1e0-4638-a588-17e88de0636d",
+          "name": "Delete user",
+          "request": {
+            "name": "Delete user",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "user",
+                ":fullname"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "fullname",
+                  "description": "(Required) User name"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e6950336-d62a-4588-81b1-4cd92dc7a762",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":fullname"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fullname",
+                      "description": "(Required) User name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "713a6b48-b11c-4152-ad34-d94ab5cf9ec2",
+          "name": "Configure user login",
+          "request": {
+            "name": "Configure user login",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "user",
+                ":fullname",
+                "password"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "fullname",
+                  "description": "(Required) User name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"fullname\": \"<string>\",\n    \"clear_failed_login\": \"<boolean>\",\n    \"new_password\": \"<string>\",\n    \"force_reset_password\": \"<boolean>\",\n    \"reset_password_in_next_login\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "64d9212b-614e-447e-93eb-4b568b955f11",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":fullname",
+                    "password"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fullname",
+                      "description": "(Required) User name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"fullname\": \"admin\",\n    \"clear_failed_login\": true,\n    \"new_password\": \"\",\n    \"force_reset_password\": false,\n    \"reset_password_in_next_login\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ce101f37-f77c-4028-b419-b95455fa1eac",
+          "name": "For CLI to modify one role",
+          "request": {
+            "name": "For CLI to modify one role",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "user",
+                ":fullname",
+                "role",
+                ":role"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "fullname",
+                  "description": "(Required) User name"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "role",
+                  "description": "(Required) Role name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"fullname\": \"<string>\",\n    \"role\": \"<string>\",\n    \"domains\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0df1320c-f39b-4f8a-9abd-ff045c9a98b7",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":fullname",
+                    "role",
+                    ":role"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fullname",
+                      "description": "(Required) User name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "role",
+                      "description": "(Required) Role name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"fullname\": \"name\",\n    \"role\": \"myrole\",\n    \"domains\": [\n      \"\",\n      \"\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6786d1a6-6d70-4378-b5e9-204145e3c5af",
+          "name": "Get role list",
+          "request": {
+            "name": "Get role list",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "user_role"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0024fec1-c06b-4909-ad55-67f19987d3ec",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user_role"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"roles\": [\n    {\n      \"name\": \"ciops\",\n      \"comment\": \"CI Integration role\",\n      \"reserved\": true,\n      \"permissions\": [\n        {\n          \"id\": \"ci_scan\",\n          \"read\": false,\n          \"write\": true\n        },\n        {\n          \"id\": \"ci_scan\",\n          \"read\": false,\n          \"write\": true\n        }\n      ]\n    },\n    {\n      \"name\": \"ciops\",\n      \"comment\": \"CI Integration role\",\n      \"reserved\": true,\n      \"permissions\": [\n        {\n          \"id\": \"ci_scan\",\n          \"read\": false,\n          \"write\": true\n        },\n        {\n          \"id\": \"ci_scan\",\n          \"read\": false,\n          \"write\": true\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a45a6bb3-5b54-413e-8f44-c40fbe776613",
+          "name": "Creates a role",
+          "request": {
+            "name": "Creates a role",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "user_role"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"name\": \"<string>\",\n    \"comment\": \"<string>\",\n    \"permissions\": [\n      {\n        \"id\": \"<string>\",\n        \"read\": \"<boolean>\",\n        \"write\": \"<boolean>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"read\": \"<boolean>\",\n        \"write\": \"<boolean>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "99b0bbb3-83a5-4bf0-8295-2673f993f9d0",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user_role"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"name\": \"customadmin\",\n    \"comment\": \"\",\n    \"permissions\": [\n      {\n        \"id\": \"ci_scan\",\n        \"read\": false,\n        \"write\": true\n      },\n      {\n        \"id\": \"ci_scan\",\n        \"read\": false,\n        \"write\": true\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a1ba8cf-bb94-4856-ab41-10f1f2c17c13",
+          "name": "Get role details",
+          "request": {
+            "name": "Get role details",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "user_role",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) User role name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "284bab3c-450a-4f9d-a270-86382c9eb8ca",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user_role",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) User role name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"role\": {\n    \"name\": \"ciops\",\n    \"comment\": \"CI Integration role\",\n    \"reserved\": true,\n    \"permissions\": [\n      {\n        \"id\": \"ci_scan\",\n        \"read\": false,\n        \"write\": true\n      },\n      {\n        \"id\": \"ci_scan\",\n        \"read\": false,\n        \"write\": true\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "70a0b067-21c6-438b-9a4d-9e31a3c12fb1",
+          "name": "Config a user role",
+          "request": {
+            "name": "Config a user role",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "user_role",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) User role name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"name\": \"<string>\",\n    \"comment\": \"<string>\",\n    \"permissions\": [\n      {\n        \"id\": \"<string>\",\n        \"read\": \"<boolean>\",\n        \"write\": \"<boolean>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"read\": \"<boolean>\",\n        \"write\": \"<boolean>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "efa24eda-ddac-43ba-8012-16ff5e2b6574",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user_role",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) User role name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"name\": \"customadmin\",\n    \"comment\": \"\",\n    \"permissions\": [\n      {\n        \"id\": \"ci_scan\",\n        \"read\": false,\n        \"write\": true\n      },\n      {\n        \"id\": \"ci_scan\",\n        \"read\": false,\n        \"write\": true\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a5bb71c4-47e7-4235-8935-4bc45c140d11",
+          "name": "Delete a user role",
+          "request": {
+            "name": "Delete a user role",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "user_role",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) User role name"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b983ff5f-317d-40e0-898c-a8b66d00b602",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user_role",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) User role name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "258f3bb4-d25e-48cf-83e0-6588da6a8efb",
+    "name": "NeuVector User API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.\n\nContact Support:\n Email: support@neuvector.com",
+      "type": "text/plain"
+    }
+  }
+}

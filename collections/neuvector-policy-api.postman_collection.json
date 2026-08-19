@@ -1,0 +1,916 @@
+{
+  "item": [
+    {
+      "id": "27479b48-9772-4b33-8e3a-a4b4095b32c0",
+      "name": "Policy",
+      "description": {
+        "content": "Operations about Policy",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "00a15259-6007-4f69-80e8-1408d3fa5110",
+          "name": "Get a list of policy rules",
+          "request": {
+            "name": "Get a list of policy rules",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "policy",
+                "rule"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "scope",
+                  "value": "<string>",
+                  "description": "When set to fed, returned fed policy rules. When set to local, returned local policy rules. If there is no query string 'scope', all policy rules will be returned."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2447619b-cec2-4bdd-90e9-029ac075ed17",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "policy",
+                    "rule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rules\": [\n    {\n      \"id\": 10002,\n      \"comment\": \"a rule\",\n      \"from\": \"nv.iperfc\",\n      \"to\": \"Host:10.2.127.3\",\n      \"ports\": \"any\",\n      \"action\": \"allow\",\n      \"applications\": [\n        \"DNS\",\n        \"DNS\"\n      ],\n      \"learned\": true,\n      \"disable\": false,\n      \"created_timestamp\": 1516563263,\n      \"last_modified_timestamp\": 1516573243,\n      \"cfg_type\": \"federal\",\n      \"priority\": 0,\n      \"match_counter\": 699,\n      \"last_match_timestamp\": 1736811451\n    },\n    {\n      \"id\": 10002,\n      \"comment\": \"a rule\",\n      \"from\": \"nv.iperfc\",\n      \"to\": \"Host:10.2.127.3\",\n      \"ports\": \"any\",\n      \"action\": \"allow\",\n      \"applications\": [\n        \"DNS\",\n        \"DNS\"\n      ],\n      \"learned\": true,\n      \"disable\": false,\n      \"created_timestamp\": 1516563263,\n      \"last_modified_timestamp\": 1516573243,\n      \"cfg_type\": \"learned\",\n      \"priority\": 0,\n      \"match_counter\": 699,\n      \"last_match_timestamp\": 1736811451\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d9d6ccd4-deb4-4430-a299-eca5ddc45a92",
+          "name": "Policy rule action",
+          "request": {
+            "name": "Policy rule action",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "policy",
+                "rule"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "scope",
+                  "value": "<string>",
+                  "description": "When set to fed, fed policy rules get created. When set to local or no query string, local policy rules get created."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"move\": {\n    \"id\": \"<uint32>\",\n    \"after\": \"<integer>\"\n  },\n  \"insert\": {\n    \"rules\": [\n      {\n        \"id\": \"<uint32>\",\n        \"comment\": \"<string>\",\n        \"from\": \"<string>\",\n        \"to\": \"<string>\",\n        \"ports\": \"<string>\",\n        \"action\": \"<string>\",\n        \"applications\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"learned\": \"<boolean>\",\n        \"disable\": \"<boolean>\",\n        \"created_timestamp\": \"<long>\",\n        \"last_modified_timestamp\": \"<long>\",\n        \"cfg_type\": \"<string>\",\n        \"priority\": \"<uint32>\",\n        \"match_counter\": \"<uint64>\",\n        \"last_match_timestamp\": \"<long>\"\n      },\n      {\n        \"id\": \"<uint32>\",\n        \"comment\": \"<string>\",\n        \"from\": \"<string>\",\n        \"to\": \"<string>\",\n        \"ports\": \"<string>\",\n        \"action\": \"<string>\",\n        \"applications\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"learned\": \"<boolean>\",\n        \"disable\": \"<boolean>\",\n        \"created_timestamp\": \"<long>\",\n        \"last_modified_timestamp\": \"<long>\",\n        \"cfg_type\": \"<string>\",\n        \"priority\": \"<uint32>\",\n        \"match_counter\": \"<uint64>\",\n        \"last_match_timestamp\": \"<long>\"\n      }\n    ],\n    \"after\": \"<integer>\"\n  },\n  \"rules\": [\n    {\n      \"id\": \"<uint32>\",\n      \"comment\": \"<string>\",\n      \"from\": \"<string>\",\n      \"to\": \"<string>\",\n      \"ports\": \"<string>\",\n      \"action\": \"<string>\",\n      \"applications\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"learned\": \"<boolean>\",\n      \"disable\": \"<boolean>\",\n      \"created_timestamp\": \"<long>\",\n      \"last_modified_timestamp\": \"<long>\",\n      \"cfg_type\": \"<string>\",\n      \"priority\": \"<uint32>\",\n      \"match_counter\": \"<uint64>\",\n      \"last_match_timestamp\": \"<long>\"\n    },\n    {\n      \"id\": \"<uint32>\",\n      \"comment\": \"<string>\",\n      \"from\": \"<string>\",\n      \"to\": \"<string>\",\n      \"ports\": \"<string>\",\n      \"action\": \"<string>\",\n      \"applications\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"learned\": \"<boolean>\",\n      \"disable\": \"<boolean>\",\n      \"created_timestamp\": \"<long>\",\n      \"last_modified_timestamp\": \"<long>\",\n      \"cfg_type\": \"<string>\",\n      \"priority\": \"<uint32>\",\n      \"match_counter\": \"<uint64>\",\n      \"last_match_timestamp\": \"<long>\"\n    }\n  ],\n  \"delete\": [\n    \"<uint32>\",\n    \"<uint32>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f19f2177-a472-4560-a033-d3e84f564372",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "policy",
+                    "rule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"move\": {\n    \"id\": 10005,\n    \"after\": 0\n  },\n  \"insert\": {\n    \"rules\": [\n      {\n        \"id\": 10002,\n        \"comment\": \"a rule\",\n        \"from\": \"nv.iperfc\",\n        \"to\": \"Host:10.2.127.3\",\n        \"ports\": \"any\",\n        \"action\": \"allow\",\n        \"applications\": [\n          \"DNS\",\n          \"DNS\"\n        ],\n        \"learned\": true,\n        \"disable\": false,\n        \"created_timestamp\": 1516563263,\n        \"last_modified_timestamp\": 1516573243,\n        \"cfg_type\": \"<string>\",\n        \"priority\": 0,\n        \"match_counter\": 699,\n        \"last_match_timestamp\": 1736811451\n      },\n      {\n        \"id\": 10002,\n        \"comment\": \"a rule\",\n        \"from\": \"nv.iperfc\",\n        \"to\": \"Host:10.2.127.3\",\n        \"ports\": \"any\",\n        \"action\": \"allow\",\n        \"applications\": [\n          \"DNS\",\n          \"DNS\"\n        ],\n        \"learned\": true,\n        \"disable\": false,\n        \"created_timestamp\": 1516563263,\n        \"last_modified_timestamp\": 1516573243,\n        \"cfg_type\": \"<string>\",\n        \"priority\": 0,\n        \"match_counter\": 699,\n        \"last_match_timestamp\": 1736811451\n      }\n    ],\n    \"after\": 0\n  },\n  \"rules\": [\n    {\n      \"id\": 10002,\n      \"comment\": \"a rule\",\n      \"from\": \"nv.iperfc\",\n      \"to\": \"Host:10.2.127.3\",\n      \"ports\": \"any\",\n      \"action\": \"allow\",\n      \"applications\": [\n        \"DNS\",\n        \"DNS\"\n      ],\n      \"learned\": true,\n      \"disable\": false,\n      \"created_timestamp\": 1516563263,\n      \"last_modified_timestamp\": 1516573243,\n      \"cfg_type\": \"<string>\",\n      \"priority\": 0,\n      \"match_counter\": 699,\n      \"last_match_timestamp\": 1736811451\n    },\n    {\n      \"id\": 10002,\n      \"comment\": \"a rule\",\n      \"from\": \"nv.iperfc\",\n      \"to\": \"Host:10.2.127.3\",\n      \"ports\": \"any\",\n      \"action\": \"allow\",\n      \"applications\": [\n        \"DNS\",\n        \"DNS\"\n      ],\n      \"learned\": true,\n      \"disable\": false,\n      \"created_timestamp\": 1516563263,\n      \"last_modified_timestamp\": 1516573243,\n      \"cfg_type\": \"<string>\",\n      \"priority\": 0,\n      \"match_counter\": 699,\n      \"last_match_timestamp\": 1736811451\n    }\n  ],\n  \"delete\": [\n    1234\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e258ca37-b93e-429e-b0ff-a100b3eb0044",
+          "name": "Delete all policy rules",
+          "request": {
+            "name": "Delete all policy rules",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "policy",
+                "rule"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "scope",
+                  "value": "<string>",
+                  "description": "When set to fed, fed policy rules get removed. When set to local or no query string, local policy rules get removed."
+                }
+              ],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "844fc3cc-35c4-4e79-8005-7a2ac7345eb5",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "policy",
+                    "rule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "21c98b9a-1000-4f66-92e9-19e7bfff3a8a",
+          "name": "Show policy rule",
+          "request": {
+            "name": "Show policy rule",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "policy",
+                "rule",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint32>",
+                  "key": "id",
+                  "description": "(Required) Rule ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5260c01f-1994-42af-a6e2-f5768d781136",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "policy",
+                    "rule",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "id",
+                      "description": "(Required) Rule ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rule\": {\n    \"id\": 10002,\n    \"comment\": \"a rule\",\n    \"from\": \"nv.iperfc\",\n    \"to\": \"Host:10.2.127.3\",\n    \"ports\": \"any\",\n    \"action\": \"allow\",\n    \"applications\": [\n      \"DNS\",\n      \"DNS\"\n    ],\n    \"learned\": true,\n    \"disable\": false,\n    \"created_timestamp\": 1516563263,\n    \"last_modified_timestamp\": 1516573243,\n    \"cfg_type\": \"<string>\",\n    \"priority\": 0,\n    \"match_counter\": 699,\n    \"last_match_timestamp\": 1736811451\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0927821c-8759-446e-a9a9-83a4b67702d3",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "policy",
+                    "rule",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "id",
+                      "description": "(Required) Rule ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 3,\n  \"error\": \"Request failed\",\n  \"message\": \"Invalid format\",\n  \"password_profile_basic\": {\n    \"min_len\": 6,\n    \"min_uppercase_count\": 0,\n    \"min_lowercase_count\": 0,\n    \"min_digit_count\": 0,\n    \"min_special_count\": 0\n  },\n  \"import_task_data\": {\n    \"data\": {\n      \"tid\": \"c5af897b62a258212ece91c0551d3a4a\",\n      \"ctrler_id\": \"6e60452b244b90456f3450c9fed0a50f57f4b849dcb74a5fad289e8116f32f36\",\n      \"percentage\": 100,\n      \"last_update_time\": \"2022-03-17T17:31:55.832768041Z\",\n      \"triggered_by\": \"admin\",\n      \"status\": \"done\",\n      \"temp_token\": \"\",\n      \"fail_to_decrypt_key_fields\": {\n        \"key_0\": [\n          \"x509_cert\",\n          \"signing_cert\"\n        ],\n        \"key_1\": [\n          \"x509_cert\",\n          \"signing_cert\"\n        ]\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a35dac54-70dc-4a58-b6a0-69498786d4de",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "policy",
+                    "rule",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "id",
+                      "description": "(Required) Rule ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 3,\n  \"error\": \"Request failed\",\n  \"message\": \"Invalid format\",\n  \"password_profile_basic\": {\n    \"min_len\": 6,\n    \"min_uppercase_count\": 0,\n    \"min_lowercase_count\": 0,\n    \"min_digit_count\": 0,\n    \"min_special_count\": 0\n  },\n  \"import_task_data\": {\n    \"data\": {\n      \"tid\": \"c5af897b62a258212ece91c0551d3a4a\",\n      \"ctrler_id\": \"6e60452b244b90456f3450c9fed0a50f57f4b849dcb74a5fad289e8116f32f36\",\n      \"percentage\": 100,\n      \"last_update_time\": \"2022-03-17T17:31:55.832768041Z\",\n      \"triggered_by\": \"admin\",\n      \"status\": \"done\",\n      \"temp_token\": \"\",\n      \"fail_to_decrypt_key_fields\": {\n        \"key_0\": [\n          \"x509_cert\",\n          \"signing_cert\"\n        ],\n        \"key_1\": [\n          \"x509_cert\",\n          \"signing_cert\"\n        ],\n        \"key_2\": [\n          \"x509_cert\",\n          \"signing_cert\"\n        ],\n        \"key_3\": [\n          \"x509_cert\",\n          \"signing_cert\"\n        ]\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c15f5733-0414-4aaa-9533-8280760fba35",
+          "name": "Update policy rule",
+          "request": {
+            "name": "Update policy rule",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "policy",
+                "rule",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint32>",
+                  "key": "id",
+                  "description": "(Required) Rule ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"id\": \"<uint32>\",\n    \"cfg_type\": \"<string>\",\n    \"comment\": \"<string>\",\n    \"from\": \"<string>\",\n    \"to\": \"<string>\",\n    \"ports\": \"<string>\",\n    \"action\": \"<string>\",\n    \"applications\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"disable\": \"<boolean>\",\n    \"priority\": \"<uint32>\"\n  },\n  \"replicate\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2dc4faa0-4653-4264-9a76-c219ddea34f1",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "policy",
+                    "rule",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "id",
+                      "description": "(Required) Rule ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"id\": 10001,\n    \"cfg_type\": \"<string>\",\n    \"comment\": \"a deny rule\",\n    \"from\": \"nv.iperfclient\",\n    \"to\": \"external\",\n    \"ports\": \"any\",\n    \"action\": \"deny\",\n    \"applications\": [\n      \"HTTP\",\n      \"SSH\"\n    ],\n    \"disable\": true,\n    \"priority\": 0\n  },\n  \"replicate\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d7bdc4b1-adce-4db6-a0de-b5f7964a8a67",
+          "name": "Delete policy rule",
+          "request": {
+            "name": "Delete policy rule",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "policy",
+                "rule",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint32>",
+                  "key": "id",
+                  "description": "(Required) Rule ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1cc7b94c-fcfa-4213-9e23-c7a62b2cf55e",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "policy",
+                    "rule",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "id",
+                      "description": "(Required) Rule ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "031cd898-fbc6-47a5-bdb3-5eb8b627df33",
+          "name": "Promote policy",
+          "request": {
+            "name": "Promote policy",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "policy",
+                "rules",
+                "promote"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"request\": {\n    \"ids\": [\n      \"<uint32>\",\n      \"<uint32>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "750f3385-6d90-421b-aacd-276160b7a4f0",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "policy",
+                    "rules",
+                    "promote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"request\": {\n    \"ids\": [\n      12,\n      12\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c10ab9ec-0f51-48d5-b6c0-a267fda4b812",
+    "name": "NeuVector Policy API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.\n\nContact Support:\n Email: support@neuvector.com",
+      "type": "text/plain"
+    }
+  }
+}

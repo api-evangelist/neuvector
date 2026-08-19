@@ -1,0 +1,141 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NeuVector Server API",
+    "version": "5.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Server",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of servers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/server"
+          },
+          "docs": "Get a list of servers"
+        },
+        {
+          "info": {
+            "name": "Create server",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/server"
+          },
+          "docs": "Create server"
+        },
+        {
+          "info": {
+            "name": "Show server",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/server/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the server"
+              }
+            ]
+          },
+          "docs": "Show server"
+        },
+        {
+          "info": {
+            "name": "Update server",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/server/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the server"
+              }
+            ]
+          },
+          "docs": "Update server"
+        },
+        {
+          "info": {
+            "name": "Delete the server",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/server/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the server"
+              }
+            ]
+          },
+          "docs": "Delete the server"
+        },
+        {
+          "info": {
+            "name": "Update server role groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/server/:name/role/:role",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Server name"
+              },
+              {
+                "name": "role",
+                "value": "",
+                "type": "path",
+                "description": "Role name"
+              }
+            ]
+          },
+          "docs": "Update server role groups"
+        },
+        {
+          "info": {
+            "name": "Show server user list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/server/:name/user",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the server"
+              }
+            ]
+          },
+          "docs": "Show server user list"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

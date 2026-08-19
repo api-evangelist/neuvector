@@ -1,0 +1,586 @@
+{
+  "item": [
+    {
+      "id": "c203e420-531b-431a-b8e9-0303d1bfeec8",
+      "name": "Controller",
+      "description": {
+        "content": "Operations about Controller",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "04de7e30-d298-4364-94f6-cb3861d2deae",
+          "name": "Get a list of controllers",
+          "request": {
+            "name": "Get a list of controllers",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "controller"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fab79ae6-a2a4-47e4-9ed8-85bda06655e4",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "controller"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"b63882364cd1a56b2234ce0c9266ca403090e5e8148\",\n  \"name\": \"allinone\",\n  \"display_name\": \"allinone\",\n  \"host_name\": \"ubuntu64\",\n  \"host_id\": \"2AU7:TIEN:O5KX:QK56:LFQP:IJSV:FXBN:QJV7\",\n  \"version\": \"0.1.0\",\n  \"labels\": {\n    \"com.docker.compose.config-hash\": \"e94ce458b3bc97cd478e9738a759d76fb819\"\n  },\n  \"domain\": \"\",\n  \"created_at\": \"2018-01-24 17:16:59+00:00\",\n  \"started_at\": \"2018-01-24 17:16:59+00:00\",\n  \"joined_at\": \"2018-01-24 17:17:10+00:00\",\n  \"memory_limit\": 0,\n  \"cpus\": \"\",\n  \"cluster_ip\": \"10.1.5.1\",\n  \"leader\": true,\n  \"connection_state\": \"connected\",\n  \"disconnected_at\": \"\",\n  \"orch_conn_status\": \"\",\n  \"orch_conn_last_error\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4fc3cbd2-756c-4697-b719-150f5aa00e2f",
+          "name": "Show controller",
+          "request": {
+            "name": "Show controller",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "controller",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Controller ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "55b3ae90-aeed-4d34-a952-bee11a14048e",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "controller",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Controller ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"controller\": {\n    \"id\": \"b63882364cd1a56b2234ce0c9266ca403090e5e8148\",\n    \"name\": \"allinone\",\n    \"display_name\": \"allinone\",\n    \"host_name\": \"ubuntu64\",\n    \"host_id\": \"2AU7:TIEN:O5KX:QK56:LFQP:IJSV:FXBN:QJV7\",\n    \"version\": \"0.1.0\",\n    \"labels\": {\n      \"com.docker.compose.config-hash\": \"e94ce458b3bc97cd478e9738a759d76fb819\"\n    },\n    \"domain\": \"\",\n    \"created_at\": \"2018-01-24 17:16:59+00:00\",\n    \"started_at\": \"2018-01-24 17:16:59+00:00\",\n    \"joined_at\": \"2018-01-24 17:17:10+00:00\",\n    \"memory_limit\": 0,\n    \"cpus\": \"\",\n    \"cluster_ip\": \"10.1.5.1\",\n    \"leader\": true,\n    \"connection_state\": \"connected\",\n    \"disconnected_at\": \"\",\n    \"orch_conn_status\": \"\",\n    \"orch_conn_last_error\": \"\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5bdc17c8-871f-4b3e-ba24-42ce91f3e922",
+          "name": "Update controller",
+          "request": {
+            "name": "Update controller",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "controller",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Controller ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"debug\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c736940f-9cd6-4b0c-997d-e0e4360bbe44",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "controller",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Controller ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"debug\": [\n      \"log\",\n      \"parser\",\n      \"tcp\",\n      \"session\",\n      \"error\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f5ebf46-611c-443e-b9b4-e784e098cab8",
+          "name": "Controller get system statistics",
+          "request": {
+            "name": "Controller get system statistics",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "controller",
+                ":id",
+                "stats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Controller ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5573ca70-164b-4a76-ba20-1cd6db28e770",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "controller",
+                    ":id",
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Controller ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"0fdf601ddc3ab541386aa8e36fe113593c\",\n  \"read_at\": \"2018-01-21 06:25:15+00:00\",\n  \"stats\": {\n    \"interval\": 5,\n    \"total\": {\n      \"cpu\": 1,\n      \"memory\": 2089816064,\n      \"session_in\": 0,\n      \"session_out\": 0,\n      \"packet_in\": 0,\n      \"packet_out\": 0,\n      \"byte_in\": 0,\n      \"byte_out\": 0,\n      \"cur_session_in\": 1,\n      \"cur_session_out\": 1\n    },\n    \"span_1\": {\n      \"cpu\": 1,\n      \"memory\": 2089816064,\n      \"session_in\": 0,\n      \"session_out\": 0,\n      \"packet_in\": 0,\n      \"packet_out\": 0,\n      \"byte_in\": 0,\n      \"byte_out\": 0,\n      \"cur_session_in\": 1,\n      \"cur_session_out\": 1\n    },\n    \"span_12\": {\n      \"cpu\": 1,\n      \"memory\": 2089816064,\n      \"session_in\": 0,\n      \"session_out\": 0,\n      \"packet_in\": 0,\n      \"packet_out\": 0,\n      \"byte_in\": 0,\n      \"byte_out\": 0,\n      \"cur_session_in\": 1,\n      \"cur_session_out\": 1\n    },\n    \"span_60\": {\n      \"cpu\": 1,\n      \"memory\": 2089816064,\n      \"session_in\": 0,\n      \"session_out\": 0,\n      \"packet_in\": 0,\n      \"packet_out\": 0,\n      \"byte_in\": 0,\n      \"byte_out\": 0,\n      \"cur_session_in\": 1,\n      \"cur_session_out\": 1\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "22df9b61-8094-4f2c-acdb-2780fa57a610",
+          "name": "Controller get configure",
+          "request": {
+            "name": "Controller get configure",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "controller",
+                ":id",
+                "config"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Controller ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "33195316-d7d0-40cb-9d29-022c3367bd01",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "controller",
+                    ":id",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Controller ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"config\": {\n    \"debug\": [\n      \"log\",\n      \"parser\",\n      \"tcp\",\n      \"session\",\n      \"error\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "62ad47c7-a994-4564-9fc8-16a4dd701b18",
+    "name": "NeuVector Controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.\n\nContact Support:\n Email: support@neuvector.com",
+      "type": "text/plain"
+    }
+  }
+}

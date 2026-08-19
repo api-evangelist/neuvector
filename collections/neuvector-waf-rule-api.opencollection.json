@@ -1,0 +1,192 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NeuVector WAF Rule API",
+    "version": "5.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "WAF Rule",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get waf rule list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/waf/sensor",
+            "params": [
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "The default value is local which returns local waf rule list."
+              }
+            ]
+          },
+          "docs": "Get waf rule list"
+        },
+        {
+          "info": {
+            "name": "Create waf sensor",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/waf/sensor"
+          },
+          "docs": "Create waf sensor"
+        },
+        {
+          "info": {
+            "name": "Get waf sensor detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/waf/sensor/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "waf sensor name"
+              }
+            ]
+          },
+          "docs": "Get waf sensor detail"
+        },
+        {
+          "info": {
+            "name": "Update a waf sensor",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/waf/sensor/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "waf sensor name"
+              }
+            ]
+          },
+          "docs": "Update a waf sensor"
+        },
+        {
+          "info": {
+            "name": "Delete a waf sensor",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/waf/sensor/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "waf sensor name"
+              }
+            ]
+          },
+          "docs": "Delete a waf sensor"
+        },
+        {
+          "info": {
+            "name": "Get waf group list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/waf/group",
+            "params": [
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "The default value is local. It returns local waf group list."
+              }
+            ]
+          },
+          "docs": "Get waf group list"
+        },
+        {
+          "info": {
+            "name": "Get waf group detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/waf/group/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "waf group name"
+              }
+            ]
+          },
+          "docs": "Get waf group detail"
+        },
+        {
+          "info": {
+            "name": "Update a waf group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/waf/group/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "waf group name"
+              }
+            ]
+          },
+          "docs": "Update a waf group"
+        },
+        {
+          "info": {
+            "name": "Get waf rule list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/waf/rule"
+          },
+          "docs": "Get waf rule list"
+        },
+        {
+          "info": {
+            "name": "Get waf rule detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/waf/rule/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "waf rule name"
+              }
+            ]
+          },
+          "docs": "Get waf rule detail"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

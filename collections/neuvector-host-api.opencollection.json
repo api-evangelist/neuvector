@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NeuVector Host API",
+    "version": "5.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Host",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of hosts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/host"
+          },
+          "docs": "Get a list of hosts"
+        },
+        {
+          "info": {
+            "name": "Show host",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/host/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Host ID"
+              }
+            ]
+          },
+          "docs": "Show host"
+        },
+        {
+          "info": {
+            "name": "Show host compliance report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/host/:id/compliance",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Host ID"
+              }
+            ]
+          },
+          "docs": "Show host compliance report"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

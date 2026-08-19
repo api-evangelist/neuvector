@@ -1,0 +1,183 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NeuVector System API",
+    "version": "5.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "System",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "System summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/system/summary"
+          },
+          "docs": "System summary"
+        },
+        {
+          "info": {
+            "name": "System get configure",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/system/config",
+            "params": [
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "When set the scope to be fed, it will return the fed system configures. When set the scope to be local, it will return the local system configures. If there is no query string 'scope', it will return all system configures."
+              }
+            ]
+          },
+          "docs": "System get configure"
+        },
+        {
+          "info": {
+            "name": "System configure",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/system/config"
+          },
+          "docs": "System configure"
+        },
+        {
+          "info": {
+            "name": "Get system configuration (starting from 5.0, rest client should call this api.)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/system/config",
+            "params": [
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "When set the scope to be fed, it will return the fed system configures. When set the scope to be local, it will return the local system configures. If there is no query string 'scope', it will return all system configures."
+              }
+            ]
+          },
+          "docs": "Get system configuration (starting from 5.0, rest client should call this api.)"
+        },
+        {
+          "info": {
+            "name": "System configure (starting from 5.0, rest client should call this api.)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v2/system/config"
+          },
+          "docs": "System configure (starting from 5.0, rest client should call this api.)"
+        },
+        {
+          "info": {
+            "name": "System alerts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/system/alerts"
+          },
+          "docs": "System alerts"
+        },
+        {
+          "info": {
+            "name": "Create system webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/system/config/webhook"
+          },
+          "docs": "Create system webhook"
+        },
+        {
+          "info": {
+            "name": "Configure system webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/system/config/webhook/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "System webhook name"
+              },
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "When set the scope to be fed, it will update the fed level webhook. When set the scope to be local, it will update the local webhook. If there is no query string 'scope', it will use 'local' as the default value."
+              }
+            ]
+          },
+          "docs": "Configure system webhook"
+        },
+        {
+          "info": {
+            "name": "Delete system webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/system/config/webhook/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "System webhook name"
+              },
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "When set the scope to be fed, it will delete the fed level webhook. When set the scope to be local, it will delete the local webhook. If there is no query string 'scope', it will use 'local' as the default value."
+              }
+            ]
+          },
+          "docs": "Delete system webhook"
+        },
+        {
+          "info": {
+            "name": "System request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/system/request"
+          },
+          "docs": "System request"
+        },
+        {
+          "info": {
+            "name": "Get system score metrics data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/system/score/metrics"
+          },
+          "docs": "Get system score metrics data"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
