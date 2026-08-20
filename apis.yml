@@ -25,6 +25,14 @@ tags:
   - Compliance
   - Containers
   - Kubernetes
+  - Open-Source
+  - Runtime Protection
+  - Security
+  - Vulnerability Scanning
+tags_raw:
+  - Compliance
+  - Containers
+  - Kubernetes
   - Open Source
   - Runtime Protection
   - Security
@@ -61,6 +69,8 @@ apis:
   humanURL: https://open-docs.neuvector.com/
   baseURL: https://localhost:10443
   tags:
+  - APIKeys
+  tags_raw:
   - Apikey
   properties:
   - type: OpenAPI
@@ -126,7 +136,8 @@ apis:
     profile yaml file..
   humanURL: https://open-docs.neuvector.com/
   baseURL: https://localhost:10443
-  tags:
+  tags: []
+  tags_raw:
   - compliance profile. The payload body is the content of the compliance profile yaml file.
   properties:
   - type: OpenAPI
@@ -356,6 +367,8 @@ apis:
   humanURL: https://open-docs.neuvector.com/
   baseURL: https://localhost:10443
   tags:
+  - Hosts
+  tags_raw:
   - Host
   properties:
   - type: OpenAPI
@@ -436,6 +449,8 @@ apis:
   humanURL: https://open-docs.neuvector.com/
   baseURL: https://localhost:10443
   tags:
+  - Processes
+  tags_raw:
   - Process
   properties:
   - type: OpenAPI
@@ -517,6 +532,8 @@ apis:
   humanURL: https://open-docs.neuvector.com/
   baseURL: https://localhost:10443
   tags:
+  - Scans
+  tags_raw:
   - Scan
   properties:
   - type: OpenAPI
