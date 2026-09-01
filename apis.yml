@@ -80,7 +80,7 @@ apis:
   humanURL: https://open-docs.neuvector.com/
   baseURL: https://localhost:10443
   tags:
-  - Apikey
+  - APIKeys
   tags_raw:
   - Apikey
   properties:
