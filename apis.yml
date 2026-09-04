@@ -29,6 +29,7 @@ accessModel:
   confidence: medium
   source:
   - plans
+  - {url: 'https://neuvector.com/', status: 301, note: 'declared website redirects to https://www.suse.com/products/rancher/security/ — a different registrable domain (neuvector.com -> suse.com), possible rename or acquisition (probed 2026-09-03, roadmap#169)'}
   generated: '2026-07-22'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/neuvector.png
@@ -700,6 +701,9 @@ apis:
   - type: Source Code
     url: https://github.com/neuvector/neuvector
 common:
+  - type: CapabilityMap
+    url: capabilities/neuvector-capability-edges.yml
+    name: NeuVector Business Capability Map
   - type: DomainSecurity
     url: security/neuvector-domain-security.yml
   - type: LinkedIn
