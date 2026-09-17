@@ -75,28 +75,6 @@ apis:
     url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
   - type: Source Code
     url: https://github.com/neuvector/neuvector
-- aid: neuvector:neuvector-apikey-api
-  name: NeuVector Apikey API
-  description: The Apikey API from NeuVector — 2 operation(s) for apikey.
-  humanURL: https://open-docs.neuvector.com/
-  baseURL: https://localhost:10443
-  tags:
-  - APIKeys
-  tags_raw:
-  - Apikey
-  properties:
-  - type: OpenAPI
-    url: openapi/neuvector-apikey-api-openapi.yml
-  - type: Documentation
-    url: https://open-docs.neuvector.com/
-  - type: GettingStarted
-    url: https://open-docs.neuvector.com/deploying
-  - type: APIReference
-    url: https://open-docs.neuvector.com/automation/automation
-  - type: Source OpenAPI
-    url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
-  - type: Source Code
-    url: https://github.com/neuvector/neuvector
 - aid: neuvector:neuvector-authentication-api
   name: NeuVector Authentication API
   description: Authenticates login or logout
@@ -690,6 +668,26 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/neuvector-waf-rule-api-openapi.yml
+  - type: Documentation
+    url: https://open-docs.neuvector.com/
+  - type: GettingStarted
+    url: https://open-docs.neuvector.com/deploying
+  - type: APIReference
+    url: https://open-docs.neuvector.com/automation/automation
+  - type: Source OpenAPI
+    url: https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml
+  - type: Source Code
+    url: https://github.com/neuvector/neuvector
+- aid: neuvector:neuvector-api-key-api
+  name: NeuVector API Key API
+  description: The API Key API from NeuVector — 2 operation(s) for api key.
+  humanURL: https://open-docs.neuvector.com/
+  baseURL: https://localhost:10443
+  tags:
+  - API Key
+  properties:
+  - type: OpenAPI
+    url: openapi/neuvector-api-key-api-openapi.yml
   - type: Documentation
     url: https://open-docs.neuvector.com/
   - type: GettingStarted
