@@ -177,6 +177,8 @@ apis:
   humanURL: https://open-docs.neuvector.com/
   baseURL: https://localhost:10443
   tags:
+  - Containers
+  tags_raw:
   - Container
   properties:
   - type: OpenAPI
@@ -544,6 +546,8 @@ apis:
   humanURL: https://open-docs.neuvector.com/
   baseURL: https://localhost:10443
   tags:
+  - Servers
+  tags_raw:
   - Server
   properties:
   - type: OpenAPI
@@ -564,6 +568,8 @@ apis:
   humanURL: https://open-docs.neuvector.com/
   baseURL: https://localhost:10443
   tags:
+  - Services
+  tags_raw:
   - Service
   properties:
   - type: OpenAPI
@@ -684,6 +690,8 @@ apis:
   humanURL: https://open-docs.neuvector.com/
   baseURL: https://localhost:10443
   tags:
+  - APIKeys
+  tags_raw:
   - API Key
   properties:
   - type: OpenAPI
