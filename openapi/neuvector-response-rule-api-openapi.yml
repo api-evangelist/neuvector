@@ -1,4 +1,4 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
   description: Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.
   version: 5.6.0
@@ -8,8 +8,6 @@ info:
   title: NeuVector Response Rule API
   contact:
     email: support@neuvector.com
-schemes:
-- https
 tags:
 - name: Response Rule
   description: Operations about Response Rule
@@ -22,22 +20,25 @@ paths:
       security:
       - ApiKeyAuth: []
       - TokenAuth: []
-      produces:
-      - application/json
       parameters:
       - in: query
         name: scope
-        type: string
         required: false
-        enum:
-        - fed
-        - local
         description: When set to fed, returned fed response rules. When set to local, returned local response rules. If there is no query string 'scope', all response rules will be returned.
+        schema:
+          type: string
+          enum:
+          - fed
+          - local
       responses:
         '200':
           description: Success
-          schema:
-            $ref: '#/definitions/RESTResponseRulesData'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RESTResponseRulesData'
+      operationId: getV1ResponseRule
+      x-operation-id-source: derived
     patch:
       tags:
       - Response Rule
@@ -45,18 +46,18 @@ paths:
       security:
       - ApiKeyAuth: []
       - TokenAuth: []
-      consumes:
-      - application/json
-      parameters:
-      - in: body
-        name: body
-        description: Response rule action data
-        required: true
-        schema:
-          $ref: '#/definitions/RESTResponseRuleActionData'
       responses:
         '200':
           description: Success
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RESTResponseRuleActionData'
+        description: Response rule action data
+        required: true
+      operationId: patchV1ResponseRule
+      x-operation-id-source: derived
     delete:
       tags:
       - Response Rule
@@ -67,15 +68,18 @@ paths:
       parameters:
       - in: query
         name: scope
-        type: string
         required: false
-        enum:
-        - fed
-        - local
         description: When set to fed, all fed response rules get removed. When set to local or no query string, local response rules will be removed.
+        schema:
+          type: string
+          enum:
+          - fed
+          - local
       responses:
         '200':
           description: Success
+      operationId: deleteV1ResponseRule
+      x-operation-id-source: derived
   /v1/response/rule/{id}:
     get:
       tags:
@@ -84,19 +88,22 @@ paths:
       security:
       - ApiKeyAuth: []
       - TokenAuth: []
-      produces:
-      - application/json
       parameters:
       - in: path
         name: id
         description: Rule ID
         required: true
-        type: string
+        schema:
+          type: string
       responses:
         '200':
           description: Success
-          schema:
-            $ref: '#/definitions/RESTResponseRuleData'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RESTResponseRuleData'
+      operationId: getV1ResponseRuleById
+      x-operation-id-source: derived
     patch:
       tags:
       - Response Rule
@@ -104,23 +111,25 @@ paths:
       security:
       - ApiKeyAuth: []
       - TokenAuth: []
-      consumes:
-      - application/json
       parameters:
       - in: path
         name: id
         description: Rule ID
         required: true
-        type: string
-      - in: body
-        name: body
-        description: Response rule data
-        required: true
         schema:
-          $ref: '#/definitions/RESTResponseRuleConfigData'
+          type: string
       responses:
         '200':
           description: Success
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RESTResponseRuleConfigData'
+        description: Response rule data
+        required: true
+      operationId: patchV1ResponseRuleById
+      x-operation-id-source: derived
     delete:
       tags:
       - Response Rule
@@ -133,10 +142,13 @@ paths:
         name: id
         description: Rule ID
         required: true
-        type: string
+        schema:
+          type: string
       responses:
         '200':
           description: Success
+      operationId: deleteV1ResponseRuleById
+      x-operation-id-source: derived
   /v1/response/workload_rules/{id}:
     get:
       tags:
@@ -145,169 +157,173 @@ paths:
       security:
       - ApiKeyAuth: []
       - TokenAuth: []
-      produces:
-      - application/json
       parameters:
       - in: path
         name: id
         description: Workload rules ID
         required: true
-        type: string
+        schema:
+          type: string
       responses:
         '200':
           description: Success
-          schema:
-            $ref: '#/definitions/RESTResponseRulesData'
-definitions:
-  RESTResponseRulesData:
-    type: object
-    required:
-    - rules
-    properties:
-      rules:
-        type: array
-        items:
-          $ref: '#/definitions/RESTResponseRule'
-  RESTResponseRuleData:
-    type: object
-    required:
-    - rule
-    properties:
-      rule:
-        $ref: '#/definitions/RESTResponseRule'
-  RESTCLUSEventCondition:
-    type: object
-    properties:
-      type:
-        type: string
-        example: ''
-      value:
-        type: string
-        example: ''
-  RESTResponseRule:
-    type: object
-    required:
-    - id
-    - event
-    - comment
-    - group
-    - conditions
-    - actions
-    - webhooks
-    - disable
-    - cfg_type
-    properties:
-      id:
-        type: integer
-        format: uint32
-        example: 1001
-      event:
-        type: string
-        example: ''
-      comment:
-        type: string
-        example: ''
-      group:
-        type: string
-        example: ''
-      conditions:
-        type: array
-        items:
-          $ref: '#/definitions/RESTCLUSEventCondition'
-      actions:
-        type: array
-        items:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RESTResponseRulesData'
+      operationId: getV1ResponseWorkloadRulesById
+      x-operation-id-source: derived
+components:
+  schemas:
+    RESTResponseRuleConfigData:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          $ref: '#/components/schemas/RESTResponseRuleConfig'
+    RESTCLUSEventCondition:
+      type: object
+      properties:
+        type:
           type: string
           example: ''
-      webhooks:
-        type: array
-        items:
+        value:
           type: string
           example: ''
-      disable:
-        type: boolean
-        example: false
-      cfg_type:
-        type: string
-        enum:
-        - user_created
-        - ground
-        - federal
-  RESTResponseRuleConfigData:
-    type: object
-    required:
-    - config
-    properties:
-      config:
-        $ref: '#/definitions/RESTResponseRuleConfig'
-  RESTResponseRuleConfig:
-    type: object
-    required:
-    - id
-    - cfg_type
-    properties:
-      id:
-        type: integer
-        format: uint32
-        example: 1001
-      comment:
-        type: string
-        example: ''
-      group:
-        type: string
-        example: ''
-      event:
-        type: string
-        example: ''
-      conditions:
-        type: array
-        items:
-          $ref: '#/definitions/RESTCLUSEventCondition'
-      actions:
-        type: array
-        items:
+    RESTResponseRuleData:
+      type: object
+      required:
+      - rule
+      properties:
+        rule:
+          $ref: '#/components/schemas/RESTResponseRule'
+    RESTResponseRuleActionData:
+      type: object
+      properties:
+        insert:
+          $ref: '#/components/schemas/RESTResponseRuleInsert'
+    RESTResponseRule:
+      type: object
+      required:
+      - id
+      - event
+      - comment
+      - group
+      - conditions
+      - actions
+      - webhooks
+      - disable
+      - cfg_type
+      properties:
+        id:
+          type: integer
+          format: uint32
+          example: 1001
+        event:
           type: string
           example: ''
-      webhooks:
-        type: array
-        items:
+        comment:
           type: string
           example: ''
-      disable:
-        type: boolean
-        example: false
-      cfg_type:
-        type: string
-        enum:
-        - user_created
-        - ground
-        - federal
-  RESTResponseRuleInsert:
-    type: object
-    required:
-    - rules
-    properties:
-      after:
-        type: integer
-        example: 0
-      rules:
-        type: array
-        items:
-          $ref: '#/definitions/RESTResponseRule'
-  RESTResponseRuleActionData:
-    type: object
-    properties:
-      insert:
-        $ref: '#/definitions/RESTResponseRuleInsert'
-securityDefinitions:
-  ApiKeyAuth:
-    type: apiKey
-    in: header
-    name: X-Auth-Apikey
-  TokenAuth:
-    type: apiKey
-    in: header
-    name: X-Auth-Token
+        group:
+          type: string
+          example: ''
+        conditions:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTCLUSEventCondition'
+        actions:
+          type: array
+          items:
+            type: string
+            example: ''
+        webhooks:
+          type: array
+          items:
+            type: string
+            example: ''
+        disable:
+          type: boolean
+          example: false
+        cfg_type:
+          type: string
+          enum:
+          - user_created
+          - ground
+          - federal
+    RESTResponseRuleInsert:
+      type: object
+      required:
+      - rules
+      properties:
+        after:
+          type: integer
+          example: 0
+        rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTResponseRule'
+    RESTResponseRuleConfig:
+      type: object
+      required:
+      - id
+      - cfg_type
+      properties:
+        id:
+          type: integer
+          format: uint32
+          example: 1001
+        comment:
+          type: string
+          example: ''
+        group:
+          type: string
+          example: ''
+        event:
+          type: string
+          example: ''
+        conditions:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTCLUSEventCondition'
+        actions:
+          type: array
+          items:
+            type: string
+            example: ''
+        webhooks:
+          type: array
+          items:
+            type: string
+            example: ''
+        disable:
+          type: boolean
+          example: false
+        cfg_type:
+          type: string
+          enum:
+          - user_created
+          - ground
+          - federal
+    RESTResponseRulesData:
+      type: object
+      required:
+      - rules
+      properties:
+        rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTResponseRule'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Auth-Apikey
+    TokenAuth:
+      type: apiKey
+      in: header
+      name: X-Auth-Token
 externalDocs:
   description: Find out more about NeuVector
   url: https://www.suse.com/products/neuvector/

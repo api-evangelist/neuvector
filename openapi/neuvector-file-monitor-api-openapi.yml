@@ -1,4 +1,4 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
   description: Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.
   version: 5.6.0
@@ -8,8 +8,6 @@ info:
   title: NeuVector File Monitor API
   contact:
     email: support@neuvector.com
-schemes:
-- https
 tags:
 - name: File Monitor
   description: Operations about File Monitor
@@ -22,22 +20,25 @@ paths:
       security:
       - ApiKeyAuth: []
       - TokenAuth: []
-      produces:
-      - application/json
       parameters:
       - in: query
         name: scope
-        type: string
         required: false
-        enum:
-        - fed
-        - local
         description: When set to fed, returned fed file monitor list. When set to local, returned local file monitor list. If there is no query string 'scope', all file monitor list will be returned.
+        schema:
+          type: string
+          enum:
+          - fed
+          - local
       responses:
         '200':
           description: Success
-          schema:
-            $ref: '#/definitions/RESTFileMonitorFileData'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RESTFileMonitorFileData'
+      operationId: getV1FileMonitor
+      x-operation-id-source: derived
   /v1/file_monitor/{name}:
     get:
       tags:
@@ -46,19 +47,22 @@ paths:
       security:
       - ApiKeyAuth: []
       - TokenAuth: []
-      produces:
-      - application/json
       parameters:
       - in: path
         name: name
         description: File monitor name
         required: true
-        type: string
+        schema:
+          type: string
       responses:
         '200':
           description: Success
-          schema:
-            $ref: '#/definitions/RESTFileMonitorFile'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RESTFileMonitorFile'
+      operationId: getV1FileMonitorByName
+      x-operation-id-source: derived
     patch:
       tags:
       - File Monitor
@@ -66,118 +70,121 @@ paths:
       security:
       - ApiKeyAuth: []
       - TokenAuth: []
-      consumes:
-      - application/json
       parameters:
       - in: path
         name: name
         description: File monitor name
         required: true
-        type: string
-      - in: body
-        name: body
-        description: File monitor update data
-        required: true
         schema:
-          $ref: '#/definitions/RESTFileMonitorConfigData'
+          type: string
       responses:
         '200':
           description: Success
-definitions:
-  RESTFileMonitorFileData:
-    type: object
-    required:
-    - files
-    properties:
-      files:
-        type: array
-        items:
-          $ref: '#/definitions/RESTFileMonitorFile'
-  RESTFileMonitorFile:
-    type: object
-    required:
-    - path
-    - mask
-    - is_dir
-    - protect
-    - files
-    properties:
-      path:
-        type: string
-        example: ''
-      mask:
-        type: integer
-        format: uint64
-        example: 0
-      is_dir:
-        type: boolean
-        example: false
-      protect:
-        type: boolean
-        example: false
-      files:
-        type: array
-        items:
-          type: string
-        example:
-        - ''
-  RESTFileMonitorConfigData:
-    type: object
-    required:
-    - config
-    properties:
-      config:
-        $ref: '#/definitions/RESTFileMonitorConfig'
-  RESTFileMonitorConfig:
-    type: object
-    properties:
-      add_filters:
-        type: array
-        items:
-          $ref: '#/definitions/RESTFileMonitorFilterConfig'
-      delete_filters:
-        type: array
-        items:
-          $ref: '#/definitions/RESTFileMonitorFilterConfig'
-      update_filters:
-        type: array
-        items:
-          $ref: '#/definitions/RESTFileMonitorFilterConfig'
-  RESTFileMonitorFilterConfig:
-    type: object
-    required:
-    - filter
-    - recursive
-    - behavior
-    - applications
-    - group
-    properties:
-      filter:
-        type: string
-        example: ''
-      recursive:
-        type: boolean
-        example: false
-      behavior:
-        type: string
-        example: ''
-      applications:
-        type: array
-        items:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RESTFileMonitorConfigData'
+        description: File monitor update data
+        required: true
+      operationId: patchV1FileMonitorByName
+      x-operation-id-source: derived
+components:
+  schemas:
+    RESTFileMonitorFileData:
+      type: object
+      required:
+      - files
+      properties:
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTFileMonitorFile'
+    RESTFileMonitorConfig:
+      type: object
+      properties:
+        add_filters:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTFileMonitorFilterConfig'
+        delete_filters:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTFileMonitorFilterConfig'
+        update_filters:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTFileMonitorFilterConfig'
+    RESTFileMonitorFile:
+      type: object
+      required:
+      - path
+      - mask
+      - is_dir
+      - protect
+      - files
+      properties:
+        path:
           type: string
           example: ''
-      group:
-        type: string
-        example: ''
-securityDefinitions:
-  ApiKeyAuth:
-    type: apiKey
-    in: header
-    name: X-Auth-Apikey
-  TokenAuth:
-    type: apiKey
-    in: header
-    name: X-Auth-Token
+        mask:
+          type: integer
+          format: uint64
+          example: 0
+        is_dir:
+          type: boolean
+          example: false
+        protect:
+          type: boolean
+          example: false
+        files:
+          type: array
+          items:
+            type: string
+          example:
+          - ''
+    RESTFileMonitorConfigData:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          $ref: '#/components/schemas/RESTFileMonitorConfig'
+    RESTFileMonitorFilterConfig:
+      type: object
+      required:
+      - filter
+      - recursive
+      - behavior
+      - applications
+      - group
+      properties:
+        filter:
+          type: string
+          example: ''
+        recursive:
+          type: boolean
+          example: false
+        behavior:
+          type: string
+          example: ''
+        applications:
+          type: array
+          items:
+            type: string
+            example: ''
+        group:
+          type: string
+          example: ''
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Auth-Apikey
+    TokenAuth:
+      type: apiKey
+      in: header
+      name: X-Auth-Token
 externalDocs:
   description: Find out more about NeuVector
   url: https://www.suse.com/products/neuvector/

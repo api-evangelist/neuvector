@@ -1,0 +1,248 @@
+openapi: 3.2.0
+info:
+  description: Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.
+  version: 5.6.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  title: NeuVector Apikey API
+  contact:
+    email: support@neuvector.com
+tags:
+- name: API Key
+paths:
+  /v1/api_key:
+    get:
+      tags:
+      - API Key
+      summary: Gets a list of apikeys
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RESTApikeysData'
+      operationId: getV1ApiKey
+      x-operation-id-source: derived
+    post:
+      tags:
+      - API Key
+      summary: Creates an apikey
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RESTApikeyGeneratedData'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RESTApikeyCreationData'
+        description: Apikey information
+        required: true
+      operationId: postV1ApiKey
+      x-operation-id-source: derived
+  /v1/api_key/{accesskey}:
+    get:
+      tags:
+      - API Key
+      summary: Gets an apikey
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      parameters:
+      - in: path
+        name: accesskey
+        description: Apikey access key
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RESTApikeyData'
+      operationId: getV1ApiKeyByAccesskey
+      x-operation-id-source: derived
+    delete:
+      tags:
+      - API Key
+      summary: Delete apikey
+      security:
+      - ApiKeyAuth: []
+      - TokenAuth: []
+      parameters:
+      - in: path
+        name: accesskey
+        description: Apikey access key
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+      operationId: deleteV1ApiKeyByAccesskey
+      x-operation-id-source: derived
+components:
+  schemas:
+    RESTApikey:
+      type: object
+      required:
+      - expiration_type
+      - apikey_name
+      - role
+      properties:
+        expiration_type:
+          type: string
+          example: never
+        expiration_hours:
+          type: integer
+          format: uint32
+          example: 1
+        apikey_name:
+          type: string
+          example: token-cicd-scan
+        apikey_secret:
+          type: string
+          example: 0u+tVOWNPRfpCK7p9qz
+        description:
+          type: string
+          example: cicd image scanning
+        role:
+          type: string
+          example: admin
+        role_domains:
+          type: object
+          description: Object key is role and value is array of domains
+          additionalProperties:
+            type: array
+            items:
+              type: string
+            example:
+            - domain1
+            - domain2
+        expiration_timestamp:
+          type: integer
+          format: int64
+          example: 11515020888
+        created_timestamp:
+          type: integer
+          format: int64
+          example: 11515020888
+        created_by_entity:
+          type: string
+          example: admin
+    RESTApikeyCreationData:
+      type: object
+      required:
+      - apikey
+      properties:
+        apikey:
+          $ref: '#/components/schemas/RESTApikeyCreation'
+    RESTApikeyGeneratedData:
+      type: object
+      required:
+      - apikey
+      properties:
+        apikey:
+          $ref: '#/components/schemas/RESTApikeyGenerated'
+    RESTApikeyCreation:
+      type: object
+      required:
+      - expiration_type
+      - apikey_name
+      - role
+      properties:
+        expiration_type:
+          type: string
+          example: never
+        expiration_hours:
+          type: integer
+          format: uint32
+          example: 1
+        apikey_name:
+          type: string
+          example: token-cicd-scan
+        description:
+          type: string
+          example: cicd image scanning
+        role:
+          type: string
+          example: admin
+        role_domains:
+          type: object
+          description: Object key is role and value is array of domains
+          additionalProperties:
+            type: array
+            items:
+              type: string
+            example:
+            - domain1
+            - domain2
+    RESTApikeyGenerated:
+      type: object
+      required:
+      - apikey_name
+      - apikey_secret
+      properties:
+        apikey_name:
+          type: string
+          example: token-cicd-scan
+        apikey_secret:
+          type: string
+          example: 0u+tVOWNPRfpCK7p9qz
+    RESTApikeysData:
+      type: object
+      required:
+      - apikeys
+      - global_roles
+      - domain_roles
+      properties:
+        apikeys:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTApikey'
+        global_roles:
+          type: array
+          items:
+            type: string
+          example:
+          - admin
+          - reader
+        domain_roles:
+          type: array
+          items:
+            type: string
+          example:
+          - role1
+          - role2
+    RESTApikeyData:
+      type: object
+      required:
+      - apikey
+      properties:
+        apikey:
+          $ref: '#/components/schemas/RESTApikey'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Auth-Apikey
+    TokenAuth:
+      type: apiKey
+      in: header
+      name: X-Auth-Token
+externalDocs:
+  description: Find out more about NeuVector
+  url: https://www.suse.com/products/neuvector/

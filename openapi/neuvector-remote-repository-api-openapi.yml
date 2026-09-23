@@ -1,4 +1,4 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
   description: Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.
   version: 5.6.0
@@ -8,8 +8,6 @@ info:
   title: NeuVector Remote Repository API
   contact:
     email: support@neuvector.com
-schemes:
-- https
 tags:
 - name: Remote Repository
 paths:
@@ -17,149 +15,152 @@ paths:
     post:
       tags:
       - Remote Repository
-      summary: Create a remote repository.
+      summary: Create a remote repository
       security:
       - ApiKeyAuth: []
       - TokenAuth: []
-      consumes:
-      - application/json
-      parameters:
-      - in: body
-        name: body
-        description: Initial Configuration
-        required: true
-        schema:
-          $ref: '#/definitions/RESTRemoteRepository'
       responses:
         '200':
           description: Created the remote repository.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RESTRemoteRepository'
+        description: Initial Configuration
+        required: true
+      operationId: postV1SystemConfigRemoteRepository
+      x-operation-id-source: derived
   /v1/system/config/remote_repository/{alias}:
     patch:
       tags:
       - Remote Repository
-      summary: Update a remote repository.
+      summary: Update a remote repository
       security:
       - ApiKeyAuth: []
       - TokenAuth: []
-      consumes:
-      - application/json
       parameters:
       - in: path
         name: alias
         description: The alias of the remote repository to update.
         required: true
-        type: string
-      - in: body
-        name: body
-        description: Configuration fields to update
-        required: true
         schema:
-          $ref: '#/definitions/RESTRemoteRepositoryConfigData'
+          type: string
       responses:
         '200':
           description: Updated the remote repository.
-definitions:
-  RESTRemoteRepository_GitHubConfigConfig:
-    type: object
-    properties:
-      repository_owner_username:
-        type: string
-        example: myuser
-      repository_name:
-        type: string
-        example: myrepo
-      repository_branch_name:
-        type: string
-        example: main
-      personal_access_token:
-        type: string
-        example: <access token from GitHub>
-      personal_access_token_committer_name:
-        type: string
-        example: myuser
-      personal_access_token_committer_email:
-        type: string
-        example: myuser@example.com
-  RESTRemoteRepositoryConfigData:
-    type: object
-    required:
-    - config
-    properties:
-      config:
-        $ref: '#/definitions/RESTRemoteRepositoryConfig'
-  RESTRemoteRepo_GitHubConfig:
-    type: object
-    required:
-    - repository_owner_username
-    - repository_name
-    - repository_branch_name
-    - personal_access_token
-    - personal_access_token_committer_name
-    - personal_access_token_committer_email
-    properties:
-      repository_owner_username:
-        type: string
-        example: myuser
-      repository_name:
-        type: string
-        example: myrepo
-      repository_branch_name:
-        type: string
-        example: main
-      personal_access_token:
-        type: string
-        example: <access token from GitHub>
-      personal_access_token_committer_name:
-        type: string
-        example: myuser
-      personal_access_token_committer_email:
-        type: string
-        example: myuser@example.com
-  RESTRemoteRepositoryConfig:
-    type: object
-    required:
-    - nickname
-    properties:
-      nickname:
-        type: string
-        example: default
-      comment:
-        type: string
-      enable:
-        type: boolean
-        example: true
-      github_configuration:
-        $ref: '#/definitions/RESTRemoteRepository_GitHubConfigConfig'
-  RESTRemoteRepository:
-    type: object
-    required:
-    - nickname
-    - provider
-    - github_configuration
-    properties:
-      nickname:
-        type: string
-        example: default
-      provider:
-        type: string
-        description: currently only github is supported
-        example: github
-      comment:
-        type: string
-      enable:
-        type: boolean
-        example: true
-      github_configuration:
-        $ref: '#/definitions/RESTRemoteRepo_GitHubConfig'
-securityDefinitions:
-  ApiKeyAuth:
-    type: apiKey
-    in: header
-    name: X-Auth-Apikey
-  TokenAuth:
-    type: apiKey
-    in: header
-    name: X-Auth-Token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RESTRemoteRepositoryConfigData'
+        description: Configuration fields to update
+        required: true
+      operationId: patchV1SystemConfigRemoteRepositoryByAlias
+      x-operation-id-source: derived
+components:
+  schemas:
+    RESTRemoteRepository:
+      type: object
+      required:
+      - nickname
+      - provider
+      - github_configuration
+      properties:
+        nickname:
+          type: string
+          example: default
+        provider:
+          type: string
+          description: currently only github is supported
+          example: github
+        comment:
+          type: string
+        enable:
+          type: boolean
+          example: true
+        github_configuration:
+          $ref: '#/components/schemas/RESTRemoteRepo_GitHubConfig'
+    RESTRemoteRepo_GitHubConfig:
+      type: object
+      required:
+      - repository_owner_username
+      - repository_name
+      - repository_branch_name
+      - personal_access_token
+      - personal_access_token_committer_name
+      - personal_access_token_committer_email
+      properties:
+        repository_owner_username:
+          type: string
+          example: myuser
+        repository_name:
+          type: string
+          example: myrepo
+        repository_branch_name:
+          type: string
+          example: main
+        personal_access_token:
+          type: string
+          example: <access token from GitHub>
+        personal_access_token_committer_name:
+          type: string
+          example: myuser
+        personal_access_token_committer_email:
+          type: string
+          example: myuser@example.com
+    RESTRemoteRepositoryConfig:
+      type: object
+      required:
+      - nickname
+      properties:
+        nickname:
+          type: string
+          example: default
+        comment:
+          type: string
+        enable:
+          type: boolean
+          example: true
+        github_configuration:
+          $ref: '#/components/schemas/RESTRemoteRepository_GitHubConfigConfig'
+    RESTRemoteRepositoryConfigData:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          $ref: '#/components/schemas/RESTRemoteRepositoryConfig'
+    RESTRemoteRepository_GitHubConfigConfig:
+      type: object
+      properties:
+        repository_owner_username:
+          type: string
+          example: myuser
+        repository_name:
+          type: string
+          example: myrepo
+        repository_branch_name:
+          type: string
+          example: main
+        personal_access_token:
+          type: string
+          example: <access token from GitHub>
+        personal_access_token_committer_name:
+          type: string
+          example: myuser
+        personal_access_token_committer_email:
+          type: string
+          example: myuser@example.com
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Auth-Apikey
+    TokenAuth:
+      type: apiKey
+      in: header
+      name: X-Auth-Token
 externalDocs:
   description: Find out more about NeuVector
   url: https://www.suse.com/products/neuvector/

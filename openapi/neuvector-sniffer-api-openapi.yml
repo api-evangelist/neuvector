@@ -1,4 +1,4 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
   description: Secure Docker and Kubernetes based container deployments with the NeuVector run-time security solution.
   version: 5.6.0
@@ -8,8 +8,6 @@ info:
   title: NeuVector Sniffer API
   contact:
     email: support@neuvector.com
-schemes:
-- https
 tags:
 - name: Sniffer
   description: Operations about Sniffer
@@ -22,19 +20,22 @@ paths:
       security:
       - ApiKeyAuth: []
       - TokenAuth: []
-      produces:
-      - application/json
       parameters:
       - in: query
         name: f_workload
         required: true
-        type: string
         description: Workload ID
+        schema:
+          type: string
       responses:
         '200':
           description: Success
-          schema:
-            $ref: '#/definitions/RESTSniffersData'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RESTSniffersData'
+      operationId: getV1Sniffer
+      x-operation-id-source: derived
     post:
       tags:
       - Sniffer
@@ -42,23 +43,25 @@ paths:
       security:
       - ApiKeyAuth: []
       - TokenAuth: []
-      consumes:
-      - application/json
       parameters:
       - in: query
         name: f_workload
         required: true
-        type: string
         description: Workload ID
-      - in: body
-        name: body
-        description: Sniffer args data
-        required: true
         schema:
-          $ref: '#/definitions/RESTSnifferArgsData'
+          type: string
       responses:
         '200':
           description: Success
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RESTSnifferArgsData'
+        description: Sniffer args data
+        required: true
+      operationId: postV1Sniffer
+      x-operation-id-source: derived
   /v1/sniffer/{id}:
     get:
       tags:
@@ -67,19 +70,22 @@ paths:
       security:
       - ApiKeyAuth: []
       - TokenAuth: []
-      produces:
-      - application/json
       parameters:
       - in: path
         name: id
         description: Sniffer ID
         required: true
-        type: string
+        schema:
+          type: string
       responses:
         '200':
           description: Success
-          schema:
-            $ref: '#/definitions/RESTSnifferData'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RESTSnifferData'
+      operationId: getV1SnifferById
+      x-operation-id-source: derived
     delete:
       tags:
       - Sniffer
@@ -92,10 +98,13 @@ paths:
         name: id
         description: Sniffer ID
         required: true
-        type: string
+        schema:
+          type: string
       responses:
         '200':
           description: Success
+      operationId: deleteV1SnifferById
+      x-operation-id-source: derived
   /v1/sniffer/stop/{id}:
     patch:
       tags:
@@ -109,10 +118,13 @@ paths:
         name: id
         description: Sniffer ID
         required: true
-        type: string
+        schema:
+          type: string
       responses:
         '200':
           description: Success
+      operationId: patchV1SnifferStopById
+      x-operation-id-source: derived
   /v1/sniffer/{id}/pcap:
     get:
       tags:
@@ -126,101 +138,105 @@ paths:
         name: id
         description: Sniffer ID
         required: true
-        type: string
+        schema:
+          type: string
       responses:
         '200':
           description: Success. Get pcap file.
-definitions:
-  RESTSnifferInfo:
-    type: object
-    required:
-    - id
-    - enforcer_id
-    - container_id
-    - file_number
-    - size
-    - status
-    - args
-    - start_time
-    - stop_time
-    properties:
-      id:
-        type: string
-        example: e272b888bbb0765d3c172ab8477b78b
-      enforcer_id:
-        type: string
-        example: 479e272bb78b8bbb0765156c9c6cda7b8941692fc
-      container_id:
-        type: string
-        example: 79e82a60d019dba04e8993534c99d1c5b6286247f58
-      file_number:
-        type: integer
-        format: uint32
-        example: 1
-      size:
-        type: integer
-        format: int64
-        example: 60273
-      status:
-        type: string
-        example: running
-      args:
-        type: string
-        example: -C 10 -w /var/cm/pcap/3ccad_ -W 10 ether host 6f:61:35:50:10:0c
-      start_time:
-        type: integer
-        format: int64
-        example: 1509410381
-      stop_time:
-        type: integer
-        format: int64
-        example: 1509432360
-  RESTSniffersData:
-    type: object
-    required:
-    - sniffers
-    properties:
-      sniffers:
-        type: array
-        items:
-          $ref: '#/definitions/RESTSnifferInfo'
-  RESTSnifferData:
-    type: object
-    required:
-    - sniffer
-    properties:
-      sniffer:
-        $ref: '#/definitions/RESTSnifferInfo'
-  RESTSnifferArgs:
-    type: object
-    properties:
-      file_number:
-        type: integer
-        format: uint32
-        example: 50
-      duration:
-        type: integer
-        format: uint32
-        example: 50
-      filter:
-        type: string
-        example: \ port\ 1381
-  RESTSnifferArgsData:
-    type: object
-    required:
-    - sniffer
-    properties:
-      sniffer:
-        $ref: '#/definitions/RESTSnifferArgs'
-securityDefinitions:
-  ApiKeyAuth:
-    type: apiKey
-    in: header
-    name: X-Auth-Apikey
-  TokenAuth:
-    type: apiKey
-    in: header
-    name: X-Auth-Token
+      operationId: getV1SnifferByIdPcap
+      x-operation-id-source: derived
+components:
+  schemas:
+    RESTSnifferData:
+      type: object
+      required:
+      - sniffer
+      properties:
+        sniffer:
+          $ref: '#/components/schemas/RESTSnifferInfo'
+    RESTSniffersData:
+      type: object
+      required:
+      - sniffers
+      properties:
+        sniffers:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTSnifferInfo'
+    RESTSnifferInfo:
+      type: object
+      required:
+      - id
+      - enforcer_id
+      - container_id
+      - file_number
+      - size
+      - status
+      - args
+      - start_time
+      - stop_time
+      properties:
+        id:
+          type: string
+          example: e272b888bbb0765d3c172ab8477b78b
+        enforcer_id:
+          type: string
+          example: 479e272bb78b8bbb0765156c9c6cda7b8941692fc
+        container_id:
+          type: string
+          example: 79e82a60d019dba04e8993534c99d1c5b6286247f58
+        file_number:
+          type: integer
+          format: uint32
+          example: 1
+        size:
+          type: integer
+          format: int64
+          example: 60273
+        status:
+          type: string
+          example: running
+        args:
+          type: string
+          example: -C 10 -w /var/cm/pcap/3ccad_ -W 10 ether host 6f:61:35:50:10:0c
+        start_time:
+          type: integer
+          format: int64
+          example: 1509410381
+        stop_time:
+          type: integer
+          format: int64
+          example: 1509432360
+    RESTSnifferArgsData:
+      type: object
+      required:
+      - sniffer
+      properties:
+        sniffer:
+          $ref: '#/components/schemas/RESTSnifferArgs'
+    RESTSnifferArgs:
+      type: object
+      properties:
+        file_number:
+          type: integer
+          format: uint32
+          example: 50
+        duration:
+          type: integer
+          format: uint32
+          example: 50
+        filter:
+          type: string
+          example: \ port\ 1381
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Auth-Apikey
+    TokenAuth:
+      type: apiKey
+      in: header
+      name: X-Auth-Token
 externalDocs:
   description: Find out more about NeuVector
   url: https://www.suse.com/products/neuvector/

@@ -1,7 +1,7 @@
 {
   "provider": "neuvector",
   "sources": [
-    "neuvector-openapi-original.yaml"
+    "_original/neuvector-openapi-original.yaml"
   ],
   "outputs": [
     "neuvector-admission-api-openapi.yml",
@@ -37,16 +37,52 @@
     "neuvector-compliance-profile-the-payload-body-is-the-content-of-the-vulnerability-profile-yaml-file-api-openapi.yml"
   ],
   "archived": [
-    "archived openapi/neuvector-openapi-original.yaml"
+    "deleted 1 superseded output(s) from the previous generation"
   ],
   "errors": [],
   "warnings": [],
   "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "neuvector-openapi-original.yaml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
     "neuvector-openapi-original.yaml: declared missing tag: Apikey",
     "neuvector-openapi-original.yaml: declared missing tag: Remote Export Repository",
     "neuvector-openapi-original.yaml: declared missing tag: Remote Repository",
     "neuvector-openapi-original.yaml: declared missing tag: compliance profile. The payload body is the content of the compliance profile yaml file.",
-    "neuvector-openapi-original.yaml: declared missing tag: compliance profile. The payload body is the content of the vulnerability profile yaml file."
+    "neuvector-openapi-original.yaml: declared missing tag: compliance profile. The payload body is the content of the vulnerability profile yaml file.",
+    "superseded outputs removed: neuvector-api-key-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 31 total)"
   ],
-  "skipped": []
+  "skipped": [
+    "neuvector-admission-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuvector-api-key-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuvector-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuvector-compliance-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuvector-compliance-profile-the-payload-body-is-the-content-of-the-compliance-profile-yaml-file-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuvector-compliance-profile-the-payload-body-is-the-content-of-the-vulnerability-profile-yaml-file-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuvector-container-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuvector-controller-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuvector-dlp-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuvector-enforcer-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuvector-eula-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuvector-federation-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuvector-file-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuvector-file-monitor-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuvector-group-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuvector-host-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuvector-log-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuvector-namespace-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuvector-policy-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuvector-process-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuvector-remote-export-repository-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuvector-remote-repository-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuvector-response-rule-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuvector-scan-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuvector-server-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuvector-service-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuvector-sniffer-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuvector-system-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuvector-user-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuvector-vulnerability-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuvector-waf-rule-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
