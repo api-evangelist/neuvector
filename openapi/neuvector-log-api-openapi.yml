@@ -174,163 +174,15 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    RESTIncidentsData:
+    RESTAuditsData:
       type: object
       required:
-      - incidents
+      - audits
       properties:
-        incidents:
+        audits:
           type: array
           items:
-            $ref: '#/components/schemas/Incident'
-    RESTThreatData:
-      type: object
-      required:
-      - threat
-      properties:
-        threat:
-          $ref: '#/components/schemas/Threat'
-    RESTEventsData:
-      type: object
-      required:
-      - events
-      properties:
-        events:
-          type: array
-          items:
-            $ref: '#/components/schemas/Event'
-    Violation:
-      type: object
-      required:
-      - level
-      - reported_timestamp
-      - reported_at
-      - cluster_name
-      - host_id
-      - host_name
-      - enforcer_id
-      - enforcer_name
-      - id
-      - client_id
-      - client_name
-      - server_id
-      - server_name
-      - server_port
-      - ip_proto
-      - applications
-      - servers
-      - sessions
-      - policy_action
-      - policy_id
-      - client_ip
-      - server_ip
-      - fqdn
-      properties:
-        name:
-          type: string
-          example: ''
-        level:
-          type: string
-          example: WARNING
-        reported_timestamp:
-          type: integer
-          format: int64
-          example: 1516160219
-        reported_at:
-          type: string
-          format: date-time
-          example: 2018-01-17 03:36:59+00:00
-        cluster_name:
-          type: string
-          example: cluster1
-        response_rule_id:
-          type: integer
-          example: 10008
-        host_id:
-          type: string
-          example: 2AU7:TIEN:O5KX:QK56:LFQP:IJSV:FXBN:QJV7
-        host_name:
-          type: string
-          example: ubuntu64
-        enforcer_id:
-          type: string
-          example: bced57295eefbd3f3bd0cf798b6184fa789
-        enforcer_name:
-          type: string
-          example: allinone
-        id:
-          type: string
-          example: e6e19591-75a0-43e9-bebb-145d588e6718
-        client_id:
-          type: string
-          example: 25f773945fff1d8880b9eb67d26be22f5321d
-        client_name:
-          type: string
-          example: iperfclient
-        client_domain:
-          type: string
-          example: ''
-        client_image:
-          type: string
-          example: ''
-        client_service:
-          type: string
-          example: ''
-        server_id:
-          type: string
-          example: 0350077d87164505597268494acbc8a25109e3
-        server_name:
-          type: string
-          example: iperfserver
-        server_domain:
-          type: string
-          example: ''
-        server_image:
-          type: string
-          example: ''
-        server_service:
-          type: string
-          example: ''
-        server_port:
-          type: integer
-          format: uint16
-          example: 5000
-        ip_proto:
-          type: integer
-          format: uint8
-          example: 6
-        applications:
-          type: array
-          items:
-            type: string
-            example: HTTP
-        servers:
-          type: array
-          items:
-            type: string
-          example:
-          - server1
-          - server2
-        sessions:
-          type: integer
-          format: uint32
-          example: 0
-        policy_action:
-          type: string
-          example: violate
-        policy_id:
-          type: integer
-          format: uint32
-          example: 9999
-        client_ip:
-          type: string
-          example: 172.17.0.4
-        server_ip:
-          type: string
-          example: 172.17.0.3
-        fqdn:
-          type: string
-          example: www.suse.com
+            $ref: '#/components/schemas/Audit'
     Threat:
       type: object
       required:
@@ -504,165 +356,13 @@ components:
         message:
           type: string
           example: Header duration=3s, threshold=3s
-    RESTScanBrief:
+    RESTThreatData:
       type: object
       required:
-      - status
-      - high
-      - medium
-      - result
-      - scanned_timestamp
-      - scanned_at
-      - base_os
-      - scanner_version
-      - cvedb_create_time
+      - threat
       properties:
-        status:
-          type: string
-          example: scheduled
-        high:
-          type: integer
-          example: 0
-        medium:
-          type: integer
-          example: 0
-        result:
-          type: string
-          example: success
-        scanned_timestamp:
-          type: integer
-          format: int64
-          example: 1516561253
-        scanned_at:
-          type: string
-          format: date-time
-          example: 2018-01-21 19:00:53+00:00
-        base_os:
-          type: string
-          example: ubuntu:16.04
-        scanner_version:
-          type: string
-          example: '1.011'
-        cvedb_create_time:
-          type: string
-          format: date-time
-          example: 2018-06-20 19:00:53+00:00
-    Event:
-      type: object
-      required:
-      - level
-      - reported_timestamp
-      - reported_at
-      - cluster_name
-      - host_id
-      - host_name
-      - enforcer_id
-      - enforcer_name
-      - controller_id
-      - controller_name
-      - workload_id
-      - workload_name
-      - workload_domain
-      - workload_image
-      - workload_service
-      - category
-      - user
-      - user_roles
-      - user_addr
-      - user_session
-      - message
-      properties:
-        name:
-          type: string
-          example: Container.Managed
-        level:
-          type: string
-          example: INFO
-        reported_timestamp:
-          type: integer
-          format: int64
-          example: 1516832670
-        reported_at:
-          type: string
-          format: date-time
-          example: 2018-01-24 22:24:30+00:00
-        cluster_name:
-          type: string
-          example: cluster1
-        response_rule_id:
-          type: integer
-          example: 10009
-        host_id:
-          type: string
-          example: QK56:LFQP:IJSV:FXBN:QJV7:5MBB:6PL5
-        host_name:
-          type: string
-          example: ubuntu64
-        enforcer_id:
-          type: string
-          example: bced57295eefbd3f3bd0cf798b6184fa789
-        enforcer_name:
-          type: string
-          example: allinone
-        controller_id:
-          type: string
-          example: ''
-        controller_name:
-          type: string
-          example: ''
-        workload_id:
-          type: string
-          example: 7df6a19648e2860c89fe12c8d5b1c52079a
-        workload_name:
-          type: string
-          example: kafkadocker_zookeeper_1
-        workload_domain:
-          type: string
-          example: ''
-        workload_image:
-          type: string
-          example: zookeeper
-        workload_service:
-          type: string
-          example: ''
-        category:
-          type: string
-          example: WORKLOAD
-        user:
-          type: string
-          example: user
-        user_roles:
-          type: object
-          description: map key is domain(string type)
-          additionalProperties:
-            type: string
-          example:
-            domain1: admin
-            domain2: reader
-        user_addr:
-          type: string
-          example: ''
-        user_session:
-          type: string
-          example: ''
-        rest_method:
-          type: string
-          example: ''
-        rest_request:
-          type: string
-          example: ''
-        rest_body:
-          type: string
-          example: ''
-        enforcer_limit:
-          type: integer
-          example: 0
-        license_expire:
-          type: string
-          example: ''
-        message:
-          type: string
-          example: Start managing container kafkadocker_zookeeper_1
+        threat:
+          $ref: '#/components/schemas/Threat'
     RESTViolationWorkload:
       type: object
       required:
@@ -674,6 +374,138 @@ components:
         count:
           type: integer
           example: 2
+    Violation:
+      type: object
+      required:
+      - level
+      - reported_timestamp
+      - reported_at
+      - cluster_name
+      - host_id
+      - host_name
+      - enforcer_id
+      - enforcer_name
+      - id
+      - client_id
+      - client_name
+      - server_id
+      - server_name
+      - server_port
+      - ip_proto
+      - applications
+      - servers
+      - sessions
+      - policy_action
+      - policy_id
+      - client_ip
+      - server_ip
+      - fqdn
+      properties:
+        name:
+          type: string
+          example: ''
+        level:
+          type: string
+          example: WARNING
+        reported_timestamp:
+          type: integer
+          format: int64
+          example: 1516160219
+        reported_at:
+          type: string
+          format: date-time
+          example: 2018-01-17 03:36:59+00:00
+        cluster_name:
+          type: string
+          example: cluster1
+        response_rule_id:
+          type: integer
+          example: 10008
+        host_id:
+          type: string
+          example: 2AU7:TIEN:O5KX:QK56:LFQP:IJSV:FXBN:QJV7
+        host_name:
+          type: string
+          example: ubuntu64
+        enforcer_id:
+          type: string
+          example: bced57295eefbd3f3bd0cf798b6184fa789
+        enforcer_name:
+          type: string
+          example: allinone
+        id:
+          type: string
+          example: e6e19591-75a0-43e9-bebb-145d588e6718
+        client_id:
+          type: string
+          example: 25f773945fff1d8880b9eb67d26be22f5321d
+        client_name:
+          type: string
+          example: iperfclient
+        client_domain:
+          type: string
+          example: ''
+        client_image:
+          type: string
+          example: ''
+        client_service:
+          type: string
+          example: ''
+        server_id:
+          type: string
+          example: 0350077d87164505597268494acbc8a25109e3
+        server_name:
+          type: string
+          example: iperfserver
+        server_domain:
+          type: string
+          example: ''
+        server_image:
+          type: string
+          example: ''
+        server_service:
+          type: string
+          example: ''
+        server_port:
+          type: integer
+          format: uint16
+          example: 5000
+        ip_proto:
+          type: integer
+          format: uint8
+          example: 6
+        applications:
+          type: array
+          items:
+            type: string
+            example: HTTP
+        servers:
+          type: array
+          items:
+            type: string
+          example:
+          - server1
+          - server2
+        sessions:
+          type: integer
+          format: uint32
+          example: 0
+        policy_action:
+          type: string
+          example: violate
+        policy_id:
+          type: integer
+          format: uint32
+          example: 9999
+        client_ip:
+          type: string
+          example: 172.17.0.4
+        server_ip:
+          type: string
+          example: 172.17.0.3
+        fqdn:
+          type: string
+          example: www.suse.com
     RESTThreatsData:
       type: object
       required:
@@ -683,25 +515,125 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Threat'
-    RESTSecurityData:
+    RESTWorkloadBrief:
       type: object
       required:
-      - threats
-      - incidents
-      - violations
+      - id
+      - name
+      - display_name
+      - pod_name
+      - image
+      - image_id
+      - image_created_at
+      - platform_role
+      - domain
+      - state
+      - service
+      - author
+      - service_group
+      - cap_sniff
+      - cap_quarantine
+      - cap_change_mode
+      - policy_mode
+      - profile_mode
+      - scan_summary
+      - children
+      - service_mesh
+      - service_mesh_sidecar
+      - privileged
+      - run_as_root
+      - baseline_profile
       properties:
-        threats:
+        id:
+          type: string
+          example: 7304e72fd093155c4cbcd65d07375329b2db82cc679
+        name:
+          type: string
+          example: k8s_POD.d86c_calico-node-mzhtk_kube-system_0050565a_365c13d
+        display_name:
+          type: string
+          example: calico-node-mzhtk
+        pod_name:
+          type: string
+          example: istio-policy-5cdbc47674-t67p4
+        image:
+          type: string
+          example: calico
+        image_id:
+          type: string
+          example: d572b7ee3511b21a2b78b8915bc03c5786ad01949704c1418624224c4cae2c5f
+        image_digest:
           type: array
           items:
-            $ref: '#/components/schemas/Threat'
-        incidents:
+            type: string
+            example: c2ced31c5dda37cb805f481e3fa34b742cc8980f439b20af3111b08e66cff8e1
+        image_created_at:
+          type: string
+          format: date-time
+          example: 2018-01-18 00:44:02+00:00
+        image_reg_scanned:
+          type: boolean
+          example: false
+        platform_role:
+          type: string
+          example: core
+        domain:
+          type: string
+          example: ''
+        state:
+          type: string
+          example: exit
+        service:
+          type: string
+          example: kafkazookeeper
+        author:
+          type: string
+          example: ''
+        service_group:
+          type: string
+          example: nv.calico
+        share_ns_with:
+          type: string
+          example: cc0709d522749203042e89dba28bf6924a4b0d360648
+        cap_sniff:
+          type: boolean
+          example: true
+        cap_quarantine:
+          type: boolean
+          example: true
+        cap_change_mode:
+          type: boolean
+          example: true
+        policy_mode:
+          type: string
+          example: Discover
+        profile_mode:
+          type: string
+          example: Discover
+        scan_summary:
+          $ref: '#/components/schemas/RESTScanBrief'
+        children:
           type: array
           items:
-            $ref: '#/components/schemas/Incident'
-        violations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Violation'
+            $ref: '#/components/schemas/RESTWorkloadBrief'
+        quarantine_reason:
+          type: string
+          example: violation
+        service_mesh:
+          type: boolean
+          example: true
+        service_mesh_sidecar:
+          type: boolean
+          example: true
+        privileged:
+          type: boolean
+          example: true
+        run_as_root:
+          type: boolean
+          example: true
+        baseline_profile:
+          type: string
+          example: ''
     Audit:
       type: object
       required:
@@ -873,143 +805,15 @@ components:
           example: sha256:08614570918e6832c44397cc7bce8037f07a8e2b87aec19d57a3da5eff274c7b
         cmds:
           type: string
-    RESTPolicyViolationsWLData:
+    RESTIncidentsData:
       type: object
       required:
-      - violation_workloads
+      - incidents
       properties:
-        violation_workloads:
+        incidents:
           type: array
           items:
-            $ref: '#/components/schemas/RESTViolationWorkload'
-    RESTPolicyViolationsData:
-      type: object
-      required:
-      - violations
-      properties:
-        violations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Violation'
-    RESTWorkloadBrief:
-      type: object
-      required:
-      - id
-      - name
-      - display_name
-      - pod_name
-      - image
-      - image_id
-      - image_created_at
-      - platform_role
-      - domain
-      - state
-      - service
-      - author
-      - service_group
-      - cap_sniff
-      - cap_quarantine
-      - cap_change_mode
-      - policy_mode
-      - profile_mode
-      - scan_summary
-      - children
-      - service_mesh
-      - service_mesh_sidecar
-      - privileged
-      - run_as_root
-      - baseline_profile
-      properties:
-        id:
-          type: string
-          example: 7304e72fd093155c4cbcd65d07375329b2db82cc679
-        name:
-          type: string
-          example: k8s_POD.d86c_calico-node-mzhtk_kube-system_0050565a_365c13d
-        display_name:
-          type: string
-          example: calico-node-mzhtk
-        pod_name:
-          type: string
-          example: istio-policy-5cdbc47674-t67p4
-        image:
-          type: string
-          example: calico
-        image_id:
-          type: string
-          example: d572b7ee3511b21a2b78b8915bc03c5786ad01949704c1418624224c4cae2c5f
-        image_digest:
-          type: array
-          items:
-            type: string
-            example: c2ced31c5dda37cb805f481e3fa34b742cc8980f439b20af3111b08e66cff8e1
-        image_created_at:
-          type: string
-          format: date-time
-          example: 2018-01-18 00:44:02+00:00
-        image_reg_scanned:
-          type: boolean
-          example: false
-        platform_role:
-          type: string
-          example: core
-        domain:
-          type: string
-          example: ''
-        state:
-          type: string
-          example: exit
-        service:
-          type: string
-          example: kafkazookeeper
-        author:
-          type: string
-          example: ''
-        service_group:
-          type: string
-          example: nv.calico
-        share_ns_with:
-          type: string
-          example: cc0709d522749203042e89dba28bf6924a4b0d360648
-        cap_sniff:
-          type: boolean
-          example: true
-        cap_quarantine:
-          type: boolean
-          example: true
-        cap_change_mode:
-          type: boolean
-          example: true
-        policy_mode:
-          type: string
-          example: Discover
-        profile_mode:
-          type: string
-          example: Discover
-        scan_summary:
-          $ref: '#/components/schemas/RESTScanBrief'
-        children:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTWorkloadBrief'
-        quarantine_reason:
-          type: string
-          example: violation
-        service_mesh:
-          type: boolean
-          example: true
-        service_mesh_sidecar:
-          type: boolean
-          example: true
-        privileged:
-          type: boolean
-          example: true
-        run_as_root:
-          type: boolean
-          example: true
-        baseline_profile:
-          type: string
-          example: ''
+            $ref: '#/components/schemas/Incident'
     Incident:
       type: object
       required:
@@ -1208,15 +1012,211 @@ components:
         message:
           type: string
           example: dns tunneling
-    RESTAuditsData:
+    RESTPolicyViolationsData:
       type: object
       required:
-      - audits
+      - violations
       properties:
-        audits:
+        violations:
           type: array
           items:
-            $ref: '#/components/schemas/Audit'
+            $ref: '#/components/schemas/Violation'
+    RESTScanBrief:
+      type: object
+      required:
+      - status
+      - high
+      - medium
+      - result
+      - scanned_timestamp
+      - scanned_at
+      - base_os
+      - scanner_version
+      - cvedb_create_time
+      properties:
+        status:
+          type: string
+          example: scheduled
+        high:
+          type: integer
+          example: 0
+        medium:
+          type: integer
+          example: 0
+        result:
+          type: string
+          example: success
+        scanned_timestamp:
+          type: integer
+          format: int64
+          example: 1516561253
+        scanned_at:
+          type: string
+          format: date-time
+          example: 2018-01-21 19:00:53+00:00
+        base_os:
+          type: string
+          example: ubuntu:16.04
+        scanner_version:
+          type: string
+          example: '1.011'
+        cvedb_create_time:
+          type: string
+          format: date-time
+          example: 2018-06-20 19:00:53+00:00
+    Event:
+      type: object
+      required:
+      - level
+      - reported_timestamp
+      - reported_at
+      - cluster_name
+      - host_id
+      - host_name
+      - enforcer_id
+      - enforcer_name
+      - controller_id
+      - controller_name
+      - workload_id
+      - workload_name
+      - workload_domain
+      - workload_image
+      - workload_service
+      - category
+      - user
+      - user_roles
+      - user_addr
+      - user_session
+      - message
+      properties:
+        name:
+          type: string
+          example: Container.Managed
+        level:
+          type: string
+          example: INFO
+        reported_timestamp:
+          type: integer
+          format: int64
+          example: 1516832670
+        reported_at:
+          type: string
+          format: date-time
+          example: 2018-01-24 22:24:30+00:00
+        cluster_name:
+          type: string
+          example: cluster1
+        response_rule_id:
+          type: integer
+          example: 10009
+        host_id:
+          type: string
+          example: QK56:LFQP:IJSV:FXBN:QJV7:5MBB:6PL5
+        host_name:
+          type: string
+          example: ubuntu64
+        enforcer_id:
+          type: string
+          example: bced57295eefbd3f3bd0cf798b6184fa789
+        enforcer_name:
+          type: string
+          example: allinone
+        controller_id:
+          type: string
+          example: ''
+        controller_name:
+          type: string
+          example: ''
+        workload_id:
+          type: string
+          example: 7df6a19648e2860c89fe12c8d5b1c52079a
+        workload_name:
+          type: string
+          example: kafkadocker_zookeeper_1
+        workload_domain:
+          type: string
+          example: ''
+        workload_image:
+          type: string
+          example: zookeeper
+        workload_service:
+          type: string
+          example: ''
+        category:
+          type: string
+          example: WORKLOAD
+        user:
+          type: string
+          example: user
+        user_roles:
+          type: object
+          description: map key is domain(string type)
+          additionalProperties:
+            type: string
+          example:
+            domain1: admin
+            domain2: reader
+        user_addr:
+          type: string
+          example: ''
+        user_session:
+          type: string
+          example: ''
+        rest_method:
+          type: string
+          example: ''
+        rest_request:
+          type: string
+          example: ''
+        rest_body:
+          type: string
+          example: ''
+        enforcer_limit:
+          type: integer
+          example: 0
+        license_expire:
+          type: string
+          example: ''
+        message:
+          type: string
+          example: Start managing container kafkadocker_zookeeper_1
+    RESTEventsData:
+      type: object
+      required:
+      - events
+      properties:
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+    RESTSecurityData:
+      type: object
+      required:
+      - threats
+      - incidents
+      - violations
+      properties:
+        threats:
+          type: array
+          items:
+            $ref: '#/components/schemas/Threat'
+        incidents:
+          type: array
+          items:
+            $ref: '#/components/schemas/Incident'
+        violations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Violation'
+    RESTPolicyViolationsWLData:
+      type: object
+      required:
+      - violation_workloads
+      properties:
+        violation_workloads:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTViolationWorkload'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

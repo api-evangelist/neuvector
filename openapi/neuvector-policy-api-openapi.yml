@@ -196,6 +196,209 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    RESTPolicyPromoteRequest:
+      type: object
+      required:
+      - ids
+      properties:
+        ids:
+          type: array
+          items:
+            type: integer
+            format: uint32
+            example: 12
+    RESTImportTaskData:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          $ref: '#/components/schemas/RESTImportTask'
+    RESTPolicyRuleInsert:
+      type: object
+      required:
+      - rules
+      properties:
+        after:
+          type: integer
+          example: 0
+        rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTPolicyRule'
+    RESTPolicyRuleConfig:
+      type: object
+      required:
+      - id
+      - cfg_type
+      properties:
+        id:
+          type: integer
+          format: uint32
+          example: 10001
+        comment:
+          type: string
+          example: a deny rule
+        from:
+          type: string
+          example: nv.iperfclient
+        to:
+          type: string
+          example: external
+        ports:
+          type: string
+          example: any
+        action:
+          type: string
+          example: deny
+        applications:
+          type: array
+          items:
+            type: string
+          example:
+          - HTTP
+          - SSH
+        disable:
+          type: boolean
+          example: true
+        cfg_type:
+          type: string
+          enum:
+          - learned
+          - user_created
+          - ground
+          - federal
+        priority:
+          type: integer
+          format: uint32
+          example: 0
+    RESTPolicyRuleActionData:
+      type: object
+      properties:
+        move:
+          $ref: '#/components/schemas/RESTPolicyRuleMove'
+        insert:
+          $ref: '#/components/schemas/RESTPolicyRuleInsert'
+        rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTPolicyRule'
+        delete:
+          type: array
+          items:
+            type: integer
+            format: uint32
+          example:
+          - 1234
+    RESTPolicyRulesData:
+      type: object
+      required:
+      - rules
+      properties:
+        rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTPolicyRule'
+    RESTPolicyRuleConfigData:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          $ref: '#/components/schemas/RESTPolicyRuleConfig'
+        replicate:
+          type: boolean
+          example: true
+    RESTError:
+      type: object
+      required:
+      - code
+      - error
+      - message
+      properties:
+        code:
+          type: integer
+          example: 3
+        error:
+          type: string
+          example: Request failed
+        message:
+          type: string
+          example: Invalid format
+        password_profile_basic:
+          $ref: '#/components/schemas/RESTPwdProfileBasic'
+        import_task_data:
+          $ref: '#/components/schemas/RESTImportTaskData'
+    RESTPolicyRuleData:
+      type: object
+      required:
+      - rule
+      properties:
+        rule:
+          $ref: '#/components/schemas/RESTPolicyRule'
+    RESTPwdProfileBasic:
+      type: object
+      required:
+      - min_len
+      - min_uppercase_count
+      - min_lowercase_count
+      - min_digit_count
+      - min_special_count
+      properties:
+        min_len:
+          type: integer
+          example: 6
+        min_uppercase_count:
+          type: integer
+          example: 0
+        min_lowercase_count:
+          type: integer
+          example: 0
+        min_digit_count:
+          type: integer
+          example: 0
+        min_special_count:
+          type: integer
+          example: 0
+    RESTImportTask:
+      type: object
+      required:
+      - tid
+      - ctrler_id
+      - percentage
+      properties:
+        tid:
+          type: string
+          example: c5af897b62a258212ece91c0551d3a4a
+        ctrler_id:
+          type: string
+          example: 6e60452b244b90456f3450c9fed0a50f57f4b849dcb74a5fad289e8116f32f36
+        last_update_time:
+          type: string
+          format: date-time
+          example: '2022-03-17T17:31:55.832768041Z'
+        percentage:
+          type: integer
+          example: 100
+        triggered_by:
+          type: string
+          example: admin
+        status:
+          type: string
+          example: done
+        temp_token:
+          type: string
+          example: ''
+        fail_to_decrypt_key_fields:
+          type: object
+          description: Object key is kv key and value is array of cloaked fields that cannot be decrypted
+          additionalProperties:
+            type: array
+            items:
+              type: string
+            example:
+            - x509_cert
+            - signing_cert
     RESTPolicyPromoteRequestData:
       type: object
       required:
@@ -203,6 +406,18 @@ components:
       properties:
         request:
           $ref: '#/components/schemas/RESTPolicyPromoteRequest'
+    RESTPolicyRuleMove:
+      type: object
+      required:
+      - id
+      properties:
+        after:
+          type: integer
+          example: 0
+        id:
+          type: integer
+          format: uint32
+          example: 10005
     RESTPolicyRule:
       type: object
       required:
@@ -282,221 +497,6 @@ components:
           type: integer
           format: int64
           example: 1736811451
-    RESTPolicyRuleConfig:
-      type: object
-      required:
-      - id
-      - cfg_type
-      properties:
-        id:
-          type: integer
-          format: uint32
-          example: 10001
-        comment:
-          type: string
-          example: a deny rule
-        from:
-          type: string
-          example: nv.iperfclient
-        to:
-          type: string
-          example: external
-        ports:
-          type: string
-          example: any
-        action:
-          type: string
-          example: deny
-        applications:
-          type: array
-          items:
-            type: string
-          example:
-          - HTTP
-          - SSH
-        disable:
-          type: boolean
-          example: true
-        cfg_type:
-          type: string
-          enum:
-          - learned
-          - user_created
-          - ground
-          - federal
-        priority:
-          type: integer
-          format: uint32
-          example: 0
-    RESTError:
-      type: object
-      required:
-      - code
-      - error
-      - message
-      properties:
-        code:
-          type: integer
-          example: 3
-        error:
-          type: string
-          example: Request failed
-        message:
-          type: string
-          example: Invalid format
-        password_profile_basic:
-          $ref: '#/components/schemas/RESTPwdProfileBasic'
-        import_task_data:
-          $ref: '#/components/schemas/RESTImportTaskData'
-    RESTPolicyRuleActionData:
-      type: object
-      properties:
-        move:
-          $ref: '#/components/schemas/RESTPolicyRuleMove'
-        insert:
-          $ref: '#/components/schemas/RESTPolicyRuleInsert'
-        rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTPolicyRule'
-        delete:
-          type: array
-          items:
-            type: integer
-            format: uint32
-          example:
-          - 1234
-    RESTPolicyRuleMove:
-      type: object
-      required:
-      - id
-      properties:
-        after:
-          type: integer
-          example: 0
-        id:
-          type: integer
-          format: uint32
-          example: 10005
-    RESTImportTask:
-      type: object
-      required:
-      - tid
-      - ctrler_id
-      - percentage
-      properties:
-        tid:
-          type: string
-          example: c5af897b62a258212ece91c0551d3a4a
-        ctrler_id:
-          type: string
-          example: 6e60452b244b90456f3450c9fed0a50f57f4b849dcb74a5fad289e8116f32f36
-        last_update_time:
-          type: string
-          format: date-time
-          example: '2022-03-17T17:31:55.832768041Z'
-        percentage:
-          type: integer
-          example: 100
-        triggered_by:
-          type: string
-          example: admin
-        status:
-          type: string
-          example: done
-        temp_token:
-          type: string
-          example: ''
-        fail_to_decrypt_key_fields:
-          type: object
-          description: Object key is kv key and value is array of cloaked fields that cannot be decrypted
-          additionalProperties:
-            type: array
-            items:
-              type: string
-            example:
-            - x509_cert
-            - signing_cert
-    RESTPwdProfileBasic:
-      type: object
-      required:
-      - min_len
-      - min_uppercase_count
-      - min_lowercase_count
-      - min_digit_count
-      - min_special_count
-      properties:
-        min_len:
-          type: integer
-          example: 6
-        min_uppercase_count:
-          type: integer
-          example: 0
-        min_lowercase_count:
-          type: integer
-          example: 0
-        min_digit_count:
-          type: integer
-          example: 0
-        min_special_count:
-          type: integer
-          example: 0
-    RESTPolicyPromoteRequest:
-      type: object
-      required:
-      - ids
-      properties:
-        ids:
-          type: array
-          items:
-            type: integer
-            format: uint32
-            example: 12
-    RESTImportTaskData:
-      type: object
-      required:
-      - data
-      properties:
-        data:
-          $ref: '#/components/schemas/RESTImportTask'
-    RESTPolicyRulesData:
-      type: object
-      required:
-      - rules
-      properties:
-        rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTPolicyRule'
-    RESTPolicyRuleData:
-      type: object
-      required:
-      - rule
-      properties:
-        rule:
-          $ref: '#/components/schemas/RESTPolicyRule'
-    RESTPolicyRuleInsert:
-      type: object
-      required:
-      - rules
-      properties:
-        after:
-          type: integer
-          example: 0
-        rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTPolicyRule'
-    RESTPolicyRuleConfigData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTPolicyRuleConfig'
-        replicate:
-          type: boolean
-          example: true
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

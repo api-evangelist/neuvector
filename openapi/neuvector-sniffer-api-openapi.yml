@@ -207,13 +207,6 @@ components:
           type: integer
           format: int64
           example: 1509432360
-    RESTSnifferArgsData:
-      type: object
-      required:
-      - sniffer
-      properties:
-        sniffer:
-          $ref: '#/components/schemas/RESTSnifferArgs'
     RESTSnifferArgs:
       type: object
       properties:
@@ -228,6 +221,13 @@ components:
         filter:
           type: string
           example: \ port\ 1381
+    RESTSnifferArgsData:
+      type: object
+      required:
+      - sniffer
+      properties:
+        sniffer:
+          $ref: '#/components/schemas/RESTSnifferArgs'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

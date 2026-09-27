@@ -129,6 +129,27 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    RESTAgentConfig:
+      type: object
+      properties:
+        debug:
+          type: array
+          items:
+            type: string
+          example:
+          - packet
+          - log
+          - parser
+          - tcp
+          - session
+          - timer
+          - error
+        disable_nvprotect:
+          type: boolean
+          example: false
+        disable_kvcctl:
+          type: boolean
+          example: false
     RESTStats:
       type: object
       required:
@@ -150,6 +171,74 @@ components:
           $ref: '#/components/schemas/RESTMetry'
         span_60:
           $ref: '#/components/schemas/RESTMetry'
+    RESTMetry:
+      type: object
+      required:
+      - cpu
+      - memory
+      - session_in
+      - session_out
+      - packet_in
+      - packet_out
+      - byte_in
+      - byte_out
+      properties:
+        cpu:
+          type: number
+          format: float64
+          example: 1
+        memory:
+          type: integer
+          format: uint64
+          example: 2089816064
+        session_in:
+          type: integer
+          format: uint32
+          example: 0
+        session_out:
+          type: integer
+          format: uint32
+          example: 0
+        cur_session_in:
+          type: integer
+          format: uint32
+          example: 1
+        cur_session_out:
+          type: integer
+          format: uint32
+          example: 1
+        packet_in:
+          type: integer
+          format: uint64
+          example: 0
+        packet_out:
+          type: integer
+          format: uint64
+          example: 0
+        byte_in:
+          type: integer
+          format: uint64
+          example: 0
+        byte_out:
+          type: integer
+          format: uint64
+          example: 0
+    RESTAgentsData:
+      type: object
+      required:
+      - enforcers
+      properties:
+        enforcers:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTAgent'
+    RESTAgentConfigData:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          $ref: '#/components/schemas/RESTAgentConfig'
     RESTAgentStatsData:
       type: object
       required:
@@ -166,15 +255,6 @@ components:
           example: 2018-01-18 07:20:15+00:00
         stats:
           $ref: '#/components/schemas/RESTStats'
-    RESTAgentsData:
-      type: object
-      required:
-      - enforcers
-      properties:
-        enforcers:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTAgent'
     RESTAgent:
       type: object
       required:
@@ -259,27 +339,6 @@ components:
         disconnected_at:
           type: string
           example: ''
-    RESTAgentConfig:
-      type: object
-      properties:
-        debug:
-          type: array
-          items:
-            type: string
-          example:
-          - packet
-          - log
-          - parser
-          - tcp
-          - session
-          - timer
-          - error
-        disable_nvprotect:
-          type: boolean
-          example: false
-        disable_kvcctl:
-          type: boolean
-          example: false
     RESTAgentData:
       type: object
       required:
@@ -287,65 +346,6 @@ components:
       properties:
         enforcer:
           $ref: '#/components/schemas/RESTAgent'
-    RESTAgentConfigData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTAgentConfig'
-    RESTMetry:
-      type: object
-      required:
-      - cpu
-      - memory
-      - session_in
-      - session_out
-      - packet_in
-      - packet_out
-      - byte_in
-      - byte_out
-      properties:
-        cpu:
-          type: number
-          format: float64
-          example: 1
-        memory:
-          type: integer
-          format: uint64
-          example: 2089816064
-        session_in:
-          type: integer
-          format: uint32
-          example: 0
-        session_out:
-          type: integer
-          format: uint32
-          example: 0
-        cur_session_in:
-          type: integer
-          format: uint32
-          example: 1
-        cur_session_out:
-          type: integer
-          format: uint32
-          example: 1
-        packet_in:
-          type: integer
-          format: uint64
-          example: 0
-        packet_out:
-          type: integer
-          format: uint64
-          example: 0
-        byte_in:
-          type: integer
-          format: uint64
-          example: 0
-        byte_out:
-          type: integer
-          format: uint64
-          example: 0
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

@@ -277,62 +277,125 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    RESTAdmissionRuleOption:
+    RESTAdmissionState:
+      type: object
+      properties:
+        enable:
+          type: boolean
+          example: true
+        mode:
+          type: string
+          example: Protect
+        default_action:
+          type: string
+          example: allow
+        adm_client_mode:
+          type: string
+          example: service
+        adm_svc_type:
+          type: string
+          example: ''
+        adm_client_mode_options:
+          type: object
+          properties:
+            service:
+              type: string
+              example: service
+            url:
+              type: string
+              example: service:xyz-svc-admission-webhook.xyz.svc
+        ctrl_states:
+          type: object
+          properties:
+            validate:
+              type: string
+              example: validate
+            states:
+              type: boolean
+              example: true
+    RESTAdmCatOptions:
+      type: object
+      properties:
+        k8s_options:
+          $ref: '#/components/schemas/RESTAdmRuleOptions'
+    RESTAdmissionStats:
+      type: object
+      required:
+      - k8s_allowed_requests
+      - k8s_denied_requests
+      - k8s_erroneous_requests
+      - k8s_ignored_requests
+      - jenkins_allowed_requests
+      - jenkins_denied_requests
+      - jenkins_erroneous_requests
+      properties:
+        k8s_allowed_requests:
+          type: integer
+          format: int64
+          example: 2
+        k8s_denied_requests:
+          type: integer
+          format: int64
+          example: 1
+        k8s_erroneous_requests:
+          type: integer
+          format: int64
+          example: 1
+        k8s_ignored_requests:
+          type: integer
+          format: int64
+          example: 1
+        jenkins_allowed_requests:
+          type: integer
+          format: int64
+          example: 3
+        jenkins_denied_requests:
+          type: integer
+          format: int64
+          example: 1
+        jenkins_erroneous_requests:
+          type: integer
+          format: int64
+          example: 1
+    RESTAdmRuleCriterion:
       type: object
       required:
       - name
-      - ops
+      - op
+      - value
       properties:
         name:
           type: string
-          example: group
-        ops:
-          type: array
-          items:
-            type: string
-          example:
-          - containsAny
-          - containsAll
-          - '='
-        values:
-          type: array
-          items:
-            type: string
-          example:
-          - ''
-          - 'true'
-          - 'false'
-        match_src:
+          example: namespace
+        op:
           type: string
-          example: yaml
-        sub_options:
-          type: object
-          properties:
-            rule:
-              type: string
-              example: criterion_name
-            options:
-              $ref: '#/components/schemas/RESTAdmissionRuleOption'
-    RESTAdmCtrlRulesTestResults:
+          example: '='
+        value:
+          type: string
+          example: kube-system
+        sub_criteria:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTAdmRuleCriterion'
+        type:
+          type: string
+          example: customPath
+        template_kind:
+          type: string
+          example: podTemplate
+        path:
+          type: string
+          example: item.spec.serviceAccountName
+        value_type:
+          type: string
+          example: string
+    RESTAdmissionRuleConfigData:
       type: object
+      required:
+      - config
       properties:
-        props_unavailable:
-          type: array
-          items:
-            type: string
-          example:
-          - user
-          - userGroups
-        global_mode:
-          type: string
-          enum:
-          - monitor
-          - protect
-          - ''
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTAdmCtrlRulesTestResult'
+        config:
+          $ref: '#/components/schemas/RESTAdmissionRuleConfig'
     RESTAdmCtrlTestRuleInfo:
       type: object
       required:
@@ -375,15 +438,76 @@ components:
           - federal
           - ground
           - user_created
-    RESTAdmissionRulesData:
+    RESTAdmissionRuleOption:
       type: object
       required:
-      - rules
+      - name
+      - ops
       properties:
-        rules:
+        name:
+          type: string
+          example: group
+        ops:
           type: array
           items:
-            $ref: '#/components/schemas/RESTAdmissionRule'
+            type: string
+          example:
+          - containsAny
+          - containsAll
+          - '='
+        values:
+          type: array
+          items:
+            type: string
+          example:
+          - ''
+          - 'true'
+          - 'false'
+        match_src:
+          type: string
+          example: yaml
+        sub_options:
+          type: object
+          properties:
+            rule:
+              type: string
+              example: criterion_name
+            options:
+              $ref: '#/components/schemas/RESTAdmissionRuleOption'
+    RESTImportTaskData:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          $ref: '#/components/schemas/RESTImportTask'
+    RESTAdmissionStatsData:
+      type: object
+      required:
+      - stats
+      properties:
+        stats:
+          $ref: '#/components/schemas/RESTAdmissionStats'
+    RESTError:
+      type: object
+      required:
+      - code
+      - error
+      - message
+      properties:
+        code:
+          type: integer
+          example: 3
+        error:
+          type: string
+          example: Request failed
+        message:
+          type: string
+          example: Invalid format
+        password_profile_basic:
+          $ref: '#/components/schemas/RESTPwdProfileBasic'
+        import_task_data:
+          $ref: '#/components/schemas/RESTImportTaskData'
     RESTAdmissionRuleData:
       type: object
       required:
@@ -391,6 +515,17 @@ components:
       properties:
         rule:
           $ref: '#/components/schemas/RESTAdmissionRule'
+    RESTAdmCtrlPromoteRequest:
+      type: object
+      required:
+      - ids
+      properties:
+        ids:
+          type: array
+          items:
+            type: integer
+            format: uint32
+            example: 12
     RESTAdmCtrlRulesTestResult:
       type: object
       required:
@@ -420,40 +555,86 @@ components:
         allowed:
           type: boolean
           example: false
-    RESTAdmissionStatsData:
+    RESTAdmCtrlRulesTestResults:
+      type: object
+      properties:
+        props_unavailable:
+          type: array
+          items:
+            type: string
+          example:
+          - user
+          - userGroups
+        global_mode:
+          type: string
+          enum:
+          - monitor
+          - protect
+          - ''
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTAdmCtrlRulesTestResult'
+    RESTPwdProfileBasic:
       type: object
       required:
-      - stats
+      - min_len
+      - min_uppercase_count
+      - min_lowercase_count
+      - min_digit_count
+      - min_special_count
       properties:
-        stats:
-          $ref: '#/components/schemas/RESTAdmissionStats'
-    RESTAdmCtrlPromoteRequestData:
-      type: object
-      required:
-      - request
-      properties:
-        request:
-          $ref: '#/components/schemas/RESTAdmCtrlPromoteRequest'
-    RESTError:
-      type: object
-      required:
-      - code
-      - error
-      - message
-      properties:
-        code:
+        min_len:
           type: integer
-          example: 3
-        error:
-          type: string
-          example: Request failed
-        message:
-          type: string
-          example: Invalid format
-        password_profile_basic:
-          $ref: '#/components/schemas/RESTPwdProfileBasic'
-        import_task_data:
-          $ref: '#/components/schemas/RESTImportTaskData'
+          example: 6
+        min_uppercase_count:
+          type: integer
+          example: 0
+        min_lowercase_count:
+          type: integer
+          example: 0
+        min_digit_count:
+          type: integer
+          example: 0
+        min_special_count:
+          type: integer
+          example: 0
+    RESTAdmRuleTypeOptions:
+      type: object
+      required:
+      - deny_options
+      - exception_options
+      properties:
+        deny_options:
+          $ref: '#/components/schemas/RESTAdmCatOptions'
+        exception_options:
+          $ref: '#/components/schemas/RESTAdmCatOptions'
+        psp_collection:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTAdmRuleCriterion'
+        pss_collections:
+          type: object
+          description: map key is domain(string type)
+          additionalProperties:
+            type: array
+            items:
+              type: string
+          example:
+            restricted:
+            - Uses illegal volume type.
+            - Allows running as root user.
+            baseline:
+            - Sets HostNetwork, HostPID, or HostIPC to true.
+            - Allows privileged container(s).
+        sigstore_verifiers:
+          type: array
+          items:
+            type: string
+          example:
+          - public/verifier1
+          - private1/verifier1
+          - private1/verifier2
     RESTAdmRuleOptions:
       type: object
       required:
@@ -467,11 +648,80 @@ components:
               example: criterion_name
             options:
               $ref: '#/components/schemas/RESTAdmissionRuleOption'
-    RESTAdmCatOptions:
+    RESTAdminCriteriaTemplate:
       type: object
+      required:
+      - kind
+      - rawjson
       properties:
-        k8s_options:
-          $ref: '#/components/schemas/RESTAdmRuleOptions'
+        kind:
+          type: string
+          example: podTemplate
+        rawjson:
+          type: string
+          example: '{"key": "value"}'
+    RESTAdmissionRulesData:
+      type: object
+      required:
+      - rules
+      properties:
+        rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTAdmissionRule'
+    RESTAdminCustomCriteriaOptions:
+      type: object
+      required:
+      - ops
+      - valuetype
+      properties:
+        ops:
+          type: array
+          items:
+            type: string
+          example:
+          - exist
+          - notExist
+        values:
+          type: array
+          items:
+            type: string
+          example:
+          - 'true'
+          - 'false'
+        valuetype:
+          type: string
+          example: key
+    RESTAdmCtrlPromoteRequestData:
+      type: object
+      required:
+      - request
+      properties:
+        request:
+          $ref: '#/components/schemas/RESTAdmCtrlPromoteRequest'
+    RESTAdmissionConfigData:
+      type: object
+      required:
+      - k8s_env
+      properties:
+        state:
+          $ref: '#/components/schemas/RESTAdmissionState'
+        admission_options:
+          $ref: '#/components/schemas/RESTAdmRuleTypeOptions'
+        k8s_env:
+          type: boolean
+          example: false
+        admission_custom_criteria_options:
+          $ref: '#/components/schemas/RESTAdminCustomCriteriaOptions'
+        admission_custom_criteria_templates:
+          $ref: '#/components/schemas/RESTAdminCriteriaTemplate'
+        predefined_risky_roles:
+          type: array
+          items:
+            type: string
+          example:
+          - risky_role_view_secret
+          - risky_role_create_pod
     RESTImportTask:
       type: object
       required:
@@ -511,163 +761,6 @@ components:
             example:
             - x509_cert
             - signing_cert
-    RESTAdmissionState:
-      type: object
-      properties:
-        enable:
-          type: boolean
-          example: true
-        mode:
-          type: string
-          example: Protect
-        default_action:
-          type: string
-          example: allow
-        adm_client_mode:
-          type: string
-          example: service
-        adm_svc_type:
-          type: string
-          example: ''
-        adm_client_mode_options:
-          type: object
-          properties:
-            service:
-              type: string
-              example: service
-            url:
-              type: string
-              example: service:xyz-svc-admission-webhook.xyz.svc
-        ctrl_states:
-          type: object
-          properties:
-            validate:
-              type: string
-              example: validate
-            states:
-              type: boolean
-              example: true
-    RESTAdminCustomCriteriaOptions:
-      type: object
-      required:
-      - ops
-      - valuetype
-      properties:
-        ops:
-          type: array
-          items:
-            type: string
-          example:
-          - exist
-          - notExist
-        values:
-          type: array
-          items:
-            type: string
-          example:
-          - 'true'
-          - 'false'
-        valuetype:
-          type: string
-          example: key
-    RESTAdmissionStats:
-      type: object
-      required:
-      - k8s_allowed_requests
-      - k8s_denied_requests
-      - k8s_erroneous_requests
-      - k8s_ignored_requests
-      - jenkins_allowed_requests
-      - jenkins_denied_requests
-      - jenkins_erroneous_requests
-      properties:
-        k8s_allowed_requests:
-          type: integer
-          format: int64
-          example: 2
-        k8s_denied_requests:
-          type: integer
-          format: int64
-          example: 1
-        k8s_erroneous_requests:
-          type: integer
-          format: int64
-          example: 1
-        k8s_ignored_requests:
-          type: integer
-          format: int64
-          example: 1
-        jenkins_allowed_requests:
-          type: integer
-          format: int64
-          example: 3
-        jenkins_denied_requests:
-          type: integer
-          format: int64
-          example: 1
-        jenkins_erroneous_requests:
-          type: integer
-          format: int64
-          example: 1
-    RESTAdmissionConfigData:
-      type: object
-      required:
-      - k8s_env
-      properties:
-        state:
-          $ref: '#/components/schemas/RESTAdmissionState'
-        admission_options:
-          $ref: '#/components/schemas/RESTAdmRuleTypeOptions'
-        k8s_env:
-          type: boolean
-          example: false
-        admission_custom_criteria_options:
-          $ref: '#/components/schemas/RESTAdminCustomCriteriaOptions'
-        admission_custom_criteria_templates:
-          $ref: '#/components/schemas/RESTAdminCriteriaTemplate'
-        predefined_risky_roles:
-          type: array
-          items:
-            type: string
-          example:
-          - risky_role_view_secret
-          - risky_role_create_pod
-    RESTAdmRuleTypeOptions:
-      type: object
-      required:
-      - deny_options
-      - exception_options
-      properties:
-        deny_options:
-          $ref: '#/components/schemas/RESTAdmCatOptions'
-        exception_options:
-          $ref: '#/components/schemas/RESTAdmCatOptions'
-        psp_collection:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTAdmRuleCriterion'
-        pss_collections:
-          type: object
-          description: map key is domain(string type)
-          additionalProperties:
-            type: array
-            items:
-              type: string
-          example:
-            restricted:
-            - Uses illegal volume type.
-            - Allows running as root user.
-            baseline:
-            - Sets HostNetwork, HostPID, or HostIPC to true.
-            - Allows privileged container(s).
-        sigstore_verifiers:
-          type: array
-          items:
-            type: string
-          example:
-          - public/verifier1
-          - private1/verifier1
-          - private1/verifier2
     RESTAdmissionRule:
       type: object
       required:
@@ -727,99 +820,6 @@ components:
             - containers
             - init_containers
             - ephemeral_containers
-    RESTPwdProfileBasic:
-      type: object
-      required:
-      - min_len
-      - min_uppercase_count
-      - min_lowercase_count
-      - min_digit_count
-      - min_special_count
-      properties:
-        min_len:
-          type: integer
-          example: 6
-        min_uppercase_count:
-          type: integer
-          example: 0
-        min_lowercase_count:
-          type: integer
-          example: 0
-        min_digit_count:
-          type: integer
-          example: 0
-        min_special_count:
-          type: integer
-          example: 0
-    RESTAdmCtrlPromoteRequest:
-      type: object
-      required:
-      - ids
-      properties:
-        ids:
-          type: array
-          items:
-            type: integer
-            format: uint32
-            example: 12
-    RESTImportTaskData:
-      type: object
-      required:
-      - data
-      properties:
-        data:
-          $ref: '#/components/schemas/RESTImportTask'
-    RESTAdmRuleCriterion:
-      type: object
-      required:
-      - name
-      - op
-      - value
-      properties:
-        name:
-          type: string
-          example: namespace
-        op:
-          type: string
-          example: '='
-        value:
-          type: string
-          example: kube-system
-        sub_criteria:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTAdmRuleCriterion'
-        type:
-          type: string
-          example: customPath
-        template_kind:
-          type: string
-          example: podTemplate
-        path:
-          type: string
-          example: item.spec.serviceAccountName
-        value_type:
-          type: string
-          example: string
-    RESTAdminCriteriaTemplate:
-      type: object
-      required:
-      - kind
-      - rawjson
-      properties:
-        kind:
-          type: string
-          example: podTemplate
-        rawjson:
-          type: string
-          example: '{"key": "value"}'
-    RESTAdmissionRuleConfigData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTAdmissionRuleConfig'
     RESTAdmissionRuleConfig:
       type: object
       required:

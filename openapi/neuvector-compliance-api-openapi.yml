@@ -292,19 +292,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    RESTCustomCheckConfig:
-      type: object
-      required:
-      - add
-      - delete
-      - update
-      properties:
-        add:
-          $ref: '#/components/schemas/RESTCustomChecks'
-        delete:
-          $ref: '#/components/schemas/RESTCustomChecks'
-        update:
-          $ref: '#/components/schemas/RESTCustomChecks'
     RESTComplianceProfileEntry:
       type: object
       required:
@@ -319,29 +306,69 @@ components:
           items:
             type: string
             example: ''
-    RESTCustomCheckConfigData:
+    RESTComplianceProfile:
       type: object
       required:
-      - config
+      - name
+      - disable_system
+      - entries
       properties:
-        config:
-          $ref: '#/components/schemas/RESTCustomCheckConfig'
-    RESTCustomCheckListData:
-      type: object
-      required:
-      - configs
-      properties:
-        configs:
+        name:
+          type: string
+          example: default
+        disable_system:
+          type: boolean
+          example: false
+        entries:
           type: array
           items:
-            $ref: '#/components/schemas/RESTCustomChecks'
-    RESTCustomCheckData:
+            $ref: '#/components/schemas/RESTComplianceProfileEntry'
+        cfg_type:
+          type: string
+          enum:
+          - user_created
+          - ground
+    RESTCustomCheckConfig:
       type: object
       required:
-      - config
+      - add
+      - delete
+      - update
       properties:
-        config:
+        add:
           $ref: '#/components/schemas/RESTCustomChecks'
+        delete:
+          $ref: '#/components/schemas/RESTCustomChecks'
+        update:
+          $ref: '#/components/schemas/RESTCustomChecks'
+    RESTCustomChecks:
+      type: object
+      required:
+      - group
+      - scripts
+      properties:
+        group:
+          type: string
+          example: containers
+        enabled:
+          type: boolean
+          example: false
+        writable:
+          type: boolean
+          example: false
+        scripts:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTCustomCheck'
+    RESTComplianceProfilesData:
+      type: object
+      required:
+      - profiles
+      properties:
+        profiles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTComplianceProfile'
     RESTBenchReport:
       type: object
       required:
@@ -365,6 +392,20 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RESTBenchItem'
+    RESTComplianceProfileConfigData:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          $ref: '#/components/schemas/RESTComplianceProfileConfig'
+    RESTCustomCheckData:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          $ref: '#/components/schemas/RESTCustomChecks'
     RESTCustomCheck:
       type: object
       required:
@@ -377,68 +418,6 @@ components:
         script:
           type: string
           example: 'uname -r '
-    RESTComplianceProfileConfigData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTComplianceProfileConfig'
-    RESTComplianceProfile:
-      type: object
-      required:
-      - name
-      - disable_system
-      - entries
-      properties:
-        name:
-          type: string
-          example: default
-        disable_system:
-          type: boolean
-          example: false
-        entries:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTComplianceProfileEntry'
-        cfg_type:
-          type: string
-          enum:
-          - user_created
-          - ground
-    RESTCustomChecks:
-      type: object
-      required:
-      - group
-      - scripts
-      properties:
-        group:
-          type: string
-          example: containers
-        enabled:
-          type: boolean
-          example: false
-        writable:
-          type: boolean
-          example: false
-        scripts:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTCustomCheck'
-    RESTComplianceProfileData:
-      type: object
-      required:
-      - profile
-      properties:
-        profile:
-          $ref: '#/components/schemas/RESTComplianceProfile'
-    RESTComplianceProfileEntryConfigData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTComplianceProfileEntry'
     RESTComplianceProfileConfig:
       type: object
       required:
@@ -454,15 +433,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RESTComplianceProfileEntry'
-    RESTComplianceProfilesData:
+    RESTCustomCheckConfigData:
       type: object
       required:
-      - profiles
+      - config
       properties:
-        profiles:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTComplianceProfile'
+        config:
+          $ref: '#/components/schemas/RESTCustomCheckConfig'
     RESTBenchItem:
       type: object
       required:
@@ -513,6 +490,29 @@ components:
         group:
           type: string
           example: nv.calico
+    RESTCustomCheckListData:
+      type: object
+      required:
+      - configs
+      properties:
+        configs:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTCustomChecks'
+    RESTComplianceProfileData:
+      type: object
+      required:
+      - profile
+      properties:
+        profile:
+          $ref: '#/components/schemas/RESTComplianceProfile'
+    RESTComplianceProfileEntryConfigData:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          $ref: '#/components/schemas/RESTComplianceProfileEntry'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

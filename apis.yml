@@ -37,7 +37,7 @@ tags:
   - Compliance
   - Containers
   - Kubernetes
-  - Open-Source
+  - Open Source
   - Runtime Protection
   - Security
   - Vulnerability Scanning
@@ -49,6 +49,7 @@ tags_raw:
   - Runtime Protection
   - Security
   - Vulnerability Scanning
+  - Open-Source
 url: >-
   https://raw.githubusercontent.com/api-evangelist/neuvector/refs/heads/main/apis.yml
 created: '2026-03-26'
@@ -650,6 +651,8 @@ apis:
   humanURL: https://open-docs.neuvector.com/
   baseURL: https://localhost:10443
   tags:
+  - Vulnerabilities
+  tags_raw:
   - Vulnerability
   properties:
   - type: OpenAPI
@@ -690,8 +693,6 @@ apis:
   humanURL: https://open-docs.neuvector.com/
   baseURL: https://localhost:10443
   tags:
-  - APIKeys
-  tags_raw:
   - API Key
   properties:
   - type: OpenAPI

@@ -115,28 +115,65 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    RESTProcessProfileConfig:
+    RESTProcessProfileEntryConfig:
       type: object
       required:
+      - name
+      - path
+      - action
       - group
       properties:
+        name:
+          type: string
+          example: myEntryConfig
+        path:
+          type: string
+          example: ''
+        action:
+          type: string
+          example: monitor
         group:
           type: string
           example: myGroup
+    RESTProcessProfilesData:
+      type: object
+      required:
+      - process_profiles
+      properties:
+        process_profiles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTProcessProfile'
+    RESTProcessProfileConfigData:
+      type: object
+      required:
+      - process_profile_config
+      properties:
+        process_profile_config:
+          $ref: '#/components/schemas/RESTProcessProfileConfig'
+    RESTProcessProfile:
+      type: object
+      required:
+      - group
+      - mode
+      - process_list
+      properties:
+        group:
+          type: string
+          example: admin
         alert_disabled:
           type: boolean
           example: false
         hash_enabled:
           type: boolean
           example: true
-        process_change_list:
+        mode:
+          type: string
+          example: ''
+        process_list:
           type: array
           items:
-            $ref: '#/components/schemas/RESTProcessProfileEntryConfig'
-        process_delete_list:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTProcessProfileEntryConfig'
+            $ref: '#/components/schemas/RESTProcessProfileEntry'
     RESTProcessRulesResp:
       type: object
       properties:
@@ -193,26 +230,6 @@ components:
           type: integer
           format: int64
           example: 1516561268
-    RESTProcessProfileEntryConfig:
-      type: object
-      required:
-      - name
-      - path
-      - action
-      - group
-      properties:
-        name:
-          type: string
-          example: myEntryConfig
-        path:
-          type: string
-          example: ''
-        action:
-          type: string
-          example: monitor
-        group:
-          type: string
-          example: myGroup
     RESTProcessProfileData:
       type: object
       required:
@@ -220,45 +237,28 @@ components:
       properties:
         process_profile:
           $ref: '#/components/schemas/RESTProcessProfile'
-    RESTProcessProfileConfigData:
-      type: object
-      required:
-      - process_profile_config
-      properties:
-        process_profile_config:
-          $ref: '#/components/schemas/RESTProcessProfileConfig'
-    RESTProcessProfile:
+    RESTProcessProfileConfig:
       type: object
       required:
       - group
-      - mode
-      - process_list
       properties:
         group:
           type: string
-          example: admin
+          example: myGroup
         alert_disabled:
           type: boolean
           example: false
         hash_enabled:
           type: boolean
           example: true
-        mode:
-          type: string
-          example: ''
-        process_list:
+        process_change_list:
           type: array
           items:
-            $ref: '#/components/schemas/RESTProcessProfileEntry'
-    RESTProcessProfilesData:
-      type: object
-      required:
-      - process_profiles
-      properties:
-        process_profiles:
+            $ref: '#/components/schemas/RESTProcessProfileEntryConfig'
+        process_delete_list:
           type: array
           items:
-            $ref: '#/components/schemas/RESTProcessProfile'
+            $ref: '#/components/schemas/RESTProcessProfileEntryConfig'
     RESTProcessUuidEntry:
       type: object
       properties:

@@ -129,54 +129,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    RESTControllerConfig:
-      type: object
-      properties:
-        debug:
-          type: array
-          items:
-            type: string
-          example:
-          - log
-          - parser
-          - tcp
-          - session
-          - error
-    RESTStats:
-      type: object
-      required:
-      - interval
-      - total
-      - span_1
-      - span_12
-      - span_60
-      properties:
-        interval:
-          type: integer
-          format: uint32
-          example: 5
-        total:
-          $ref: '#/components/schemas/RESTMetry'
-        span_1:
-          $ref: '#/components/schemas/RESTMetry'
-        span_12:
-          $ref: '#/components/schemas/RESTMetry'
-        span_60:
-          $ref: '#/components/schemas/RESTMetry'
-    RESTControllerConfigData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTControllerConfig'
-    RESTControllerData:
-      type: object
-      required:
-      - controller
-      properties:
-        controller:
-          $ref: '#/components/schemas/RESTController'
     RESTController:
       type: object
       required:
@@ -265,6 +217,34 @@ components:
         orch_conn_last_error:
           type: string
           example: ''
+    RESTStats:
+      type: object
+      required:
+      - interval
+      - total
+      - span_1
+      - span_12
+      - span_60
+      properties:
+        interval:
+          type: integer
+          format: uint32
+          example: 5
+        total:
+          $ref: '#/components/schemas/RESTMetry'
+        span_1:
+          $ref: '#/components/schemas/RESTMetry'
+        span_12:
+          $ref: '#/components/schemas/RESTMetry'
+        span_60:
+          $ref: '#/components/schemas/RESTMetry'
+    RESTControllerData:
+      type: object
+      required:
+      - controller
+      properties:
+        controller:
+          $ref: '#/components/schemas/RESTController'
     RESTMetry:
       type: object
       required:
@@ -317,6 +297,19 @@ components:
           type: integer
           format: uint64
           example: 0
+    RESTControllerConfig:
+      type: object
+      properties:
+        debug:
+          type: array
+          items:
+            type: string
+          example:
+          - log
+          - parser
+          - tcp
+          - session
+          - error
     RESTWorkloadStatsData:
       type: object
       required:
@@ -333,6 +326,13 @@ components:
           example: 2018-01-21 06:25:15+00:00
         stats:
           $ref: '#/components/schemas/RESTStats'
+    RESTControllerConfigData:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          $ref: '#/components/schemas/RESTControllerConfig'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

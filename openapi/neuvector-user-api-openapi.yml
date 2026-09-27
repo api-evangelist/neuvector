@@ -357,6 +357,90 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    RESTUserPwdConfig:
+      type: object
+      required:
+      - fullname
+      properties:
+        fullname:
+          type: string
+          example: admin
+        clear_failed_login:
+          type: boolean
+          example: true
+        new_password:
+          type: string
+          example: ''
+        force_reset_password:
+          type: boolean
+          description: whether to reset password even it's not expired yet
+          example: false
+        reset_password_in_next_login:
+          type: boolean
+          description: whether the target user needs ti reset password in the next login
+          example: true
+    RESTRolePermission:
+      type: object
+      required:
+      - id
+      - read
+      - write
+      properties:
+        id:
+          type: string
+          example: ci_scan
+        read:
+          type: boolean
+          example: false
+        write:
+          type: boolean
+          example: true
+    RESTUsersData:
+      type: object
+      required:
+      - users
+      - global_roles
+      - domain_roles
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTUser'
+        global_roles:
+          type: array
+          items:
+            type: string
+          example:
+          - admin
+          - reader
+        domain_roles:
+          type: array
+          items:
+            type: string
+          example:
+          - role1
+          - role2
+    RESTUserRoleConfigData:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          $ref: '#/components/schemas/RESTUserRoleConfig'
+    RESTPwdProfileData:
+      type: object
+      required:
+      - pwd_profile
+      properties:
+        pwd_profile:
+          $ref: '#/components/schemas/RESTPwdProfile'
+    RESTUserRoleData:
+      type: object
+      required:
+      - role
+      properties:
+        role:
+          $ref: '#/components/schemas/RESTUserRole'
     RESTUser:
       type: object
       required:
@@ -465,441 +549,6 @@ components:
           type: boolean
           description: whether the user's password can be reset by the current login user
           example: false
-    RESTUserRoleDomainsConfigData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTUserRoleDomainsConfig'
-    RESTUserRoleConfigData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTUserRoleConfig'
-    RESTPwdProfileConfigData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTPwdProfileConfig'
-    RESTUserRoleData:
-      type: object
-      required:
-      - role
-      properties:
-        role:
-          $ref: '#/components/schemas/RESTUserRole'
-    RESTUserRolesData:
-      type: object
-      required:
-      - roles
-      properties:
-        roles:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTUserRole'
-    RESTPwdProfilesData:
-      type: object
-      required:
-      - pwd_profiles
-      - active_profile_name
-      properties:
-        pwd_profiles:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTPwdProfile'
-        active_profile_name:
-          type: string
-          example: default
-    RESTError:
-      type: object
-      required:
-      - code
-      - error
-      - message
-      properties:
-        code:
-          type: integer
-          example: 3
-        error:
-          type: string
-          example: Request failed
-        message:
-          type: string
-          example: Invalid format
-        password_profile_basic:
-          $ref: '#/components/schemas/RESTPwdProfileBasic'
-        import_task_data:
-          $ref: '#/components/schemas/RESTImportTaskData'
-    RESTPwdProfileConfig:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          example: default
-        active:
-          type: boolean
-          example: true
-        comment:
-          type: string
-          example: ''
-        min_len:
-          type: integer
-          example: 6
-        min_uppercase_count:
-          type: integer
-          example: 0
-        min_lowercase_count:
-          type: integer
-          example: 0
-        min_digit_count:
-          type: integer
-          example: 0
-        min_special_count:
-          type: integer
-          example: 0
-        enable_password_expiration:
-          type: boolean
-          example: false
-        password_expire_after_days:
-          type: integer
-          example: 0
-        enable_password_history:
-          type: boolean
-          example: true
-        password_keep_history_count:
-          type: integer
-          example: 0
-        enable_block_after_failed_login:
-          type: boolean
-          example: false
-        block_after_failed_login_count:
-          type: integer
-          example: 0
-        block_minutes:
-          type: integer
-          example: 0
-        session_timeout:
-          type: integer
-          example: 300
-    RESTUserRole:
-      type: object
-      required:
-      - name
-      - comment
-      - reserved
-      - permissions
-      properties:
-        name:
-          type: string
-          example: ciops
-        comment:
-          type: string
-          example: CI Integration role
-        reserved:
-          type: boolean
-          example: true
-        permissions:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTRolePermission'
-    RESTUserConfigData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTUserConfig'
-    RESTUsersData:
-      type: object
-      required:
-      - users
-      - global_roles
-      - domain_roles
-      properties:
-        users:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTUser'
-        global_roles:
-          type: array
-          items:
-            type: string
-          example:
-          - admin
-          - reader
-        domain_roles:
-          type: array
-          items:
-            type: string
-          example:
-          - role1
-          - role2
-    RESTImportTask:
-      type: object
-      required:
-      - tid
-      - ctrler_id
-      - percentage
-      properties:
-        tid:
-          type: string
-          example: c5af897b62a258212ece91c0551d3a4a
-        ctrler_id:
-          type: string
-          example: 6e60452b244b90456f3450c9fed0a50f57f4b849dcb74a5fad289e8116f32f36
-        last_update_time:
-          type: string
-          format: date-time
-          example: '2022-03-17T17:31:55.832768041Z'
-        percentage:
-          type: integer
-          example: 100
-        triggered_by:
-          type: string
-          example: admin
-        status:
-          type: string
-          example: done
-        temp_token:
-          type: string
-          example: ''
-        fail_to_decrypt_key_fields:
-          type: object
-          description: Object key is kv key and value is array of cloaked fields that cannot be decrypted
-          additionalProperties:
-            type: array
-            items:
-              type: string
-            example:
-            - x509_cert
-            - signing_cert
-    RESTPermitsAssigned:
-      type: object
-      properties:
-        permissions:
-          type: array
-          description: array of permissions
-          items:
-            $ref: '#/components/schemas/RESTRolePermission'
-        domains:
-          type: array
-          description: array of domains that have the same permissions
-          items:
-            type: string
-          example:
-          - domain1
-          - domain2
-    RESTUserData:
-      type: object
-      required:
-      - user
-      properties:
-        user:
-          $ref: '#/components/schemas/RESTUser'
-    RESTRemoteRolePermits:
-      type: object
-      required:
-      - role
-      properties:
-        role:
-          type: string
-          description: global role on managed clusters in fed
-          example: admin
-        role_domains:
-          type: object
-          description: role -> domains on managed clusters in fed
-          properties:
-            key:
-              description: role
-              type: string
-            value:
-              type: object
-              description: array of domains
-              additionalProperties:
-                type: array
-                items:
-                  type: string
-                example:
-                - domain1
-                - domain2
-        extra_permissions:
-          description: extra permissions(other than 'role') for global domain on managed clusters in fed. only for Rancher SSO
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTRolePermission'
-        extra_permissions_domains:
-          type: array
-          description: list of extra permissions(other than 'role_domains') for namespaces on managed clusters in fed. only for Rancher SSO
-          items:
-            $ref: '#/components/schemas/RESTPermitsAssigned'
-    RESTPwdProfileBasic:
-      type: object
-      required:
-      - min_len
-      - min_uppercase_count
-      - min_lowercase_count
-      - min_digit_count
-      - min_special_count
-      properties:
-        min_len:
-          type: integer
-          example: 6
-        min_uppercase_count:
-          type: integer
-          example: 0
-        min_lowercase_count:
-          type: integer
-          example: 0
-        min_digit_count:
-          type: integer
-          example: 0
-        min_special_count:
-          type: integer
-          example: 0
-    RESTUserRoleDomainsConfig:
-      type: object
-      required:
-      - fullname
-      - role
-      - domains
-      properties:
-        fullname:
-          type: string
-          example: name
-        role:
-          type: string
-          example: myrole
-        domains:
-          type: array
-          items:
-            type: string
-            example: ''
-    RESTImportTaskData:
-      type: object
-      required:
-      - data
-      properties:
-        data:
-          $ref: '#/components/schemas/RESTImportTask'
-    RESTUserRoleConfig:
-      type: object
-      required:
-      - name
-      - comment
-      - permissions
-      properties:
-        name:
-          type: string
-          example: customadmin
-        comment:
-          type: string
-          example: ''
-        permissions:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTRolePermission'
-    RESTUserPwdConfig:
-      type: object
-      required:
-      - fullname
-      properties:
-        fullname:
-          type: string
-          example: admin
-        clear_failed_login:
-          type: boolean
-          example: true
-        new_password:
-          type: string
-          example: ''
-        force_reset_password:
-          type: boolean
-          description: whether to reset password even it's not expired yet
-          example: false
-        reset_password_in_next_login:
-          type: boolean
-          description: whether the target user needs ti reset password in the next login
-          example: true
-    RESTUserPwdConfigData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTUserPwdConfig'
-    RESTRolePermission:
-      type: object
-      required:
-      - id
-      - read
-      - write
-      properties:
-        id:
-          type: string
-          example: ci_scan
-        read:
-          type: boolean
-          example: false
-        write:
-          type: boolean
-          example: true
-    RESTPwdProfileData:
-      type: object
-      required:
-      - pwd_profile
-      properties:
-        pwd_profile:
-          $ref: '#/components/schemas/RESTPwdProfile'
-    RESTUserConfig:
-      type: object
-      required:
-      - fullname
-      - pwd_profile
-      properties:
-        fullname:
-          type: string
-          example: name
-        password:
-          type: string
-          format: password
-          example: mypassword
-        new_password:
-          type: string
-          example: newpassword
-        pwd_profile:
-          type: string
-          example: null
-        email:
-          type: string
-          format: email
-          example: user@mail.com
-        role:
-          type: string
-          example: admin
-        timeout:
-          type: integer
-          format: uint32
-          example: 300
-        locale:
-          type: string
-          example: en
-        role_domains:
-          type: object
-          description: Object key is role and value is array of domains
-          additionalProperties:
-            type: array
-            items:
-              type: string
-            example:
-            - domain1
-            - domain2
     RESTPwdProfile:
       type: object
       required:
@@ -964,6 +613,357 @@ components:
         session_timeout:
           type: integer
           example: 300
+    RESTUserRoleConfig:
+      type: object
+      required:
+      - name
+      - comment
+      - permissions
+      properties:
+        name:
+          type: string
+          example: customadmin
+        comment:
+          type: string
+          example: ''
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTRolePermission'
+    RESTImportTaskData:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          $ref: '#/components/schemas/RESTImportTask'
+    RESTUserRoleDomainsConfig:
+      type: object
+      required:
+      - fullname
+      - role
+      - domains
+      properties:
+        fullname:
+          type: string
+          example: name
+        role:
+          type: string
+          example: myrole
+        domains:
+          type: array
+          items:
+            type: string
+            example: ''
+    RESTPwdProfileConfigData:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          $ref: '#/components/schemas/RESTPwdProfileConfig'
+    RESTError:
+      type: object
+      required:
+      - code
+      - error
+      - message
+      properties:
+        code:
+          type: integer
+          example: 3
+        error:
+          type: string
+          example: Request failed
+        message:
+          type: string
+          example: Invalid format
+        password_profile_basic:
+          $ref: '#/components/schemas/RESTPwdProfileBasic'
+        import_task_data:
+          $ref: '#/components/schemas/RESTImportTaskData'
+    RESTUserConfig:
+      type: object
+      required:
+      - fullname
+      - pwd_profile
+      properties:
+        fullname:
+          type: string
+          example: name
+        password:
+          type: string
+          format: password
+          example: mypassword
+        new_password:
+          type: string
+          example: newpassword
+        pwd_profile:
+          type: string
+          example: null
+        email:
+          type: string
+          format: email
+          example: user@mail.com
+        role:
+          type: string
+          example: admin
+        timeout:
+          type: integer
+          format: uint32
+          example: 300
+        locale:
+          type: string
+          example: en
+        role_domains:
+          type: object
+          description: Object key is role and value is array of domains
+          additionalProperties:
+            type: array
+            items:
+              type: string
+            example:
+            - domain1
+            - domain2
+    RESTUserConfigData:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          $ref: '#/components/schemas/RESTUserConfig'
+    RESTUserPwdConfigData:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          $ref: '#/components/schemas/RESTUserPwdConfig'
+    RESTUserData:
+      type: object
+      required:
+      - user
+      properties:
+        user:
+          $ref: '#/components/schemas/RESTUser'
+    RESTPwdProfileBasic:
+      type: object
+      required:
+      - min_len
+      - min_uppercase_count
+      - min_lowercase_count
+      - min_digit_count
+      - min_special_count
+      properties:
+        min_len:
+          type: integer
+          example: 6
+        min_uppercase_count:
+          type: integer
+          example: 0
+        min_lowercase_count:
+          type: integer
+          example: 0
+        min_digit_count:
+          type: integer
+          example: 0
+        min_special_count:
+          type: integer
+          example: 0
+    RESTPwdProfileConfig:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          example: default
+        active:
+          type: boolean
+          example: true
+        comment:
+          type: string
+          example: ''
+        min_len:
+          type: integer
+          example: 6
+        min_uppercase_count:
+          type: integer
+          example: 0
+        min_lowercase_count:
+          type: integer
+          example: 0
+        min_digit_count:
+          type: integer
+          example: 0
+        min_special_count:
+          type: integer
+          example: 0
+        enable_password_expiration:
+          type: boolean
+          example: false
+        password_expire_after_days:
+          type: integer
+          example: 0
+        enable_password_history:
+          type: boolean
+          example: true
+        password_keep_history_count:
+          type: integer
+          example: 0
+        enable_block_after_failed_login:
+          type: boolean
+          example: false
+        block_after_failed_login_count:
+          type: integer
+          example: 0
+        block_minutes:
+          type: integer
+          example: 0
+        session_timeout:
+          type: integer
+          example: 300
+    RESTUserRolesData:
+      type: object
+      required:
+      - roles
+      properties:
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTUserRole'
+    RESTRemoteRolePermits:
+      type: object
+      required:
+      - role
+      properties:
+        role:
+          type: string
+          description: global role on managed clusters in fed
+          example: admin
+        role_domains:
+          type: object
+          description: role -> domains on managed clusters in fed
+          properties:
+            key:
+              description: role
+              type: string
+            value:
+              type: object
+              description: array of domains
+              additionalProperties:
+                type: array
+                items:
+                  type: string
+                example:
+                - domain1
+                - domain2
+        extra_permissions:
+          description: extra permissions(other than 'role') for global domain on managed clusters in fed. only for Rancher SSO
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTRolePermission'
+        extra_permissions_domains:
+          type: array
+          description: list of extra permissions(other than 'role_domains') for namespaces on managed clusters in fed. only for Rancher SSO
+          items:
+            $ref: '#/components/schemas/RESTPermitsAssigned'
+    RESTPermitsAssigned:
+      type: object
+      properties:
+        permissions:
+          type: array
+          description: array of permissions
+          items:
+            $ref: '#/components/schemas/RESTRolePermission'
+        domains:
+          type: array
+          description: array of domains that have the same permissions
+          items:
+            type: string
+          example:
+          - domain1
+          - domain2
+    RESTUserRoleDomainsConfigData:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          $ref: '#/components/schemas/RESTUserRoleDomainsConfig'
+    RESTPwdProfilesData:
+      type: object
+      required:
+      - pwd_profiles
+      - active_profile_name
+      properties:
+        pwd_profiles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTPwdProfile'
+        active_profile_name:
+          type: string
+          example: default
+    RESTImportTask:
+      type: object
+      required:
+      - tid
+      - ctrler_id
+      - percentage
+      properties:
+        tid:
+          type: string
+          example: c5af897b62a258212ece91c0551d3a4a
+        ctrler_id:
+          type: string
+          example: 6e60452b244b90456f3450c9fed0a50f57f4b849dcb74a5fad289e8116f32f36
+        last_update_time:
+          type: string
+          format: date-time
+          example: '2022-03-17T17:31:55.832768041Z'
+        percentage:
+          type: integer
+          example: 100
+        triggered_by:
+          type: string
+          example: admin
+        status:
+          type: string
+          example: done
+        temp_token:
+          type: string
+          example: ''
+        fail_to_decrypt_key_fields:
+          type: object
+          description: Object key is kv key and value is array of cloaked fields that cannot be decrypted
+          additionalProperties:
+            type: array
+            items:
+              type: string
+            example:
+            - x509_cert
+            - signing_cert
+    RESTUserRole:
+      type: object
+      required:
+      - name
+      - comment
+      - reserved
+      - permissions
+      properties:
+        name:
+          type: string
+          example: ciops
+        comment:
+          type: string
+          example: CI Integration role
+        reserved:
+          type: boolean
+          example: true
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTRolePermission'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

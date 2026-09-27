@@ -96,6 +96,43 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    RESTApikeysData:
+      type: object
+      required:
+      - apikeys
+      - global_roles
+      - domain_roles
+      properties:
+        apikeys:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTApikey'
+        global_roles:
+          type: array
+          items:
+            type: string
+          example:
+          - admin
+          - reader
+        domain_roles:
+          type: array
+          items:
+            type: string
+          example:
+          - role1
+          - role2
+    RESTApikeyGenerated:
+      type: object
+      required:
+      - apikey_name
+      - apikey_secret
+      properties:
+        apikey_name:
+          type: string
+          example: token-cicd-scan
+        apikey_secret:
+          type: string
+          example: 0u+tVOWNPRfpCK7p9qz
     RESTApikey:
       type: object
       required:
@@ -143,13 +180,6 @@ components:
         created_by_entity:
           type: string
           example: admin
-    RESTApikeyCreationData:
-      type: object
-      required:
-      - apikey
-      properties:
-        apikey:
-          $ref: '#/components/schemas/RESTApikeyCreation'
     RESTApikeyGeneratedData:
       type: object
       required:
@@ -157,6 +187,20 @@ components:
       properties:
         apikey:
           $ref: '#/components/schemas/RESTApikeyGenerated'
+    RESTApikeyData:
+      type: object
+      required:
+      - apikey
+      properties:
+        apikey:
+          $ref: '#/components/schemas/RESTApikey'
+    RESTApikeyCreationData:
+      type: object
+      required:
+      - apikey
+      properties:
+        apikey:
+          $ref: '#/components/schemas/RESTApikeyCreation'
     RESTApikeyCreation:
       type: object
       required:
@@ -190,50 +234,6 @@ components:
             example:
             - domain1
             - domain2
-    RESTApikeyGenerated:
-      type: object
-      required:
-      - apikey_name
-      - apikey_secret
-      properties:
-        apikey_name:
-          type: string
-          example: token-cicd-scan
-        apikey_secret:
-          type: string
-          example: 0u+tVOWNPRfpCK7p9qz
-    RESTApikeysData:
-      type: object
-      required:
-      - apikeys
-      - global_roles
-      - domain_roles
-      properties:
-        apikeys:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTApikey'
-        global_roles:
-          type: array
-          items:
-            type: string
-          example:
-          - admin
-          - reader
-        domain_roles:
-          type: array
-          items:
-            type: string
-          example:
-          - role1
-          - role2
-    RESTApikeyData:
-      type: object
-      required:
-      - apikey
-      properties:
-        apikey:
-          $ref: '#/components/schemas/RESTApikey'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

@@ -175,22 +175,60 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    RESTResponseRuleConfigData:
+    RESTResponseRuleConfig:
       type: object
       required:
-      - config
+      - id
+      - cfg_type
       properties:
-        config:
-          $ref: '#/components/schemas/RESTResponseRuleConfig'
-    RESTCLUSEventCondition:
+        id:
+          type: integer
+          format: uint32
+          example: 1001
+        comment:
+          type: string
+          example: ''
+        group:
+          type: string
+          example: ''
+        event:
+          type: string
+          example: ''
+        conditions:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTCLUSEventCondition'
+        actions:
+          type: array
+          items:
+            type: string
+            example: ''
+        webhooks:
+          type: array
+          items:
+            type: string
+            example: ''
+        disable:
+          type: boolean
+          example: false
+        cfg_type:
+          type: string
+          enum:
+          - user_created
+          - ground
+          - federal
+    RESTResponseRuleInsert:
       type: object
+      required:
+      - rules
       properties:
-        type:
-          type: string
-          example: ''
-        value:
-          type: string
-          example: ''
+        after:
+          type: integer
+          example: 0
+        rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTResponseRule'
     RESTResponseRuleData:
       type: object
       required:
@@ -198,11 +236,6 @@ components:
       properties:
         rule:
           $ref: '#/components/schemas/RESTResponseRule'
-    RESTResponseRuleActionData:
-      type: object
-      properties:
-        insert:
-          $ref: '#/components/schemas/RESTResponseRuleInsert'
     RESTResponseRule:
       type: object
       required:
@@ -252,60 +285,22 @@ components:
           - user_created
           - ground
           - federal
-    RESTResponseRuleInsert:
+    RESTCLUSEventCondition:
+      type: object
+      properties:
+        type:
+          type: string
+          example: ''
+        value:
+          type: string
+          example: ''
+    RESTResponseRuleConfigData:
       type: object
       required:
-      - rules
+      - config
       properties:
-        after:
-          type: integer
-          example: 0
-        rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTResponseRule'
-    RESTResponseRuleConfig:
-      type: object
-      required:
-      - id
-      - cfg_type
-      properties:
-        id:
-          type: integer
-          format: uint32
-          example: 1001
-        comment:
-          type: string
-          example: ''
-        group:
-          type: string
-          example: ''
-        event:
-          type: string
-          example: ''
-        conditions:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTCLUSEventCondition'
-        actions:
-          type: array
-          items:
-            type: string
-            example: ''
-        webhooks:
-          type: array
-          items:
-            type: string
-            example: ''
-        disable:
-          type: boolean
-          example: false
-        cfg_type:
-          type: string
-          enum:
-          - user_created
-          - ground
-          - federal
+        config:
+          $ref: '#/components/schemas/RESTResponseRuleConfig'
     RESTResponseRulesData:
       type: object
       required:
@@ -315,6 +310,11 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RESTResponseRule'
+    RESTResponseRuleActionData:
+      type: object
+      properties:
+        insert:
+          $ref: '#/components/schemas/RESTResponseRuleInsert'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

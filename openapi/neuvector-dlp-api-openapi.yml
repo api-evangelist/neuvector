@@ -227,6 +227,46 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    RESTDlpSetting:
+      type: object
+      required:
+      - name
+      - action
+      properties:
+        name:
+          type: string
+          example: sensor.ssn
+        action:
+          type: string
+          example: log
+        comment:
+          type: string
+          example: logging sensor ssn
+    RESTCriteriaEntry:
+      type: object
+      required:
+      - key
+      - value
+      - op
+      properties:
+        key:
+          type: string
+          example: pattern
+        value:
+          type: string
+          example: '[0-9]'
+        op:
+          type: string
+          example: regex
+    RESTDlpSensorsData:
+      type: object
+      required:
+      - sensors
+      properties:
+        sensors:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTDlpSensor'
     RESTDlpSensor:
       type: object
       required:
@@ -262,148 +302,6 @@ components:
           enum:
           - user_created
           - ground
-    RESTDlpGroupConfig:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          example: ssn
-        status:
-          type: boolean
-          example: true
-        delete:
-          type: array
-          items:
-            type: string
-            example: ''
-        sensors:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTDlpSetting'
-        replace:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTDlpSetting'
-    RESTDlpSensorData:
-      type: object
-      required:
-      - sensor
-      properties:
-        sensor:
-          $ref: '#/components/schemas/RESTDlpSensor'
-    RESTDlpGroupConfigData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTDlpGroupConfig'
-    RESTDlpGroupData:
-      type: object
-      required:
-      - dlp_group
-      properties:
-        dlp_group:
-          $ref: '#/components/schemas/RESTDlpGroup'
-    RESTDlpSensorsData:
-      type: object
-      required:
-      - sensors
-      properties:
-        sensors:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTDlpSensor'
-    RESTDlpGroup:
-      type: object
-      required:
-      - name
-      - status
-      - sensors
-      properties:
-        name:
-          type: string
-          example: nodes
-        status:
-          type: boolean
-          example: true
-        sensors:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTDlpSetting'
-    RESTDlpRuleDetail:
-      type: object
-      required:
-      - sensors
-      - rules
-      properties:
-        sensors:
-          type: array
-          items:
-            type: string
-          example:
-          - ssn
-          - credit
-        rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTDlpRule'
-    RESTDlpSensorConfigData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTDlpSensorConfig'
-    RESTCriteriaEntry:
-      type: object
-      required:
-      - key
-      - value
-      - op
-      properties:
-        key:
-          type: string
-          example: pattern
-        value:
-          type: string
-          example: '[0-9]'
-        op:
-          type: string
-          example: regex
-    RESTDlpSetting:
-      type: object
-      required:
-      - name
-      - action
-      properties:
-        name:
-          type: string
-          example: sensor.ssn
-        action:
-          type: string
-          example: log
-        comment:
-          type: string
-          example: logging sensor ssn
-    RESTDlpRuleData:
-      type: object
-      required:
-      - rule
-      properties:
-        rule:
-          $ref: '#/components/schemas/RESTDlpRuleDetail'
-    RESTDlpGroupsData:
-      type: object
-      required:
-      - dlp_groups
-      properties:
-        dlp_groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTDlpGroup'
     RESTDlpRulesData:
       type: object
       required:
@@ -460,6 +358,108 @@ components:
         comment:
           type: string
           example: Sensor for Credit Card detection
+    RESTDlpRuleDetail:
+      type: object
+      required:
+      - sensors
+      - rules
+      properties:
+        sensors:
+          type: array
+          items:
+            type: string
+          example:
+          - ssn
+          - credit
+        rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTDlpRule'
+    RESTDlpGroupConfig:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          example: ssn
+        status:
+          type: boolean
+          example: true
+        delete:
+          type: array
+          items:
+            type: string
+            example: ''
+        sensors:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTDlpSetting'
+        replace:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTDlpSetting'
+    RESTDlpGroup:
+      type: object
+      required:
+      - name
+      - status
+      - sensors
+      properties:
+        name:
+          type: string
+          example: nodes
+        status:
+          type: boolean
+          example: true
+        sensors:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTDlpSetting'
+    RESTDlpGroupData:
+      type: object
+      required:
+      - dlp_group
+      properties:
+        dlp_group:
+          $ref: '#/components/schemas/RESTDlpGroup'
+    RESTDlpGroupConfigData:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          $ref: '#/components/schemas/RESTDlpGroupConfig'
+    RESTDlpGroupsData:
+      type: object
+      required:
+      - dlp_groups
+      properties:
+        dlp_groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTDlpGroup'
+    RESTDlpRuleData:
+      type: object
+      required:
+      - rule
+      properties:
+        rule:
+          $ref: '#/components/schemas/RESTDlpRuleDetail'
+    RESTDlpSensorData:
+      type: object
+      required:
+      - sensor
+      properties:
+        sensor:
+          $ref: '#/components/schemas/RESTDlpSensor'
+    RESTDlpSensorConfigData:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          $ref: '#/components/schemas/RESTDlpSensorConfig'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

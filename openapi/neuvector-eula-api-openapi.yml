@@ -47,13 +47,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    RESTEULA:
-      type: object
-      required:
-      - accepted
-      properties:
-        accepted:
-          type: boolean
     RESTEULAData:
       type: object
       required:
@@ -67,6 +60,13 @@ components:
         k8s_rbac_alert_message:
           type: string
           description: alert message when k8s role/rolebinding neuvector-binding-secret is not correctly configured
+    RESTEULA:
+      type: object
+      required:
+      - accepted
+      properties:
+        accepted:
+          type: boolean
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
