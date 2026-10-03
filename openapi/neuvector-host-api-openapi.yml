@@ -79,13 +79,37 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    RESTHostData:
+    RESTComplianceData:
       type: object
       required:
-      - host
+      - run_timestamp
+      - run_at
+      - kubernetes_cis_category
+      - kubernetes_cis_version
+      - docker_cis_version
+      - items
       properties:
-        host:
-          $ref: '#/components/schemas/RESTHost'
+        run_timestamp:
+          type: integer
+          format: int64
+          example: 1516561253
+        run_at:
+          type: string
+          format: date-time
+          example: 2018-06-21 19:00:53+00:00
+        kubernetes_cis_category:
+          type: string
+          example: ''
+        kubernetes_cis_version:
+          type: string
+          example: 1.5.1
+        docker_cis_version:
+          type: string
+          example: 1.2.0
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTBenchItem'
     RESTBenchItem:
       type: object
       required:
@@ -179,15 +203,6 @@ components:
           type: string
           format: date-time
           example: 2018-06-20 19:00:53+00:00
-    RESTHostsData:
-      type: object
-      required:
-      - hosts
-      properties:
-        hosts:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTHost'
     RESTIPAddr:
       type: object
       required:
@@ -204,37 +219,15 @@ components:
         gateway:
           type: string
           example: ''
-    RESTComplianceData:
+    RESTHostsData:
       type: object
       required:
-      - run_timestamp
-      - run_at
-      - kubernetes_cis_category
-      - kubernetes_cis_version
-      - docker_cis_version
-      - items
+      - hosts
       properties:
-        run_timestamp:
-          type: integer
-          format: int64
-          example: 1516561253
-        run_at:
-          type: string
-          format: date-time
-          example: 2018-06-21 19:00:53+00:00
-        kubernetes_cis_category:
-          type: string
-          example: ''
-        kubernetes_cis_version:
-          type: string
-          example: 1.5.1
-        docker_cis_version:
-          type: string
-          example: 1.2.0
-        items:
+        hosts:
           type: array
           items:
-            $ref: '#/components/schemas/RESTBenchItem'
+            $ref: '#/components/schemas/RESTHost'
     RESTHost:
       type: object
       required:
@@ -346,6 +339,13 @@ components:
             type: string
           example:
             kubeadm.alpha.kubernetes.io/cri-socket: /var/run/dockershim.sock
+    RESTHostData:
+      type: object
+      required:
+      - host
+      properties:
+        host:
+          $ref: '#/components/schemas/RESTHost'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

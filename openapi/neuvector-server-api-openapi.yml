@@ -176,6 +176,138 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    RESTServerData:
+      type: object
+      required:
+      - server
+      properties:
+        server:
+          $ref: '#/components/schemas/RESTServer'
+    RESTServerRoleGroupsConfig:
+      type: object
+      required:
+      - name
+      - role
+      - groups
+      properties:
+        name:
+          type: string
+          example: reader
+        role:
+          type: string
+          example: reader
+        groups:
+          type: array
+          items:
+            type: string
+          example:
+          - reader1
+          - reader2
+    RESTServerSAMLConfig:
+      type: object
+      required:
+      - sso_url
+      - issuer
+      - group_claim
+      properties:
+        sso_url:
+          type: string
+          example: https://dev-258.oktapreview.com/app/88_examplesamlapp_1/exYKIvqo0h7/sso/saml
+        issuer:
+          type: string
+          example: http://www.okta.com/xkbjKIvo0h
+        x509_cert:
+          type: string
+          example: E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF
+        group_claim:
+          type: string
+          example: ''
+        enable:
+          type: boolean
+          example: true
+        default_role:
+          type: string
+          example: admin
+        role_groups:
+          type: object
+          properties:
+            role:
+              type: string
+              example: admin
+            groups:
+              type: array
+              items:
+                type: string
+              example:
+              - admin1
+              - admin2
+        group_mapped_roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupRoleMapping'
+        x509_cert_extra:
+          type: array
+          items:
+            type: string
+          example:
+          - E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF
+          - E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF
+        slo_enabled:
+          type: boolean
+          example: true
+        slo_url:
+          type: string
+          example: https://dev.oktapreview.com/app/examplesamlapp_1/exjlpo0/slo/saml
+        signing_cert:
+          type: string
+          example: E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF
+        signing_key:
+          type: string
+          example: E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF
+    RESTMappableRoles:
+      type: object
+      required:
+      - default_roles
+      - group_roles
+      - group_domain_roles
+      properties:
+        default_roles:
+          type: array
+          items:
+            type: string
+          example:
+          - default_role_1
+          - default_role_2
+        group_roles:
+          type: array
+          items:
+            type: string
+          example:
+          - group_role_1
+          - group_role_2
+        group_domain_roles:
+          type: array
+          items:
+            type: string
+          example:
+          - group_domain_role_1
+          - group_domain_role_2
+    RESTRolePermission:
+      type: object
+      required:
+      - id
+      - read
+      - write
+      properties:
+        id:
+          type: string
+          example: ci_scan
+        read:
+          type: boolean
+          example: false
+        write:
+          type: boolean
+          example: true
     RESTServer:
       type: object
       required:
@@ -194,6 +326,139 @@ components:
           $ref: '#/components/schemas/RESTServerSAML'
         oidc:
           $ref: '#/components/schemas/RESTServerOIDC'
+    GroupRoleMapping:
+      type: object
+      required:
+      - group
+      - global_role
+      properties:
+        group:
+          type: string
+          example: Domain Admins
+        global_role:
+          type: string
+          example: admin
+        role_domains:
+          type: object
+          description: Object key is role and value is array of domains
+          additionalProperties:
+            type: array
+            items:
+              type: string
+            example:
+            - domain1
+            - domain2
+    RESTUsersData:
+      type: object
+      required:
+      - users
+      - global_roles
+      - domain_roles
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTUser'
+        global_roles:
+          type: array
+          items:
+            type: string
+          example:
+          - admin
+          - reader
+        domain_roles:
+          type: array
+          items:
+            type: string
+          example:
+          - role1
+          - role2
+    RESTPermitsAssigned:
+      type: object
+      properties:
+        permissions:
+          type: array
+          description: array of permissions
+          items:
+            $ref: '#/components/schemas/RESTRolePermission'
+        domains:
+          type: array
+          description: array of domains that have the same permissions
+          items:
+            type: string
+          example:
+          - domain1
+          - domain2
+    RESTServersData:
+      type: object
+      required:
+      - servers
+      properties:
+        servers:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTServer'
+        mappable_role:
+          $ref: '#/components/schemas/RESTMappableRoles'
+    RESTServerOIDCConfig:
+      type: object
+      required:
+      - issuer
+      - client_id
+      - group_claim
+      - enable
+      - default_role
+      properties:
+        issuer:
+          type: string
+          example: https://dev-256438.oktapreview.com
+        client_id:
+          type: string
+          example: 0oai4gcl8xXh2itGi1h7
+        client_secret:
+          type: string
+          example: QJju4mL1VLU0CAcD05WJ83K0D_e0gQEydowOvVqv
+        group_claim:
+          type: string
+          example: ''
+        scopes:
+          type: array
+          items:
+            type: string
+            example: ''
+        enable:
+          type: boolean
+          example: true
+        default_role:
+          type: string
+          example: admin
+        use_proxy:
+          type: boolean
+          example: false
+        role_groups:
+          type: object
+          properties:
+            role:
+              type: string
+              example: admin
+            groups:
+              type: array
+              items:
+                type: string
+              example:
+              - admin1
+              - admin2
+        group_mapped_roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupRoleMapping'
+    RESTServerRoleGroupsConfigData:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          $ref: '#/components/schemas/RESTServerRoleGroupsConfig'
     RESTServerLDAP:
       type: object
       required:
@@ -263,6 +528,63 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/GroupRoleMapping'
+    RESTServerSAML:
+      type: object
+      required:
+      - sso_url
+      - issuer
+      - group_claim
+      - enable
+      - default_role
+      properties:
+        sso_url:
+          type: string
+          example: https://dev-2588.oktapreview.com/app/examplesamlapp_1/exjlpo0/sso/saml
+        issuer:
+          type: string
+          example: http://www.okta.com/exkgp9avqo07
+        x509_cert:
+          type: string
+          example: E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF
+        group_claim:
+          type: string
+          example: ''
+        enable:
+          type: boolean
+          example: true
+        default_role:
+          type: string
+          example: admin
+        role_groups:
+          type: object
+          properties:
+            role:
+              type: string
+              example: admin
+            groups:
+              type: array
+              items:
+                type: string
+              example:
+              - admin1
+              - admin2
+        group_mapped_roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupRoleMapping'
+        x509_certs:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTX509CertInfo'
+        slo_enabled:
+          type: boolean
+          example: true
+        slo_url:
+          type: string
+          example: https://dev.oktapreview.com/app/examplesamlapp_1/exjlpo0/slo/saml
+        signing_cert:
+          type: string
+          example: E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF
     RESTServerOIDC:
       type: object
       required:
@@ -328,23 +650,45 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/GroupRoleMapping'
-    RESTServerSAMLConfig:
+    RESTServerConfigData:
       type: object
       required:
-      - sso_url
-      - issuer
-      - group_claim
+      - config
       properties:
-        sso_url:
+        config:
+          $ref: '#/components/schemas/RESTServerConfig'
+    RESTServerLDAPConfig:
+      type: object
+      properties:
+        directory:
           type: string
-          example: https://dev-258.oktapreview.com/app/88_examplesamlapp_1/exYKIvqo0h7/sso/saml
-        issuer:
+          example: ''
+        hostname:
           type: string
-          example: http://www.okta.com/xkbjKIvo0h
-        x509_cert:
+          example: 1.2.3.4
+        port:
+          type: integer
+          format: uint16
+          example: 1234
+        ssl:
+          type: boolean
+          example: true
+        base_dn:
           type: string
-          example: E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF
-        group_claim:
+          example: dc=win,dc=nv,dc=com
+        group_dn:
+          type: string
+          example: dc=win,dc=nv,dc=com
+        bind_dn:
+          type: string
+          example: administrator
+        bind_password:
+          type: string
+          example: '2222'
+        group_member_attr:
+          type: string
+          example: ''
+        username_attr:
           type: string
           example: ''
         enable:
@@ -370,66 +714,56 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/GroupRoleMapping'
-        x509_cert_extra:
-          type: array
-          items:
-            type: string
-          example:
-          - E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF
-          - E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF
-        slo_enabled:
-          type: boolean
-          example: true
-        slo_url:
-          type: string
-          example: https://dev.oktapreview.com/app/examplesamlapp_1/exjlpo0/slo/saml
-        signing_cert:
-          type: string
-          example: E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF
-        signing_key:
-          type: string
-          example: E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF
-    RESTUsersData:
+    RESTServerConfig:
       type: object
       required:
-      - users
-      - global_roles
-      - domain_roles
+      - name
       properties:
-        users:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTUser'
-        global_roles:
-          type: array
-          items:
-            type: string
-          example:
-          - admin
-          - reader
-        domain_roles:
-          type: array
-          items:
-            type: string
-          example:
-          - role1
-          - role2
-    RESTRolePermission:
+        name:
+          type: string
+          example: ad
+        ldap:
+          $ref: '#/components/schemas/RESTServerLDAPConfig'
+        saml:
+          $ref: '#/components/schemas/RESTServerSAMLConfig'
+        oidc:
+          $ref: '#/components/schemas/RESTServerOIDCConfig'
+    RESTRemoteRolePermits:
       type: object
       required:
-      - id
-      - read
-      - write
+      - role
       properties:
-        id:
+        role:
           type: string
-          example: ci_scan
-        read:
-          type: boolean
-          example: false
-        write:
-          type: boolean
-          example: true
+          description: global role on managed clusters in fed
+          example: admin
+        role_domains:
+          type: object
+          description: role -> domains on managed clusters in fed
+          properties:
+            key:
+              description: role
+              type: string
+            value:
+              type: object
+              description: array of domains
+              additionalProperties:
+                type: array
+                items:
+                  type: string
+                example:
+                - domain1
+                - domain2
+        extra_permissions:
+          description: extra permissions(other than 'role') for global domain on managed clusters in fed. only for Rancher SSO
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTRolePermission'
+        extra_permissions_domains:
+          type: array
+          description: list of extra permissions(other than 'role_domains') for namespaces on managed clusters in fed. only for Rancher SSO
+          items:
+            $ref: '#/components/schemas/RESTPermitsAssigned'
     RESTX509CertInfo:
       type: object
       properties:
@@ -554,340 +888,6 @@ components:
           type: boolean
           description: whether the user's password can be reset by the current login user
           example: false
-    RESTMappableRoles:
-      type: object
-      required:
-      - default_roles
-      - group_roles
-      - group_domain_roles
-      properties:
-        default_roles:
-          type: array
-          items:
-            type: string
-          example:
-          - default_role_1
-          - default_role_2
-        group_roles:
-          type: array
-          items:
-            type: string
-          example:
-          - group_role_1
-          - group_role_2
-        group_domain_roles:
-          type: array
-          items:
-            type: string
-          example:
-          - group_domain_role_1
-          - group_domain_role_2
-    RESTServerSAML:
-      type: object
-      required:
-      - sso_url
-      - issuer
-      - group_claim
-      - enable
-      - default_role
-      properties:
-        sso_url:
-          type: string
-          example: https://dev-2588.oktapreview.com/app/examplesamlapp_1/exjlpo0/sso/saml
-        issuer:
-          type: string
-          example: http://www.okta.com/exkgp9avqo07
-        x509_cert:
-          type: string
-          example: E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF
-        group_claim:
-          type: string
-          example: ''
-        enable:
-          type: boolean
-          example: true
-        default_role:
-          type: string
-          example: admin
-        role_groups:
-          type: object
-          properties:
-            role:
-              type: string
-              example: admin
-            groups:
-              type: array
-              items:
-                type: string
-              example:
-              - admin1
-              - admin2
-        group_mapped_roles:
-          type: array
-          items:
-            $ref: '#/components/schemas/GroupRoleMapping'
-        x509_certs:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTX509CertInfo'
-        slo_enabled:
-          type: boolean
-          example: true
-        slo_url:
-          type: string
-          example: https://dev.oktapreview.com/app/examplesamlapp_1/exjlpo0/slo/saml
-        signing_cert:
-          type: string
-          example: E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF
-    RESTServerData:
-      type: object
-      required:
-      - server
-      properties:
-        server:
-          $ref: '#/components/schemas/RESTServer'
-    GroupRoleMapping:
-      type: object
-      required:
-      - group
-      - global_role
-      properties:
-        group:
-          type: string
-          example: Domain Admins
-        global_role:
-          type: string
-          example: admin
-        role_domains:
-          type: object
-          description: Object key is role and value is array of domains
-          additionalProperties:
-            type: array
-            items:
-              type: string
-            example:
-            - domain1
-            - domain2
-    RESTServerRoleGroupsConfig:
-      type: object
-      required:
-      - name
-      - role
-      - groups
-      properties:
-        name:
-          type: string
-          example: reader
-        role:
-          type: string
-          example: reader
-        groups:
-          type: array
-          items:
-            type: string
-          example:
-          - reader1
-          - reader2
-    RESTServerConfigData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTServerConfig'
-    RESTServerLDAPConfig:
-      type: object
-      properties:
-        directory:
-          type: string
-          example: ''
-        hostname:
-          type: string
-          example: 1.2.3.4
-        port:
-          type: integer
-          format: uint16
-          example: 1234
-        ssl:
-          type: boolean
-          example: true
-        base_dn:
-          type: string
-          example: dc=win,dc=nv,dc=com
-        group_dn:
-          type: string
-          example: dc=win,dc=nv,dc=com
-        bind_dn:
-          type: string
-          example: administrator
-        bind_password:
-          type: string
-          example: '2222'
-        group_member_attr:
-          type: string
-          example: ''
-        username_attr:
-          type: string
-          example: ''
-        enable:
-          type: boolean
-          example: true
-        default_role:
-          type: string
-          example: admin
-        role_groups:
-          type: object
-          properties:
-            role:
-              type: string
-              example: admin
-            groups:
-              type: array
-              items:
-                type: string
-              example:
-              - admin1
-              - admin2
-        group_mapped_roles:
-          type: array
-          items:
-            $ref: '#/components/schemas/GroupRoleMapping'
-    RESTServerConfig:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          example: ad
-        ldap:
-          $ref: '#/components/schemas/RESTServerLDAPConfig'
-        saml:
-          $ref: '#/components/schemas/RESTServerSAMLConfig'
-        oidc:
-          $ref: '#/components/schemas/RESTServerOIDCConfig'
-    RESTRemoteRolePermits:
-      type: object
-      required:
-      - role
-      properties:
-        role:
-          type: string
-          description: global role on managed clusters in fed
-          example: admin
-        role_domains:
-          type: object
-          description: role -> domains on managed clusters in fed
-          properties:
-            key:
-              description: role
-              type: string
-            value:
-              type: object
-              description: array of domains
-              additionalProperties:
-                type: array
-                items:
-                  type: string
-                example:
-                - domain1
-                - domain2
-        extra_permissions:
-          description: extra permissions(other than 'role') for global domain on managed clusters in fed. only for Rancher SSO
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTRolePermission'
-        extra_permissions_domains:
-          type: array
-          description: list of extra permissions(other than 'role_domains') for namespaces on managed clusters in fed. only for Rancher SSO
-          items:
-            $ref: '#/components/schemas/RESTPermitsAssigned'
-    RESTPermitsAssigned:
-      type: object
-      properties:
-        permissions:
-          type: array
-          description: array of permissions
-          items:
-            $ref: '#/components/schemas/RESTRolePermission'
-        domains:
-          type: array
-          description: array of domains that have the same permissions
-          items:
-            type: string
-          example:
-          - domain1
-          - domain2
-    RESTServerOIDCConfig:
-      type: object
-      required:
-      - issuer
-      - client_id
-      - group_claim
-      - enable
-      - default_role
-      properties:
-        issuer:
-          type: string
-          example: https://dev-256438.oktapreview.com
-        client_id:
-          type: string
-          example: 0oai4gcl8xXh2itGi1h7
-        client_secret:
-          type: string
-          example: QJju4mL1VLU0CAcD05WJ83K0D_e0gQEydowOvVqv
-        group_claim:
-          type: string
-          example: ''
-        scopes:
-          type: array
-          items:
-            type: string
-            example: ''
-        enable:
-          type: boolean
-          example: true
-        default_role:
-          type: string
-          example: admin
-        use_proxy:
-          type: boolean
-          example: false
-        role_groups:
-          type: object
-          properties:
-            role:
-              type: string
-              example: admin
-            groups:
-              type: array
-              items:
-                type: string
-              example:
-              - admin1
-              - admin2
-        group_mapped_roles:
-          type: array
-          items:
-            $ref: '#/components/schemas/GroupRoleMapping'
-    RESTServersData:
-      type: object
-      required:
-      - servers
-      properties:
-        servers:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTServer'
-        mappable_role:
-          $ref: '#/components/schemas/RESTMappableRoles'
-    RESTServerRoleGroupsConfigData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTServerRoleGroupsConfig'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

@@ -91,13 +91,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    RESTFileMonitorConfigData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTFileMonitorConfig'
     RESTFileMonitorFilterConfig:
       type: object
       required:
@@ -124,6 +117,28 @@ components:
         group:
           type: string
           example: ''
+    RESTFileMonitorConfig:
+      type: object
+      properties:
+        add_filters:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTFileMonitorFilterConfig'
+        delete_filters:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTFileMonitorFilterConfig'
+        update_filters:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTFileMonitorFilterConfig'
+    RESTFileMonitorConfigData:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          $ref: '#/components/schemas/RESTFileMonitorConfig'
     RESTFileMonitorFileData:
       type: object
       required:
@@ -161,21 +176,6 @@ components:
             type: string
           example:
           - ''
-    RESTFileMonitorConfig:
-      type: object
-      properties:
-        add_filters:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTFileMonitorFilterConfig'
-        delete_filters:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTFileMonitorFilterConfig'
-        update_filters:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTFileMonitorFilterConfig'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

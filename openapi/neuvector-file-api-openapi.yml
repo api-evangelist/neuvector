@@ -565,23 +565,18 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    RESTRemoteExportOptions:
+    RESTRemoteExportData:
       type: object
-      required:
-      - file_path
-      - remote_repository_nickname
       properties:
         file_path:
           type: string
-          example: my_exports/example.yaml
-        comment:
-          type: string
-          description: commit message
-          example: commit for poc
-        remote_repository_nickname:
-          type: string
-          example: default
-    RESTVulnProfilesExport:
+          description: the destination file path when exported to remote repository
+    RESTFedConfigExport:
+      type: object
+      properties:
+        remote_export_options:
+          $ref: '#/components/schemas/RESTRemoteExportOptions'
+    RESTCompProfilesExport:
       type: object
       properties:
         names:
@@ -592,13 +587,6 @@ components:
             - default
         remote_export_options:
           $ref: '#/components/schemas/RESTRemoteExportOptions'
-    RESTImportTaskData:
-      type: object
-      required:
-      - data
-      properties:
-        data:
-          $ref: '#/components/schemas/RESTImportTask'
     RESTWafSensorExport:
       type: object
       required:
@@ -622,25 +610,84 @@ components:
             example: 12
         remote_export_options:
           $ref: '#/components/schemas/RESTRemoteExportOptions'
-    RESTRemoteExportData:
+    RESTVulnProfilesExport:
       type: object
-      properties:
-        file_path:
-          type: string
-          description: the destination file path when exported to remote repository
-    RESTDlpSensorExport:
-      type: object
-      required:
-      - names
       properties:
         names:
           type: array
           items:
             type: string
-          example:
-          - ''
+            example:
+            - default
         remote_export_options:
           $ref: '#/components/schemas/RESTRemoteExportOptions'
+    RESTAdmCtrlRulesExport:
+      type: object
+      properties:
+        export_config:
+          type: boolean
+          example: true
+        ids:
+          type: array
+          items:
+            type: integer
+            format: uint32
+            example: 12
+        remote_export_options:
+          $ref: '#/components/schemas/RESTRemoteExportOptions'
+    RESTRemoteExportOptions:
+      type: object
+      required:
+      - file_path
+      - remote_repository_nickname
+      properties:
+        file_path:
+          type: string
+          example: my_exports/example.yaml
+        comment:
+          type: string
+          description: commit message
+          example: commit for poc
+        remote_repository_nickname:
+          type: string
+          example: default
+    RESTGroupExport:
+      type: object
+      required:
+      - groups
+      properties:
+        use_name_referral:
+          type: boolean
+          example: false
+          description: Do not export groups' criteria. Instead, refer to NvGroupDefinition CRs for all groups involved in the export.
+        groups:
+          type: array
+          items:
+            type: string
+            example: demo
+        policy_mode:
+          type: string
+          example: Monitor
+          enum:
+          - Learn
+          - Monitor
+          - Protect
+        profile_mode:
+          type: string
+          example: Monitor
+          enum:
+          - Learn
+          - Monitor
+          - Protect
+        remote_export_options:
+          $ref: '#/components/schemas/RESTRemoteExportOptions'
+    RESTImportTaskData:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          $ref: '#/components/schemas/RESTImportTask'
     RESTImportTask:
       type: object
       required:
@@ -680,64 +727,17 @@ components:
             example:
             - x509_cert
             - signing_cert
-    RESTAdmCtrlRulesExport:
-      type: object
-      properties:
-        export_config:
-          type: boolean
-          example: true
-        ids:
-          type: array
-          items:
-            type: integer
-            format: uint32
-            example: 12
-        remote_export_options:
-          $ref: '#/components/schemas/RESTRemoteExportOptions'
-    RESTGroupExport:
+    RESTDlpSensorExport:
       type: object
       required:
-      - groups
-      properties:
-        use_name_referral:
-          type: boolean
-          example: false
-          description: Do not export groups' criteria. Instead, refer to NvGroupDefinition CRs for all groups involved in the export.
-        groups:
-          type: array
-          items:
-            type: string
-            example: demo
-        policy_mode:
-          type: string
-          example: Monitor
-          enum:
-          - Learn
-          - Monitor
-          - Protect
-        profile_mode:
-          type: string
-          example: Monitor
-          enum:
-          - Learn
-          - Monitor
-          - Protect
-        remote_export_options:
-          $ref: '#/components/schemas/RESTRemoteExportOptions'
-    RESTFedConfigExport:
-      type: object
-      properties:
-        remote_export_options:
-          $ref: '#/components/schemas/RESTRemoteExportOptions'
-    RESTCompProfilesExport:
-      type: object
+      - names
       properties:
         names:
           type: array
           items:
             type: string
-            example:
-            - default
+          example:
+          - ''
         remote_export_options:
           $ref: '#/components/schemas/RESTRemoteExportOptions'
   securitySchemes:

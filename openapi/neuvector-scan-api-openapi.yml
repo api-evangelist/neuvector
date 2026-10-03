@@ -904,703 +904,15 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    RESTScanner:
+    RESTScanPlatformSummaryData:
       type: object
       required:
-      - id
-      - cvedb_version
-      - cvedb_create_time
-      - server
-      - port
+      - platforms
       properties:
-        id:
-          type: string
-          example: github
-        cvedb_version:
-          type: string
-          example: '1.011'
-        cvedb_create_time:
-          type: string
-          format: date-time
-          example: 2018-06-20 19:00:53+00:00
-        server:
-          type: string
-          example: 10.1.5.1
-        port:
-          type: integer
-          format: uint16
-          example: 51764
-    RESTScanReportCursor:
-      type: object
-      properties:
-        name:
-          type: string
-        host_name:
-          type: string
-        domain:
-          type: string
-        cve_name:
-          type: string
-        cve_package:
-          type: string
-    RESTScanCacheRecord:
-      type: object
-      required:
-      - layer_id
-      - size
-      - reference_count
-      - last_referred
-      properties:
-        layer_id:
-          type: string
-          example: ''
-        size:
-          type: integer
-          format: uint64
-          example: 0
-        reference_count:
-          type: integer
-          format: uint32
-          example: 0
-        last_referred:
-          type: string
-          format: date-time
-          example: '2022-03-17T17:31:55.832768041Z'
-    RESTScanReport:
-      type: object
-      required:
-      - vulnerabilities
-      properties:
-        vulnerabilities:
+        platforms:
           type: array
           items:
-            $ref: '#/components/schemas/RESTVulnerability'
-        modules:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTScanModule'
-        checks:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTBenchItem'
-        secrets:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTScanSecret'
-        setid_perms:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTScanSetIdPerm'
-        envs:
-          type: array
-          items:
-            type: string
-          example:
-          - PATH=/usr/local/sbin
-          - GOSU_VERSION=1.12
-          - REDIS_VERSION=6.0.2
-        labels:
-          type: object
-          description: map key is string type
-          additionalProperties:
-            type: string
-          example:
-            label1: value1
-            label2: value2
-        cmds:
-          type: array
-          items:
-            type: string
-            example: ''
-    RESTScanMeta:
-      type: object
-      required:
-      - source
-      - user
-      - job
-      - workspace
-      - function
-      - region
-      properties:
-        source:
-          type: string
-          example: github
-        user:
-          type: string
-          example: user
-        job:
-          type: string
-          example: scan
-        workspace:
-          type: string
-          example: /local
-        function:
-          type: string
-          example: monitor
-        region:
-          type: string
-          example: West
-    RESTRegistryConfigData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTRegistryConfig'
-    RESTRegistryConfigScan:
-      type: object
-      properties:
-        rescan_after_db_update:
-          type: boolean
-          example: false
-        scan_layers:
-          type: boolean
-          example: false
-        repo_limit:
-          type: integer
-          example: 1
-        tag_limit:
-          type: integer
-          example: 1
-        schedule:
-          $ref: '#/components/schemas/RESTScanSchedule'
-        ignore_proxy:
-          type: boolean
-          example: false
-    RESTScanSchedule:
-      type: object
-      required:
-      - schedule
-      - interval
-      properties:
-        schedule:
-          type: string
-          example: manual
-        interval:
-          type: integer
-          example: 5
-    RESTBenchItem:
-      type: object
-      required:
-      - catalog
-      - type
-      - level
-      - test_number
-      - profile
-      - scored
-      - automated
-      - description
-      - message
-      - remediation
-      - group
-      properties:
-        catalog:
-          type: string
-          example: docker
-        type:
-          type: string
-          example: ''
-        level:
-          type: string
-          example: INFO
-        test_number:
-          type: string
-          example: '1'
-        profile:
-          type: string
-          example: Level 1
-        scored:
-          type: boolean
-          example: true
-        automated:
-          type: boolean
-          example: true
-        description:
-          type: string
-          example: General Configuration
-        message:
-          type: array
-          items:
-            type: string
-            example: Host Configuration
-        remediation:
-          type: string
-          example: ''
-        group:
-          type: string
-          example: nv.calico
-    RESTAssetsScanReportFilter:
-      type: object
-      required:
-      - name
-      - op
-      - value
-      properties:
-        name:
-          type: string
-        op:
-          type: string
-        value:
-          type: array
-          items:
-            type: string
-    RESTScanConfig:
-      type: object
-      required:
-      - auto_scan
-      properties:
-        auto_scan:
-          description: Global auto-scan setting. When true, auto-scan is adopted unless one of the detailed control flags (enable_auto_scan_workload or enable_auto_scan_host) is explicitly provided (non-nil).
-          type: boolean
-          example: false
-        enable_auto_scan_workload:
-          description: Optional detailed control for workload auto-scan. If provided (non-nil), its value is adopted.
-          type: boolean
-          example: false
-        enable_auto_scan_host:
-          description: Optional detailed control for host auto-scan. If provided (non-nil), its value is adopted.
-          type: boolean
-          example: false
-    REST_SigstoreVerifier_PATCH:
-      type: object
-      properties:
-        verifier_type:
-          type: string
-          enum:
-          - keypair
-          - keyless
-        public_key:
-          type: string
-          example: '-----BEGIN PUBLIC KEY-----XXXXXXXXXX-----END PUBLIC KEY-----'
-        cert_issuer:
-          type: string
-          example: https://github.com/login/oauth
-        cert_subject:
-          type: string
-          example: cert.subject@example.com
-        comment:
-          type: string
-          example: example comment
-    RESTScanLayersReportData:
-      type: object
-      required:
-      - report
-      properties:
-        report:
-          $ref: '#/components/schemas/RESTScanLayersReport'
-    RESTScanConfigResp:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTScanConfig'
-    RESTRegistryConfigV2:
-      type: object
-      required:
-      - name
-      - registry_type
-      properties:
-        name:
-          type: string
-          example: myregistry
-        registry_type:
-          type: string
-          example: Docker Registry
-        registry:
-          type: string
-          example: https://registry.hub.docker.com/
-        domains:
-          type: array
-          items:
-            type: string
-            example: ''
-        filters:
-          type: array
-          items:
-            type: string
-            example: neuvector/*:*
-        auth:
-          $ref: '#/components/schemas/RESTRegistryConfigAuth'
-        scan:
-          $ref: '#/components/schemas/RESTRegistryConfigScan'
-        integrations:
-          $ref: '#/components/schemas/RESTRegistryConfigIntegrations'
-    RESTScanImageSummaryData:
-      type: object
-      required:
-      - images
-      properties:
-        images:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTScanImageSummary'
-    RESTRegistryConfigAuth:
-      type: object
-      properties:
-        username:
-          type: string
-          example: myusername
-        password:
-          type: string
-          format: password
-          example: mypassword
-        auth_token:
-          type: string
-          example: ''
-        auth_with_token:
-          type: boolean
-          example: true
-        aws_key:
-          $ref: '#/components/schemas/RESTAWSAccountKeyConfig'
-        gcr_key:
-          $ref: '#/components/schemas/RESTGCRKeyConfig'
-    RESTVulnerability:
-      type: object
-      required:
-      - name
-      - score
-      - severity
-      - vectors
-      - description
-      - file_name
-      - package_name
-      - package_version
-      - fixed_version
-      - link
-      - score_v3
-      - vectors_v3
-      - published_timestamp
-      - last_modified_timestamp
-      - feed_rating
-      - in_base_image
-      properties:
-        name:
-          type: string
-          example: CVE-2015-8356
-        score:
-          type: number
-          format: float32
-          example: 7.2
-        severity:
-          type: string
-          example: High
-        vectors:
-          type: string
-          example: ''
-        description:
-          type: string
-          example: The setup_env function in group.c in sshd in OpenSSH allows local users to gain privileges.
-        file_name:
-          type: string
-          example: usr/lib/python3.9
-        package_name:
-          type: string
-          example: openssh
-        package_version:
-          type: string
-          example: 7.2_p2-r0
-        fixed_version:
-          type: string
-          example: 1:7.2p2-3
-        link:
-          type: string
-          example: https://security-tracker.debian.org/tracker/CVE-2015-8356
-        score_v3:
-          type: number
-          format: float32
-          example: 7.3
-        vectors_v3:
-          type: string
-          example: ''
-        published_timestamp:
-          type: integer
-          format: int64
-          example: 1516561260
-        last_modified_timestamp:
-          type: integer
-          format: int64
-          example: 1516561253
-        cpes:
-          type: array
-          items:
-            type: string
-            example: ''
-        cves:
-          type: array
-          items:
-            type: string
-            example: ''
-        feed_rating:
-          type: string
-          example: ''
-        in_base_image:
-          type: boolean
-          example: true
-        tags:
-          type: array
-          items:
-            type: string
-            example: ''
-    RESTScanRepoReportData:
-      type: object
-      required:
-      - report
-      properties:
-        report:
-          $ref: '#/components/schemas/RESTScanRepoReport'
-    RESTScanLayer:
-      type: object
-      required:
-      - digest
-      - cmds
-      - vulnerabilities
-      - size
-      properties:
-        digest:
-          type: string
-          example: ''
-        cmds:
-          type: string
-          example: ''
-        vulnerabilities:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTVulnerability'
-        size:
-          type: integer
-          format: int64
-          example: 1
-    RESTScanConfigData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTScanConfigConfig'
-    RESTRegistrySummaryListData:
-      type: object
-      required:
-      - summarys
-      properties:
-        summarys:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTRegistrySummary'
-    RESTRegistryConfigDataV2:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTRegistryConfigV2'
-    RESTScanCacheData:
-      type: object
-      required:
-      - cache_records
-      - record_total_size
-      - cache_misses
-      - cache_hits
-      properties:
-        cache_records:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTScanCacheRecord'
-        record_total_size:
-          type: integer
-          format: uint64
-          example: 0
-        cache_misses:
-          type: integer
-          format: uint64
-          example: 0
-        cache_hits:
-          type: integer
-          format: uint64
-          example: 0
-    REST_SigstoreRootOfTrust_GET:
-      type: object
-      properties:
-        name:
-          type: string
-          example: example_name
-        is_private:
-          type: boolean
-          example: true
-        rootless_keypairs_only:
-          type: boolean
-          description: it overrides is_private attribute
-          example: true
-        rekor_public_key:
-          type: string
-          example: '-----BEGIN PUBLIC KEY-----XXXXXXXXXX-----END PUBLIC KEY-----'
-        root_cert:
-          type: string
-          example: '-----BEGIN CERTIFICATE-----XXXXXXXXXX-----END CERTIFICATE-----'
-        sct_public_key:
-          type: string
-          example: '-----BEGIN PUBLIC KEY-----XXXXXXXXXX-----END PUBLIC KEY-----'
-        verifiers:
-          type: array
-          items:
-            $ref: '#/components/schemas/REST_SigstoreVerifier'
-        cfg_type:
-          type: string
-          enum:
-          - user_created
-          - ground
-          - federal
-        comment:
-          type: string
-          example: example comment
-    REST_SigstoreRootOfTrustCollection:
-      type: array
-      items:
-        $ref: '#/components/schemas/REST_SigstoreRootOfTrust_GET'
-    RESTScanCacheStat:
-      type: object
-      required:
-      - record_count
-      - record_total_size
-      - cache_misses
-      - cache_hits
-      properties:
-        record_count:
-          type: integer
-          format: uint64
-          example: 0
-        record_total_size:
-          type: integer
-          format: uint64
-          example: 0
-        cache_misses:
-          type: integer
-          format: uint64
-          example: 0
-        cache_hits:
-          type: integer
-          format: uint64
-          example: 0
-    RESTJfrogXray:
-      type: object
-      required:
-      - url
-      - enable
-      - username
-      properties:
-        url:
-          type: string
-          example: ''
-        enable:
-          type: boolean
-          example: true
-        username:
-          type: string
-          example: ''
-        password:
-          type: string
-          format: password
-          example: ''
-    RESTRegistryImageSummaryData:
-      type: object
-      required:
-      - images
-      properties:
-        images:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTRegistryImageSummary'
-    RESTAssetsScanReportQuery:
-      type: object
-      properties:
-        show_accepted:
-          type: boolean
-        max_cve_records:
-          type: integer
-        cursor:
-          $ref: '#/components/schemas/RESTScanReportCursor'
-        view_pod:
-          type: string
-        vul_score_filter:
-          $ref: '#/components/schemas/RESTVulScoreFilter'
-        filters:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTAssetsScanReportFilter'
-    RESTRegistryConfig:
-      type: object
-      required:
-      - name
-      - registry_type
-      properties:
-        name:
-          type: string
-          example: myregistry
-        registry_type:
-          type: string
-          example: Docker Registry
-        registry:
-          type: string
-          example: https://registry.hub.docker.com/
-        filters:
-          type: array
-          items:
-            type: string
-            example: neuvector/*:*
-        username:
-          type: string
-          example: myusername
-        password:
-          type: string
-          format: password
-          example: mypassword
-        auth_token:
-          type: string
-          example: ''
-        auth_with_token:
-          type: boolean
-          example: true
-        rescan_after_db_update:
-          type: boolean
-          example: false
-        scan_layers:
-          type: boolean
-          example: false
-        repo_limit:
-          type: integer
-          example: 1
-        tag_limit:
-          type: integer
-          example: 1
-        schedule:
-          $ref: '#/components/schemas/RESTScanSchedule'
-        aws_key:
-          $ref: '#/components/schemas/RESTAWSAccountKeyConfig'
-        jfrog_xray:
-          $ref: '#/components/schemas/RESTJfrogXrayConfig'
-        gcr_key:
-          $ref: '#/components/schemas/RESTGCRKeyConfig'
-        jfrog_mode:
-          type: string
-          example: ''
-        jfrog_aql:
-          type: boolean
-          example: false
-        gitlab_external_url:
-          type: string
-          example: ''
-        gitlab_private_token:
-          type: string
-          example: ''
-        ibm_cloud_token_url:
-          type: string
-          example: ''
-        ibm_cloud_account:
-          type: string
-          example: ''
-        ignore_proxy:
-          type: boolean
-          example: false
+            $ref: '#/components/schemas/RESTScanPlatformSummary'
     RESTAssetScanData:
       type: object
       required:
@@ -1709,12 +1021,262 @@ components:
           items:
             type: string
             example: ''
-    RESTGCRKeyConfig:
+    RESTScanSetIdPerm:
       type: object
+      required:
+      - type
+      - evidence
+      - path
       properties:
-        json_key:
+        type:
           type: string
           example: ''
+        evidence:
+          type: string
+          example: ''
+        path:
+          type: string
+          example: ''
+    RESTScanCacheData:
+      type: object
+      required:
+      - cache_records
+      - record_total_size
+      - cache_misses
+      - cache_hits
+      properties:
+        cache_records:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTScanCacheRecord'
+        record_total_size:
+          type: integer
+          format: uint64
+          example: 0
+        cache_misses:
+          type: integer
+          format: uint64
+          example: 0
+        cache_hits:
+          type: integer
+          format: uint64
+          example: 0
+    REST_SigstoreRootOfTrust_PATCH:
+      type: object
+      properties:
+        rekor_public_key:
+          type: string
+          example: '-----BEGIN PUBLIC KEY-----XXXXXXXXXX-----END PUBLIC KEY-----'
+        root_cert:
+          type: string
+          example: '-----BEGIN CERTIFICATE-----XXXXXXXXXX-----END CERTIFICATE-----'
+        sct_public_key:
+          type: string
+          example: '-----BEGIN PUBLIC KEY-----XXXXXXXXXX-----END PUBLIC KEY-----'
+        comment:
+          type: string
+          example: example comment
+    RESTScanConfig:
+      type: object
+      required:
+      - auto_scan
+      properties:
+        auto_scan:
+          description: Global auto-scan setting. When true, auto-scan is adopted unless one of the detailed control flags (enable_auto_scan_workload or enable_auto_scan_host) is explicitly provided (non-nil).
+          type: boolean
+          example: false
+        enable_auto_scan_workload:
+          description: Optional detailed control for workload auto-scan. If provided (non-nil), its value is adopted.
+          type: boolean
+          example: false
+        enable_auto_scan_host:
+          description: Optional detailed control for host auto-scan. If provided (non-nil), its value is adopted.
+          type: boolean
+          example: false
+    RESTBenchItem:
+      type: object
+      required:
+      - catalog
+      - type
+      - level
+      - test_number
+      - profile
+      - scored
+      - automated
+      - description
+      - message
+      - remediation
+      - group
+      properties:
+        catalog:
+          type: string
+          example: docker
+        type:
+          type: string
+          example: ''
+        level:
+          type: string
+          example: INFO
+        test_number:
+          type: string
+          example: '1'
+        profile:
+          type: string
+          example: Level 1
+        scored:
+          type: boolean
+          example: true
+        automated:
+          type: boolean
+          example: true
+        description:
+          type: string
+          example: General Configuration
+        message:
+          type: array
+          items:
+            type: string
+            example: Host Configuration
+        remediation:
+          type: string
+          example: ''
+        group:
+          type: string
+          example: nv.calico
+    RESTScanImageSummary:
+      type: object
+      required:
+      - image
+      - image_id
+      - author
+      - status
+      - high
+      - medium
+      - result
+      - scanned_timestamp
+      - scanned_at
+      - created_at
+      - base_os
+      - scanner_version
+      - cvedb_create_time
+      properties:
+        image:
+          type: string
+          example: calico/node:v3.8.2
+        image_id:
+          type: string
+          example: 11cd78b9e13d420f93d5d5b2611e803bda012ae5cd8b476d4cc328dc133773ce
+        author:
+          type: string
+          example: ''
+        status:
+          type: string
+          example: finished
+        high:
+          type: integer
+          example: 26
+        medium:
+          type: integer
+          example: 33
+        result:
+          type: string
+          example: succeeded
+        scanned_timestamp:
+          type: integer
+          format: int64
+          example: 1593130227
+        scanned_at:
+          type: string
+          example: 2020-06-26 00:10:27+00:00
+        created_at:
+          type: string
+          example: 2020-06-26 00:10:27+00:00
+        base_os:
+          type: string
+          example: debian:10
+        scanner_version:
+          type: string
+          example: '1.938'
+        cvedb_create_time:
+          type: string
+          example: 2020-06-25 10:32:40+00:00
+    RESTAssetScanReportData:
+      type: object
+      properties:
+        cursor:
+          $ref: '#/components/schemas/RESTScanReportCursor'
+        scan_data:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTAssetScanData'
+    RESTScanImageSummaryData:
+      type: object
+      required:
+      - images
+      properties:
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTScanImageSummary'
+    RESTRegistryConfigDataV2:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          $ref: '#/components/schemas/RESTRegistryConfigV2'
+    RESTAWSAccountKeyConfig:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '831010404316'
+        access_key_id:
+          type: string
+          example: <access key id from AWS>
+        secret_access_key:
+          type: string
+          example: <secret access key from AWS>
+        region:
+          type: string
+          example: us-west-2
+    RESTScanLayersReport:
+      type: object
+      required:
+      - layers
+      properties:
+        layers:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTScanLayer'
+    RESTScanMeta:
+      type: object
+      required:
+      - source
+      - user
+      - job
+      - workspace
+      - function
+      - region
+      properties:
+        source:
+          type: string
+          example: github
+        user:
+          type: string
+          example: user
+        job:
+          type: string
+          example: scan
+        workspace:
+          type: string
+          example: /local
+        function:
+          type: string
+          example: monitor
+        region:
+          type: string
+          example: West
     RESTScanModule:
       type: object
       required:
@@ -1743,44 +1305,436 @@ components:
           items:
             type: string
             example: ''
-    RESTModuleCve:
+    RESTScanPlatformSummary:
       type: object
       required:
-      - name
+      - platform
+      - kube_version
+      - openshift_version
       - status
+      - high
+      - medium
+      - result
+      - scanned_timestamp
+      - scanned_at
+      - base_os
+      - scanner_version
+      - cvedb_create_time
       properties:
-        name:
+        platform:
+          type: string
+          example: Kubernetes
+        kube_version:
+          type: string
+          example: 1.19.2
+        openshift_version:
           type: string
           example: ''
         status:
           type: string
+          example: finished
+        high:
+          type: integer
+          example: 3
+        medium:
+          type: integer
+          example: 1
+        result:
+          type: string
+          example: succeeded
+        scanned_timestamp:
+          type: integer
+          format: int64
+          example: 1593217223
+        scanned_at:
+          type: string
+          example: '2020-06-27T00:20:23Z'
+        base_os:
+          type: string
           example: ''
-    REST_SigstoreVerifier:
+        scanner_version:
+          type: string
+          example: '1.932'
+        cvedb_create_time:
+          type: string
+          example: '2020-06-19T10:32:18Z'
+    RESTScanRepoReqData:
+      type: object
+      required:
+      - request
+      properties:
+        request:
+          $ref: '#/components/schemas/RESTScanRepoReq'
+    RESTScanConfigConfig:
+      type: object
+      minProperties: 1
+      properties:
+        auto_scan:
+          description: Global auto-scan setting. When true, auto-scan is adopted unless one of the detailed control flags (enable_auto_scan_workload or enable_auto_scan_host) is explicitly provided (non-nil).
+          type: boolean
+          example: false
+        enable_auto_scan_workload:
+          description: Optional detailed control for workload auto-scan. If provided (non-nil), its value is adopted.
+          type: boolean
+          example: false
+        enable_auto_scan_host:
+          description: Optional detailed control for host auto-scan. If provided (non-nil), its value is adopted.
+          type: boolean
+          example: false
+    RESTScanReportData:
+      type: object
+      required:
+      - report
+      properties:
+        report:
+          $ref: '#/components/schemas/RESTScanReport'
+    RESTRegistryConfigScan:
+      type: object
+      properties:
+        rescan_after_db_update:
+          type: boolean
+          example: false
+        scan_layers:
+          type: boolean
+          example: false
+        repo_limit:
+          type: integer
+          example: 1
+        tag_limit:
+          type: integer
+          example: 1
+        schedule:
+          $ref: '#/components/schemas/RESTScanSchedule'
+        ignore_proxy:
+          type: boolean
+          example: false
+    RESTRegistryConfigV2:
       type: object
       required:
       - name
-      - verifier_type
+      - registry_type
       properties:
         name:
           type: string
-          example: example name
-        verifier_type:
+          example: myregistry
+        registry_type:
           type: string
-          enum:
-          - keypair
-          - keyless
-        public_key:
+          example: Docker Registry
+        registry:
           type: string
-          example: '-----BEGIN PUBLIC KEY-----XXXXXXXXXX-----END PUBLIC KEY-----'
-        cert_issuer:
+          example: https://registry.hub.docker.com/
+        domains:
+          type: array
+          items:
+            type: string
+            example: ''
+        filters:
+          type: array
+          items:
+            type: string
+            example: neuvector/*:*
+        auth:
+          $ref: '#/components/schemas/RESTRegistryConfigAuth'
+        scan:
+          $ref: '#/components/schemas/RESTRegistryConfigScan'
+        integrations:
+          $ref: '#/components/schemas/RESTRegistryConfigIntegrations'
+    RESTScanSecret:
+      type: object
+      required:
+      - type
+      - evidence
+      - path
+      - suggestion
+      properties:
+        type:
           type: string
-          example: https://github.com/login/oauth
-        cert_subject:
+          example: ''
+        evidence:
           type: string
-          example: cert.subject@example.com
-        comment:
+          example: ''
+        path:
           type: string
-          example: example comment
+          example: ''
+        suggestion:
+          type: string
+          example: ''
+    RESTGCRKey:
+      type: object
+      properties:
+        json_key:
+          type: string
+          example: ''
+    RESTRegistryImageSummary:
+      type: object
+      required:
+      - domain
+      - repository
+      - tag
+      - image_id
+      - digest
+      - size
+      - author
+      - run_as_root
+      - envs
+      - labels
+      - layers
+      - status
+      - high
+      - medium
+      - result
+      - scanned_timestamp
+      - scanned_at
+      - created_at
+      - base_os
+      - scanner_version
+      properties:
+        domain:
+          type: string
+          example: ''
+        repository:
+          type: string
+          example: alpine
+        tag:
+          type: string
+          example: latest
+        image_id:
+          type: string
+          example: d572b7ee3511b21a2b78b8915bc03c5786ad01949704c1418624224c4cae2c5f
+        digest:
+          type: string
+          example: bd8ffa77cf1c910b7a90935ca4828472e1c3e303e7cd5260f13d1e09995f173a
+        size:
+          type: integer
+          format: int64
+          example: 1
+        author:
+          type: string
+          example: ''
+        run_as_root:
+          type: boolean
+          example: true
+        envs:
+          type: array
+          items:
+            type: string
+          example:
+          - PATH=/usr/local/sbin
+          - GOSU_VERSION=1.12
+          - REDIS_VERSION=6.0.2
+        labels:
+          type: object
+          description: map key is string type
+          additionalProperties:
+            type: string
+          example:
+            label1: value1
+            label2: value2
+        layers:
+          type: array
+          items:
+            type: string
+          example:
+          - layer_1
+          - layer_2
+        status:
+          type: string
+          example: scheduled
+        high:
+          type: integer
+          example: 0
+        medium:
+          type: integer
+          example: 0
+        result:
+          type: string
+          example: success
+        scanned_timestamp:
+          type: integer
+          format: int64
+          example: 1516561253
+        scanned_at:
+          type: string
+          format: date-time
+          example: 2018-01-21 19:00:53+00:00
+        created_at:
+          type: string
+          format: date-time
+          example: 2018-01-21 19:00:53+00:00
+        base_os:
+          type: string
+          example: ubuntu:16.04
+        scanner_version:
+          type: string
+          example: '1.011'
+        cvedb_create_time:
+          type: string
+          format: date-time
+          example: 2018-06-20 19:00:53+00:00
+    RESTScanner:
+      type: object
+      required:
+      - id
+      - cvedb_version
+      - cvedb_create_time
+      - server
+      - port
+      properties:
+        id:
+          type: string
+          example: github
+        cvedb_version:
+          type: string
+          example: '1.011'
+        cvedb_create_time:
+          type: string
+          format: date-time
+          example: 2018-06-20 19:00:53+00:00
+        server:
+          type: string
+          example: 10.1.5.1
+        port:
+          type: integer
+          format: uint16
+          example: 51764
+    RESTScanLayersReportData:
+      type: object
+      required:
+      - report
+      properties:
+        report:
+          $ref: '#/components/schemas/RESTScanLayersReport'
+    RESTVulScoreFilter:
+      type: object
+      required:
+      - score_version
+      - score_bottom
+      - score_top
+      properties:
+        score_version:
+          type: string
+        score_bottom:
+          type: number
+        score_top:
+          type: number
+    RESTScanCacheStat:
+      type: object
+      required:
+      - record_count
+      - record_total_size
+      - cache_misses
+      - cache_hits
+      properties:
+        record_count:
+          type: integer
+          format: uint64
+          example: 0
+        record_total_size:
+          type: integer
+          format: uint64
+          example: 0
+        cache_misses:
+          type: integer
+          format: uint64
+          example: 0
+        cache_hits:
+          type: integer
+          format: uint64
+          example: 0
+    RESTScanRepoReportData:
+      type: object
+      required:
+      - report
+      properties:
+        report:
+          $ref: '#/components/schemas/RESTScanRepoReport'
+    RESTScanRepoReport:
+      type: object
+      required:
+      - image_id
+      - registry
+      - repository
+      - tag
+      - digest
+      - size
+      - author
+      - base_os
+      - created_at
+      - cvedb_version
+      - cvedb_create_time
+      - layers
+      - vulnerabilities
+      - modules
+      - envs
+      - labels
+      properties:
+        verdict:
+          type: string
+          example: ''
+        image_id:
+          type: string
+          example: d572b7ee3511b21a2b78b8915bc03c5786ad01949704c1418624224c4cae2c5f
+        registry:
+          type: string
+          example: https://registry.hub.docker.com/
+        repository:
+          type: string
+          example: alpine
+        tag:
+          type: string
+          example: latest
+        digest:
+          type: string
+          example: bd8ffa77cf1c910b7a90935ca4828472e1c3e303e7cd5260f13d1e09995f173a
+        size:
+          type: integer
+          format: int64
+          example: 1
+        author:
+          type: string
+          example: ''
+        base_os:
+          type: string
+          example: ubuntu:16.04
+        created_at:
+          type: string
+          format: date-time
+          example: 2018-01-21 19:00:53+00:00
+        cvedb_version:
+          type: string
+          example: '1.00'
+        cvedb_create_time:
+          type: string
+          format: date-time
+          example: 2018-06-20 19:00:53+00:00
+        layers:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTScanLayer'
+        vulnerabilities:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTVulnerability'
+        modules:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTScanModule'
+        envs:
+          type: array
+          items:
+            type: string
+          example:
+          - PATH=/usr/local/sbin
+          - GOSU_VERSION=1.12
+          - REDIS_VERSION=6.0.2
+        labels:
+          type: object
+          description: map key is string type
+          additionalProperties:
+            type: string
+          example:
+            label1: value1
+            label2: value2
     RESTScanRepoReq:
       type: object
       required:
@@ -1818,19 +1772,227 @@ components:
         ignore_proxy:
           type: boolean
           example: true
-    RESTVulScoreFilter:
+    RESTScanReportCursor:
+      type: object
+      properties:
+        name:
+          type: string
+        host_name:
+          type: string
+        domain:
+          type: string
+        cve_name:
+          type: string
+        cve_package:
+          type: string
+    RESTRegistryConfigIntegrations:
+      type: object
+      properties:
+        jfrog_mode:
+          type: string
+          example: ''
+        jfrog_aql:
+          type: boolean
+          example: false
+        gitlab_external_url:
+          type: string
+          example: ''
+        gitlab_private_token:
+          type: string
+          example: ''
+        ibm_cloud_token_url:
+          type: string
+          example: ''
+        ibm_cloud_account:
+          type: string
+          example: ''
+    REST_SigstoreRootOfTrustCollection:
+      type: array
+      items:
+        $ref: '#/components/schemas/REST_SigstoreRootOfTrust_GET'
+    REST_SigstoreRootOfTrust_GET:
+      type: object
+      properties:
+        name:
+          type: string
+          example: example_name
+        is_private:
+          type: boolean
+          example: true
+        rootless_keypairs_only:
+          type: boolean
+          description: it overrides is_private attribute
+          example: true
+        rekor_public_key:
+          type: string
+          example: '-----BEGIN PUBLIC KEY-----XXXXXXXXXX-----END PUBLIC KEY-----'
+        root_cert:
+          type: string
+          example: '-----BEGIN CERTIFICATE-----XXXXXXXXXX-----END CERTIFICATE-----'
+        sct_public_key:
+          type: string
+          example: '-----BEGIN PUBLIC KEY-----XXXXXXXXXX-----END PUBLIC KEY-----'
+        verifiers:
+          type: array
+          items:
+            $ref: '#/components/schemas/REST_SigstoreVerifier'
+        cfg_type:
+          type: string
+          enum:
+          - user_created
+          - ground
+          - federal
+        comment:
+          type: string
+          example: example comment
+    RESTScanConfigResp:
       type: object
       required:
-      - score_version
-      - score_bottom
-      - score_top
+      - config
       properties:
-        score_version:
+        config:
+          $ref: '#/components/schemas/RESTScanConfig'
+    RESTScannerData:
+      type: object
+      required:
+      - scanners
+      properties:
+        scanners:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTScanner'
+    RESTGCRKeyConfig:
+      type: object
+      properties:
+        json_key:
           type: string
-        score_bottom:
-          type: number
-        score_top:
-          type: number
+          example: ''
+    RESTRegistryConfigAuth:
+      type: object
+      properties:
+        username:
+          type: string
+          example: myusername
+        password:
+          type: string
+          format: password
+          example: mypassword
+        auth_token:
+          type: string
+          example: ''
+        auth_with_token:
+          type: boolean
+          example: true
+        aws_key:
+          $ref: '#/components/schemas/RESTAWSAccountKeyConfig'
+        gcr_key:
+          $ref: '#/components/schemas/RESTGCRKeyConfig'
+    REST_SigstoreVerifier_PATCH:
+      type: object
+      properties:
+        verifier_type:
+          type: string
+          enum:
+          - keypair
+          - keyless
+        public_key:
+          type: string
+          example: '-----BEGIN PUBLIC KEY-----XXXXXXXXXX-----END PUBLIC KEY-----'
+        cert_issuer:
+          type: string
+          example: https://github.com/login/oauth
+        cert_subject:
+          type: string
+          example: cert.subject@example.com
+        comment:
+          type: string
+          example: example comment
+    RESTAssetsScanReportQuery:
+      type: object
+      properties:
+        show_accepted:
+          type: boolean
+        max_cve_records:
+          type: integer
+        cursor:
+          $ref: '#/components/schemas/RESTScanReportCursor'
+        view_pod:
+          type: string
+        vul_score_filter:
+          $ref: '#/components/schemas/RESTVulScoreFilter'
+        filters:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTAssetsScanReportFilter'
+    RESTJfrogXray:
+      type: object
+      required:
+      - url
+      - enable
+      - username
+      properties:
+        url:
+          type: string
+          example: ''
+        enable:
+          type: boolean
+          example: true
+        username:
+          type: string
+          example: ''
+        password:
+          type: string
+          format: password
+          example: ''
+    REST_SigstoreVerifier:
+      type: object
+      required:
+      - name
+      - verifier_type
+      properties:
+        name:
+          type: string
+          example: example name
+        verifier_type:
+          type: string
+          enum:
+          - keypair
+          - keyless
+        public_key:
+          type: string
+          example: '-----BEGIN PUBLIC KEY-----XXXXXXXXXX-----END PUBLIC KEY-----'
+        cert_issuer:
+          type: string
+          example: https://github.com/login/oauth
+        cert_subject:
+          type: string
+          example: cert.subject@example.com
+        comment:
+          type: string
+          example: example comment
+    RESTScanCacheRecord:
+      type: object
+      required:
+      - layer_id
+      - size
+      - reference_count
+      - last_referred
+      properties:
+        layer_id:
+          type: string
+          example: ''
+        size:
+          type: integer
+          format: uint64
+          example: 0
+        reference_count:
+          type: integer
+          format: uint32
+          example: 0
+        last_referred:
+          type: string
+          format: date-time
+          example: '2022-03-17T17:31:55.832768041Z'
     RESTRegistrySummary:
       type: object
       required:
@@ -1961,63 +2123,35 @@ components:
         ignore_proxy:
           type: boolean
           example: false
-    RESTScanImageSummary:
+    RESTScanLayer:
       type: object
       required:
-      - image
-      - image_id
-      - author
-      - status
-      - high
-      - medium
-      - result
-      - scanned_timestamp
-      - scanned_at
-      - created_at
-      - base_os
-      - scanner_version
-      - cvedb_create_time
+      - digest
+      - cmds
+      - vulnerabilities
+      - size
       properties:
-        image:
-          type: string
-          example: calico/node:v3.8.2
-        image_id:
-          type: string
-          example: 11cd78b9e13d420f93d5d5b2611e803bda012ae5cd8b476d4cc328dc133773ce
-        author:
+        digest:
           type: string
           example: ''
-        status:
+        cmds:
           type: string
-          example: finished
-        high:
-          type: integer
-          example: 26
-        medium:
-          type: integer
-          example: 33
-        result:
-          type: string
-          example: succeeded
-        scanned_timestamp:
+          example: ''
+        vulnerabilities:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTVulnerability'
+        size:
           type: integer
           format: int64
-          example: 1593130227
-        scanned_at:
-          type: string
-          example: 2020-06-26 00:10:27+00:00
-        created_at:
-          type: string
-          example: 2020-06-26 00:10:27+00:00
-        base_os:
-          type: string
-          example: debian:10
-        scanner_version:
-          type: string
-          example: '1.938'
-        cvedb_create_time:
-          type: string
-          example: 2020-06-25 10:32:40+00:00
+          example: 1
+    RESTRegistryConfigData:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          $ref: '#/components/schemas/RESTRegistryConfig'
     RESTJfrogXrayConfig:
       type: object
       properties:
@@ -2034,37 +2168,71 @@ components:
           type: string
           format: password
           example: password
-    RESTAssetScanReportData:
+    RESTModuleCve:
       type: object
+      required:
+      - name
+      - status
       properties:
-        cursor:
-          $ref: '#/components/schemas/RESTScanReportCursor'
-        scan_data:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTAssetScanData'
-    RESTScanConfigConfig:
-      type: object
-      minProperties: 1
-      properties:
-        auto_scan:
-          description: Global auto-scan setting. When true, auto-scan is adopted unless one of the detailed control flags (enable_auto_scan_workload or enable_auto_scan_host) is explicitly provided (non-nil).
-          type: boolean
-          example: false
-        enable_auto_scan_workload:
-          description: Optional detailed control for workload auto-scan. If provided (non-nil), its value is adopted.
-          type: boolean
-          example: false
-        enable_auto_scan_host:
-          description: Optional detailed control for host auto-scan. If provided (non-nil), its value is adopted.
-          type: boolean
-          example: false
-    RESTGCRKey:
-      type: object
-      properties:
-        json_key:
+        name:
           type: string
           example: ''
+        status:
+          type: string
+          example: ''
+    RESTScanReport:
+      type: object
+      required:
+      - vulnerabilities
+      properties:
+        vulnerabilities:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTVulnerability'
+        modules:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTScanModule'
+        checks:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTBenchItem'
+        secrets:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTScanSecret'
+        setid_perms:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTScanSetIdPerm'
+        envs:
+          type: array
+          items:
+            type: string
+          example:
+          - PATH=/usr/local/sbin
+          - GOSU_VERSION=1.12
+          - REDIS_VERSION=6.0.2
+        labels:
+          type: object
+          description: map key is string type
+          additionalProperties:
+            type: string
+          example:
+            label1: value1
+            label2: value2
+        cmds:
+          type: array
+          items:
+            type: string
+            example: ''
+    RESTScanConfigData:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          $ref: '#/components/schemas/RESTScanConfigConfig'
     RESTRegistrySummaryData:
       type: object
       required:
@@ -2072,39 +2240,166 @@ components:
       properties:
         summary:
           $ref: '#/components/schemas/RESTRegistrySummary'
+    RESTScanStatusData:
+      type: object
+      required:
+      - status
+      properties:
+        status:
+          $ref: '#/components/schemas/RESTScanStatus'
+    RESTAWSAccountKey:
+      type: object
+      required:
+      - id
+      - region
+      properties:
+        id:
+          type: string
+          example: '349695068245'
+        access_key_id:
+          type: string
+          example: NSKN3KM0OSN854MZ2LOV90S7DFVCL6
+        secret_access_key:
+          type: string
+          example: E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF
+        region:
+          type: string
+          example: us-east-1
+    RESTRegistryConfig:
+      type: object
+      required:
+      - name
+      - registry_type
+      properties:
+        name:
+          type: string
+          example: myregistry
+        registry_type:
+          type: string
+          example: Docker Registry
+        registry:
+          type: string
+          example: https://registry.hub.docker.com/
+        filters:
+          type: array
+          items:
+            type: string
+            example: neuvector/*:*
+        username:
+          type: string
+          example: myusername
+        password:
+          type: string
+          format: password
+          example: mypassword
+        auth_token:
+          type: string
+          example: ''
+        auth_with_token:
+          type: boolean
+          example: true
+        rescan_after_db_update:
+          type: boolean
+          example: false
+        scan_layers:
+          type: boolean
+          example: false
+        repo_limit:
+          type: integer
+          example: 1
+        tag_limit:
+          type: integer
+          example: 1
+        schedule:
+          $ref: '#/components/schemas/RESTScanSchedule'
+        aws_key:
+          $ref: '#/components/schemas/RESTAWSAccountKeyConfig'
+        jfrog_xray:
+          $ref: '#/components/schemas/RESTJfrogXrayConfig'
+        gcr_key:
+          $ref: '#/components/schemas/RESTGCRKeyConfig'
+        jfrog_mode:
+          type: string
+          example: ''
+        jfrog_aql:
+          type: boolean
+          example: false
+        gitlab_external_url:
+          type: string
+          example: ''
+        gitlab_private_token:
+          type: string
+          example: ''
+        ibm_cloud_token_url:
+          type: string
+          example: ''
+        ibm_cloud_account:
+          type: string
+          example: ''
+        ignore_proxy:
+          type: boolean
+          example: false
+    RESTRegistrySummaryListData:
+      type: object
+      required:
+      - summarys
+      properties:
+        summarys:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTRegistrySummary'
+    REST_SigstoreRootOfTrust_POST:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          example: example_name
+        is_private:
+          type: boolean
+          example: true
+        rootless_keypairs_only:
+          type: boolean
+          description: it overrides is_private attribute
+          example: true
+        rekor_public_key:
+          type: string
+          example: '-----BEGIN PUBLIC KEY-----XXXXXXXXXX-----END PUBLIC KEY-----'
+        root_cert:
+          type: string
+          example: '-----BEGIN CERTIFICATE-----XXXXXXXXXX-----END CERTIFICATE-----'
+        sct_public_key:
+          type: string
+          example: '-----BEGIN PUBLIC KEY-----XXXXXXXXXX-----END PUBLIC KEY-----'
+        comment:
+          type: string
+          example: example comment
     REST_SigstoreVerifierCollection:
       type: array
       items:
         $ref: '#/components/schemas/REST_SigstoreVerifier'
-    RESTScanSecret:
+    RESTRegistryImageSummaryData:
       type: object
       required:
-      - type
-      - evidence
-      - path
-      - suggestion
+      - images
       properties:
-        type:
-          type: string
-          example: ''
-        evidence:
-          type: string
-          example: ''
-        path:
-          type: string
-          example: ''
-        suggestion:
-          type: string
-          example: ''
-    RESTScannerData:
-      type: object
-      required:
-      - scanners
-      properties:
-        scanners:
+        images:
           type: array
           items:
-            $ref: '#/components/schemas/RESTScanner'
+            $ref: '#/components/schemas/RESTRegistryImageSummary'
+    RESTScanSchedule:
+      type: object
+      required:
+      - schedule
+      - interval
+      properties:
+        schedule:
+          type: string
+          example: manual
+        interval:
+          type: integer
+          example: 5
     RESTScanStatus:
       type: object
       required:
@@ -2134,403 +2429,108 @@ components:
           type: string
           format: date-time
           example: 2018-06-20 19:00:53+00:00
-    RESTScanRepoReport:
-      type: object
-      required:
-      - image_id
-      - registry
-      - repository
-      - tag
-      - digest
-      - size
-      - author
-      - base_os
-      - created_at
-      - cvedb_version
-      - cvedb_create_time
-      - layers
-      - vulnerabilities
-      - modules
-      - envs
-      - labels
-      properties:
-        verdict:
-          type: string
-          example: ''
-        image_id:
-          type: string
-          example: d572b7ee3511b21a2b78b8915bc03c5786ad01949704c1418624224c4cae2c5f
-        registry:
-          type: string
-          example: https://registry.hub.docker.com/
-        repository:
-          type: string
-          example: alpine
-        tag:
-          type: string
-          example: latest
-        digest:
-          type: string
-          example: bd8ffa77cf1c910b7a90935ca4828472e1c3e303e7cd5260f13d1e09995f173a
-        size:
-          type: integer
-          format: int64
-          example: 1
-        author:
-          type: string
-          example: ''
-        base_os:
-          type: string
-          example: ubuntu:16.04
-        created_at:
-          type: string
-          format: date-time
-          example: 2018-01-21 19:00:53+00:00
-        cvedb_version:
-          type: string
-          example: '1.00'
-        cvedb_create_time:
-          type: string
-          format: date-time
-          example: 2018-06-20 19:00:53+00:00
-        layers:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTScanLayer'
-        vulnerabilities:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTVulnerability'
-        modules:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTScanModule'
-        envs:
-          type: array
-          items:
-            type: string
-          example:
-          - PATH=/usr/local/sbin
-          - GOSU_VERSION=1.12
-          - REDIS_VERSION=6.0.2
-        labels:
-          type: object
-          description: map key is string type
-          additionalProperties:
-            type: string
-          example:
-            label1: value1
-            label2: value2
-    RESTScanPlatformSummaryData:
-      type: object
-      required:
-      - platforms
-      properties:
-        platforms:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTScanPlatformSummary'
-    RESTRegistryImageSummary:
-      type: object
-      required:
-      - domain
-      - repository
-      - tag
-      - image_id
-      - digest
-      - size
-      - author
-      - run_as_root
-      - envs
-      - labels
-      - layers
-      - status
-      - high
-      - medium
-      - result
-      - scanned_timestamp
-      - scanned_at
-      - created_at
-      - base_os
-      - scanner_version
-      properties:
-        domain:
-          type: string
-          example: ''
-        repository:
-          type: string
-          example: alpine
-        tag:
-          type: string
-          example: latest
-        image_id:
-          type: string
-          example: d572b7ee3511b21a2b78b8915bc03c5786ad01949704c1418624224c4cae2c5f
-        digest:
-          type: string
-          example: bd8ffa77cf1c910b7a90935ca4828472e1c3e303e7cd5260f13d1e09995f173a
-        size:
-          type: integer
-          format: int64
-          example: 1
-        author:
-          type: string
-          example: ''
-        run_as_root:
-          type: boolean
-          example: true
-        envs:
-          type: array
-          items:
-            type: string
-          example:
-          - PATH=/usr/local/sbin
-          - GOSU_VERSION=1.12
-          - REDIS_VERSION=6.0.2
-        labels:
-          type: object
-          description: map key is string type
-          additionalProperties:
-            type: string
-          example:
-            label1: value1
-            label2: value2
-        layers:
-          type: array
-          items:
-            type: string
-          example:
-          - layer_1
-          - layer_2
-        status:
-          type: string
-          example: scheduled
-        high:
-          type: integer
-          example: 0
-        medium:
-          type: integer
-          example: 0
-        result:
-          type: string
-          example: success
-        scanned_timestamp:
-          type: integer
-          format: int64
-          example: 1516561253
-        scanned_at:
-          type: string
-          format: date-time
-          example: 2018-01-21 19:00:53+00:00
-        created_at:
-          type: string
-          format: date-time
-          example: 2018-01-21 19:00:53+00:00
-        base_os:
-          type: string
-          example: ubuntu:16.04
-        scanner_version:
-          type: string
-          example: '1.011'
-        cvedb_create_time:
-          type: string
-          format: date-time
-          example: 2018-06-20 19:00:53+00:00
-    RESTAWSAccountKeyConfig:
-      type: object
-      properties:
-        id:
-          type: string
-          example: '831010404316'
-        access_key_id:
-          type: string
-          example: <access key id from AWS>
-        secret_access_key:
-          type: string
-          example: <secret access key from AWS>
-        region:
-          type: string
-          example: us-west-2
-    RESTScanPlatformSummary:
-      type: object
-      required:
-      - platform
-      - kube_version
-      - openshift_version
-      - status
-      - high
-      - medium
-      - result
-      - scanned_timestamp
-      - scanned_at
-      - base_os
-      - scanner_version
-      - cvedb_create_time
-      properties:
-        platform:
-          type: string
-          example: Kubernetes
-        kube_version:
-          type: string
-          example: 1.19.2
-        openshift_version:
-          type: string
-          example: ''
-        status:
-          type: string
-          example: finished
-        high:
-          type: integer
-          example: 3
-        medium:
-          type: integer
-          example: 1
-        result:
-          type: string
-          example: succeeded
-        scanned_timestamp:
-          type: integer
-          format: int64
-          example: 1593217223
-        scanned_at:
-          type: string
-          example: '2020-06-27T00:20:23Z'
-        base_os:
-          type: string
-          example: ''
-        scanner_version:
-          type: string
-          example: '1.932'
-        cvedb_create_time:
-          type: string
-          example: '2020-06-19T10:32:18Z'
-    RESTRegistryConfigIntegrations:
-      type: object
-      properties:
-        jfrog_mode:
-          type: string
-          example: ''
-        jfrog_aql:
-          type: boolean
-          example: false
-        gitlab_external_url:
-          type: string
-          example: ''
-        gitlab_private_token:
-          type: string
-          example: ''
-        ibm_cloud_token_url:
-          type: string
-          example: ''
-        ibm_cloud_account:
-          type: string
-          example: ''
-    REST_SigstoreRootOfTrust_PATCH:
-      type: object
-      properties:
-        rekor_public_key:
-          type: string
-          example: '-----BEGIN PUBLIC KEY-----XXXXXXXXXX-----END PUBLIC KEY-----'
-        root_cert:
-          type: string
-          example: '-----BEGIN CERTIFICATE-----XXXXXXXXXX-----END CERTIFICATE-----'
-        sct_public_key:
-          type: string
-          example: '-----BEGIN PUBLIC KEY-----XXXXXXXXXX-----END PUBLIC KEY-----'
-        comment:
-          type: string
-          example: example comment
-    RESTScanRepoReqData:
-      type: object
-      required:
-      - request
-      properties:
-        request:
-          $ref: '#/components/schemas/RESTScanRepoReq'
-    REST_SigstoreRootOfTrust_POST:
+    RESTAssetsScanReportFilter:
       type: object
       required:
       - name
+      - op
+      - value
       properties:
         name:
           type: string
-          example: example_name
-        is_private:
-          type: boolean
-          example: true
-        rootless_keypairs_only:
-          type: boolean
-          description: it overrides is_private attribute
-          example: true
-        rekor_public_key:
+        op:
           type: string
-          example: '-----BEGIN PUBLIC KEY-----XXXXXXXXXX-----END PUBLIC KEY-----'
-        root_cert:
-          type: string
-          example: '-----BEGIN CERTIFICATE-----XXXXXXXXXX-----END CERTIFICATE-----'
-        sct_public_key:
-          type: string
-          example: '-----BEGIN PUBLIC KEY-----XXXXXXXXXX-----END PUBLIC KEY-----'
-        comment:
-          type: string
-          example: example comment
-    RESTScanStatusData:
-      type: object
-      required:
-      - status
-      properties:
-        status:
-          $ref: '#/components/schemas/RESTScanStatus'
-    RESTScanReportData:
-      type: object
-      required:
-      - report
-      properties:
-        report:
-          $ref: '#/components/schemas/RESTScanReport'
-    RESTScanSetIdPerm:
-      type: object
-      required:
-      - type
-      - evidence
-      - path
-      properties:
-        type:
-          type: string
-          example: ''
-        evidence:
-          type: string
-          example: ''
-        path:
-          type: string
-          example: ''
-    RESTAWSAccountKey:
-      type: object
-      required:
-      - id
-      - region
-      properties:
-        id:
-          type: string
-          example: '349695068245'
-        access_key_id:
-          type: string
-          example: NSKN3KM0OSN854MZ2LOV90S7DFVCL6
-        secret_access_key:
-          type: string
-          example: E7B0OS/N3KMVCL6KNMZ2+LOV90S7854NSD84P0BF
-        region:
-          type: string
-          example: us-east-1
-    RESTScanLayersReport:
-      type: object
-      required:
-      - layers
-      properties:
-        layers:
+        value:
           type: array
           items:
-            $ref: '#/components/schemas/RESTScanLayer'
+            type: string
+    RESTVulnerability:
+      type: object
+      required:
+      - name
+      - score
+      - severity
+      - vectors
+      - description
+      - file_name
+      - package_name
+      - package_version
+      - fixed_version
+      - link
+      - score_v3
+      - vectors_v3
+      - published_timestamp
+      - last_modified_timestamp
+      - feed_rating
+      - in_base_image
+      properties:
+        name:
+          type: string
+          example: CVE-2015-8356
+        score:
+          type: number
+          format: float32
+          example: 7.2
+        severity:
+          type: string
+          example: High
+        vectors:
+          type: string
+          example: ''
+        description:
+          type: string
+          example: The setup_env function in group.c in sshd in OpenSSH allows local users to gain privileges.
+        file_name:
+          type: string
+          example: usr/lib/python3.9
+        package_name:
+          type: string
+          example: openssh
+        package_version:
+          type: string
+          example: 7.2_p2-r0
+        fixed_version:
+          type: string
+          example: 1:7.2p2-3
+        link:
+          type: string
+          example: https://security-tracker.debian.org/tracker/CVE-2015-8356
+        score_v3:
+          type: number
+          format: float32
+          example: 7.3
+        vectors_v3:
+          type: string
+          example: ''
+        published_timestamp:
+          type: integer
+          format: int64
+          example: 1516561260
+        last_modified_timestamp:
+          type: integer
+          format: int64
+          example: 1516561253
+        cpes:
+          type: array
+          items:
+            type: string
+            example: ''
+        cves:
+          type: array
+          items:
+            type: string
+            example: ''
+        feed_rating:
+          type: string
+          example: ''
+        in_base_image:
+          type: boolean
+          example: true
+        tags:
+          type: array
+          items:
+            type: string
+            example: ''
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

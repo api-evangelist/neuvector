@@ -298,71 +298,29 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    RESTWorkloadBriefV2:
+    RESTWorkloadPorts:
       type: object
       required:
-      - id
-      - name
-      - display_name
-      - host_name
-      - host_id
-      - image
-      - image_id
-      - image_created_at
-      - domain
-      - state
-      - service
-      - author
-      - service_group
+      - ip_proto
+      - port
+      - host_ip
+      - host_port
       properties:
-        id:
+        ip_proto:
+          type: integer
+          format: uint8
+          example: 6
+        port:
+          type: integer
+          format: uint16
+          example: 51764
+        host_ip:
           type: string
-          example: 7304e72fd093155c4cbcd65d07375329b2db82cc679
-        name:
-          type: string
-          example: k8s_POD.d86c_calico-node-mzhtk_kube-system_0050565a_365c13d
-        display_name:
-          type: string
-          example: calico-node-mzhtk
-        host_name:
-          type: string
-          example: ubuntu1604-k8worker1-calico
-        host_id:
-          type: string
-          example: GRSW:3RCY:YL6O:TIGT:666B:OW22:XYQF:YHGI:JB3L
-        image:
-          type: string
-          example: calico
-        image_id:
-          type: string
-          example: d572b7ee3511b21a2b78b8915bc03c5786ad01949704c1418624224c4cae2c5f
-        image_digest:
-          type: array
-          items:
-            type: string
-            example: c2ced31c5dda37cb805f481e3fa34b742cc8980f439b20af3111b08e66cff8e1
-        image_created_at:
-          type: string
-          format: date-time
-          example: 2018-01-18 00:44:02+00:00
-        image_reg_scanned:
-          type: boolean
-          example: false
-        domain:
-          type: string
-          example: ''
-        state:
-          type: string
-          example: exit
-        service:
-          type: string
-          example: kafkazookeeper
-        author:
-          type: string
-          example: ''
-        service_group:
-          type: string
-          example: nv.calico
+          example: 10.1.5.1
+        host_port:
+          type: integer
+          format: uint16
+          example: 5000
     RESTBenchItem:
       type: object
       required:
@@ -413,128 +371,261 @@ components:
         group:
           type: string
           example: nv.calico
-    RESTWorkloadConfigData:
+    RESTPwdProfileBasic:
       type: object
       required:
-      - config
+      - min_len
+      - min_uppercase_count
+      - min_lowercase_count
+      - min_digit_count
+      - min_special_count
       properties:
-        config:
-          $ref: '#/components/schemas/RESTWorkloadConfig'
-    RESTWorkloadsDataV2:
+        min_len:
+          type: integer
+          example: 6
+        min_uppercase_count:
+          type: integer
+          example: 0
+        min_lowercase_count:
+          type: integer
+          example: 0
+        min_digit_count:
+          type: integer
+          example: 0
+        min_special_count:
+          type: integer
+          example: 0
+    RESTWorkloadDetailV2:
       type: object
       required:
-      - workloads
+      - brief
+      - security
+      - rt_attributes
+      - children
+      - enforcer_id
+      - enforcer_name
+      - platform_role
+      - created_at
+      - started_at
+      - finished_at
+      - running
+      - secured_at
+      - exit_code
+      - misc
       properties:
-        workloads:
+        brief:
+          $ref: '#/components/schemas/RESTWorkloadBriefV2'
+        security:
+          $ref: '#/components/schemas/RESTWorkloadSecurityV2'
+        rt_attributes:
+          $ref: '#/components/schemas/RESTWorkloadRtAttribesV2'
+        children:
           type: array
           items:
             $ref: '#/components/schemas/RESTWorkloadV2'
-    RESTWorkloadSecurityV2:
+        enforcer_id:
+          type: string
+          example: 002a4f71d9dbdb40db81c31484ac25564fe80574dfbe
+        enforcer_name:
+          type: string
+          example: allinone
+        platform_role:
+          type: string
+          example: core
+        created_at:
+          type: string
+          format: date-time
+          example: 2018-01-18 00:44:02+00:00
+        started_at:
+          type: string
+          format: date-time
+          example: 2018-01-18 00:44:02+00:00
+        finished_at:
+          type: string
+          format: date-time
+          example: 2018-01-18 01:20:02+00:00
+        running:
+          type: boolean
+          example: false
+        secured_at:
+          type: string
+          format: date-time
+          example: 2018-01-18 01:20:02+00:00
+        exit_code:
+          type: integer
+          example: 0
+        misc:
+          $ref: '#/components/schemas/RESTWorkloadDetailMiscV2'
+    RESTWorkloadRtAttribesV2:
       type: object
       required:
-      - cap_sniff
-      - cap_quarantine
-      - cap_change_mode
-      - service_mesh
-      - service_mesh_sidecar
-      - policy_mode
-      - profile_mode
-      - baseline_profile
-      - scan_summary
+      - pod_name
+      - privileged
+      - run_as_root
+      - labels
+      - memory_limit
+      - cpus
+      - service_account
+      - network_mode
+      - interfaces
+      - ports
+      - applications
       properties:
-        cap_sniff:
-          type: boolean
-          example: true
-        cap_quarantine:
-          type: boolean
-          example: true
-        cap_change_mode:
-          type: boolean
-          example: true
-        service_mesh:
-          type: boolean
-          example: true
-        service_mesh_sidecar:
-          type: boolean
-          example: true
-        policy_mode:
+        pod_name:
           type: string
-          example: Discover
-        profile_mode:
+          example: istio-policy-5cdbc47674-t67p4
+        share_ns_with:
           type: string
-          example: Discover
-        baseline_profile:
+          example: cc0709d522749203042e89dba28bf6924a4b0d360648
+        privileged:
+          type: boolean
+          example: false
+        run_as_root:
+          type: boolean
+          example: false
+        labels:
+          type: object
+          description: map key is string type
+          additionalProperties:
+            type: string
+          example:
+            io.kubernetes.pod.name: calico-node-mzhtk
+        memory_limit:
+          type: integer
+          format: int64
+          example: 0
+        cpus:
           type: string
           example: ''
-        quarantine_reason:
+        service_account:
           type: string
-          example: violation
-        scan_summary:
-          $ref: '#/components/schemas/RESTScanBrief'
-    RESTImportTaskData:
-      type: object
-      required:
-      - data
-      properties:
-        data:
-          $ref: '#/components/schemas/RESTImportTask'
-    RESTStats:
-      type: object
-      required:
-      - interval
-      - total
-      - span_1
-      - span_12
-      - span_60
-      properties:
-        interval:
-          type: integer
-          format: uint32
-          example: 5
-        total:
-          $ref: '#/components/schemas/RESTMetry'
-        span_1:
-          $ref: '#/components/schemas/RESTMetry'
-        span_12:
-          $ref: '#/components/schemas/RESTMetry'
-        span_60:
-          $ref: '#/components/schemas/RESTMetry'
-    RESTWorkloadDetailDataV2:
-      type: object
-      required:
-      - workload
-      properties:
-        workload:
-          $ref: '#/components/schemas/RESTWorkloadDetailV2'
-    RESTProcessList:
-      type: object
-      required:
-      - processes
-      properties:
-        processes:
+          example: ''
+        network_mode:
+          type: string
+          example: host
+        interfaces:
+          type: object
+          description: map key is string type like "eth0"
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/RESTIPAddr'
+        ports:
           type: array
           items:
-            $ref: '#/components/schemas/RESTProcessInfo'
-    RESTError:
+            $ref: '#/components/schemas/RESTWorkloadPorts'
+        applications:
+          type: array
+          items:
+            type: string
+            example: TCP/9999
+    RESTIPAddr:
       type: object
       required:
-      - code
-      - error
-      - message
+      - ip
+      - ip_prefix
+      - gateway
       properties:
-        code:
+        ip:
+          type: string
+          example: 192.168.209.197
+        ip_prefix:
           type: integer
-          example: 3
-        error:
+          example: 32
+        gateway:
           type: string
-          example: Request failed
-        message:
+          example: ''
+    RESTMetry:
+      type: object
+      required:
+      - cpu
+      - memory
+      - session_in
+      - session_out
+      - packet_in
+      - packet_out
+      - byte_in
+      - byte_out
+      properties:
+        cpu:
+          type: number
+          format: float64
+          example: 1
+        memory:
+          type: integer
+          format: uint64
+          example: 2089816064
+        session_in:
+          type: integer
+          format: uint32
+          example: 0
+        session_out:
+          type: integer
+          format: uint32
+          example: 0
+        cur_session_in:
+          type: integer
+          format: uint32
+          example: 1
+        cur_session_out:
+          type: integer
+          format: uint32
+          example: 1
+        packet_in:
+          type: integer
+          format: uint64
+          example: 0
+        packet_out:
+          type: integer
+          format: uint64
+          example: 0
+        byte_in:
+          type: integer
+          format: uint64
+          example: 0
+        byte_out:
+          type: integer
+          format: uint64
+          example: 0
+    RESTImportTask:
+      type: object
+      required:
+      - tid
+      - ctrler_id
+      - percentage
+      properties:
+        tid:
           type: string
-          example: Invalid format
-        password_profile_basic:
-          $ref: '#/components/schemas/RESTPwdProfileBasic'
-        import_task_data:
-          $ref: '#/components/schemas/RESTImportTaskData'
+          example: c5af897b62a258212ece91c0551d3a4a
+        ctrler_id:
+          type: string
+          example: 6e60452b244b90456f3450c9fed0a50f57f4b849dcb74a5fad289e8116f32f36
+        last_update_time:
+          type: string
+          format: date-time
+          example: '2022-03-17T17:31:55.832768041Z'
+        percentage:
+          type: integer
+          example: 100
+        triggered_by:
+          type: string
+          example: admin
+        status:
+          type: string
+          example: done
+        temp_token:
+          type: string
+          example: ''
+        fail_to_decrypt_key_fields:
+          type: object
+          description: Object key is kv key and value is array of cloaked fields that cannot be decrypted
+          additionalProperties:
+            type: array
+            items:
+              type: string
+            example:
+            - x509_cert
+            - signing_cert
     RESTWorkloadDetail:
       type: object
       required:
@@ -692,6 +783,38 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RESTWorkloadDetail'
+    RESTWorkloadDetailDataV2:
+      type: object
+      required:
+      - workload
+      properties:
+        workload:
+          $ref: '#/components/schemas/RESTWorkloadDetailV2'
+    RESTWorkloadDetailMiscV2:
+      type: object
+      required:
+      - groups
+      - app_ports
+      - children
+      properties:
+        groups:
+          type: array
+          items:
+            type: string
+          example:
+          - nv.iperfclient-pod
+          - nv.pod
+        app_ports:
+          type: object
+          description: map key is string type
+          additionalProperties:
+            type: string
+          example:
+            TCP: '9999'
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTWorkloadDetailV2'
     RESTComplianceData:
       type: object
       required:
@@ -723,6 +846,154 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RESTBenchItem'
+    RESTWorkloadsData:
+      type: object
+      required:
+      - workloads
+      properties:
+        workloads:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTWorkload'
+    RESTWorkloadConfigData:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          $ref: '#/components/schemas/RESTWorkloadConfig'
+    RESTWorkloadsDataV2:
+      type: object
+      required:
+      - workloads
+      properties:
+        workloads:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTWorkloadV2'
+    RESTWorkloadV2:
+      type: object
+      required:
+      - brief
+      - security
+      - rt_attributes
+      - children
+      - enforcer_id
+      - enforcer_name
+      - platform_role
+      - created_at
+      - started_at
+      - finished_at
+      - running
+      - secured_at
+      - exit_code
+      properties:
+        brief:
+          $ref: '#/components/schemas/RESTWorkloadBriefV2'
+        security:
+          $ref: '#/components/schemas/RESTWorkloadSecurityV2'
+        rt_attributes:
+          $ref: '#/components/schemas/RESTWorkloadRtAttribesV2'
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTWorkloadV2'
+        enforcer_id:
+          type: string
+          example: 002a4f71d9dbdb40db81c31484ac25564fe80574dfbe
+        enforcer_name:
+          type: string
+          example: allinone
+        platform_role:
+          type: string
+          example: core
+        created_at:
+          type: string
+          format: date-time
+          example: 2018-01-18 00:44:02+00:00
+        started_at:
+          type: string
+          format: date-time
+          example: 2018-01-18 00:44:02+00:00
+        finished_at:
+          type: string
+          format: date-time
+          example: 2018-01-18 01:20:02+00:00
+        running:
+          type: boolean
+          example: false
+        secured_at:
+          type: string
+          format: date-time
+          example: 2018-01-18 01:20:02+00:00
+        exit_code:
+          type: integer
+          example: 0
+    RESTWorkloadDetailData:
+      type: object
+      required:
+      - workload
+      properties:
+        workload:
+          $ref: '#/components/schemas/RESTWorkloadDetail'
+    RESTProcessList:
+      type: object
+      required:
+      - processes
+      properties:
+        processes:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTProcessInfo'
+    RESTProcessProfileEntry:
+      type: object
+      required:
+      - name
+      - action
+      - cfg_type
+      - uuid
+      - created_timestamp
+      - last_modified_timestamp
+      properties:
+        name:
+          type: string
+          example: name
+        path:
+          type: string
+          example: path
+        user:
+          type: string
+          example: user
+        uid:
+          type: integer
+          format: int32
+          example: 1273
+        action:
+          type: string
+          example: allow
+        cfg_type:
+          type: string
+          enum:
+          - learned
+          - user_created
+          - ground
+          - federal
+          - system_defined
+        uuid:
+          type: string
+          format: uuid
+          example: 5654bfac-0011-4678-8e67-9eda136f18b1
+        group:
+          type: string
+          example: nodes
+        created_timestamp:
+          type: integer
+          format: int64
+          example: 1516561258
+        last_modified_timestamp:
+          type: integer
+          format: int64
+          example: 1516561268
     RESTProcessInfo:
       type: object
       required:
@@ -776,15 +1047,48 @@ components:
         action:
           type: string
           example: ''
-    RESTWorkloadsData:
+    RESTWorkloadSecurityV2:
       type: object
       required:
-      - workloads
+      - cap_sniff
+      - cap_quarantine
+      - cap_change_mode
+      - service_mesh
+      - service_mesh_sidecar
+      - policy_mode
+      - profile_mode
+      - baseline_profile
+      - scan_summary
       properties:
-        workloads:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTWorkload'
+        cap_sniff:
+          type: boolean
+          example: true
+        cap_quarantine:
+          type: boolean
+          example: true
+        cap_change_mode:
+          type: boolean
+          example: true
+        service_mesh:
+          type: boolean
+          example: true
+        service_mesh_sidecar:
+          type: boolean
+          example: true
+        policy_mode:
+          type: string
+          example: Discover
+        profile_mode:
+          type: string
+          example: Discover
+        baseline_profile:
+          type: string
+          example: ''
+        quarantine_reason:
+          type: string
+          example: violation
+        scan_summary:
+          $ref: '#/components/schemas/RESTScanBrief'
     RESTWorkload:
       type: object
       required:
@@ -970,6 +1274,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RESTWorkload'
+    RESTWorkloadRequest:
+      type: object
+      properties:
+        command:
+          type: string
+          example: uname -r
     RESTAssetIDList:
       type: object
       required:
@@ -980,67 +1290,70 @@ components:
           items:
             type: string
             example: <container id>
-    RESTWorkloadDetailV2:
+    RESTImportTaskData:
       type: object
       required:
-      - brief
-      - security
-      - rt_attributes
-      - children
-      - enforcer_id
-      - enforcer_name
-      - platform_role
-      - created_at
-      - started_at
-      - finished_at
-      - running
-      - secured_at
-      - exit_code
-      - misc
+      - data
       properties:
-        brief:
-          $ref: '#/components/schemas/RESTWorkloadBriefV2'
-        security:
-          $ref: '#/components/schemas/RESTWorkloadSecurityV2'
-        rt_attributes:
-          $ref: '#/components/schemas/RESTWorkloadRtAttribesV2'
-        children:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTWorkloadV2'
-        enforcer_id:
-          type: string
-          example: 002a4f71d9dbdb40db81c31484ac25564fe80574dfbe
-        enforcer_name:
-          type: string
-          example: allinone
-        platform_role:
-          type: string
-          example: core
-        created_at:
-          type: string
-          format: date-time
-          example: 2018-01-18 00:44:02+00:00
-        started_at:
-          type: string
-          format: date-time
-          example: 2018-01-18 00:44:02+00:00
-        finished_at:
-          type: string
-          format: date-time
-          example: 2018-01-18 01:20:02+00:00
-        running:
-          type: boolean
-          example: false
-        secured_at:
-          type: string
-          format: date-time
-          example: 2018-01-18 01:20:02+00:00
-        exit_code:
+        data:
+          $ref: '#/components/schemas/RESTImportTask'
+    RESTError:
+      type: object
+      required:
+      - code
+      - error
+      - message
+      properties:
+        code:
           type: integer
-          example: 0
-        misc:
-          $ref: '#/components/schemas/RESTWorkloadDetailMiscV2'
+          example: 3
+        error:
+          type: string
+          example: Request failed
+        message:
+          type: string
+          example: Invalid format
+        password_profile_basic:
+          $ref: '#/components/schemas/RESTPwdProfileBasic'
+        import_task_data:
+          $ref: '#/components/schemas/RESTImportTaskData'
+    RESTStats:
+      type: object
+      required:
+      - interval
+      - total
+      - span_1
+      - span_12
+      - span_60
+      properties:
+        interval:
+          type: integer
+          format: uint32
+          example: 5
+        total:
+          $ref: '#/components/schemas/RESTMetry'
+        span_1:
+          $ref: '#/components/schemas/RESTMetry'
+        span_12:
+          $ref: '#/components/schemas/RESTMetry'
+        span_60:
+          $ref: '#/components/schemas/RESTMetry'
+    RESTWorkloadStatsData:
+      type: object
+      required:
+      - id
+      - read_at
+      - stats
+      properties:
+        id:
+          type: string
+          example: 0fdf601ddc3ab541386aa8e36fe113593c
+        read_at:
+          type: string
+          format: date-time
+          example: 2018-01-21 06:25:15+00:00
+        stats:
+          $ref: '#/components/schemas/RESTStats'
     RESTScanBrief:
       type: object
       required:
@@ -1084,6 +1397,78 @@ components:
           type: string
           format: date-time
           example: 2018-06-20 19:00:53+00:00
+    RESTWorkloadBriefV2:
+      type: object
+      required:
+      - id
+      - name
+      - display_name
+      - host_name
+      - host_id
+      - image
+      - image_id
+      - image_created_at
+      - domain
+      - state
+      - service
+      - author
+      - service_group
+      properties:
+        id:
+          type: string
+          example: 7304e72fd093155c4cbcd65d07375329b2db82cc679
+        name:
+          type: string
+          example: k8s_POD.d86c_calico-node-mzhtk_kube-system_0050565a_365c13d
+        display_name:
+          type: string
+          example: calico-node-mzhtk
+        host_name:
+          type: string
+          example: ubuntu1604-k8worker1-calico
+        host_id:
+          type: string
+          example: GRSW:3RCY:YL6O:TIGT:666B:OW22:XYQF:YHGI:JB3L
+        image:
+          type: string
+          example: calico
+        image_id:
+          type: string
+          example: d572b7ee3511b21a2b78b8915bc03c5786ad01949704c1418624224c4cae2c5f
+        image_digest:
+          type: array
+          items:
+            type: string
+            example: c2ced31c5dda37cb805f481e3fa34b742cc8980f439b20af3111b08e66cff8e1
+        image_created_at:
+          type: string
+          format: date-time
+          example: 2018-01-18 00:44:02+00:00
+        image_reg_scanned:
+          type: boolean
+          example: false
+        domain:
+          type: string
+          example: ''
+        state:
+          type: string
+          example: exit
+        service:
+          type: string
+          example: kafkazookeeper
+        author:
+          type: string
+          example: ''
+        service_group:
+          type: string
+          example: nv.calico
+    RESTWorkloadRequestData:
+      type: object
+      required:
+      - request
+      properties:
+        request:
+          $ref: '#/components/schemas/RESTWorkloadRequest'
     RESTWorkloadConfig:
       type: object
       required:
@@ -1098,391 +1483,6 @@ components:
         quarantine_reason:
           type: string
           example: violation
-    RESTWorkloadPorts:
-      type: object
-      required:
-      - ip_proto
-      - port
-      - host_ip
-      - host_port
-      properties:
-        ip_proto:
-          type: integer
-          format: uint8
-          example: 6
-        port:
-          type: integer
-          format: uint16
-          example: 51764
-        host_ip:
-          type: string
-          example: 10.1.5.1
-        host_port:
-          type: integer
-          format: uint16
-          example: 5000
-    RESTWorkloadRequestData:
-      type: object
-      required:
-      - request
-      properties:
-        request:
-          $ref: '#/components/schemas/RESTWorkloadRequest'
-    RESTWorkloadStatsData:
-      type: object
-      required:
-      - id
-      - read_at
-      - stats
-      properties:
-        id:
-          type: string
-          example: 0fdf601ddc3ab541386aa8e36fe113593c
-        read_at:
-          type: string
-          format: date-time
-          example: 2018-01-21 06:25:15+00:00
-        stats:
-          $ref: '#/components/schemas/RESTStats'
-    RESTProcessProfileEntry:
-      type: object
-      required:
-      - name
-      - action
-      - cfg_type
-      - uuid
-      - created_timestamp
-      - last_modified_timestamp
-      properties:
-        name:
-          type: string
-          example: name
-        path:
-          type: string
-          example: path
-        user:
-          type: string
-          example: user
-        uid:
-          type: integer
-          format: int32
-          example: 1273
-        action:
-          type: string
-          example: allow
-        cfg_type:
-          type: string
-          enum:
-          - learned
-          - user_created
-          - ground
-          - federal
-          - system_defined
-        uuid:
-          type: string
-          format: uuid
-          example: 5654bfac-0011-4678-8e67-9eda136f18b1
-        group:
-          type: string
-          example: nodes
-        created_timestamp:
-          type: integer
-          format: int64
-          example: 1516561258
-        last_modified_timestamp:
-          type: integer
-          format: int64
-          example: 1516561268
-    RESTWorkloadDetailData:
-      type: object
-      required:
-      - workload
-      properties:
-        workload:
-          $ref: '#/components/schemas/RESTWorkloadDetail'
-    RESTPwdProfileBasic:
-      type: object
-      required:
-      - min_len
-      - min_uppercase_count
-      - min_lowercase_count
-      - min_digit_count
-      - min_special_count
-      properties:
-        min_len:
-          type: integer
-          example: 6
-        min_uppercase_count:
-          type: integer
-          example: 0
-        min_lowercase_count:
-          type: integer
-          example: 0
-        min_digit_count:
-          type: integer
-          example: 0
-        min_special_count:
-          type: integer
-          example: 0
-    RESTIPAddr:
-      type: object
-      required:
-      - ip
-      - ip_prefix
-      - gateway
-      properties:
-        ip:
-          type: string
-          example: 192.168.209.197
-        ip_prefix:
-          type: integer
-          example: 32
-        gateway:
-          type: string
-          example: ''
-    RESTWorkloadRtAttribesV2:
-      type: object
-      required:
-      - pod_name
-      - privileged
-      - run_as_root
-      - labels
-      - memory_limit
-      - cpus
-      - service_account
-      - network_mode
-      - interfaces
-      - ports
-      - applications
-      properties:
-        pod_name:
-          type: string
-          example: istio-policy-5cdbc47674-t67p4
-        share_ns_with:
-          type: string
-          example: cc0709d522749203042e89dba28bf6924a4b0d360648
-        privileged:
-          type: boolean
-          example: false
-        run_as_root:
-          type: boolean
-          example: false
-        labels:
-          type: object
-          description: map key is string type
-          additionalProperties:
-            type: string
-          example:
-            io.kubernetes.pod.name: calico-node-mzhtk
-        memory_limit:
-          type: integer
-          format: int64
-          example: 0
-        cpus:
-          type: string
-          example: ''
-        service_account:
-          type: string
-          example: ''
-        network_mode:
-          type: string
-          example: host
-        interfaces:
-          type: object
-          description: map key is string type like "eth0"
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/RESTIPAddr'
-        ports:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTWorkloadPorts'
-        applications:
-          type: array
-          items:
-            type: string
-            example: TCP/9999
-    RESTWorkloadRequest:
-      type: object
-      properties:
-        command:
-          type: string
-          example: uname -r
-    RESTWorkloadDetailMiscV2:
-      type: object
-      required:
-      - groups
-      - app_ports
-      - children
-      properties:
-        groups:
-          type: array
-          items:
-            type: string
-          example:
-          - nv.iperfclient-pod
-          - nv.pod
-        app_ports:
-          type: object
-          description: map key is string type
-          additionalProperties:
-            type: string
-          example:
-            TCP: '9999'
-        children:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTWorkloadDetailV2'
-    RESTMetry:
-      type: object
-      required:
-      - cpu
-      - memory
-      - session_in
-      - session_out
-      - packet_in
-      - packet_out
-      - byte_in
-      - byte_out
-      properties:
-        cpu:
-          type: number
-          format: float64
-          example: 1
-        memory:
-          type: integer
-          format: uint64
-          example: 2089816064
-        session_in:
-          type: integer
-          format: uint32
-          example: 0
-        session_out:
-          type: integer
-          format: uint32
-          example: 0
-        cur_session_in:
-          type: integer
-          format: uint32
-          example: 1
-        cur_session_out:
-          type: integer
-          format: uint32
-          example: 1
-        packet_in:
-          type: integer
-          format: uint64
-          example: 0
-        packet_out:
-          type: integer
-          format: uint64
-          example: 0
-        byte_in:
-          type: integer
-          format: uint64
-          example: 0
-        byte_out:
-          type: integer
-          format: uint64
-          example: 0
-    RESTWorkloadV2:
-      type: object
-      required:
-      - brief
-      - security
-      - rt_attributes
-      - children
-      - enforcer_id
-      - enforcer_name
-      - platform_role
-      - created_at
-      - started_at
-      - finished_at
-      - running
-      - secured_at
-      - exit_code
-      properties:
-        brief:
-          $ref: '#/components/schemas/RESTWorkloadBriefV2'
-        security:
-          $ref: '#/components/schemas/RESTWorkloadSecurityV2'
-        rt_attributes:
-          $ref: '#/components/schemas/RESTWorkloadRtAttribesV2'
-        children:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTWorkloadV2'
-        enforcer_id:
-          type: string
-          example: 002a4f71d9dbdb40db81c31484ac25564fe80574dfbe
-        enforcer_name:
-          type: string
-          example: allinone
-        platform_role:
-          type: string
-          example: core
-        created_at:
-          type: string
-          format: date-time
-          example: 2018-01-18 00:44:02+00:00
-        started_at:
-          type: string
-          format: date-time
-          example: 2018-01-18 00:44:02+00:00
-        finished_at:
-          type: string
-          format: date-time
-          example: 2018-01-18 01:20:02+00:00
-        running:
-          type: boolean
-          example: false
-        secured_at:
-          type: string
-          format: date-time
-          example: 2018-01-18 01:20:02+00:00
-        exit_code:
-          type: integer
-          example: 0
-    RESTImportTask:
-      type: object
-      required:
-      - tid
-      - ctrler_id
-      - percentage
-      properties:
-        tid:
-          type: string
-          example: c5af897b62a258212ece91c0551d3a4a
-        ctrler_id:
-          type: string
-          example: 6e60452b244b90456f3450c9fed0a50f57f4b849dcb74a5fad289e8116f32f36
-        last_update_time:
-          type: string
-          format: date-time
-          example: '2022-03-17T17:31:55.832768041Z'
-        percentage:
-          type: integer
-          example: 100
-        triggered_by:
-          type: string
-          example: admin
-        status:
-          type: string
-          example: done
-        temp_token:
-          type: string
-          example: ''
-        fail_to_decrypt_key_fields:
-          type: object
-          description: Object key is kv key and value is array of cloaked fields that cannot be decrypted
-          additionalProperties:
-            type: array
-            items:
-              type: string
-            example:
-            - x509_cert
-            - signing_cert
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

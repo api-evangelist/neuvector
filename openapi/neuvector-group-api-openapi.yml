@@ -135,13 +135,145 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    RESTGroupData:
+    RESTError:
       type: object
       required:
-      - group
+      - code
+      - error
+      - message
       properties:
-        group:
-          $ref: '#/components/schemas/RESTGroupDetail'
+        code:
+          type: integer
+          example: 3
+        error:
+          type: string
+          example: Request failed
+        message:
+          type: string
+          example: Invalid format
+        password_profile_basic:
+          $ref: '#/components/schemas/RESTPwdProfileBasic'
+        import_task_data:
+          $ref: '#/components/schemas/RESTImportTaskData'
+    RESTWorkloadBrief:
+      type: object
+      required:
+      - id
+      - name
+      - display_name
+      - pod_name
+      - image
+      - image_id
+      - image_created_at
+      - platform_role
+      - domain
+      - state
+      - service
+      - author
+      - service_group
+      - cap_sniff
+      - cap_quarantine
+      - cap_change_mode
+      - policy_mode
+      - profile_mode
+      - scan_summary
+      - children
+      - service_mesh
+      - service_mesh_sidecar
+      - privileged
+      - run_as_root
+      - baseline_profile
+      properties:
+        id:
+          type: string
+          example: 7304e72fd093155c4cbcd65d07375329b2db82cc679
+        name:
+          type: string
+          example: k8s_POD.d86c_calico-node-mzhtk_kube-system_0050565a_365c13d
+        display_name:
+          type: string
+          example: calico-node-mzhtk
+        pod_name:
+          type: string
+          example: istio-policy-5cdbc47674-t67p4
+        image:
+          type: string
+          example: calico
+        image_id:
+          type: string
+          example: d572b7ee3511b21a2b78b8915bc03c5786ad01949704c1418624224c4cae2c5f
+        image_digest:
+          type: array
+          items:
+            type: string
+            example: c2ced31c5dda37cb805f481e3fa34b742cc8980f439b20af3111b08e66cff8e1
+        image_created_at:
+          type: string
+          format: date-time
+          example: 2018-01-18 00:44:02+00:00
+        image_reg_scanned:
+          type: boolean
+          example: false
+        platform_role:
+          type: string
+          example: core
+        domain:
+          type: string
+          example: ''
+        state:
+          type: string
+          example: exit
+        service:
+          type: string
+          example: kafkazookeeper
+        author:
+          type: string
+          example: ''
+        service_group:
+          type: string
+          example: nv.calico
+        share_ns_with:
+          type: string
+          example: cc0709d522749203042e89dba28bf6924a4b0d360648
+        cap_sniff:
+          type: boolean
+          example: true
+        cap_quarantine:
+          type: boolean
+          example: true
+        cap_change_mode:
+          type: boolean
+          example: true
+        policy_mode:
+          type: string
+          example: Discover
+        profile_mode:
+          type: string
+          example: Discover
+        scan_summary:
+          $ref: '#/components/schemas/RESTScanBrief'
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTWorkloadBrief'
+        quarantine_reason:
+          type: string
+          example: violation
+        service_mesh:
+          type: boolean
+          example: true
+        service_mesh_sidecar:
+          type: boolean
+          example: true
+        privileged:
+          type: boolean
+          example: true
+        run_as_root:
+          type: boolean
+          example: true
+        baseline_profile:
+          type: string
+          example: ''
     RESTGroup:
       type: object
       required:
@@ -306,287 +438,6 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/RESTImportTask'
-    RESTGroupConfig:
-      type: object
-      required:
-      - name
-      - cfg_type
-      properties:
-        name:
-          type: string
-          example: containerEQU
-        criteria:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTCriteriaEntry'
-        cfg_type:
-          type: string
-          enum:
-          - learned
-          - user_created
-          - ground
-          - federal
-    RESTWorkloadBrief:
-      type: object
-      required:
-      - id
-      - name
-      - display_name
-      - pod_name
-      - image
-      - image_id
-      - image_created_at
-      - platform_role
-      - domain
-      - state
-      - service
-      - author
-      - service_group
-      - cap_sniff
-      - cap_quarantine
-      - cap_change_mode
-      - policy_mode
-      - profile_mode
-      - scan_summary
-      - children
-      - service_mesh
-      - service_mesh_sidecar
-      - privileged
-      - run_as_root
-      - baseline_profile
-      properties:
-        id:
-          type: string
-          example: 7304e72fd093155c4cbcd65d07375329b2db82cc679
-        name:
-          type: string
-          example: k8s_POD.d86c_calico-node-mzhtk_kube-system_0050565a_365c13d
-        display_name:
-          type: string
-          example: calico-node-mzhtk
-        pod_name:
-          type: string
-          example: istio-policy-5cdbc47674-t67p4
-        image:
-          type: string
-          example: calico
-        image_id:
-          type: string
-          example: d572b7ee3511b21a2b78b8915bc03c5786ad01949704c1418624224c4cae2c5f
-        image_digest:
-          type: array
-          items:
-            type: string
-            example: c2ced31c5dda37cb805f481e3fa34b742cc8980f439b20af3111b08e66cff8e1
-        image_created_at:
-          type: string
-          format: date-time
-          example: 2018-01-18 00:44:02+00:00
-        image_reg_scanned:
-          type: boolean
-          example: false
-        platform_role:
-          type: string
-          example: core
-        domain:
-          type: string
-          example: ''
-        state:
-          type: string
-          example: exit
-        service:
-          type: string
-          example: kafkazookeeper
-        author:
-          type: string
-          example: ''
-        service_group:
-          type: string
-          example: nv.calico
-        share_ns_with:
-          type: string
-          example: cc0709d522749203042e89dba28bf6924a4b0d360648
-        cap_sniff:
-          type: boolean
-          example: true
-        cap_quarantine:
-          type: boolean
-          example: true
-        cap_change_mode:
-          type: boolean
-          example: true
-        policy_mode:
-          type: string
-          example: Discover
-        profile_mode:
-          type: string
-          example: Discover
-        scan_summary:
-          $ref: '#/components/schemas/RESTScanBrief'
-        children:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTWorkloadBrief'
-        quarantine_reason:
-          type: string
-          example: violation
-        service_mesh:
-          type: boolean
-          example: true
-        service_mesh_sidecar:
-          type: boolean
-          example: true
-        privileged:
-          type: boolean
-          example: true
-        run_as_root:
-          type: boolean
-          example: true
-        baseline_profile:
-          type: string
-          example: ''
-    RESTGroupConfigData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTGroupConfig'
-    RESTGroupsData:
-      type: object
-      required:
-      - groups
-      properties:
-        groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTGroup'
-    RESTScanBrief:
-      type: object
-      required:
-      - status
-      - high
-      - medium
-      - result
-      - scanned_timestamp
-      - scanned_at
-      - base_os
-      - scanner_version
-      - cvedb_create_time
-      properties:
-        status:
-          type: string
-          example: scheduled
-        high:
-          type: integer
-          example: 0
-        medium:
-          type: integer
-          example: 0
-        result:
-          type: string
-          example: success
-        scanned_timestamp:
-          type: integer
-          format: int64
-          example: 1516561253
-        scanned_at:
-          type: string
-          format: date-time
-          example: 2018-01-21 19:00:53+00:00
-        base_os:
-          type: string
-          example: ubuntu:16.04
-        scanner_version:
-          type: string
-          example: '1.011'
-        cvedb_create_time:
-          type: string
-          format: date-time
-          example: 2018-06-20 19:00:53+00:00
-    RESTError:
-      type: object
-      required:
-      - code
-      - error
-      - message
-      properties:
-        code:
-          type: integer
-          example: 3
-        error:
-          type: string
-          example: Request failed
-        message:
-          type: string
-          example: Invalid format
-        password_profile_basic:
-          $ref: '#/components/schemas/RESTPwdProfileBasic'
-        import_task_data:
-          $ref: '#/components/schemas/RESTImportTaskData'
-    RESTPwdProfileBasic:
-      type: object
-      required:
-      - min_len
-      - min_uppercase_count
-      - min_lowercase_count
-      - min_digit_count
-      - min_special_count
-      properties:
-        min_len:
-          type: integer
-          example: 6
-        min_uppercase_count:
-          type: integer
-          example: 0
-        min_lowercase_count:
-          type: integer
-          example: 0
-        min_digit_count:
-          type: integer
-          example: 0
-        min_special_count:
-          type: integer
-          example: 0
-    RESTImportTask:
-      type: object
-      required:
-      - tid
-      - ctrler_id
-      - percentage
-      properties:
-        tid:
-          type: string
-          example: c5af897b62a258212ece91c0551d3a4a
-        ctrler_id:
-          type: string
-          example: 6e60452b244b90456f3450c9fed0a50f57f4b849dcb74a5fad289e8116f32f36
-        last_update_time:
-          type: string
-          format: date-time
-          example: '2022-03-17T17:31:55.832768041Z'
-        percentage:
-          type: integer
-          example: 100
-        triggered_by:
-          type: string
-          example: admin
-        status:
-          type: string
-          example: done
-        temp_token:
-          type: string
-          example: ''
-        fail_to_decrypt_key_fields:
-          type: object
-          description: Object key is kv key and value is array of cloaked fields that cannot be decrypted
-          additionalProperties:
-            type: array
-            items:
-              type: string
-            example:
-            - x509_cert
-            - signing_cert
     RESTResponseRule:
       type: object
       required:
@@ -636,15 +487,80 @@ components:
           - user_created
           - ground
           - federal
-    RESTCLUSEventCondition:
+    RESTGroupConfigData:
       type: object
+      required:
+      - config
       properties:
-        type:
+        config:
+          $ref: '#/components/schemas/RESTGroupConfig'
+    RESTPwdProfileBasic:
+      type: object
+      required:
+      - min_len
+      - min_uppercase_count
+      - min_lowercase_count
+      - min_digit_count
+      - min_special_count
+      properties:
+        min_len:
+          type: integer
+          example: 6
+        min_uppercase_count:
+          type: integer
+          example: 0
+        min_lowercase_count:
+          type: integer
+          example: 0
+        min_digit_count:
+          type: integer
+          example: 0
+        min_special_count:
+          type: integer
+          example: 0
+    RESTScanBrief:
+      type: object
+      required:
+      - status
+      - high
+      - medium
+      - result
+      - scanned_timestamp
+      - scanned_at
+      - base_os
+      - scanner_version
+      - cvedb_create_time
+      properties:
+        status:
           type: string
-          example: ''
-        value:
+          example: scheduled
+        high:
+          type: integer
+          example: 0
+        medium:
+          type: integer
+          example: 0
+        result:
           type: string
-          example: ''
+          example: success
+        scanned_timestamp:
+          type: integer
+          format: int64
+          example: 1516561253
+        scanned_at:
+          type: string
+          format: date-time
+          example: 2018-01-21 19:00:53+00:00
+        base_os:
+          type: string
+          example: ubuntu:16.04
+        scanner_version:
+          type: string
+          example: '1.011'
+        cvedb_create_time:
+          type: string
+          format: date-time
+          example: 2018-06-20 19:00:53+00:00
     RESTCriteriaEntry:
       type: object
       required:
@@ -661,6 +577,15 @@ components:
         op:
           type: string
           example: regex
+    RESTCLUSEventCondition:
+      type: object
+      properties:
+        type:
+          type: string
+          example: ''
+        value:
+          type: string
+          example: ''
     RESTPolicyRule:
       type: object
       required:
@@ -740,6 +665,81 @@ components:
           type: integer
           format: int64
           example: 1736811451
+    RESTGroupData:
+      type: object
+      required:
+      - group
+      properties:
+        group:
+          $ref: '#/components/schemas/RESTGroupDetail'
+    RESTGroupsData:
+      type: object
+      required:
+      - groups
+      properties:
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTGroup'
+    RESTImportTask:
+      type: object
+      required:
+      - tid
+      - ctrler_id
+      - percentage
+      properties:
+        tid:
+          type: string
+          example: c5af897b62a258212ece91c0551d3a4a
+        ctrler_id:
+          type: string
+          example: 6e60452b244b90456f3450c9fed0a50f57f4b849dcb74a5fad289e8116f32f36
+        last_update_time:
+          type: string
+          format: date-time
+          example: '2022-03-17T17:31:55.832768041Z'
+        percentage:
+          type: integer
+          example: 100
+        triggered_by:
+          type: string
+          example: admin
+        status:
+          type: string
+          example: done
+        temp_token:
+          type: string
+          example: ''
+        fail_to_decrypt_key_fields:
+          type: object
+          description: Object key is kv key and value is array of cloaked fields that cannot be decrypted
+          additionalProperties:
+            type: array
+            items:
+              type: string
+            example:
+            - x509_cert
+            - signing_cert
+    RESTGroupConfig:
+      type: object
+      required:
+      - name
+      - cfg_type
+      properties:
+        name:
+          type: string
+          example: containerEQU
+        criteria:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTCriteriaEntry'
+        cfg_type:
+          type: string
+          enum:
+          - learned
+          - user_created
+          - ground
+          - federal
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

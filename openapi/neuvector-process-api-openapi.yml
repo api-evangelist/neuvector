@@ -115,72 +115,24 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    RESTProcessProfileEntryConfig:
+    RESTProcessUuidEntry:
       type: object
-      required:
-      - name
-      - path
-      - action
-      - group
       properties:
-        name:
-          type: string
-          example: myEntryConfig
-        path:
-          type: string
-          example: ''
-        action:
-          type: string
-          example: monitor
+        active:
+          type: integer
+          example: 1
         group:
           type: string
-          example: myGroup
-    RESTProcessProfilesData:
+          example: nodes
+        rule:
+          $ref: '#/components/schemas/RESTProcessProfileEntry'
+    RESTProcessProfileData:
       type: object
       required:
-      - process_profiles
+      - process_profile
       properties:
-        process_profiles:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTProcessProfile'
-    RESTProcessProfileConfigData:
-      type: object
-      required:
-      - process_profile_config
-      properties:
-        process_profile_config:
-          $ref: '#/components/schemas/RESTProcessProfileConfig'
-    RESTProcessProfile:
-      type: object
-      required:
-      - group
-      - mode
-      - process_list
-      properties:
-        group:
-          type: string
-          example: admin
-        alert_disabled:
-          type: boolean
-          example: false
-        hash_enabled:
-          type: boolean
-          example: true
-        mode:
-          type: string
-          example: ''
-        process_list:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTProcessProfileEntry'
-    RESTProcessRulesResp:
-      type: object
-      properties:
-        process_rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTProcessUuidEntry'
+        process_profile:
+          $ref: '#/components/schemas/RESTProcessProfile'
     RESTProcessProfileEntry:
       type: object
       required:
@@ -230,13 +182,63 @@ components:
           type: integer
           format: int64
           example: 1516561268
-    RESTProcessProfileData:
+    RESTProcessProfile:
       type: object
       required:
-      - process_profile
+      - group
+      - mode
+      - process_list
       properties:
-        process_profile:
-          $ref: '#/components/schemas/RESTProcessProfile'
+        group:
+          type: string
+          example: admin
+        alert_disabled:
+          type: boolean
+          example: false
+        hash_enabled:
+          type: boolean
+          example: true
+        mode:
+          type: string
+          example: ''
+        process_list:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTProcessProfileEntry'
+    RESTProcessProfileConfigData:
+      type: object
+      required:
+      - process_profile_config
+      properties:
+        process_profile_config:
+          $ref: '#/components/schemas/RESTProcessProfileConfig'
+    RESTProcessProfileEntryConfig:
+      type: object
+      required:
+      - name
+      - path
+      - action
+      - group
+      properties:
+        name:
+          type: string
+          example: myEntryConfig
+        path:
+          type: string
+          example: ''
+        action:
+          type: string
+          example: monitor
+        group:
+          type: string
+          example: myGroup
+    RESTProcessRulesResp:
+      type: object
+      properties:
+        process_rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTProcessUuidEntry'
     RESTProcessProfileConfig:
       type: object
       required:
@@ -259,17 +261,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RESTProcessProfileEntryConfig'
-    RESTProcessUuidEntry:
+    RESTProcessProfilesData:
       type: object
+      required:
+      - process_profiles
       properties:
-        active:
-          type: integer
-          example: 1
-        group:
-          type: string
-          example: nodes
-        rule:
-          $ref: '#/components/schemas/RESTProcessProfileEntry'
+        process_profiles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTProcessProfile'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

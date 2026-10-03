@@ -147,22 +147,13 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    RESTSnifferData:
+    RESTSnifferArgsData:
       type: object
       required:
       - sniffer
       properties:
         sniffer:
-          $ref: '#/components/schemas/RESTSnifferInfo'
-    RESTSniffersData:
-      type: object
-      required:
-      - sniffers
-      properties:
-        sniffers:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTSnifferInfo'
+          $ref: '#/components/schemas/RESTSnifferArgs'
     RESTSnifferInfo:
       type: object
       required:
@@ -221,13 +212,22 @@ components:
         filter:
           type: string
           example: \ port\ 1381
-    RESTSnifferArgsData:
+    RESTSniffersData:
+      type: object
+      required:
+      - sniffers
+      properties:
+        sniffers:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTSnifferInfo'
+    RESTSnifferData:
       type: object
       required:
       - sniffer
       properties:
         sniffer:
-          $ref: '#/components/schemas/RESTSnifferArgs'
+          $ref: '#/components/schemas/RESTSnifferInfo'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
