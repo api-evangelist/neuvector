@@ -245,52 +245,21 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    RESTWafGroupConfig:
+    RESTWafConfig:
       type: object
       required:
       - name
+      - action
       properties:
         name:
           type: string
           example: ''
-        status:
-          type: boolean
-          example: false
-        delete:
-          type: array
-          items:
-            type: string
-            example: ''
-        sensors:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTWafConfig'
-        replace:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTWafConfig'
-    RESTWafRuleDetail:
-      type: object
-      required:
-      - sensors
-      - rules
-      properties:
-        sensors:
-          type: array
-          items:
-            type: string
-            example: test
-        rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTWafRule'
-    RESTDlpSensorConfigData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTDlpSensorConfig'
+        action:
+          type: string
+          example: ''
+        comment:
+          type: string
+          example: ''
     RESTWafRuleData:
       type: object
       required:
@@ -298,29 +267,6 @@ components:
       properties:
         rule:
           $ref: '#/components/schemas/RESTWafRuleDetail'
-    RESTWafSensorConfig:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          example: ''
-        change:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTWafRule'
-        delete:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTWafRule'
-        rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTWafRule'
-        comment:
-          type: string
-          example: ''
     RESTCriteriaEntry:
       type: object
       required:
@@ -337,13 +283,35 @@ components:
         op:
           type: string
           example: regex
-    RESTWafSensorData:
+    RESTDlpSensorConfigData:
       type: object
       required:
-      - sensor
+      - config
       properties:
-        sensor:
-          $ref: '#/components/schemas/RESTWafSensor'
+        config:
+          $ref: '#/components/schemas/RESTDlpSensorConfig'
+    RESTWafSensorConfigData:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          $ref: '#/components/schemas/RESTWafSensorConfig'
+    RESTWafRuleDetail:
+      type: object
+      required:
+      - sensors
+      - rules
+      properties:
+        sensors:
+          type: array
+          items:
+            type: string
+            example: test
+        rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTWafRule'
     RESTWafSensorsData:
       type: object
       required:
@@ -353,21 +321,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RESTWafSensor'
-    RESTWafConfig:
-      type: object
-      required:
-      - name
-      - action
-      properties:
-        name:
-          type: string
-          example: ''
-        action:
-          type: string
-          example: ''
-        comment:
-          type: string
-          example: ''
     RESTDlpRule:
       type: object
       required:
@@ -392,101 +345,6 @@ components:
           enum:
           - user_created
           - ground
-    RESTWafGroupsData:
-      type: object
-      required:
-      - waf_groups
-      properties:
-        waf_groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTWafGroup'
-    RESTWafGroup:
-      type: object
-      required:
-      - name
-      - status
-      - sensors
-      - cfg_type
-      properties:
-        name:
-          type: string
-          example: nv.kube-proxy.kube-system
-        status:
-          type: boolean
-          example: true
-        sensors:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTWafSetting'
-        cfg_type:
-          type: string
-          enum:
-          - user_created
-          - ground
-    RESTWafRulesData:
-      type: object
-      required:
-      - rules
-      properties:
-        rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTWafRule'
-    RESTWafGroupData:
-      type: object
-      required:
-      - waf_group
-      properties:
-        waf_group:
-          $ref: '#/components/schemas/RESTWafGroup'
-    RESTWafSensor:
-      type: object
-      required:
-      - name
-      - groups
-      - rules
-      - comment
-      - predefine
-      - cfg_type
-      properties:
-        name:
-          type: string
-          example: test4321546242574254672462572452615362453
-        groups:
-          type: array
-          items:
-            type: string
-            example: nv.kube-proxy.kube-system
-        rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTWafRule'
-        comment:
-          type: string
-          example: ''
-        predefine:
-          type: boolean
-          example: false
-        cfg_type:
-          type: string
-          enum:
-          - user_created
-          - ground
-    RESTWafGroupConfigData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTWafGroupConfig'
-    RESTWafSensorConfigData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTWafSensorConfig'
     RESTWafSetting:
       type: object
       required:
@@ -535,25 +393,45 @@ components:
         comment:
           type: string
           example: Sensor for Credit Card detection
-    RESTWafCriteriaEntry:
+    RESTWafRulesData:
       type: object
       required:
-      - key
-      - value
-      - op
+      - rules
       properties:
-        key:
+        rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTWafRule'
+    RESTWafSensorConfig:
+      type: object
+      required:
+      - name
+      properties:
+        name:
           type: string
-          example: pattern
-        value:
+          example: ''
+        change:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTWafRule'
+        delete:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTWafRule'
+        rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTWafRule'
+        comment:
           type: string
-          example: '[0-9]'
-        op:
-          type: string
-          example: regex
-        context:
-          type: string
-          example: packet
+          example: ''
+    RESTWafSensorData:
+      type: object
+      required:
+      - sensor
+      properties:
+        sensor:
+          $ref: '#/components/schemas/RESTWafSensor'
     RESTWafRule:
       type: object
       required:
@@ -578,6 +456,128 @@ components:
           enum:
           - user_created
           - ground
+    RESTWafCriteriaEntry:
+      type: object
+      required:
+      - key
+      - value
+      - op
+      properties:
+        key:
+          type: string
+          example: pattern
+        value:
+          type: string
+          example: '[0-9]'
+        op:
+          type: string
+          example: regex
+        context:
+          type: string
+          example: packet
+    RESTWafGroupConfig:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          example: ''
+        status:
+          type: boolean
+          example: false
+        delete:
+          type: array
+          items:
+            type: string
+            example: ''
+        sensors:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTWafConfig'
+        replace:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTWafConfig'
+    RESTWafGroupData:
+      type: object
+      required:
+      - waf_group
+      properties:
+        waf_group:
+          $ref: '#/components/schemas/RESTWafGroup'
+    RESTWafGroup:
+      type: object
+      required:
+      - name
+      - status
+      - sensors
+      - cfg_type
+      properties:
+        name:
+          type: string
+          example: nv.kube-proxy.kube-system
+        status:
+          type: boolean
+          example: true
+        sensors:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTWafSetting'
+        cfg_type:
+          type: string
+          enum:
+          - user_created
+          - ground
+    RESTWafGroupConfigData:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          $ref: '#/components/schemas/RESTWafGroupConfig'
+    RESTWafSensor:
+      type: object
+      required:
+      - name
+      - groups
+      - rules
+      - comment
+      - predefine
+      - cfg_type
+      properties:
+        name:
+          type: string
+          example: test4321546242574254672462572452615362453
+        groups:
+          type: array
+          items:
+            type: string
+            example: nv.kube-proxy.kube-system
+        rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTWafRule'
+        comment:
+          type: string
+          example: ''
+        predefine:
+          type: boolean
+          example: false
+        cfg_type:
+          type: string
+          enum:
+          - user_created
+          - ground
+    RESTWafGroupsData:
+      type: object
+      required:
+      - waf_groups
+      properties:
+        waf_groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTWafGroup'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

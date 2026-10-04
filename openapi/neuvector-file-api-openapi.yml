@@ -565,68 +565,9 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    RESTRemoteExportData:
-      type: object
-      properties:
-        file_path:
-          type: string
-          description: the destination file path when exported to remote repository
-    RESTFedConfigExport:
-      type: object
-      properties:
-        remote_export_options:
-          $ref: '#/components/schemas/RESTRemoteExportOptions'
-    RESTCompProfilesExport:
-      type: object
-      properties:
-        names:
-          type: array
-          items:
-            type: string
-            example:
-            - default
-        remote_export_options:
-          $ref: '#/components/schemas/RESTRemoteExportOptions'
-    RESTWafSensorExport:
-      type: object
-      required:
-      - names
-      properties:
-        names:
-          type: array
-          items:
-            type: string
-            example: test4321546242574254672462572452615362453
-        remote_export_options:
-          $ref: '#/components/schemas/RESTRemoteExportOptions'
     RESTResponseRulesExport:
       type: object
       properties:
-        ids:
-          type: array
-          items:
-            type: integer
-            format: uint32
-            example: 12
-        remote_export_options:
-          $ref: '#/components/schemas/RESTRemoteExportOptions'
-    RESTVulnProfilesExport:
-      type: object
-      properties:
-        names:
-          type: array
-          items:
-            type: string
-            example:
-            - default
-        remote_export_options:
-          $ref: '#/components/schemas/RESTRemoteExportOptions'
-    RESTAdmCtrlRulesExport:
-      type: object
-      properties:
-        export_config:
-          type: boolean
-          example: true
         ids:
           type: array
           items:
@@ -681,13 +622,6 @@ components:
           - Protect
         remote_export_options:
           $ref: '#/components/schemas/RESTRemoteExportOptions'
-    RESTImportTaskData:
-      type: object
-      required:
-      - data
-      properties:
-        data:
-          $ref: '#/components/schemas/RESTImportTask'
     RESTImportTask:
       type: object
       required:
@@ -727,6 +661,25 @@ components:
             example:
             - x509_cert
             - signing_cert
+    RESTImportTaskData:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          $ref: '#/components/schemas/RESTImportTask'
+    RESTWafSensorExport:
+      type: object
+      required:
+      - names
+      properties:
+        names:
+          type: array
+          items:
+            type: string
+            example: test4321546242574254672462572452615362453
+        remote_export_options:
+          $ref: '#/components/schemas/RESTRemoteExportOptions'
     RESTDlpSensorExport:
       type: object
       required:
@@ -740,6 +693,53 @@ components:
           - ''
         remote_export_options:
           $ref: '#/components/schemas/RESTRemoteExportOptions'
+    RESTAdmCtrlRulesExport:
+      type: object
+      properties:
+        export_config:
+          type: boolean
+          example: true
+        ids:
+          type: array
+          items:
+            type: integer
+            format: uint32
+            example: 12
+        remote_export_options:
+          $ref: '#/components/schemas/RESTRemoteExportOptions'
+    RESTFedConfigExport:
+      type: object
+      properties:
+        remote_export_options:
+          $ref: '#/components/schemas/RESTRemoteExportOptions'
+    RESTVulnProfilesExport:
+      type: object
+      properties:
+        names:
+          type: array
+          items:
+            type: string
+            example:
+            - default
+        remote_export_options:
+          $ref: '#/components/schemas/RESTRemoteExportOptions'
+    RESTCompProfilesExport:
+      type: object
+      properties:
+        names:
+          type: array
+          items:
+            type: string
+            example:
+            - default
+        remote_export_options:
+          $ref: '#/components/schemas/RESTRemoteExportOptions'
+    RESTRemoteExportData:
+      type: object
+      properties:
+        file_path:
+          type: string
+          description: the destination file path when exported to remote repository
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

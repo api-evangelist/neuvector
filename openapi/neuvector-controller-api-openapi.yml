@@ -129,6 +129,22 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    RESTWorkloadStatsData:
+      type: object
+      required:
+      - id
+      - read_at
+      - stats
+      properties:
+        id:
+          type: string
+          example: 0fdf601ddc3ab541386aa8e36fe113593c
+        read_at:
+          type: string
+          format: date-time
+          example: 2018-01-21 06:25:15+00:00
+        stats:
+          $ref: '#/components/schemas/RESTStats'
     RESTStats:
       type: object
       required:
@@ -150,22 +166,58 @@ components:
           $ref: '#/components/schemas/RESTMetry'
         span_60:
           $ref: '#/components/schemas/RESTMetry'
-    RESTWorkloadStatsData:
+    RESTMetry:
       type: object
       required:
-      - id
-      - read_at
-      - stats
+      - cpu
+      - memory
+      - session_in
+      - session_out
+      - packet_in
+      - packet_out
+      - byte_in
+      - byte_out
       properties:
-        id:
-          type: string
-          example: 0fdf601ddc3ab541386aa8e36fe113593c
-        read_at:
-          type: string
-          format: date-time
-          example: 2018-01-21 06:25:15+00:00
-        stats:
-          $ref: '#/components/schemas/RESTStats'
+        cpu:
+          type: number
+          format: float64
+          example: 1
+        memory:
+          type: integer
+          format: uint64
+          example: 2089816064
+        session_in:
+          type: integer
+          format: uint32
+          example: 0
+        session_out:
+          type: integer
+          format: uint32
+          example: 0
+        cur_session_in:
+          type: integer
+          format: uint32
+          example: 1
+        cur_session_out:
+          type: integer
+          format: uint32
+          example: 1
+        packet_in:
+          type: integer
+          format: uint64
+          example: 0
+        packet_out:
+          type: integer
+          format: uint64
+          example: 0
+        byte_in:
+          type: integer
+          format: uint64
+          example: 0
+        byte_out:
+          type: integer
+          format: uint64
+          example: 0
     RESTControllerConfigData:
       type: object
       required:
@@ -281,58 +333,6 @@ components:
           - tcp
           - session
           - error
-    RESTMetry:
-      type: object
-      required:
-      - cpu
-      - memory
-      - session_in
-      - session_out
-      - packet_in
-      - packet_out
-      - byte_in
-      - byte_out
-      properties:
-        cpu:
-          type: number
-          format: float64
-          example: 1
-        memory:
-          type: integer
-          format: uint64
-          example: 2089816064
-        session_in:
-          type: integer
-          format: uint32
-          example: 0
-        session_out:
-          type: integer
-          format: uint32
-          example: 0
-        cur_session_in:
-          type: integer
-          format: uint32
-          example: 1
-        cur_session_out:
-          type: integer
-          format: uint32
-          example: 1
-        packet_in:
-          type: integer
-          format: uint64
-          example: 0
-        packet_out:
-          type: integer
-          format: uint64
-          example: 0
-        byte_in:
-          type: integer
-          format: uint64
-          example: 0
-        byte_out:
-          type: integer
-          format: uint64
-          example: 0
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

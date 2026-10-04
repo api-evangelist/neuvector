@@ -96,39 +96,13 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    RESTApikeyCreation:
+    RESTApikeyGeneratedData:
       type: object
       required:
-      - expiration_type
-      - apikey_name
-      - role
+      - apikey
       properties:
-        expiration_type:
-          type: string
-          example: never
-        expiration_hours:
-          type: integer
-          format: uint32
-          example: 1
-        apikey_name:
-          type: string
-          example: token-cicd-scan
-        description:
-          type: string
-          example: cicd image scanning
-        role:
-          type: string
-          example: admin
-        role_domains:
-          type: object
-          description: Object key is role and value is array of domains
-          additionalProperties:
-            type: array
-            items:
-              type: string
-            example:
-            - domain1
-            - domain2
+        apikey:
+          $ref: '#/components/schemas/RESTApikeyGenerated'
     RESTApikey:
       type: object
       required:
@@ -176,6 +150,39 @@ components:
         created_by_entity:
           type: string
           example: admin
+    RESTApikeyCreation:
+      type: object
+      required:
+      - expiration_type
+      - apikey_name
+      - role
+      properties:
+        expiration_type:
+          type: string
+          example: never
+        expiration_hours:
+          type: integer
+          format: uint32
+          example: 1
+        apikey_name:
+          type: string
+          example: token-cicd-scan
+        description:
+          type: string
+          example: cicd image scanning
+        role:
+          type: string
+          example: admin
+        role_domains:
+          type: object
+          description: Object key is role and value is array of domains
+          additionalProperties:
+            type: array
+            items:
+              type: string
+            example:
+            - domain1
+            - domain2
     RESTApikeyGenerated:
       type: object
       required:
@@ -220,13 +227,6 @@ components:
       properties:
         apikey:
           $ref: '#/components/schemas/RESTApikey'
-    RESTApikeyGeneratedData:
-      type: object
-      required:
-      - apikey
-      properties:
-        apikey:
-          $ref: '#/components/schemas/RESTApikeyGenerated'
     RESTApikeyCreationData:
       type: object
       required:

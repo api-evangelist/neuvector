@@ -98,91 +98,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    RESTError:
-      type: object
-      required:
-      - code
-      - error
-      - message
-      properties:
-        code:
-          type: integer
-          example: 3
-        error:
-          type: string
-          example: Request failed
-        message:
-          type: string
-          example: Invalid format
-        password_profile_basic:
-          $ref: '#/components/schemas/RESTPwdProfileBasic'
-        import_task_data:
-          $ref: '#/components/schemas/RESTImportTaskData'
-    RESTRemoteRolePermits:
-      type: object
-      required:
-      - role
-      properties:
-        role:
-          type: string
-          description: global role on managed clusters in fed
-          example: admin
-        role_domains:
-          type: object
-          description: role -> domains on managed clusters in fed
-          properties:
-            key:
-              description: role
-              type: string
-            value:
-              type: object
-              description: array of domains
-              additionalProperties:
-                type: array
-                items:
-                  type: string
-                example:
-                - domain1
-                - domain2
-        extra_permissions:
-          description: extra permissions(other than 'role') for global domain on managed clusters in fed. only for Rancher SSO
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTRolePermission'
-        extra_permissions_domains:
-          type: array
-          description: list of extra permissions(other than 'role_domains') for namespaces on managed clusters in fed. only for Rancher SSO
-          items:
-            $ref: '#/components/schemas/RESTPermitsAssigned'
-    RESTAuthPassword:
-      type: object
-      required:
-      - username
-      - password
-      properties:
-        username:
-          type: string
-          example: admin
-        password:
-          type: string
-          format: password
-          example: mypassword
-        new_password:
-          type: string
-          description: need to specify when server responds the user needs to change password
-          example: mynewpassword
-    RESTAuthData:
-      type: object
-      required:
-      - client_ip
-      properties:
-        client_ip:
-          type: string
-          example: ''
-        password:
-          $ref: '#/components/schemas/RESTAuthPassword'
-        Token:
-          $ref: '#/components/schemas/RESTAuthToken'
     RESTTokenData:
       type: object
       required:
@@ -202,6 +117,117 @@ components:
           type: boolean
           description: prompt the uer to login again & provide the new password to reset after login
           default: false
+    RESTRolePermission:
+      type: object
+      required:
+      - id
+      - read
+      - write
+      properties:
+        id:
+          type: string
+          example: ci_scan
+        read:
+          type: boolean
+          example: false
+        write:
+          type: boolean
+          example: true
+    RESTPermitsAssigned:
+      type: object
+      properties:
+        permissions:
+          type: array
+          description: array of permissions
+          items:
+            $ref: '#/components/schemas/RESTRolePermission'
+        domains:
+          type: array
+          description: array of domains that have the same permissions
+          items:
+            type: string
+          example:
+          - domain1
+          - domain2
+    RESTAuthToken:
+      type: object
+      required:
+      - token
+      - state
+      - redirect_endpoint
+      properties:
+        token:
+          type: string
+          example: ''
+        state:
+          type: string
+          example: ''
+        redirect_endpoint:
+          type: string
+          example: ''
+    RESTImportTask:
+      type: object
+      required:
+      - tid
+      - ctrler_id
+      - percentage
+      properties:
+        tid:
+          type: string
+          example: c5af897b62a258212ece91c0551d3a4a
+        ctrler_id:
+          type: string
+          example: 6e60452b244b90456f3450c9fed0a50f57f4b849dcb74a5fad289e8116f32f36
+        last_update_time:
+          type: string
+          format: date-time
+          example: '2022-03-17T17:31:55.832768041Z'
+        percentage:
+          type: integer
+          example: 100
+        triggered_by:
+          type: string
+          example: admin
+        status:
+          type: string
+          example: done
+        temp_token:
+          type: string
+          example: ''
+        fail_to_decrypt_key_fields:
+          type: object
+          description: Object key is kv key and value is array of cloaked fields that cannot be decrypted
+          additionalProperties:
+            type: array
+            items:
+              type: string
+            example:
+            - x509_cert
+            - signing_cert
+    RESTImportTaskData:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          $ref: '#/components/schemas/RESTImportTask'
+    RESTAuthPassword:
+      type: object
+      required:
+      - username
+      - password
+      properties:
+        username:
+          type: string
+          example: admin
+        password:
+          type: string
+          format: password
+          example: mypassword
+        new_password:
+          type: string
+          description: need to specify when server responds the user needs to change password
+          example: mynewpassword
     RESTPwdProfileBasic:
       type: object
       required:
@@ -226,38 +252,6 @@ components:
         min_special_count:
           type: integer
           example: 0
-    RESTPermitsAssigned:
-      type: object
-      properties:
-        permissions:
-          type: array
-          description: array of permissions
-          items:
-            $ref: '#/components/schemas/RESTRolePermission'
-        domains:
-          type: array
-          description: array of domains that have the same permissions
-          items:
-            type: string
-          example:
-          - domain1
-          - domain2
-    RESTRolePermission:
-      type: object
-      required:
-      - id
-      - read
-      - write
-      properties:
-        id:
-          type: string
-          example: ci_scan
-        read:
-          type: boolean
-          example: false
-        write:
-          type: boolean
-          example: true
     RESTToken:
       type: object
       required:
@@ -357,68 +351,74 @@ components:
           type: integer
           format: uint32
           example: 1
-    RESTImportTaskData:
+    RESTError:
       type: object
       required:
-      - data
+      - code
+      - error
+      - message
       properties:
-        data:
-          $ref: '#/components/schemas/RESTImportTask'
-    RESTImportTask:
-      type: object
-      required:
-      - tid
-      - ctrler_id
-      - percentage
-      properties:
-        tid:
-          type: string
-          example: c5af897b62a258212ece91c0551d3a4a
-        ctrler_id:
-          type: string
-          example: 6e60452b244b90456f3450c9fed0a50f57f4b849dcb74a5fad289e8116f32f36
-        last_update_time:
-          type: string
-          format: date-time
-          example: '2022-03-17T17:31:55.832768041Z'
-        percentage:
+        code:
           type: integer
-          example: 100
-        triggered_by:
+          example: 3
+        error:
           type: string
-          example: admin
-        status:
+          example: Request failed
+        message:
           type: string
-          example: done
-        temp_token:
-          type: string
-          example: ''
-        fail_to_decrypt_key_fields:
-          type: object
-          description: Object key is kv key and value is array of cloaked fields that cannot be decrypted
-          additionalProperties:
-            type: array
-            items:
-              type: string
-            example:
-            - x509_cert
-            - signing_cert
-    RESTAuthToken:
+          example: Invalid format
+        password_profile_basic:
+          $ref: '#/components/schemas/RESTPwdProfileBasic'
+        import_task_data:
+          $ref: '#/components/schemas/RESTImportTaskData'
+    RESTAuthData:
       type: object
       required:
-      - token
-      - state
-      - redirect_endpoint
+      - client_ip
       properties:
-        token:
+        client_ip:
           type: string
           example: ''
-        state:
+        password:
+          $ref: '#/components/schemas/RESTAuthPassword'
+        Token:
+          $ref: '#/components/schemas/RESTAuthToken'
+    RESTRemoteRolePermits:
+      type: object
+      required:
+      - role
+      properties:
+        role:
           type: string
-          example: ''
-        redirect_endpoint:
-          type: string
-          example: ''
+          description: global role on managed clusters in fed
+          example: admin
+        role_domains:
+          type: object
+          description: role -> domains on managed clusters in fed
+          properties:
+            key:
+              description: role
+              type: string
+            value:
+              type: object
+              description: array of domains
+              additionalProperties:
+                type: array
+                items:
+                  type: string
+                example:
+                - domain1
+                - domain2
+        extra_permissions:
+          description: extra permissions(other than 'role') for global domain on managed clusters in fed. only for Rancher SSO
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTRolePermission'
+        extra_permissions_domains:
+          type: array
+          description: list of extra permissions(other than 'role_domains') for namespaces on managed clusters in fed. only for Rancher SSO
+          items:
+            $ref: '#/components/schemas/RESTPermitsAssigned'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

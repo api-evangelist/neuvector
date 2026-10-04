@@ -60,28 +60,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    RESTRemoteRepositoryConfigData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTRemoteRepositoryConfig'
-    RESTRemoteRepositoryConfig:
-      type: object
-      required:
-      - nickname
-      properties:
-        nickname:
-          type: string
-          example: default
-        comment:
-          type: string
-        enable:
-          type: boolean
-          example: true
-        github_configuration:
-          $ref: '#/components/schemas/RESTRemoteRepository_GitHubConfigConfig'
     RESTRemoteRepository_GitHubConfigConfig:
       type: object
       properties:
@@ -103,6 +81,34 @@ components:
         personal_access_token_committer_email:
           type: string
           example: myuser@example.com
+    RESTRemoteRepositoryConfigData:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          $ref: '#/components/schemas/RESTRemoteRepositoryConfig'
+    RESTRemoteRepository:
+      type: object
+      required:
+      - nickname
+      - provider
+      - github_configuration
+      properties:
+        nickname:
+          type: string
+          example: default
+        provider:
+          type: string
+          description: currently only github is supported
+          example: github
+        comment:
+          type: string
+        enable:
+          type: boolean
+          example: true
+        github_configuration:
+          $ref: '#/components/schemas/RESTRemoteRepo_GitHubConfig'
     RESTRemoteRepo_GitHubConfig:
       type: object
       required:
@@ -131,27 +137,21 @@ components:
         personal_access_token_committer_email:
           type: string
           example: myuser@example.com
-    RESTRemoteRepository:
+    RESTRemoteRepositoryConfig:
       type: object
       required:
       - nickname
-      - provider
-      - github_configuration
       properties:
         nickname:
           type: string
           example: default
-        provider:
-          type: string
-          description: currently only github is supported
-          example: github
         comment:
           type: string
         enable:
           type: boolean
           example: true
         github_configuration:
-          $ref: '#/components/schemas/RESTRemoteRepo_GitHubConfig'
+          $ref: '#/components/schemas/RESTRemoteRepository_GitHubConfigConfig'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

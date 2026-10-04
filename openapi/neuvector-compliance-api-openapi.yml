@@ -292,76 +292,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    RESTCustomCheckData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTCustomChecks'
-    RESTCustomCheck:
-      type: object
-      required:
-      - name
-      - script
-      properties:
-        name:
-          type: string
-          example: node
-        script:
-          type: string
-          example: 'uname -r '
-    RESTComplianceProfile:
-      type: object
-      required:
-      - name
-      - disable_system
-      - entries
-      properties:
-        name:
-          type: string
-          example: default
-        disable_system:
-          type: boolean
-          example: false
-        entries:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTComplianceProfileEntry'
-        cfg_type:
-          type: string
-          enum:
-          - user_created
-          - ground
-    RESTComplianceProfileConfig:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          example: default
-        disable_system:
-          type: boolean
-          example: false
-        entries:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTComplianceProfileEntry'
-    RESTComplianceProfileEntry:
-      type: object
-      required:
-      - test_number
-      - tags
-      properties:
-        test_number:
-          type: string
-          example: ''
-        tags:
-          type: array
-          items:
-            type: string
-            example: ''
     RESTBenchItem:
       type: object
       required:
@@ -412,22 +342,29 @@ components:
         group:
           type: string
           example: nv.calico
-    RESTComplianceProfilesData:
+    RESTBenchReport:
       type: object
       required:
-      - profiles
+      - run_timestamp
+      - run_at
+      - cis_version
+      - items
       properties:
-        profiles:
+        run_timestamp:
+          type: integer
+          format: int64
+          example: 1516561253
+        run_at:
+          type: string
+          format: date-time
+          example: 2018-06-21 19:00:53+00:00
+        cis_version:
+          type: string
+          example: 1.5.1
+        items:
           type: array
           items:
-            $ref: '#/components/schemas/RESTComplianceProfile'
-    RESTCustomCheckConfigData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTCustomCheckConfig'
+            $ref: '#/components/schemas/RESTBenchItem'
     RESTCustomCheckListData:
       type: object
       required:
@@ -456,6 +393,20 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RESTCustomCheck'
+    RESTComplianceProfileEntry:
+      type: object
+      required:
+      - test_number
+      - tags
+      properties:
+        test_number:
+          type: string
+          example: ''
+        tags:
+          type: array
+          items:
+            type: string
+            example: ''
     RESTComplianceProfileConfigData:
       type: object
       required:
@@ -463,29 +414,71 @@ components:
       properties:
         config:
           $ref: '#/components/schemas/RESTComplianceProfileConfig'
-    RESTBenchReport:
+    RESTCustomCheckData:
       type: object
       required:
-      - run_timestamp
-      - run_at
-      - cis_version
-      - items
+      - config
       properties:
-        run_timestamp:
-          type: integer
-          format: int64
-          example: 1516561253
-        run_at:
+        config:
+          $ref: '#/components/schemas/RESTCustomChecks'
+    RESTComplianceProfile:
+      type: object
+      required:
+      - name
+      - disable_system
+      - entries
+      properties:
+        name:
           type: string
-          format: date-time
-          example: 2018-06-21 19:00:53+00:00
-        cis_version:
-          type: string
-          example: 1.5.1
-        items:
+          example: default
+        disable_system:
+          type: boolean
+          example: false
+        entries:
           type: array
           items:
-            $ref: '#/components/schemas/RESTBenchItem'
+            $ref: '#/components/schemas/RESTComplianceProfileEntry'
+        cfg_type:
+          type: string
+          enum:
+          - user_created
+          - ground
+    RESTComplianceProfileConfig:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          example: default
+        disable_system:
+          type: boolean
+          example: false
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTComplianceProfileEntry'
+    RESTComplianceProfilesData:
+      type: object
+      required:
+      - profiles
+      properties:
+        profiles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTComplianceProfile'
+    RESTCustomCheck:
+      type: object
+      required:
+      - name
+      - script
+      properties:
+        name:
+          type: string
+          example: node
+        script:
+          type: string
+          example: 'uname -r '
     RESTCustomCheckConfig:
       type: object
       required:
@@ -499,13 +492,13 @@ components:
           $ref: '#/components/schemas/RESTCustomChecks'
         update:
           $ref: '#/components/schemas/RESTCustomChecks'
-    RESTComplianceProfileData:
+    RESTCustomCheckConfigData:
       type: object
       required:
-      - profile
+      - config
       properties:
-        profile:
-          $ref: '#/components/schemas/RESTComplianceProfile'
+        config:
+          $ref: '#/components/schemas/RESTCustomCheckConfig'
     RESTComplianceProfileEntryConfigData:
       type: object
       required:
@@ -513,6 +506,13 @@ components:
       properties:
         config:
           $ref: '#/components/schemas/RESTComplianceProfileEntry'
+    RESTComplianceProfileData:
+      type: object
+      required:
+      - profile
+      properties:
+        profile:
+          $ref: '#/components/schemas/RESTComplianceProfile'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

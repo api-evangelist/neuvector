@@ -134,6 +134,22 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    RESTServicesData:
+      type: object
+      required:
+      - services
+      properties:
+        services:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTService'
+    RESTServiceConfigData:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          $ref: '#/components/schemas/RESTServiceConfig'
     RESTWorkloadBrief:
       type: object
       required:
@@ -253,136 +269,6 @@ components:
         baseline_profile:
           type: string
           example: ''
-    RESTServiceConfigData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTServiceConfig'
-    RESTService:
-      type: object
-      required:
-      - name
-      - comment
-      - policy_mode
-      - profile_mode
-      - not_scored
-      - domain
-      - platform_role
-      - members
-      - policy_rules
-      - response_rules
-      - ingress_exposure
-      - egress_exposure
-      - baseline_profile
-      properties:
-        name:
-          type: string
-          example: iperfc
-        comment:
-          type: string
-          example: ''
-        policy_mode:
-          type: string
-          example: Learn
-        profile_mode:
-          type: string
-          example: Learn
-        not_scored:
-          type: boolean
-          example: false
-        domain:
-          type: string
-          example: ''
-        platform_role:
-          type: string
-          example: core
-        members:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTWorkloadBrief'
-        policy_rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTPolicyRule'
-        response_rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTResponseRule'
-        service_addr:
-          $ref: '#/components/schemas/RESTIPPort'
-        ingress_exposure:
-          type: boolean
-          example: true
-        egress_exposure:
-          type: boolean
-          example: false
-        baseline_profile:
-          type: string
-          example: ''
-        cap_change_mode:
-          type: boolean
-          example: false
-        cap_scorable:
-          type: boolean
-          example: false
-    RESTServiceBatchConfigData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTServiceBatchConfig'
-    RESTResponseRule:
-      type: object
-      required:
-      - id
-      - event
-      - comment
-      - group
-      - conditions
-      - actions
-      - webhooks
-      - disable
-      - cfg_type
-      properties:
-        id:
-          type: integer
-          format: uint32
-          example: 1001
-        event:
-          type: string
-          example: ''
-        comment:
-          type: string
-          example: ''
-        group:
-          type: string
-          example: ''
-        conditions:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTCLUSEventCondition'
-        actions:
-          type: array
-          items:
-            type: string
-            example: ''
-        webhooks:
-          type: array
-          items:
-            type: string
-            example: ''
-        disable:
-          type: boolean
-          example: false
-        cfg_type:
-          type: string
-          enum:
-          - user_created
-          - ground
-          - federal
     RESTScanBrief:
       type: object
       required:
@@ -426,15 +312,6 @@ components:
           type: string
           format: date-time
           example: 2018-06-20 19:00:53+00:00
-    RESTServicesData:
-      type: object
-      required:
-      - services
-      properties:
-        services:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTService'
     RESTServiceBatchConfig:
       type: object
       properties:
@@ -454,6 +331,26 @@ components:
         not_scored:
           type: boolean
           example: false
+    RESTIPPort:
+      type: object
+      required:
+      - ip
+      - port
+      properties:
+        ip:
+          type: string
+          example: 192.168.209.197
+        port:
+          type: integer
+          format: uint16
+          example: 80
+    RESTServiceBatchConfigData:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          $ref: '#/components/schemas/RESTServiceBatchConfig'
     RESTPolicyRule:
       type: object
       required:
@@ -533,22 +430,122 @@ components:
           type: integer
           format: int64
           example: 1736811451
-    RESTCLUSEventCondition:
-      type: object
-      properties:
-        type:
-          type: string
-          example: ''
-        value:
-          type: string
-          example: ''
-    RESTServiceData:
+    RESTResponseRule:
       type: object
       required:
-      - service
+      - id
+      - event
+      - comment
+      - group
+      - conditions
+      - actions
+      - webhooks
+      - disable
+      - cfg_type
       properties:
-        service:
-          $ref: '#/components/schemas/RESTService'
+        id:
+          type: integer
+          format: uint32
+          example: 1001
+        event:
+          type: string
+          example: ''
+        comment:
+          type: string
+          example: ''
+        group:
+          type: string
+          example: ''
+        conditions:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTCLUSEventCondition'
+        actions:
+          type: array
+          items:
+            type: string
+            example: ''
+        webhooks:
+          type: array
+          items:
+            type: string
+            example: ''
+        disable:
+          type: boolean
+          example: false
+        cfg_type:
+          type: string
+          enum:
+          - user_created
+          - ground
+          - federal
+    RESTService:
+      type: object
+      required:
+      - name
+      - comment
+      - policy_mode
+      - profile_mode
+      - not_scored
+      - domain
+      - platform_role
+      - members
+      - policy_rules
+      - response_rules
+      - ingress_exposure
+      - egress_exposure
+      - baseline_profile
+      properties:
+        name:
+          type: string
+          example: iperfc
+        comment:
+          type: string
+          example: ''
+        policy_mode:
+          type: string
+          example: Learn
+        profile_mode:
+          type: string
+          example: Learn
+        not_scored:
+          type: boolean
+          example: false
+        domain:
+          type: string
+          example: ''
+        platform_role:
+          type: string
+          example: core
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTWorkloadBrief'
+        policy_rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTPolicyRule'
+        response_rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTResponseRule'
+        service_addr:
+          $ref: '#/components/schemas/RESTIPPort'
+        ingress_exposure:
+          type: boolean
+          example: true
+        egress_exposure:
+          type: boolean
+          example: false
+        baseline_profile:
+          type: string
+          example: ''
+        cap_change_mode:
+          type: boolean
+          example: false
+        cap_scorable:
+          type: boolean
+          example: false
     RESTServiceConfig:
       type: object
       required:
@@ -574,19 +571,22 @@ components:
         not_scored:
           type: boolean
           example: true
-    RESTIPPort:
+    RESTServiceData:
       type: object
       required:
-      - ip
-      - port
+      - service
       properties:
-        ip:
+        service:
+          $ref: '#/components/schemas/RESTService'
+    RESTCLUSEventCondition:
+      type: object
+      properties:
+        type:
           type: string
-          example: 192.168.209.197
-        port:
-          type: integer
-          format: uint16
-          example: 80
+          example: ''
+        value:
+          type: string
+          example: ''
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

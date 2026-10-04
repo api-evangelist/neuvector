@@ -147,6 +147,27 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    RESTSnifferArgs:
+      type: object
+      properties:
+        file_number:
+          type: integer
+          format: uint32
+          example: 50
+        duration:
+          type: integer
+          format: uint32
+          example: 50
+        filter:
+          type: string
+          example: \ port\ 1381
+    RESTSnifferData:
+      type: object
+      required:
+      - sniffer
+      properties:
+        sniffer:
+          $ref: '#/components/schemas/RESTSnifferInfo'
     RESTSnifferArgsData:
       type: object
       required:
@@ -154,6 +175,15 @@ components:
       properties:
         sniffer:
           $ref: '#/components/schemas/RESTSnifferArgs'
+    RESTSniffersData:
+      type: object
+      required:
+      - sniffers
+      properties:
+        sniffers:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTSnifferInfo'
     RESTSnifferInfo:
       type: object
       required:
@@ -198,36 +228,6 @@ components:
           type: integer
           format: int64
           example: 1509432360
-    RESTSnifferArgs:
-      type: object
-      properties:
-        file_number:
-          type: integer
-          format: uint32
-          example: 50
-        duration:
-          type: integer
-          format: uint32
-          example: 50
-        filter:
-          type: string
-          example: \ port\ 1381
-    RESTSniffersData:
-      type: object
-      required:
-      - sniffers
-      properties:
-        sniffers:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTSnifferInfo'
-    RESTSnifferData:
-      type: object
-      required:
-      - sniffer
-      properties:
-        sniffer:
-          $ref: '#/components/schemas/RESTSnifferInfo'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

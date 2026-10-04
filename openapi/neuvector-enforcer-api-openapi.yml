@@ -129,29 +129,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    RESTAgentStatsData:
-      type: object
-      required:
-      - id
-      - read_at
-      - stats
-      properties:
-        id:
-          type: string
-          example: 541386aa8e36fe113593cc0dc6678b7d2a
-        read_at:
-          type: string
-          format: date-time
-          example: 2018-01-18 07:20:15+00:00
-        stats:
-          $ref: '#/components/schemas/RESTStats'
-    RESTAgentConfigData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTAgentConfig'
     RESTAgent:
       type: object
       required:
@@ -257,34 +234,6 @@ components:
           $ref: '#/components/schemas/RESTMetry'
         span_60:
           $ref: '#/components/schemas/RESTMetry'
-    RESTAgentData:
-      type: object
-      required:
-      - enforcer
-      properties:
-        enforcer:
-          $ref: '#/components/schemas/RESTAgent'
-    RESTAgentConfig:
-      type: object
-      properties:
-        debug:
-          type: array
-          items:
-            type: string
-          example:
-          - packet
-          - log
-          - parser
-          - tcp
-          - session
-          - timer
-          - error
-        disable_nvprotect:
-          type: boolean
-          example: false
-        disable_kvcctl:
-          type: boolean
-          example: false
     RESTMetry:
       type: object
       required:
@@ -337,6 +286,13 @@ components:
           type: integer
           format: uint64
           example: 0
+    RESTAgentConfigData:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          $ref: '#/components/schemas/RESTAgentConfig'
     RESTAgentsData:
       type: object
       required:
@@ -346,6 +302,50 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RESTAgent'
+    RESTAgentData:
+      type: object
+      required:
+      - enforcer
+      properties:
+        enforcer:
+          $ref: '#/components/schemas/RESTAgent'
+    RESTAgentStatsData:
+      type: object
+      required:
+      - id
+      - read_at
+      - stats
+      properties:
+        id:
+          type: string
+          example: 541386aa8e36fe113593cc0dc6678b7d2a
+        read_at:
+          type: string
+          format: date-time
+          example: 2018-01-18 07:20:15+00:00
+        stats:
+          $ref: '#/components/schemas/RESTStats'
+    RESTAgentConfig:
+      type: object
+      properties:
+        debug:
+          type: array
+          items:
+            type: string
+          example:
+          - packet
+          - log
+          - parser
+          - tcp
+          - session
+          - timer
+          - error
+        disable_nvprotect:
+          type: boolean
+          example: false
+        disable_kvcctl:
+          type: boolean
+          example: false
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

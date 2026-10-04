@@ -91,32 +91,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    RESTFileMonitorFilterConfig:
-      type: object
-      required:
-      - filter
-      - recursive
-      - behavior
-      - applications
-      - group
-      properties:
-        filter:
-          type: string
-          example: ''
-        recursive:
-          type: boolean
-          example: false
-        behavior:
-          type: string
-          example: ''
-        applications:
-          type: array
-          items:
-            type: string
-            example: ''
-        group:
-          type: string
-          example: ''
     RESTFileMonitorConfig:
       type: object
       properties:
@@ -139,15 +113,6 @@ components:
       properties:
         config:
           $ref: '#/components/schemas/RESTFileMonitorConfig'
-    RESTFileMonitorFileData:
-      type: object
-      required:
-      - files
-      properties:
-        files:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTFileMonitorFile'
     RESTFileMonitorFile:
       type: object
       required:
@@ -176,6 +141,41 @@ components:
             type: string
           example:
           - ''
+    RESTFileMonitorFileData:
+      type: object
+      required:
+      - files
+      properties:
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTFileMonitorFile'
+    RESTFileMonitorFilterConfig:
+      type: object
+      required:
+      - filter
+      - recursive
+      - behavior
+      - applications
+      - group
+      properties:
+        filter:
+          type: string
+          example: ''
+        recursive:
+          type: boolean
+          example: false
+        behavior:
+          type: string
+          example: ''
+        applications:
+          type: array
+          items:
+            type: string
+            example: ''
+        group:
+          type: string
+          example: ''
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

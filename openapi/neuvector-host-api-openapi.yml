@@ -79,37 +79,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    RESTComplianceData:
-      type: object
-      required:
-      - run_timestamp
-      - run_at
-      - kubernetes_cis_category
-      - kubernetes_cis_version
-      - docker_cis_version
-      - items
-      properties:
-        run_timestamp:
-          type: integer
-          format: int64
-          example: 1516561253
-        run_at:
-          type: string
-          format: date-time
-          example: 2018-06-21 19:00:53+00:00
-        kubernetes_cis_category:
-          type: string
-          example: ''
-        kubernetes_cis_version:
-          type: string
-          example: 1.5.1
-        docker_cis_version:
-          type: string
-          example: 1.2.0
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTBenchItem'
     RESTBenchItem:
       type: object
       required:
@@ -160,6 +129,22 @@ components:
         group:
           type: string
           example: nv.calico
+    RESTIPAddr:
+      type: object
+      required:
+      - ip
+      - ip_prefix
+      - gateway
+      properties:
+        ip:
+          type: string
+          example: 192.168.209.197
+        ip_prefix:
+          type: integer
+          example: 32
+        gateway:
+          type: string
+          example: ''
     RESTScanBrief:
       type: object
       required:
@@ -203,22 +188,6 @@ components:
           type: string
           format: date-time
           example: 2018-06-20 19:00:53+00:00
-    RESTIPAddr:
-      type: object
-      required:
-      - ip
-      - ip_prefix
-      - gateway
-      properties:
-        ip:
-          type: string
-          example: 192.168.209.197
-        ip_prefix:
-          type: integer
-          example: 32
-        gateway:
-          type: string
-          example: ''
     RESTHostsData:
       type: object
       required:
@@ -228,6 +197,37 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RESTHost'
+    RESTComplianceData:
+      type: object
+      required:
+      - run_timestamp
+      - run_at
+      - kubernetes_cis_category
+      - kubernetes_cis_version
+      - docker_cis_version
+      - items
+      properties:
+        run_timestamp:
+          type: integer
+          format: int64
+          example: 1516561253
+        run_at:
+          type: string
+          format: date-time
+          example: 2018-06-21 19:00:53+00:00
+        kubernetes_cis_category:
+          type: string
+          example: ''
+        kubernetes_cis_version:
+          type: string
+          example: 1.5.1
+        docker_cis_version:
+          type: string
+          example: 1.2.0
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTBenchItem'
     RESTHost:
       type: object
       required:
