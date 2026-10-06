@@ -53,7 +53,7 @@ tags_raw:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/neuvector/refs/heads/main/apis.yml
 created: '2026-03-26'
-modified: '2026-04-28'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis:
 - aid: neuvector:neuvector-admission-api
@@ -708,6 +708,8 @@ apis:
   - type: Source Code
     url: https://github.com/neuvector/neuvector
 common:
+  - url: https://www.suse.com/blog/
+    type: Blog
   - type: CapabilityMap
     url: capabilities/neuvector-capability-edges.yml
     name: NeuVector Business Capability Map
