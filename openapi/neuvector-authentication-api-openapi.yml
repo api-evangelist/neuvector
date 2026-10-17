@@ -98,41 +98,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    RESTTokenData:
-      type: object
-      required:
-      - token
-      - password_days_until_expire
-      - password_hours_until_expire
-      properties:
-        token:
-          $ref: '#/components/schemas/RESTToken'
-        password_days_until_expire:
-          type: integer
-          example: null
-        password_hours_until_expire:
-          type: integer
-          example: null
-        need_to_reset_password:
-          type: boolean
-          description: prompt the uer to login again & provide the new password to reset after login
-          default: false
-    RESTRolePermission:
-      type: object
-      required:
-      - id
-      - read
-      - write
-      properties:
-        id:
-          type: string
-          example: ci_scan
-        read:
-          type: boolean
-          example: false
-        write:
-          type: boolean
-          example: true
     RESTPermitsAssigned:
       type: object
       properties:
@@ -149,68 +114,6 @@ components:
           example:
           - domain1
           - domain2
-    RESTAuthToken:
-      type: object
-      required:
-      - token
-      - state
-      - redirect_endpoint
-      properties:
-        token:
-          type: string
-          example: ''
-        state:
-          type: string
-          example: ''
-        redirect_endpoint:
-          type: string
-          example: ''
-    RESTImportTask:
-      type: object
-      required:
-      - tid
-      - ctrler_id
-      - percentage
-      properties:
-        tid:
-          type: string
-          example: c5af897b62a258212ece91c0551d3a4a
-        ctrler_id:
-          type: string
-          example: 6e60452b244b90456f3450c9fed0a50f57f4b849dcb74a5fad289e8116f32f36
-        last_update_time:
-          type: string
-          format: date-time
-          example: '2022-03-17T17:31:55.832768041Z'
-        percentage:
-          type: integer
-          example: 100
-        triggered_by:
-          type: string
-          example: admin
-        status:
-          type: string
-          example: done
-        temp_token:
-          type: string
-          example: ''
-        fail_to_decrypt_key_fields:
-          type: object
-          description: Object key is kv key and value is array of cloaked fields that cannot be decrypted
-          additionalProperties:
-            type: array
-            items:
-              type: string
-            example:
-            - x509_cert
-            - signing_cert
-    RESTImportTaskData:
-      type: object
-      required:
-      - data
-      properties:
-        data:
-          $ref: '#/components/schemas/RESTImportTask'
     RESTAuthPassword:
       type: object
       required:
@@ -228,30 +131,6 @@ components:
           type: string
           description: need to specify when server responds the user needs to change password
           example: mynewpassword
-    RESTPwdProfileBasic:
-      type: object
-      required:
-      - min_len
-      - min_uppercase_count
-      - min_lowercase_count
-      - min_digit_count
-      - min_special_count
-      properties:
-        min_len:
-          type: integer
-          example: 6
-        min_uppercase_count:
-          type: integer
-          example: 0
-        min_lowercase_count:
-          type: integer
-          example: 0
-        min_digit_count:
-          type: integer
-          example: 0
-        min_special_count:
-          type: integer
-          example: 0
     RESTToken:
       type: object
       required:
@@ -351,26 +230,108 @@ components:
           type: integer
           format: uint32
           example: 1
-    RESTError:
+    RESTRolePermission:
       type: object
       required:
-      - code
-      - error
-      - message
+      - id
+      - read
+      - write
       properties:
-        code:
+        id:
+          type: string
+          example: ci_scan
+        read:
+          type: boolean
+          example: false
+        write:
+          type: boolean
+          example: true
+    RESTAuthToken:
+      type: object
+      required:
+      - token
+      - state
+      - redirect_endpoint
+      properties:
+        token:
+          type: string
+          example: ''
+        state:
+          type: string
+          example: ''
+        redirect_endpoint:
+          type: string
+          example: ''
+    RESTImportTaskData:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          $ref: '#/components/schemas/RESTImportTask'
+    RESTPwdProfileBasic:
+      type: object
+      required:
+      - min_len
+      - min_uppercase_count
+      - min_lowercase_count
+      - min_digit_count
+      - min_special_count
+      properties:
+        min_len:
           type: integer
-          example: 3
-        error:
+          example: 6
+        min_uppercase_count:
+          type: integer
+          example: 0
+        min_lowercase_count:
+          type: integer
+          example: 0
+        min_digit_count:
+          type: integer
+          example: 0
+        min_special_count:
+          type: integer
+          example: 0
+    RESTImportTask:
+      type: object
+      required:
+      - tid
+      - ctrler_id
+      - percentage
+      properties:
+        tid:
           type: string
-          example: Request failed
-        message:
+          example: c5af897b62a258212ece91c0551d3a4a
+        ctrler_id:
           type: string
-          example: Invalid format
-        password_profile_basic:
-          $ref: '#/components/schemas/RESTPwdProfileBasic'
-        import_task_data:
-          $ref: '#/components/schemas/RESTImportTaskData'
+          example: 6e60452b244b90456f3450c9fed0a50f57f4b849dcb74a5fad289e8116f32f36
+        last_update_time:
+          type: string
+          format: date-time
+          example: '2022-03-17T17:31:55.832768041Z'
+        percentage:
+          type: integer
+          example: 100
+        triggered_by:
+          type: string
+          example: admin
+        status:
+          type: string
+          example: done
+        temp_token:
+          type: string
+          example: ''
+        fail_to_decrypt_key_fields:
+          type: object
+          description: Object key is kv key and value is array of cloaked fields that cannot be decrypted
+          additionalProperties:
+            type: array
+            items:
+              type: string
+            example:
+            - x509_cert
+            - signing_cert
     RESTAuthData:
       type: object
       required:
@@ -419,6 +380,45 @@ components:
           description: list of extra permissions(other than 'role_domains') for namespaces on managed clusters in fed. only for Rancher SSO
           items:
             $ref: '#/components/schemas/RESTPermitsAssigned'
+    RESTTokenData:
+      type: object
+      required:
+      - token
+      - password_days_until_expire
+      - password_hours_until_expire
+      properties:
+        token:
+          $ref: '#/components/schemas/RESTToken'
+        password_days_until_expire:
+          type: integer
+          example: null
+        password_hours_until_expire:
+          type: integer
+          example: null
+        need_to_reset_password:
+          type: boolean
+          description: prompt the uer to login again & provide the new password to reset after login
+          default: false
+    RESTError:
+      type: object
+      required:
+      - code
+      - error
+      - message
+      properties:
+        code:
+          type: integer
+          example: 3
+        error:
+          type: string
+          example: Request failed
+        message:
+          type: string
+          example: Invalid format
+        password_profile_basic:
+          $ref: '#/components/schemas/RESTPwdProfileBasic'
+        import_task_data:
+          $ref: '#/components/schemas/RESTImportTaskData'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

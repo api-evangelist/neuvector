@@ -134,6 +134,51 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    RESTServiceConfig:
+      type: object
+      required:
+      - name
+      - domain
+      - comment
+      properties:
+        name:
+          type: string
+          example: ''
+        domain:
+          type: string
+          example: ''
+        comment:
+          type: string
+          example: ''
+        policy_mode:
+          type: string
+          example: ''
+        baseline_profile:
+          type: string
+          example: ''
+        not_scored:
+          type: boolean
+          example: true
+    RESTIPPort:
+      type: object
+      required:
+      - ip
+      - port
+      properties:
+        ip:
+          type: string
+          example: 192.168.209.197
+        port:
+          type: integer
+          format: uint16
+          example: 80
+    RESTServiceData:
+      type: object
+      required:
+      - service
+      properties:
+        service:
+          $ref: '#/components/schemas/RESTService'
     RESTServicesData:
       type: object
       required:
@@ -143,13 +188,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RESTService'
-    RESTServiceConfigData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTServiceConfig'
     RESTWorkloadBrief:
       type: object
       required:
@@ -269,88 +307,13 @@ components:
         baseline_profile:
           type: string
           example: ''
-    RESTScanBrief:
-      type: object
-      required:
-      - status
-      - high
-      - medium
-      - result
-      - scanned_timestamp
-      - scanned_at
-      - base_os
-      - scanner_version
-      - cvedb_create_time
-      properties:
-        status:
-          type: string
-          example: scheduled
-        high:
-          type: integer
-          example: 0
-        medium:
-          type: integer
-          example: 0
-        result:
-          type: string
-          example: success
-        scanned_timestamp:
-          type: integer
-          format: int64
-          example: 1516561253
-        scanned_at:
-          type: string
-          format: date-time
-          example: 2018-01-21 19:00:53+00:00
-        base_os:
-          type: string
-          example: ubuntu:16.04
-        scanner_version:
-          type: string
-          example: '1.011'
-        cvedb_create_time:
-          type: string
-          format: date-time
-          example: 2018-06-20 19:00:53+00:00
-    RESTServiceBatchConfig:
-      type: object
-      properties:
-        services:
-          type: array
-          items:
-            type: string
-          example:
-          - iperfserver
-          - iperfclient
-        policy_mode:
-          type: string
-          example: Monitor
-        baseline_profile:
-          type: string
-          example: ''
-        not_scored:
-          type: boolean
-          example: false
-    RESTIPPort:
-      type: object
-      required:
-      - ip
-      - port
-      properties:
-        ip:
-          type: string
-          example: 192.168.209.197
-        port:
-          type: integer
-          format: uint16
-          example: 80
-    RESTServiceBatchConfigData:
+    RESTServiceConfigData:
       type: object
       required:
       - config
       properties:
         config:
-          $ref: '#/components/schemas/RESTServiceBatchConfig'
+          $ref: '#/components/schemas/RESTServiceConfig'
     RESTPolicyRule:
       type: object
       required:
@@ -430,6 +393,41 @@ components:
           type: integer
           format: int64
           example: 1736811451
+    RESTServiceBatchConfig:
+      type: object
+      properties:
+        services:
+          type: array
+          items:
+            type: string
+          example:
+          - iperfserver
+          - iperfclient
+        policy_mode:
+          type: string
+          example: Monitor
+        baseline_profile:
+          type: string
+          example: ''
+        not_scored:
+          type: boolean
+          example: false
+    RESTServiceBatchConfigData:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          $ref: '#/components/schemas/RESTServiceBatchConfig'
+    RESTCLUSEventCondition:
+      type: object
+      properties:
+        type:
+          type: string
+          example: ''
+        value:
+          type: string
+          example: ''
     RESTResponseRule:
       type: object
       required:
@@ -546,47 +544,49 @@ components:
         cap_scorable:
           type: boolean
           example: false
-    RESTServiceConfig:
+    RESTScanBrief:
       type: object
       required:
-      - name
-      - domain
-      - comment
+      - status
+      - high
+      - medium
+      - result
+      - scanned_timestamp
+      - scanned_at
+      - base_os
+      - scanner_version
+      - cvedb_create_time
       properties:
-        name:
+        status:
           type: string
-          example: ''
-        domain:
+          example: scheduled
+        high:
+          type: integer
+          example: 0
+        medium:
+          type: integer
+          example: 0
+        result:
           type: string
-          example: ''
-        comment:
+          example: success
+        scanned_timestamp:
+          type: integer
+          format: int64
+          example: 1516561253
+        scanned_at:
           type: string
-          example: ''
-        policy_mode:
+          format: date-time
+          example: 2018-01-21 19:00:53+00:00
+        base_os:
           type: string
-          example: ''
-        baseline_profile:
+          example: ubuntu:16.04
+        scanner_version:
           type: string
-          example: ''
-        not_scored:
-          type: boolean
-          example: true
-    RESTServiceData:
-      type: object
-      required:
-      - service
-      properties:
-        service:
-          $ref: '#/components/schemas/RESTService'
-    RESTCLUSEventCondition:
-      type: object
-      properties:
-        type:
+          example: '1.011'
+        cvedb_create_time:
           type: string
-          example: ''
-        value:
-          type: string
-          example: ''
+          format: date-time
+          example: 2018-06-20 19:00:53+00:00
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

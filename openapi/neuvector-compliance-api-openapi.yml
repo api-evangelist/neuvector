@@ -292,6 +292,32 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    RESTCustomCheckData:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          $ref: '#/components/schemas/RESTCustomChecks'
+    RESTCustomChecks:
+      type: object
+      required:
+      - group
+      - scripts
+      properties:
+        group:
+          type: string
+          example: containers
+        enabled:
+          type: boolean
+          example: false
+        writable:
+          type: boolean
+          example: false
+        scripts:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTCustomCheck'
     RESTBenchItem:
       type: object
       required:
@@ -342,6 +368,82 @@ components:
         group:
           type: string
           example: nv.calico
+    RESTCustomCheckConfigData:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          $ref: '#/components/schemas/RESTCustomCheckConfig'
+    RESTComplianceProfileConfig:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          example: default
+        disable_system:
+          type: boolean
+          example: false
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTComplianceProfileEntry'
+    RESTCustomCheck:
+      type: object
+      required:
+      - name
+      - script
+      properties:
+        name:
+          type: string
+          example: node
+        script:
+          type: string
+          example: 'uname -r '
+    RESTComplianceProfile:
+      type: object
+      required:
+      - name
+      - disable_system
+      - entries
+      properties:
+        name:
+          type: string
+          example: default
+        disable_system:
+          type: boolean
+          example: false
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTComplianceProfileEntry'
+        cfg_type:
+          type: string
+          enum:
+          - user_created
+          - ground
+    RESTComplianceProfileData:
+      type: object
+      required:
+      - profile
+      properties:
+        profile:
+          $ref: '#/components/schemas/RESTComplianceProfile'
+    RESTCustomCheckConfig:
+      type: object
+      required:
+      - add
+      - delete
+      - update
+      properties:
+        add:
+          $ref: '#/components/schemas/RESTCustomChecks'
+        delete:
+          $ref: '#/components/schemas/RESTCustomChecks'
+        update:
+          $ref: '#/components/schemas/RESTCustomChecks'
     RESTBenchReport:
       type: object
       required:
@@ -365,6 +467,22 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RESTBenchItem'
+    RESTComplianceProfilesData:
+      type: object
+      required:
+      - profiles
+      properties:
+        profiles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTComplianceProfile'
+    RESTComplianceProfileEntryConfigData:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          $ref: '#/components/schemas/RESTComplianceProfileEntry'
     RESTCustomCheckListData:
       type: object
       required:
@@ -374,25 +492,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RESTCustomChecks'
-    RESTCustomChecks:
-      type: object
-      required:
-      - group
-      - scripts
-      properties:
-        group:
-          type: string
-          example: containers
-        enabled:
-          type: boolean
-          example: false
-        writable:
-          type: boolean
-          example: false
-        scripts:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTCustomCheck'
     RESTComplianceProfileEntry:
       type: object
       required:
@@ -414,105 +513,6 @@ components:
       properties:
         config:
           $ref: '#/components/schemas/RESTComplianceProfileConfig'
-    RESTCustomCheckData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTCustomChecks'
-    RESTComplianceProfile:
-      type: object
-      required:
-      - name
-      - disable_system
-      - entries
-      properties:
-        name:
-          type: string
-          example: default
-        disable_system:
-          type: boolean
-          example: false
-        entries:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTComplianceProfileEntry'
-        cfg_type:
-          type: string
-          enum:
-          - user_created
-          - ground
-    RESTComplianceProfileConfig:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          example: default
-        disable_system:
-          type: boolean
-          example: false
-        entries:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTComplianceProfileEntry'
-    RESTComplianceProfilesData:
-      type: object
-      required:
-      - profiles
-      properties:
-        profiles:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTComplianceProfile'
-    RESTCustomCheck:
-      type: object
-      required:
-      - name
-      - script
-      properties:
-        name:
-          type: string
-          example: node
-        script:
-          type: string
-          example: 'uname -r '
-    RESTCustomCheckConfig:
-      type: object
-      required:
-      - add
-      - delete
-      - update
-      properties:
-        add:
-          $ref: '#/components/schemas/RESTCustomChecks'
-        delete:
-          $ref: '#/components/schemas/RESTCustomChecks'
-        update:
-          $ref: '#/components/schemas/RESTCustomChecks'
-    RESTCustomCheckConfigData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTCustomCheckConfig'
-    RESTComplianceProfileEntryConfigData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTComplianceProfileEntry'
-    RESTComplianceProfileData:
-      type: object
-      required:
-      - profile
-      properties:
-        profile:
-          $ref: '#/components/schemas/RESTComplianceProfile'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

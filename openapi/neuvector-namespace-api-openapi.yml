@@ -77,20 +77,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    RESTDomainEntryConfigData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTDomainEntryConfig'
-    RESTDomainConfigData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTDomainConfig'
     RESTDomainConfig:
       type: object
       properties:
@@ -136,6 +122,26 @@ components:
             type: string
           example:
             ns.env-1: production
+    RESTDomainsData:
+      type: object
+      required:
+      - domains
+      - tag_per_domain
+      properties:
+        domains:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTDomain'
+        tag_per_domain:
+          type: boolean
+          example: false
+    RESTDomainConfigData:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          $ref: '#/components/schemas/RESTDomainConfig'
     RESTDomainEntryConfig:
       type: object
       required:
@@ -150,19 +156,13 @@ components:
             type: string
           example:
           - ''
-    RESTDomainsData:
+    RESTDomainEntryConfigData:
       type: object
       required:
-      - domains
-      - tag_per_domain
+      - config
       properties:
-        domains:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTDomain'
-        tag_per_domain:
-          type: boolean
-          example: false
+        config:
+          $ref: '#/components/schemas/RESTDomainEntryConfig'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

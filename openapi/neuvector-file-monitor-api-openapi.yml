@@ -106,6 +106,32 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RESTFileMonitorFilterConfig'
+    RESTFileMonitorFilterConfig:
+      type: object
+      required:
+      - filter
+      - recursive
+      - behavior
+      - applications
+      - group
+      properties:
+        filter:
+          type: string
+          example: ''
+        recursive:
+          type: boolean
+          example: false
+        behavior:
+          type: string
+          example: ''
+        applications:
+          type: array
+          items:
+            type: string
+            example: ''
+        group:
+          type: string
+          example: ''
     RESTFileMonitorConfigData:
       type: object
       required:
@@ -113,6 +139,15 @@ components:
       properties:
         config:
           $ref: '#/components/schemas/RESTFileMonitorConfig'
+    RESTFileMonitorFileData:
+      type: object
+      required:
+      - files
+      properties:
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTFileMonitorFile'
     RESTFileMonitorFile:
       type: object
       required:
@@ -141,41 +176,6 @@ components:
             type: string
           example:
           - ''
-    RESTFileMonitorFileData:
-      type: object
-      required:
-      - files
-      properties:
-        files:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTFileMonitorFile'
-    RESTFileMonitorFilterConfig:
-      type: object
-      required:
-      - filter
-      - recursive
-      - behavior
-      - applications
-      - group
-      properties:
-        filter:
-          type: string
-          example: ''
-        recursive:
-          type: boolean
-          example: false
-        behavior:
-          type: string
-          example: ''
-        applications:
-          type: array
-          items:
-            type: string
-            example: ''
-        group:
-          type: string
-          example: ''
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

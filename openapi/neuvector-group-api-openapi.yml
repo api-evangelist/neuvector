@@ -135,22 +135,13 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    RESTGroupData:
+    RESTGroupConfigData:
       type: object
       required:
-      - group
+      - config
       properties:
-        group:
-          $ref: '#/components/schemas/RESTGroupDetail'
-    RESTGroupsData:
-      type: object
-      required:
-      - groups
-      properties:
-        groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTGroup'
+        config:
+          $ref: '#/components/schemas/RESTGroupConfig'
     RESTGroupDetail:
       type: object
       required:
@@ -241,6 +232,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RESTResponseRule'
+    RESTGroupData:
+      type: object
+      required:
+      - group
+      properties:
+        group:
+          $ref: '#/components/schemas/RESTGroupDetail'
     RESTImportTaskData:
       type: object
       required:
@@ -248,105 +246,6 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/RESTImportTask'
-    RESTImportTask:
-      type: object
-      required:
-      - tid
-      - ctrler_id
-      - percentage
-      properties:
-        tid:
-          type: string
-          example: c5af897b62a258212ece91c0551d3a4a
-        ctrler_id:
-          type: string
-          example: 6e60452b244b90456f3450c9fed0a50f57f4b849dcb74a5fad289e8116f32f36
-        last_update_time:
-          type: string
-          format: date-time
-          example: '2022-03-17T17:31:55.832768041Z'
-        percentage:
-          type: integer
-          example: 100
-        triggered_by:
-          type: string
-          example: admin
-        status:
-          type: string
-          example: done
-        temp_token:
-          type: string
-          example: ''
-        fail_to_decrypt_key_fields:
-          type: object
-          description: Object key is kv key and value is array of cloaked fields that cannot be decrypted
-          additionalProperties:
-            type: array
-            items:
-              type: string
-            example:
-            - x509_cert
-            - signing_cert
-    RESTPwdProfileBasic:
-      type: object
-      required:
-      - min_len
-      - min_uppercase_count
-      - min_lowercase_count
-      - min_digit_count
-      - min_special_count
-      properties:
-        min_len:
-          type: integer
-          example: 6
-        min_uppercase_count:
-          type: integer
-          example: 0
-        min_lowercase_count:
-          type: integer
-          example: 0
-        min_digit_count:
-          type: integer
-          example: 0
-        min_special_count:
-          type: integer
-          example: 0
-    RESTGroupConfig:
-      type: object
-      required:
-      - name
-      - cfg_type
-      properties:
-        name:
-          type: string
-          example: containerEQU
-        criteria:
-          type: array
-          items:
-            $ref: '#/components/schemas/RESTCriteriaEntry'
-        cfg_type:
-          type: string
-          enum:
-          - learned
-          - user_created
-          - ground
-          - federal
-    RESTCriteriaEntry:
-      type: object
-      required:
-      - key
-      - value
-      - op
-      properties:
-        key:
-          type: string
-          example: pattern
-        value:
-          type: string
-          example: '[0-9]'
-        op:
-          type: string
-          example: regex
     RESTWorkloadBrief:
       type: object
       required:
@@ -466,76 +365,6 @@ components:
         baseline_profile:
           type: string
           example: ''
-    RESTScanBrief:
-      type: object
-      required:
-      - status
-      - high
-      - medium
-      - result
-      - scanned_timestamp
-      - scanned_at
-      - base_os
-      - scanner_version
-      - cvedb_create_time
-      properties:
-        status:
-          type: string
-          example: scheduled
-        high:
-          type: integer
-          example: 0
-        medium:
-          type: integer
-          example: 0
-        result:
-          type: string
-          example: success
-        scanned_timestamp:
-          type: integer
-          format: int64
-          example: 1516561253
-        scanned_at:
-          type: string
-          format: date-time
-          example: 2018-01-21 19:00:53+00:00
-        base_os:
-          type: string
-          example: ubuntu:16.04
-        scanner_version:
-          type: string
-          example: '1.011'
-        cvedb_create_time:
-          type: string
-          format: date-time
-          example: 2018-06-20 19:00:53+00:00
-    RESTError:
-      type: object
-      required:
-      - code
-      - error
-      - message
-      properties:
-        code:
-          type: integer
-          example: 3
-        error:
-          type: string
-          example: Request failed
-        message:
-          type: string
-          example: Invalid format
-        password_profile_basic:
-          $ref: '#/components/schemas/RESTPwdProfileBasic'
-        import_task_data:
-          $ref: '#/components/schemas/RESTImportTaskData'
-    RESTGroupConfigData:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          $ref: '#/components/schemas/RESTGroupConfig'
     RESTGroup:
       type: object
       required:
@@ -603,6 +432,22 @@ components:
             type: integer
             format: uint32
             example: 1247
+    RESTCriteriaEntry:
+      type: object
+      required:
+      - key
+      - value
+      - op
+      properties:
+        key:
+          type: string
+          example: pattern
+        value:
+          type: string
+          example: '[0-9]'
+        op:
+          type: string
+          example: regex
     RESTPolicyRule:
       type: object
       required:
@@ -682,6 +527,98 @@ components:
           type: integer
           format: int64
           example: 1736811451
+    RESTPwdProfileBasic:
+      type: object
+      required:
+      - min_len
+      - min_uppercase_count
+      - min_lowercase_count
+      - min_digit_count
+      - min_special_count
+      properties:
+        min_len:
+          type: integer
+          example: 6
+        min_uppercase_count:
+          type: integer
+          example: 0
+        min_lowercase_count:
+          type: integer
+          example: 0
+        min_digit_count:
+          type: integer
+          example: 0
+        min_special_count:
+          type: integer
+          example: 0
+    RESTImportTask:
+      type: object
+      required:
+      - tid
+      - ctrler_id
+      - percentage
+      properties:
+        tid:
+          type: string
+          example: c5af897b62a258212ece91c0551d3a4a
+        ctrler_id:
+          type: string
+          example: 6e60452b244b90456f3450c9fed0a50f57f4b849dcb74a5fad289e8116f32f36
+        last_update_time:
+          type: string
+          format: date-time
+          example: '2022-03-17T17:31:55.832768041Z'
+        percentage:
+          type: integer
+          example: 100
+        triggered_by:
+          type: string
+          example: admin
+        status:
+          type: string
+          example: done
+        temp_token:
+          type: string
+          example: ''
+        fail_to_decrypt_key_fields:
+          type: object
+          description: Object key is kv key and value is array of cloaked fields that cannot be decrypted
+          additionalProperties:
+            type: array
+            items:
+              type: string
+            example:
+            - x509_cert
+            - signing_cert
+    RESTGroupConfig:
+      type: object
+      required:
+      - name
+      - cfg_type
+      properties:
+        name:
+          type: string
+          example: containerEQU
+        criteria:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTCriteriaEntry'
+        cfg_type:
+          type: string
+          enum:
+          - learned
+          - user_created
+          - ground
+          - federal
+    RESTCLUSEventCondition:
+      type: object
+      properties:
+        type:
+          type: string
+          example: ''
+        value:
+          type: string
+          example: ''
     RESTResponseRule:
       type: object
       required:
@@ -731,15 +668,78 @@ components:
           - user_created
           - ground
           - federal
-    RESTCLUSEventCondition:
+    RESTGroupsData:
       type: object
+      required:
+      - groups
       properties:
-        type:
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/RESTGroup'
+    RESTError:
+      type: object
+      required:
+      - code
+      - error
+      - message
+      properties:
+        code:
+          type: integer
+          example: 3
+        error:
           type: string
-          example: ''
-        value:
+          example: Request failed
+        message:
           type: string
-          example: ''
+          example: Invalid format
+        password_profile_basic:
+          $ref: '#/components/schemas/RESTPwdProfileBasic'
+        import_task_data:
+          $ref: '#/components/schemas/RESTImportTaskData'
+    RESTScanBrief:
+      type: object
+      required:
+      - status
+      - high
+      - medium
+      - result
+      - scanned_timestamp
+      - scanned_at
+      - base_os
+      - scanner_version
+      - cvedb_create_time
+      properties:
+        status:
+          type: string
+          example: scheduled
+        high:
+          type: integer
+          example: 0
+        medium:
+          type: integer
+          example: 0
+        result:
+          type: string
+          example: success
+        scanned_timestamp:
+          type: integer
+          format: int64
+          example: 1516561253
+        scanned_at:
+          type: string
+          format: date-time
+          example: 2018-01-21 19:00:53+00:00
+        base_os:
+          type: string
+          example: ubuntu:16.04
+        scanner_version:
+          type: string
+          example: '1.011'
+        cvedb_create_time:
+          type: string
+          format: date-time
+          example: 2018-06-20 19:00:53+00:00
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
