@@ -693,6 +693,8 @@ apis:
   humanURL: https://open-docs.neuvector.com/
   baseURL: https://localhost:10443
   tags:
+  - APIKeys
+  tags_raw:
   - API Key
   properties:
   - type: OpenAPI
