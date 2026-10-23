@@ -105,6 +105,25 @@ edges:
   category: Artifact Hub listing (Helm chart)
   badges:
   - 'Verified publisher (Artifact Hub verified publisher: repository ownership proven)'
+- partner_name: Jenkins (own)
+  partner: jenkins
+  partner_match: mirror
+  mirror_match: register
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://plugins.jenkins.io/neuvector-vulnerability-scanner/
+  mirror_of: jenkins/integrations/jenkins-integration-edges.yml
+  apps:
+  - NeuVector Vulnerability Scanner (neuvector-vulnerability-scanner)
+  listing_count: 1
+  category: Jenkins plugin
+  signal_note: 'publisher side of the all/jenkins listing; vendor-control: neuvector-vulnerability-scanner: maintainer
+    account ''neuvector'' is the GitHub organization on all/neuvector''s apis.yml'
+  detected: '2026-10-22'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
 generated: '2026-10-15'
 method: searched
 source:
@@ -119,3 +138,6 @@ checked:
 - https://catalog.redhat.com/api/containers/v1/vendors/label/
 - https://catalog.redhat.com/software/partners
 - artifact-hub/integrations/artifact-hub-integration-edges.yml
+- https://landscape.cd.foundation/data/full.json
+- https://plugins.jenkins.io/api/plugin/
+- https://plugins.jenkins.io/api/plugins
