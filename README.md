@@ -1,4 +1,4 @@
-# NeuVector (neuvector)
+# NeuVector
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,70 +66,163 @@
 
 NeuVector is an open source, full lifecycle container security platform maintained by SUSE. It provides vulnerability scanning, runtime protection, compliance monitoring, and a Layer 7 container firewall for Kubernetes environments. The NeuVector REST API allows automation of scanning, policy management, configuration, user administration, and federated cluster operations.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/neuvector/refs/heads/main/apis.yml)
+**Areas:** Compliance · Containers · Kubernetes · Open Source · Runtime Protection · Security · Vulnerability Scanning
 
-## Scope
+## NeuVector on APIs.io
 
-- **Type:** Index
+Everything profiled for NeuVector is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/neuvector/](https://apis.io/providers/neuvector/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (31)
 
-- Compliance
-- Containers
-- Kubernetes
-- Open Source
-- Runtime Protection
-- Security
-- Vulnerability Scanning
+- [NeuVector Admission API](https://apis.io/apis/neuvector/neuvector-admission-api/) — Admission Control
+- [NeuVector Authentication API](https://apis.io/apis/neuvector/neuvector-authentication-api/) — Authenticates login or logout
+- [NeuVector Compliance API](https://apis.io/apis/neuvector/neuvector-compliance-api/) — Operations about Compliance
+- [NeuVector compliance profile. The payload body is the content of the compliance profile yaml file. API](https://apis.io/apis/neuvector/neuvector-compliance-profile-the-payload-body-is-the-content-of-the-compliance-profile-yaml-file-api/) — The compliance profile. The payload body is the content of the compliance profile yaml file. API from NeuVector — 1 operation(s) for compliance profile. the…
+- [NeuVector compliance profile. The payload body is the content of the vulnerability profile yaml file. API](https://apis.io/apis/neuvector/neuvector-compliance-profile-the-payload-body-is-the-content-of-the-vulnerability-profile-yaml-file-api/) — The compliance profile. The payload body is the content of the vulnerability profile yaml file. API from NeuVector — 1 operation(s) for compliance profile.…
+- [NeuVector Container API](https://apis.io/apis/neuvector/neuvector-container-api/) — Operations about Container
+- [NeuVector Controller API](https://apis.io/apis/neuvector/neuvector-controller-api/) — Operations about Controller
+- [NeuVector DLP API](https://apis.io/apis/neuvector/neuvector-dlp-api/) — Operations about DLP
+- [NeuVector Enforcer API](https://apis.io/apis/neuvector/neuvector-enforcer-api/) — Operations about Enforcer
+- [NeuVector EULA API](https://apis.io/apis/neuvector/neuvector-eula-api/) — End-User License Agreement
+- [NeuVector Federation API](https://apis.io/apis/neuvector/neuvector-federation-api/) — Operations about Federation
+- [NeuVector File API](https://apis.io/apis/neuvector/neuvector-file-api/) — Operations about File
+- [NeuVector File Monitor API](https://apis.io/apis/neuvector/neuvector-file-monitor-api/) — Operations about File Monitor
+- [NeuVector Group API](https://apis.io/apis/neuvector/neuvector-group-api/) — Operations about Group
+- [NeuVector Host API](https://apis.io/apis/neuvector/neuvector-host-api/) — Operations about Host
+- [NeuVector Log API](https://apis.io/apis/neuvector/neuvector-log-api/) — Operations about Log
+- [NeuVector Namespace API](https://apis.io/apis/neuvector/neuvector-namespace-api/) — Operations about Namespace
+- [NeuVector Policy API](https://apis.io/apis/neuvector/neuvector-policy-api/) — Operations about Policy
+- [NeuVector Process API](https://apis.io/apis/neuvector/neuvector-process-api/) — Operations about Process Profile
+- [NeuVector Remote Export Repository API](https://apis.io/apis/neuvector/neuvector-remote-export-repository-api/) — The Remote Export Repository API from NeuVector — 1 operation(s) for remote export repository.
+- [NeuVector Remote Repository API](https://apis.io/apis/neuvector/neuvector-remote-repository-api/) — The Remote Repository API from NeuVector — 2 operation(s) for remote repository.
+- [NeuVector Response Rule API](https://apis.io/apis/neuvector/neuvector-response-rule-api/) — Operations about Response Rule
+- [NeuVector Scan API](https://apis.io/apis/neuvector/neuvector-scan-api/) — Operations about Scan
+- [NeuVector Server API](https://apis.io/apis/neuvector/neuvector-server-api/) — Operations about Server
+- [NeuVector Service API](https://apis.io/apis/neuvector/neuvector-service-api/) — Operations about Service
+- [NeuVector Sniffer API](https://apis.io/apis/neuvector/neuvector-sniffer-api/) — Operations about Sniffer
+- [NeuVector System API](https://apis.io/apis/neuvector/neuvector-system-api/) — Operations about System
+- [NeuVector User API](https://apis.io/apis/neuvector/neuvector-user-api/) — Operations about User
+- [NeuVector Vulnerability API](https://apis.io/apis/neuvector/neuvector-vulnerability-api/) — Operations about Vulnerability management
+- [NeuVector WAF Rule API](https://apis.io/apis/neuvector/neuvector-waf-rule-api/) — Operations about waf Rule
+- [NeuVector API Key API](https://apis.io/apis/neuvector/neuvector-api-key-api/) — The API Key API from NeuVector — 2 operation(s) for api key.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-26
-- **Modified:** 2026-04-28
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Collections (31)
 
-### NeuVector
+Postman and Open Collection request collections.
 
-The NeuVector REST API enables automation of container security operations including vulnerability scanning, runtime policy management, configuration import/export, packet capture, container quarantine, CVE database queries, and federated cluster management. Two authentication options are supported - username/password sessions and API key tokens. The published OpenAPI (Swagger 2.0) describes the full surface.
+- [NeuVector Admission API](https://apis.io/collections/neuvector/open-neuvector-admission-api/)
+- [NeuVector Apikey API](https://apis.io/collections/neuvector/open-neuvector-apikey-api/)
+- [NeuVector Authentication API](https://apis.io/collections/neuvector/open-neuvector-authentication-api/)
+- [NeuVector Compliance API](https://apis.io/collections/neuvector/open-neuvector-compliance-api/)
+- [NeuVector compliance profile. The payload body is the content of the compliance profile yaml file. API](https://apis.io/collections/neuvector/open-neuvector-compliance-profile-the-payload-body-is-the-content-of-the-compliance-profile-yaml-file-api/)
+- [NeuVector compliance profile. The payload body is the content of the vulnerability profile yaml file. API](https://apis.io/collections/neuvector/open-neuvector-compliance-profile-the-payload-body-is-the-content-of-the-vulnerability-profile-yaml-file-api/)
+- [NeuVector Container API](https://apis.io/collections/neuvector/open-neuvector-container-api/)
+- [NeuVector Controller API](https://apis.io/collections/neuvector/open-neuvector-controller-api/)
+- [NeuVector DLP API](https://apis.io/collections/neuvector/open-neuvector-dlp-api/)
+- [NeuVector Enforcer API](https://apis.io/collections/neuvector/open-neuvector-enforcer-api/)
+- [NeuVector EULA API](https://apis.io/collections/neuvector/open-neuvector-eula-api/)
+- [NeuVector Federation API](https://apis.io/collections/neuvector/open-neuvector-federation-api/)
+- [NeuVector File API](https://apis.io/collections/neuvector/open-neuvector-file-api/)
+- [NeuVector File Monitor API](https://apis.io/collections/neuvector/open-neuvector-file-monitor-api/)
+- [NeuVector Group API](https://apis.io/collections/neuvector/open-neuvector-group-api/)
+- [NeuVector Host API](https://apis.io/collections/neuvector/open-neuvector-host-api/)
+- [NeuVector Log API](https://apis.io/collections/neuvector/open-neuvector-log-api/)
+- [NeuVector Namespace API](https://apis.io/collections/neuvector/open-neuvector-namespace-api/)
+- [NeuVector Policy API](https://apis.io/collections/neuvector/open-neuvector-policy-api/)
+- [NeuVector Process API](https://apis.io/collections/neuvector/open-neuvector-process-api/)
+- [NeuVector Remote Export Repository API](https://apis.io/collections/neuvector/open-neuvector-remote-export-repository-api/)
+- [NeuVector Remote Repository API](https://apis.io/collections/neuvector/open-neuvector-remote-repository-api/)
+- [NeuVector Response Rule API](https://apis.io/collections/neuvector/open-neuvector-response-rule-api/)
+- [NeuVector Scan API](https://apis.io/collections/neuvector/open-neuvector-scan-api/)
+- [NeuVector Server API](https://apis.io/collections/neuvector/open-neuvector-server-api/)
+- …and 6 more published on APIs.io
 
-**Human URL:** [https://open-docs.neuvector.com/](https://open-docs.neuvector.com/)
+#### Security (1)
 
-**Base URL:** `https://localhost:10443` (controller, port 10443 by default)
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Tags
+- [Neuvector Domain Security](https://apis.io/security/neuvector/neuvector-domain-security/)
 
-- Compliance
-- Containers
-- Kubernetes
-- Runtime Protection
-- Security
-- Vulnerability Scanning
+#### Plans and pricing (1)
 
-#### Properties
+Published plans, tiers and prices.
 
-- [Documentation](https://open-docs.neuvector.com/)
-- [Getting Started](https://open-docs.neuvector.com/deploying)
-- [API Reference](https://open-docs.neuvector.com/automation/automation)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/neuvector/refs/heads/main/openapi/neuvector-openapi-original.yaml)
-- [Source OpenAPI](https://github.com/neuvector/neuvector/blob/main/controller/api/apis.yaml)
-- [Source Code](https://github.com/neuvector/neuvector)
+- [Neuvector Plans Pricing](https://apis.io/plans/neuvector/neuvector-plans-pricing/)
 
-#### Contact
+#### Rate limits (1)
 
-- **FN:** NeuVector Support
-- **Email:** support@neuvector.com
+Published request limits.
 
-## Common Properties
+- [Neuvector Rate Limits](https://apis.io/rate-limits/neuvector/neuvector-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Neuvector Finops](https://apis.io/finops/neuvector/neuvector-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://neuvector.com/)
 - [Documentation](https://open-docs.neuvector.com/)
-- [SUSE Documentation](https://documentation.suse.com/en-us/cloudnative/security/)
-- [GitHub Organization](https://github.com/neuvector)
-- [SUSE Product Page](https://www.suse.com/products/neuvector/)
+- [Blog](https://www.suse.com/blog/)
+- [GitHub](https://github.com/neuvector)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
+**Kin Score 23.0** — emerging · rubric 0.24.0 · scored 2026-10-17
 
-**Email:** kin@apievangelist.com
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 41.1 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 31.0 |
+| Access clarity | 7.9 |
+
+**Agent readiness 24.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 5.9** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/neuvector/](https://apis.io/providers/neuvector/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for NeuVector: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/neuvector/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
